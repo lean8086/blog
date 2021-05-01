@@ -189,6 +189,7 @@ a:hover {
 
 .hero__description strong {
   font-weight: 500;
+  line-height: 1.5em;
 }
 
 a.hero__contact {
@@ -237,8 +238,13 @@ a.hero__contact {
   margin-right: var(--font-size-m);
 }
 
+.card__image,
+.card__title,
+.card__description {
+  max-width: 11rem;
+}
+
 .card__image {
-  max-width: 10rem;
   border-radius: var(--radius);
   height: 16rem;
   object-fit: cover;
@@ -256,16 +262,16 @@ a.hero__contact {
 .card__description {
   color: var(--color-text);
   font-size: var(--font-size-s);
-  margin: var(--font-size-xs) var(--font-size-xxs) var(--font-size-xxs);
-}
-
-.card__title {
-  font-weight: 500;
   line-height: 1.5em;
 }
 
+.card__title {
+  font-family: var(--font-type-sans);
+  margin: var(--font-size-xs) var(--font-size-xxs) var(--font-size-xxs);
+}
+
 .card__description {
-  margin-top: 0;
+  margin: 0 var(--font-size-xxs);
 }
 
 /* PIXELART */
@@ -482,7 +488,6 @@ a.hero__contact {
   .hero__description {
     width: 30rem;
     margin-left: .2rem;
-    line-height: 1.5em;
   }
 
   .home-section {
