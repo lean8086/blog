@@ -293,8 +293,7 @@ a.hero__contact {
 }
 
 .pixelart__image {
-  max-width: 100%;
-  transform: scale(var(--art-scale));
+  object-fit: cover;
 }
 
 /* BLOG */
@@ -322,11 +321,6 @@ a.hero__contact {
 
 .blog-entry__title a {
   color: var(--color-text);
-}
-
-.blog-entry__image {
-  transform: scale(1.5);
-  transform-origin: left;
 }
 
 .blog-entry__description {
@@ -365,8 +359,6 @@ a.hero__contact {
 }
 
 .entry-head__image {
-  transform: scale(2);
-  transform-origin: left;
   margin-bottom: var(--gutter-s);
 }
 
