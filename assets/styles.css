@@ -173,6 +173,7 @@ a:hover {
 
 .hero__image {
   height: 40%;
+  max-height: calc(var(--font-size-xxl) * 5);
   margin: var(--gutter-s);
   flex-grow: 1;
   object-fit: contain;
@@ -187,9 +188,12 @@ a:hover {
   margin: 0;
 }
 
+.hero__description {
+  line-height: 1.6em;
+}
+
 .hero__description strong {
   font-weight: 500;
-  line-height: 1.5em;
 }
 
 a.hero__contact {
@@ -487,7 +491,6 @@ a.hero__contact {
 
   .hero__description {
     width: 30rem;
-    margin-left: .2rem;
   }
 
   .home-section {
