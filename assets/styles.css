@@ -159,28 +159,33 @@ a:hover {
   text-align: center;
 }
 
-@keyframes bounce {
-  from { transform: rotate(90deg) translateX(0) }
-  to { transform: rotate(90deg) translateX(-1rem) }
+.hero__figure {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero::after {
+.hero__image {
+  height: 100%;
+  width: 69px;
+  max-height: calc(var(--font-size-xxl) * 5);
+  margin: var(--gutter-s);
+  object-fit: contain;
+}
+
+@keyframes bounce {
+  from { transform: rotate(90deg) translateX(0) }
+  to { transform: rotate(90deg) translateX(1rem) }
+}
+
+.hero__details::after {
   content: '➼';
   font-size: var(--font-size-m);
   transform: rotate(90deg);
   animation: bounce ease-in-out 1s infinite alternate;
-}
-
-.hero__image {
-  height: 40%;
-  max-height: calc(var(--font-size-xxl) * 5);
-  margin: var(--gutter-s);
-  flex-grow: 1;
-  object-fit: contain;
-}
-
-.hero__details {
-  flex-grow: 1;
+  display: block;
+  margin: 2rem 0 1rem;
 }
 
 .hero__title {
@@ -475,6 +480,10 @@ a.hero__contact {
 @media (min-width: 48rem) {
   .header__nav li:not(:last-child) {
     margin-right: var(--gutter-m);
+  }
+
+  .hero__details::after {
+    margin-top: 3rem;
   }
 
   .hero__title {
