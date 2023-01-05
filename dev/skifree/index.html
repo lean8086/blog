@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>SkiFree - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="DOM-based recreation of the game for Windows. The DOM elements are destroyed every time they left the viewport.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/skifree">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/skifree.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/skifree">
+  <meta name="twitter:title" content="SkiFree">
+  <meta name="twitter:description"
+    content="DOM-based recreation of the game for Windows. The DOM elements are destroyed every time they left the viewport.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/skifree.png">
+  <meta property="og:title" content="SkiFree">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/skifree">
+  <meta property="og:description"
+    content="DOM-based recreation of the game for Windows. The DOM elements are destroyed every time they left the viewport.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/skifree.png">
+
+
+  <style>
+    #guy {
+      width: 32px;
+      height: 32px;
+      background-image: url(/dev/skifree/guy.png);
+      position: absolute;
+      z-index: -3;
+    }
+
+    .obstacle {
+      background-image: url(/dev/skifree/obstacles.png);
+      position: absolute;
+    }
+
+    .experiment-workspace {
+      overflow: hidden;
+      cursor: crosshair;
+      height: 500px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">SkiFree</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2011-02-06" itemprop="dateCreated">Feb, 2011</time></p>
+    <p class="entry-head__description" itemprop="description">DOM-based recreation of the game for Windows. The DOM elements are destroyed every time they left the viewport.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <div id="guy"></div>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    var display = document.querySelector(".experiment-workspace"),
+
+      stageSpeedX = 0,
+      stageSpeedY = 10,
+      stageWidth = display.clientWidth,
+      stageHeight = display.clientHeight,
+      latestDirection,
+
+      guy = document.getElementById('guy'),
+      guyX = (stageWidth - 32) / 2,
+      guyY = (stageHeight - 32) / 4,
+      guySpritePositions = {
+        'left': '-128px 0',
+        'lb': '-160px 0',
+        'lc': '-192px 0',
+        'center': '0 0',
+        'rc': '-32px 0',
+        'rb': '-64px 0',
+        'right': '-96px 0'
+      },
+
+      obstacleElement = document.createElement('div'),
+      obstacleTypes = [
+        { 'width': 28, 'height': 32, 'sprite': '0 -31px', 'index': -1 }, // Tree
+        { 'width': 21, 'height': 27, 'sprite': '0 -103px', 'index': -1 }, // Fired tree
+        { 'width': 32, 'height': 64, 'sprite': '-96px -66px', 'index': -1 }, // Pine
+        { 'width': 64, 'height': 32, 'sprite': '-187px -31px', 'index': -5 }, // Hills
+        { 'width': 16, 'height': 4, 'sprite': '-143px -59px', 'index': -5 }, // Little hill
+        { 'width': 24, 'height': 8, 'sprite': '-150px -31px', 'index': -5 }, // Medium hill
+        { 'width': 23, 'height': 11, 'sprite': '-30px -52px', 'index': -5 }, // Rock
+        { 'width': 32, 'height': 8, 'sprite': '-109px -55px', 'index': -5 } // Ramp
+      ],
+      moveEvent = document.createEvent('Event');
+
+    guy.style.left = guyX + 'px';
+    guy.style.top = guyY + 'px';
+
+    function moveGuy(event) {
+      var x = event.offsetX,
+        y = event.offsetY,
+
+        alphaX = Math.abs(x - guyX),
+        betaX = alphaX * 2,
+
+        alphaY = Math.abs(y - guyY),
+        betaY = alphaY * 2,
+
+        alpha = (alphaX > betaY),
+        beta = (betaX > alphaY),
+
+        // [Direction, Stage speed X, Stage speed Y]
+        data = (x < guyX)
+          ? (y < guyY)
+            ? ['left', 0, 0]
+            : alpha
+              ? ['lb', -7, 4]
+              : beta
+                ? ['lc', -4, 7]
+                : ['center', 0, 10]
+          : (y < guyY)
+            ? ['right', 0, 0]
+            : alpha
+              ? ['rb', 7, 4]
+              : beta
+                ? ['rc', 4, 7]
+                : ['center', 0, 10];
+
+      if (latestDirection === data[0]) { return; }
+
+      guy.style.backgroundPosition = guySpritePositions[data[0]];
+      latestDirection = data[0];
+      stageSpeedX = data[1];
+      stageSpeedY = data[2];
+    }
+
+    function Obstacle(data) {
+      var element = obstacleElement.cloneNode(),
+        left = Math.random() * stageWidth - data.width,
+        top = stageHeight;
+
+      element.className = 'obstacle';
+      element.style.cssText = [
+        'width:' + data.width + 'px',
+        'height:' + data.height + 'px',
+        'background-position:' + data.sprite,
+        'z-index:' + data.index,
+        'left:' + left + 'px',
+        'top:' + top + 'px'
+      ].join(';');
+
+      display.appendChild(element);
+      document.addEventListener('moveObstacles', function moveThis() {
+        // Into viewport, move!
+        element.style.left = (left -= stageSpeedX) + 'px';
+        element.style.top = (top -= stageSpeedY) + 'px';
+        // Out of viewport, kill!
+        if (top < -data.height) {
+          display.removeChild(element);
+          document.removeEventListener('moveObstacles', moveThis);
+        }
+      });
+    }
+
+    /**
+     * Initialization
+     */
+    moveEvent.initEvent('moveObstacles', true, true);
+    display.addEventListener('mousemove', moveGuy);
+    // Create obstacles
+    setInterval(function () {
+      if (stageSpeedX !== 0 || stageSpeedY !== 0) {
+        var randomObstacle = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+        new Obstacle(randomObstacle);
+      }
+    }, 150);
+    // Move obstacles
+    setInterval(function () {
+      if (stageSpeedX !== 0 || stageSpeedY !== 0) {
+        document.dispatchEvent(moveEvent);
+      }
+    }, 1000 / 30);
+  </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Doodle Lander - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="Playing with artificial gravity on canvas. I used to play Moon Lander and wanted to recreate some of the physics in JavaScript.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/single-element-cube">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/doodle-lander.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/single-element-cube">
+  <meta name="twitter:title" content="Doodle Lander">
+  <meta name="twitter:description"
+    content="Playing with artificial gravity on canvas. I used to play Moon Lander and wanted to recreate some of the physics in JavaScript.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/doodle-lander.png">
+  <meta property="og:title" content="Doodle Lander">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/single-element-cube">
+  <meta property="og:description"
+    content="Playing with artificial gravity on canvas. I used to play Moon Lander and wanted to recreate some of the physics in JavaScript.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/doodle-lander.png">
+
+
+  <style>
+    .experiment-workspace {
+      overflow: hidden;
+      height: 500px;
+      background-color: #2E458C;
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 2px),
+        linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 2px),
+        linear-gradient(#3C5498 1px, transparent 1px),
+        linear-gradient(90deg, #3C5498 1px, transparent 1px);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Doodle Lander</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2012-10-08" itemprop="dateCreated">Oct, 2012</time></p>
+    <p class="entry-head__description" itemprop="description">Playing with artificial gravity on canvas. I used to play Moon Lander and wanted to recreate some of the physics in JavaScript.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <canvas id="game"/>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    var canvas = document.querySelector('#game');
+    canvas.width = canvas.parentNode.clientWidth;
+    canvas.height = canvas.parentNode.clientHeight;
+
+    var ctx = canvas.getContext('2d'),
+      // Canvas Size
+      canvasWidth = ctx.canvas.clientWidth,
+      canvasHeight = ctx.canvas.clientHeight,
+      // Size
+      width = 47,
+      height = 50,
+      // Vertical limit taking care of the spacecraft height
+      floor = canvasHeight - 32,
+      // Position on space
+      x = (canvasWidth - width) / 2,
+      y = (canvasHeight - height) / 2,
+      // Velocities by axis
+      speedX = 0,
+      speedY = 0,
+      // Coordinates on Y-axis of cropped image
+      spriteY = 0,
+      // How much the speed increase or decrease
+      stepX = 0.05,
+      stepY = 0.08,
+      // Flags to know user's control usage
+      direction = 0,
+      igniting = false,
+      // Reference to renderable resource
+      image = (function () {
+        var i = new Image();
+        i.src = '/dev/doodle-lander/lander.png';
+        return i;
+      }()),
+      lastTime = 0;
+
+    /**
+     * RequestAnimationFrame polyfill
+     * Based on pollyfill by Erik MÃ¶ller with fixes from Paul Irish and Tino Zijdel
+     * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+     * http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+     */
+    requestAnimationFrame = requestAnimationFrame ||
+      webkitRequestAnimationFrame ||
+      mozRequestAnimationFrame ||
+      msRequestAnimationFrame ||
+      oRequestAnimationFrame ||
+      function (callback) {
+        var currTime = new Date().getTime(),
+        timeToCall = Math.max(0, 16 - (currTime - lastTime));
+
+        lastTime = currTime + timeToCall;
+
+        return setTimeout(function () { callback(lastTime); }, timeToCall);
+      };
+
+    function draw() {
+      // Update Vertical speed:
+      // - When control are used, then apply negative force
+      // - On default situation, apply a positive force (gravity)
+      y += speedY += igniting ? -stepY : stepY;
+      // Check for landing
+      if (y >= floor) {
+        // Force to be in the ground
+        y = floor;
+        // Neutralize velocities
+        speedX = speedY = 0;
+      }
+      // Check for ceiling
+      if (y <= 0) {
+        // Force to be in the ground
+        y = 0;
+        // Neutralize velocities
+        speedY = 0;
+      }
+      // Clear the canvas with the DOM element size
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      // Update Horizontal speed based on used control plus a pre-determined step
+      x += speedX += direction * stepX;
+      // Check for right to left transportation
+      if (x > canvasWidth + width) {
+        x = -width;
+        // Check for left to right transportation
+      } else if (x < -width) {
+        x = canvasWidth + width;
+      }
+      // Render the crane with the updated position
+      ctx.drawImage(image, 0, spriteY, width, height, x, y, width, height);
+      // Restart the rAF cicle
+      requestAnimationFrame(draw);
+    }
+
+    function checkFire() {
+      switch (direction) {
+        case 1:
+          spriteY = igniting ? 204 : 102;
+          break;
+        case -1:
+          spriteY = igniting ? 255 : 153;
+          break;
+        default:
+          spriteY = igniting ? 51 : 0;
+          break;
+      }
+    }
+
+    // Which key was pressed
+    document.addEventListener('keydown', function (event) {
+      switch (event.keyCode) {
+        // Throttle
+        case 38:
+        case 87:
+          igniting = true;
+          event.preventDefault();
+          break;
+        // Turn left
+        case 37:
+        case 65:
+          direction = -1;
+          event.preventDefault();
+          break;
+        // Turn right
+        case 39:
+        case 68:
+          direction = 1;
+          event.preventDefault();
+          break;
+      }
+
+      checkFire();
+    });
+
+    // Which key was releaed
+    document.addEventListener('keyup', function (event) {
+      switch (event.keyCode) {
+        // Throttle
+        case 38:
+        case 87:
+          igniting = false;
+          break;
+        // Turn left and turn right
+        case 37:
+        case 65:
+        case 39:
+        case 68:
+          direction = 0;
+          break;
+      }
+
+      checkFire();
+    });
+
+    /**
+     * Initialize
+     */
+    draw();
+  </script>
+</body>
+</html>

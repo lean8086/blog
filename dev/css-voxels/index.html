@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>CSS Voxels - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="One HTML element per voxel in a matrix. Voxels are arranged on the x/y coordinates and stacked in different layers on the Z-axis.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/css-voxels">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/crossy-road.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/css-voxels">
+  <meta name="twitter:title" content="CSS Voxels">
+  <meta name="twitter:description"
+    content="One HTML element per voxel in a matrix. Voxels are arranged on the x/y coordinates and stacked in different layers on the Z-axis.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/crossy-road.png">
+  <meta property="og:title" content="CSS Voxels">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/css-voxels">
+  <meta property="og:description"
+    content="One HTML element per voxel in a matrix. Voxels are arranged on the x/y coordinates and stacked in different layers on the Z-axis.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/crossy-road.png">
+
+
+  <style>
+    .experiment-workspace .context {
+      perspective: 99999px;
+      transform-style: preserve-3d;
+      transform: rotateX(70deg) rotateZ(45deg);
+      width: 200px;
+      height: 100px;
+      background: rgba(0, 0, 0, .03);
+    }
+
+    .experiment-workspace .layer {
+      display: flex;
+      flex-wrap: wrap;
+      position: absolute;
+      transform-style: preserve-3d;
+    }
+
+    .experiment-workspace em {
+      width: 10px;
+      height: 10px;
+      display: block;
+    }
+
+    .experiment-workspace b,
+    .experiment-workspace b::before,
+    .experiment-workspace b::after {
+      width: 10px;
+      height: 10px;
+    }
+
+    .experiment-workspace b {
+      transform-style: preserve-3d;
+      transform: translateZ(10px);
+      display: flex;
+    }
+
+    .experiment-workspace b::before,
+    .experiment-workspace b::after {
+      position: absolute;
+      content: "";
+      background: inherit;
+    }
+
+    .experiment-workspace b::before {
+      filter: brightness(90%);
+    }
+
+    [data-face-y="front"] b::before {
+      transform: rotateX(90deg);
+      transform-origin: bottom;
+    }
+
+    [data-face-y="back"] b::before {
+      transform: rotateX(-90deg);
+      transform-origin: top;
+    }
+
+    .experiment-workspace b::after {
+      filter: brightness(80%);
+    }
+
+    [data-face-x="right"] b::after {
+      transform: rotateY(-90deg);
+      transform-origin: right;
+    }
+
+    [data-face-x="left"] b::after {
+      transform: rotateY(90deg);
+      transform-origin: left;
+    }
+
+    [data-face-y="none"] b::before,
+    [data-face-x="none"] b::after {
+      content: none;
+    }
+
+    .experiment-workspace {
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #69ceec;
+    }
+
+    .experiment-workspace .rangeZ {
+      position: absolute;
+      top: 30px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">CSS Voxels</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2019-02-16" itemprop="dateCreated">Feb, 2019</time></p>
+    <p class="entry-head__description" itemprop="description">One HTML element per voxel in a matrix. Voxels are arranged on the x/y coordinates and stacked in different layers on the Z-axis.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <input type="range" class="rangeZ" min="0" max="360" value="45"/>
+
+    <div class="context" data-face-x="right" data-face-y="front"></div>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    const test = {
+      "width": 10,
+      "height": 14,
+      "palette": [
+        [0, 0, 0, 0],
+        [255, 128, 103, 1],
+        [255, 255, 255, 1],
+        [255, 93, 147, 1],
+        [0, 0, 0, 1]
+      ],
+      "data": [
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
+          0, 1, 0, 1, 0, 0, 1, 0, 1, 0,
+          0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
+          0, 1, 0, 1, 0, 0, 1, 0, 1, 0,
+          0, 1, 0, 1, 0, 0, 1, 0, 1, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 1, 0, 0, 0, 0, 1, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 1, 0, 0, 0, 0, 1, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 1, 0, 0, 0, 0, 1, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 2, 2, 2, 2, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 2, 2, 2, 2, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          2, 2, 0, 0, 0, 0, 0, 0, 2, 2,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 2, 2, 2, 2, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+          0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+          0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 4, 0, 0, 0, 0, 4, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+          0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+          0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 0, 0, 0, 0, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 2, 2, 2, 2, 2, 2, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ]
+      ]
+    };
+
+    const context = document.querySelector('.context');
+    context.style.width = `${test.width * 10}px`;
+    context.style.height = `${test.height * 10}px`;
+
+    setTimeout(function () {
+      test.data.forEach((layer, layerIndex) => {
+        const el = document.createElement('div');
+        el.className = 'layer';
+        el.style.transform = `translateZ(${layerIndex * 10}px)`;
+        layer.forEach(color => {
+          if (test.palette[color][3] < 0) {
+            const empty = document.createElement('em');
+            el.appendChild(empty);
+          } else {
+            const voxel = document.createElement('b');
+            voxel.style.background = `rgba(${test.palette[color].join(',')})`
+            el.appendChild(voxel);
+          }
+        });
+        context.appendChild(el);
+      });
+    }, 3000)
+    transformContext({ context, z: document.querySelector('.rangeZ').value });
+
+    document.querySelector('.rangeZ').addEventListener('input', function () {
+      transformContext({ context, z: this.value });
+      const [faceX, faceY] = calcFaces(this.value);
+      context.setAttribute('data-face-x', faceX);
+      context.setAttribute('data-face-y', faceY);
+    });
+
+    function transformContext({ context, z }) {
+      context.style.transform = `rotateX(70deg) rotateZ(${z}deg) translateZ(${test.data.length * -5}px)`;
+    }
+
+    function calcFaces(z) {
+      // Default faces to none in case Z = 0, 180, etc.
+      let fX = 'none';
+      let fY = 'none';
+      if (z > 0) {
+        if (z < 180) {
+          fX = 'right';
+          if (z < 90) {
+            fY = 'front';
+          } else if (z > 90) {
+            fY = 'back';
+          }
+        } else if (z > 180) {
+          fX = 'left';
+          if (z < 270) {
+            fY = 'back';
+          } else if (z > 270) {
+            fY = 'front';
+          }
+        } else {
+          fY = 'back';
+        }
+      } else if (z < 0) {
+        if (z > -180) {
+          fX = 'left';
+          if (z > -90) {
+            fY = 'front';
+          } else if (z < -90) {
+            fY = 'back';
+          }
+        } else if (z < -180) {
+          fX = 'right';
+          if (z > -270) {
+            fY = 'back';
+          } else if (z < -270) {
+            fY = 'front';
+          }
+        }
+      } else {
+        fY = 'front';
+      }
+      return [fX, fY];
+    }
+
+  </script>
+</body>
+</html>

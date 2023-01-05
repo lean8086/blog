@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>70 Seconds of Terror - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="Interactive infographic about the landing of Curiosity Mars Rover, in 13 kB including vector graphics.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/curiosity-rover">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/mars.jpg">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/curiosity-rover">
+  <meta name="twitter:title" content="70 Seconds of Terror">
+  <meta name="twitter:description"
+    content="Interactive infographic about the landing of Curiosity Mars Rover, in 13 kB including vector graphics.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/time-is-ticking.png">
+  <meta property="og:title" content="70 Seconds of Terror">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/curiosity-rover">
+  <meta property="og:description"
+    content="Interactive infographic about the landing of Curiosity Mars Rover, in 13 kB including vector graphics.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/time-is-ticking.png">
+
+
+  <style>
+    .experiment-workspace {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 550px;
+      background-color: #000;
+      background-image: linear-gradient(#080d11, #162432);
+      color: #fff;
+      padding: 0;
+      cursor: default;
+      font-family: 'Open Sans', 'Helvetica Neue', 'Arial';
+      font-size: 16px;
+      /* Avoid text selection */
+      user-select: none;
+      /* Enable hardware aceleration */
+      transform: translateZ(0);
+      overflow: hidden;
+    }
+
+    /**
+    * Assets preload
+    */
+    .experiment-workspace::after {
+      content: url(/dev/curiosity-rover/parachute_btn.svg) url(/dev/curiosity-rover/shield_btn.svg) url(/dev/curiosity-rover/separation_btn.svg) url(/dev/curiosity-rover/parachute.svg) url(/dev/curiosity-rover/capsule.svg) url(/dev/curiosity-rover/shield.svg) url(/dev/curiosity-rover/skycrane_hd.svg) url(/dev/curiosity-rover/friction.svg);
+      display: none;
+    }
+
+    /**
+    * Hide (remove to show!)
+    */
+    .h {
+      display: none;
+    }
+
+    /**
+    * Full screens
+    */
+    #main,
+    #DOMgame,
+    #canvasGame,
+    #panel,
+    .stars {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    /**
+    * Start/end screen
+    */
+    #main {
+      background: transparent url(/dev/curiosity-rover/surface.svg) left bottom repeat-x;
+      text-align: center;
+    }
+
+    .experiment-workspace .stars {
+      background-image: url(/dev/curiosity-rover/stars.svg);
+      pointer-events: none;
+      bottom: 25%;
+    }
+
+    .experiment-workspace h1 {
+      font-size: 3.5em;
+      font-weight: 400;
+      margin-bottom: .25em;
+    }
+
+    .experiment-workspace h2 {
+      font-size: 1em;
+      font-weight: 400;
+    }
+
+    .experiment-workspace button {
+      background-color: #f5f5f5;
+      border: none;
+      border-bottom: 1px solid #bbb;
+      border-radius: .5em;
+      box-shadow: 0 .5em 0 #c5c5c5;
+      color: #333;
+      cursor: pointer;
+      font-size: 1em;
+      height: 4.5em;
+      margin: 1em 0;
+      width: 5em;
+    }
+
+    .experiment-workspace button.parachute_stg {
+      background-image: url(/dev/curiosity-rover/parachute_btn.svg);
+    }
+
+    .experiment-workspace button.shield_stg {
+      background-image: url(/dev/curiosity-rover/shield_btn.svg);
+    }
+
+    .experiment-workspace button.separation_stg {
+      background-image: url(/dev/curiosity-rover/separation_btn.svg);
+    }
+
+    .experiment-workspace button.parachute_stg,
+    .experiment-workspace button.shield_stg,
+    .experiment-workspace button.separation_stg {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 2.5em;
+    }
+
+    #main img {
+      width: 60px;
+      height: 40px;
+      vertical-align: bottom;
+      margin-right: 10px;
+    }
+
+    /**
+    * Elements
+    */
+    #time {
+      font-size: 3em;
+      line-height: 1em;
+      position: absolute;
+      right: .3em;
+      top: .2em;
+    }
+
+    #time::before {
+      content: 'time';
+      display: inline-block;
+      font-size: .34em;
+      left: -1.75em;
+      line-height: 1em;
+      position: absolute;
+      text-align: center;
+      top: 1.1em;
+      transform: rotate(-90deg);
+    }
+
+    /* Stages selector */
+    #action {
+      bottom: 2.5em;
+      height: 3.9em;
+      position: absolute;
+      right: 1em;
+      width: 4.25em;
+    }
+
+    /* Display */
+    #message {
+      bottom: .5em;
+      left: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+    }
+
+    /**
+    * Spacecraft
+    */
+    #DOMgame {
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      height: 150%;
+      left: -25%;
+      top: -25%;
+      transform: rotate(6deg);
+      width: 150%;
+    }
+
+    #spacecraft {
+      transition: all 1.5s ease;
+      left: 50%;
+      top: 50%;
+      width: 160px;
+      margin-left: -80px;
+      height: 104px;
+      margin-top: -52px
+    }
+
+    #parachute {
+      background: transparent url(/dev/curiosity-rover/parachute.svg) bottom center no-repeat;
+      top: 5px;
+      transform: scaleY(0);
+      width: 498px;
+      height: 1554px;
+      left: -173px;
+    }
+
+    #capsule {
+      background: transparent url(/dev/curiosity-rover/capsule.svg) bottom center no-repeat;
+      height: 70%;
+      top: 0;
+      width: 100%;
+    }
+
+    #shield {
+      background: transparent url(/dev/curiosity-rover/shield.svg) top center no-repeat;
+      bottom: 0;
+      height: 30%;
+      width: 100%;
+    }
+
+    #curiosity {
+      background-image: url(/dev/curiosity-rover/skycrane_hd.svg);
+      width: 118px;
+      height: 58px;
+      left: 21px;
+      top: 23px;
+    }
+
+    #spacecraft,
+    #parachute,
+    #capsule,
+    #shield,
+    #curiosity,
+    #friction {
+      background-size: 100%;
+      position: absolute;
+    }
+
+    /**
+    * Stage 1: Entry
+    */
+    @keyframes entry-tremor {
+      0%  { transform: translate(-.2%, -1%); }
+      33% { transform: translate(.2%, .1%); }
+      66% { transform: translate(.1%, -.3%); }
+      100%{ transform: translate(-.2%, .3%); }
+    }
+
+    .entry_stg {
+      animation-name: entry-tremor;
+      animation-duration: 100ms;
+      background-image: linear-gradient(transparent 50%, #e8835e);
+    }
+
+    .entry_stg #spacecraft {
+      transform: rotate(-62deg);
+    }
+
+    /* Resistance in the shield */
+    @keyframes resistance {
+      0% { opacity: 0; }
+      30% { opacity: .6; }
+      80% { opacity: .6; }
+      100% { opacity: 0; }
+    }
+
+    .entry_stg #friction {
+      animation: resistance 21s ease-in-out;
+      background-image: url(/dev/curiosity-rover/friction.svg);
+      bottom: 0;
+      display:block;
+      height: 90%;
+      left: -9%;
+      opacity: 0;
+      width: 118%;
+    }
+
+    /**
+    * Stage 2: Parachute deploy
+    */
+    @keyframes parachute-tremor {
+      0%  { transform: translate(-.05%, -.1%) rotate(-1deg); }
+      33% { transform: translate(.1%, .1%); }
+      66% { transform: translate(.05%, -.05%); }
+      100%{ transform: translate(-.05%, .05%) rotate(1deg); }
+    }
+
+    #DOMgame.parachute_stg {
+      animation-name: parachute-tremor;
+      animation-duration: 100ms;
+      background-image: linear-gradient(transparent 45%, #e8835e);
+    }
+
+    .parachute_stg #spacecraft {
+      transform: rotate(-50deg) scale(.25);
+    }
+
+    @keyframes parachute-deploy {
+      0% { transform: translateY(-50%) scaleY(0); }
+      75%  {transform: translateY(-100%) scaleY(1); }
+    }
+
+    .parachute_stg #parachute {
+      animation: parachute-deploy 200ms ease-out;
+      transform: translateY(-100%) scaleY(1);
+    }
+
+    /**
+    * Stage 3: Shield Jettison
+    */
+
+    @keyframes shield-tremor {
+      0%  { transform: translate(-.1%, -.1%); }
+      33% { transform: translate(.02%, .1%); }
+      66% { transform: translate(.05%, -.2%); }
+      100%{ transform: translate(-.04%, .02%); }
+    }
+
+    #DOMgame.shield_stg {
+      animation-name: shield-tremor;
+      animation-duration: 200ms;
+      background-image: linear-gradient(transparent 40%, #e8835e);
+    }
+
+    .shield_stg #spacecraft {
+      transform: rotate(-30deg);
+    }
+
+    .shield_stg #shield {
+      transform: translateY(5000%) rotate(-100deg);
+      transition: all 2s ease-in 200ms;
+    }
+
+    /**
+    * Stage 4: Capsule separation
+    */
+    .separation_stg #capsule {
+      transform: translateY(-5000%);
+      transition: all 2s ease-in 250ms;
+    }
+
+    .separation_stg #parachute {
+      transform: translateY(-335%);
+      transition: all 2s ease-in 250ms;
+    }
+
+    .separation_stg #spacecraft {
+      transform: rotate(-20deg);
+    }
+
+    /**
+    * Canvas game
+    */
+    #canvasGame {
+      background: transparent url(/dev/curiosity-rover/surface.svg) left 85% repeat-x;
+    }
+
+    #canvas {
+      background-image: linear-gradient(transparent 85%, #ec865d 85%);
+    }
+
+    #landing {
+      border: .16em dashed #fff;
+      border-radius: .5em;
+      height: 35px;
+      left: 720px;
+      position: absolute;
+      top: 260px;
+      width: 60px;
+    }
+
+    #landing::before {
+      content: 'Hold onto this area for 5 seconds';
+      display: inline-block;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      text-align: right;
+      top: -100%;
+      width: 1000%;
+    }
+
+    #landing.holding {
+      background-color: rgba(255, 255, 255, .4);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">70 Seconds of Terror</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2012-09-13" itemprop="dateCreated">Sep, 2012</time></p>
+    <p class="entry-head__description" itemprop="description">Interactive infographic about the landing of Curiosity Mars Rover, in 13 kB including vector graphics.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <div id="main">
+      <div class="stars"></div>
+      <h1 id="reason">70 seconds of terror</h1>
+      <h2>Landing a spacecraft on the surface of Mars</h2>
+      <button id="play" class="h">Play</button>
+      <!-- <p><img src="/dev/curiosity-rover/keys.svg"/>Use A,W,D keys on final landing</p> -->
+    </div>
+    <div id="DOMgame" class="h">
+      <div class="stars"></div>
+      <div id="spacecraft">
+        <div id="curiosity"></div>
+        <div id="parachute"></div>
+        <div id="capsule"></div>
+        <div id="shield"></div>
+        <div id="friction"></div>
+      </div>
+    </div>
+    <div id="canvasGame" class="h">
+      <div class="stars"></div>
+      <canvas id="canvas" width="1000" height="500"></canvas>
+      <div id="landing"></div>
+    </div>
+    <div id="panel" class="h">
+      <time id="time"></time>
+      <p id="message"></p>
+      <button id="action" class="h"></button>
+    </div>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    /*!
+    * 70 seconds of terror
+    * Landing a spacecraft on the surface of Mars.
+    * @author Leandro Linares
+    * Code built for the [js13kgames competition](http://js13kgames.com) on august-september 2012.
+    * The name of the game comes from the original NASA mission called "Curiosity's Seven Minutes of Terror".
+    * See this video for details: http://youtu.be/ISmWAyQxqqs
+    * Check out this infography: http://www.jpl.nasa.gov/infographics/uploads/infographics/10776.jpg
+    */
+    (function (win) {
+      'use strict';
+
+      /**
+       * Helpers
+       */
+      // Fast reference to Document object
+      var doc = win.document,
+        // Alias
+        addClass = function (el, name) { el.classList.add(name); },
+        remClass = function (el, name) { el.classList.remove(name); },
+        show = function (el) { remClass(el, 'h'); },
+        hide = function (el) { addClass(el, 'h'); },
+        Img = function (url) {
+          var i = new win.Image();
+          i.src = url;
+          return i;
+        },
+        // Games references
+        canvasGame,
+        DOMgame,
+        // Allow to restart the game on canvasGame the second time
+        newbie = true,
+        // Grab the size of screen
+        viewportWidth = 1000,
+        viewportHeight = 500,
+        // Reference to all manipulable DOM elements
+        DOM = (function () {
+          var r = [];
+
+          ['main', 'reason', 'play', 'DOMgame', 'curiosity', 'canvasGame', 'canvas', 'landing', 'panel', 'time', 'message', 'action'].forEach(function (e) { r[e] = doc.getElementById(e); });
+
+          return r;
+        }()),
+        // RequestAnimationFrame
+        rAF = win.requestAnimationFrame || win.webkitRequestAnimationFrame || win.mozRequestAnimationFrame || win.msRequestAnimationFrame,
+
+      /**
+       * Cross-game members
+       */
+        // Change/delete content of message DOM element
+        updateMessage = function (text) {
+          DOM.message.textContent = text || '';
+        },
+        // Interval to calculate the remaining time
+        timer,
+        // Show the END screen and reset DOM structure
+        endGame = function (reason) {
+          // Kill the global countdown interval
+          win.clearInterval(timer);
+          // Clean the scene container classnames and hide
+          DOM.DOMgame.className = 'h';
+          // Hide ALL unnescesary elements
+          hide(DOM.panel);
+          hide(DOM.canvasGame);
+          // Update title on screen
+          DOM.reason.textContent = reason;
+          // Show the END screen
+          show(DOM.main);
+        },
+        // Remaining time to acomplish the mission
+        countdown;
+
+      /**
+       * Inits the countdown
+       */
+      function setTimer(seconds) {
+        // Hide the previous screens
+        hide(DOM.main);
+        // Set the countdown value and reference on screen (DOM Element)
+        countdown = DOM.time.textContent = seconds;
+        // Init the time update
+        timer = win.setInterval(function () {
+          // Update the reference of time (variable)
+          countdown -= 1;
+          // Update the reference on screen (DOM Element)
+          // Add zero to get: ...11, 10, 09, 08...
+          DOM.time.textContent = (countdown > 9) ? countdown : '0' + countdown;
+          // Trigger the dom game tick to check stages
+          DOMgame.tick();
+          // End game when time ends
+          if (!countdown) {
+            endGame('Time\'s up');
+          }
+        }, 1000);
+        // Show the controls
+        show(DOM.panel);
+      }
+
+      /**
+       * CANVAS GAME
+       */
+      (function () {
+        /**
+         * Properties
+         */
+        // Get the context of canvas
+        var ctx = DOM.canvas.getContext('2d'),
+          // Determines when the user can move the spacecraft
+          manual = true,
+          // This will count holding time when skycrane be flying into landing area
+          holdingTimer,
+          // Flag to control when timer have to initialize
+          landing = false,
+          // Define a limit where the spacecraft crashes (90% until bottom)
+          ground = 360,
+          // Spacecraft to be controlled by user
+          crane = {
+            'image': new Img('/dev/curiosity-rover/skycrane_sd.svg'),
+            'width': 40,
+            'height': 20
+          },
+          // Rockets turned on when user's controlls are pressed
+          rockets = {
+            'image': new Img('/dev/curiosity-rover/rockets.svg'),
+            'width': 40,
+            'height': 12
+          },
+          // Object that will descent to the surface automatically when the crane is in the landing area
+          rover = {
+            'image': new Img('/dev/curiosity-rover/rover.svg'),
+            'width': 29,
+            'height': 17,
+            'relativeX': 5
+          },
+          // Reference to data of the area for landing
+          landingArea = {
+            'height': 35,
+            'width': 60,
+            'left': 720,
+            'top': 260,
+            'right': 780,
+            'bottom': 295
+          },
+          // Speed of rockets when user press a control key
+          rocket = 1,
+          // How much the speed increase or decrease
+          step = 0.01,
+          // Speed of skycrane flying after rover landing
+          flyAwayStep = 0.06;
+
+        /**
+         * Methods
+         */
+        // Keyboard process to determine rocket usage
+        function processEntry(keyCode, enabling) {
+          switch (keyCode) {
+          // Pressing Up
+          case 38:
+          case 87:
+            crane.yRocket = enabling;
+            break;
+          // Pressing Left
+          case 37:
+          case 65:
+            crane.xRocket = enabling ? -rocket : 0;
+            break;
+          // Pressing Right
+          case 39:
+          case 68:
+            crane.xRocket = enabling ? rocket : 0;
+            break;
+          }
+        }
+
+        // Process on keydown
+        function entryStart(event) {
+          processEntry(event.keyCode, true);
+        }
+
+        // Process on keyup
+        function entryEnd(event) {
+          processEntry(event.keyCode, false);
+        }
+
+        // Allow to user to interact with skycrane
+        function enableControls() {
+          // Allow to tap into visual keyboard to touchable-devices users
+          doc.addEventListener('keydown', entryStart);
+          doc.addEventListener('keyup', entryEnd);
+        }
+
+        // Deny to user to interact with skycrane
+        function disableControls() {
+          // Deny to tap into visual keyboard to touchable-devices users
+          doc.removeEventListener('keydown', entryStart);
+          doc.removeEventListener('keyup', entryEnd);
+        }
+
+        function descent() {
+          // Deny any user entry
+          disableControls();
+          // Be sure to neutralize all speeds
+          crane.xRocket = crane.yRocket = crane.xSpeed = crane.ySpeed = 0;
+          // Set a flag to deny calculations of user's entries on tick
+          manual = false;
+          // Hide visual feedback to user
+          remClass(DOM.landing, 'holding');
+          // Set the initial rover position with crane position to start descent
+          rover.x = crane.x + rover.relativeX;
+          rover.y = crane.y;
+        }
+
+        function checkLanding() {
+          // Into landing area range
+          if (
+            (crane.x > landingArea.left && crane.x + crane.width < landingArea.right) &&
+              (crane.y > landingArea.top && crane.y + crane.height < landingArea.bottom)
+          ) {
+            // Avoid to do this 60 times per second
+            if (!landing) {
+              // Init a timer: if it's accomplished, touchdown will be done
+              // Count 4 seconds because 0.59s is 0, and 0.02s is 0 too, and it takes 1 extra second
+              holdingTimer = win.setTimeout(descent, 4000);
+              // Update flag
+              landing = true;
+              // Show visual feedback to user
+              addClass(DOM.landing, 'holding');
+            }
+          // Out of landing area
+          } else {
+            // Avoid to do this 60 times per second
+            if (landing) {
+              // Clear timer to deny the touchdown execution
+              win.clearTimeout(holdingTimer);
+              // Update flag
+              landing = false;
+              // Hide visual feedback to user
+              remClass(DOM.landing, 'holding');
+            }
+          }
+        }
+
+        // Destructor
+        function end(reason) {
+          // Reset flags
+          landing = false;
+          manual = true;
+          // Delete event listeners
+          disableControls();
+          // End the global game instance
+          endGame(reason);
+        }
+
+        // Tick for the canvas game (60 executions per second)
+        function tick() {
+          // Draw only when the Canvas Game is visible
+          if (DOM.canvasGame.classList.contains('h')) { return; }
+          // Clean the canvas context
+          ctx.clearRect(0, 0, viewportWidth, viewportHeight);
+
+          // When user has control over the spacecraft
+          if (manual) {
+            // Update Horizontal speed based on used control plus a pre-determined step
+            crane.x += crane.xSpeed += crane.xRocket * step;
+            // Update Vertical speed:
+            // - When control are used, then apply negative force
+            // - On default situation, apply a positive force (gravity)
+            crane.y += crane.ySpeed += crane.yRocket ? -step : step;
+            // Validate crashing
+            if (crane.y > ground || crane.x > viewportWidth || crane.x < -crane.width) { end('You\'ve crashed'); }
+            // Validate the landing area
+            checkLanding();
+          // Skycrane mode
+          } else {
+            // Stop the time
+            win.clearInterval(timer);
+            // Curiosity descent until touch the ground
+            if (rover.y + rover.height < ground) {
+              rover.y += 0.5;
+            // Fly away!
+            } else {
+              // Mission accomplished!
+              if (crane.x > viewportWidth) { end('Mission accomplished'); }
+              // Move the crane
+              crane.x += crane.xSpeed += flyAwayStep;
+              crane.y += crane.ySpeed -= flyAwayStep;
+            }
+            // Render the rover with the updated position
+            ctx.drawImage(rover.image, rover.x, rover.y, rover.width, rover.height);
+          }
+          // Render the ON rocket engines if it's necessary
+          if (crane.xRocket || crane.yRocket || !manual) {
+            ctx.drawImage(rockets.image, crane.x, crane.y + crane.height, rockets.width, rockets.height);
+          }
+          // Render the crane with the updated position
+          ctx.drawImage(crane.image, crane.x, crane.y, crane.width, crane.height);
+          // Repeat cicle
+          rAF(tick);
+        }
+
+        function init() {
+          // Reset spacecraft visibilities
+          hide(DOM.DOMgame);
+          // Reset message
+          updateMessage('Use A,W,D keys to land.');
+          // Set crane on initial place
+          // x = 6em
+          crane.x = 6 * 16;
+          crane.y = -crane.height;
+          // Set the crane initial speed
+          crane.xSpeed = 1;
+          crane.ySpeed = 0.1;
+          // Set initial propulsion
+          crane.xRocket = crane.yRocket = 0;
+          // Allow user to drive
+          enableControls();
+          // Do the element visible
+          show(DOM.canvasGame);
+          // Mark as checkpoint to restart from here the second time
+          newbie = false;
+          // Init the rAF cicle
+          tick();
+        }
+
+        /**
+         * Exports
+         */
+        canvasGame = {
+          'init': init
+        };
+      }());
+
+      /**
+       * DOM GAME
+       */
+      (function () {
+        /**
+         * Properties
+         */
+        // Collection of all phases of the DOM game
+        var stages = {
+          // Guided entry to Mars' atmosphere
+          'entry_stg': {
+            'msg': 'Entry Stage. Wait for instructions.',
+            'go': function () {
+              // Feedback
+              updateMessage('Entry Stage. Wait for instructions.');
+              // Add inclination to the guided entry
+              addClass(DOM.DOMgame, 'entry_stg');
+            }
+          },
+          // Supersonic parachute deploy
+          'parachute_stg': {
+            'msg': 'Deploy the supersonic parachute.',
+            'go': function () {
+              // Remove inclination of the guided entry
+              remClass(DOM.DOMgame, 'entry_stg');
+            }
+          },
+          // Heat shield separation
+          'shield_stg': {
+            'msg': 'Separate the heat shield.',
+            'go': function () {
+              // Show the skycrane DOM element
+              show(DOM.curiosity);
+            }
+          },
+          // Capsule and parachute goes away and skycrane fall down alone
+          'separation_stg': {
+            'msg': 'Drop out of the bottom of the aeroshell.',
+            'go': function () {
+              // Feedback
+              updateMessage('Get ready to take manual controls (A,W,D).');
+              // Give 3 seconds of delay to take the manual control and start the canvas game
+              win.setTimeout(canvasGame.init, 7000);
+            }
+          }
+        },
+          // Collection with actions/stages and its respective time to show
+          // Defaults: 49,38,29
+          timing = {
+            49: 'parachute_stg',
+            38: 'shield_stg',
+            29: 'separation_stg'
+          },
+          // Collection of accumulative stages execution
+          queue = [];
+
+        /**
+         * Methods
+         */
+        function init() {
+          // Hide the rover element
+          hide(DOM.curiosity);
+          // Change the value of button to the next time
+          DOM.play.textContent = 'Replay';
+          // Clean the scene container classnames (and show, because 'h' class is deleted)
+          DOM.DOMgame.className = '';
+          // Execute the first stage
+          stages.entry_stg.go();
+        }
+
+        // Listen to the Tick event (Executed ONE time per second)
+        function tick() {
+          // Draw only when the Canvas Game is visible
+          if (DOM.DOMgame.classList.contains('h')) { return; }
+          // Match current time (seconds) with the stage timing map
+          var stg = timing[countdown];
+          // Add to queue when there is an action in the timing instance
+          if (stg) { queue.push(stg); }
+          // Enable the first action on queue
+          if (queue.length > 0) {
+            // Show feedback respective to stage
+            updateMessage(stages[queue[0]].msg);
+            // Update class of button with the respective action
+            // (this will remove the "h" class too)
+            DOM.action.className = queue[0];
+          }
+        }
+
+        /**
+         * Event delegation
+         */
+        // Add functionality to the Action button
+        DOM.action.addEventListener('click', function () {
+          // Empty the message board
+          updateMessage();
+          // Hide the button on execution
+          hide(DOM.action);
+          // Get the first stage on queue
+          var stg = queue.shift();
+          // Add the stage's classname to DOMgame container
+          addClass(DOM.DOMgame, stg);
+          // Execute the stage from stages map
+          stages[stg].go();
+        });
+
+        /**
+         * Exports
+         */
+        DOMgame = {
+          'init': init,
+          'tick': tick
+        };
+      }());
+
+      // Init the DOM game when game is ready to play
+      win.onload = function () {
+        // Add the hability of start/restart the game to the main screen button
+        DOM.play.addEventListener('click', function () {
+          // Execute only one time
+          if (newbie) {
+            // Calculate time to include the DOM game + canvas game
+            setTimer(70);
+            // Init the entry stages
+            DOMgame.init();
+          // Execute after first execution
+          } else {
+            // Calculate time to include only the canvas game
+            setTimer(20);
+            // Init the landing stage
+            canvasGame.init();
+          }
+        });
+        // Show the PLAY button
+        show(DOM.play);
+      };
+
+    }(this));
+  </script>
+</body>
+</html>

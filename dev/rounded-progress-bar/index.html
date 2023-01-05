@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Rounded Progress Bar - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="Handling an SVG path from one single variable to show a wheel indicator.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/rounded-progress-bar">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/circle-progress-bar.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/rounded-progress-bar">
+  <meta name="twitter:title" content="Rounded Progress Bar">
+  <meta name="twitter:description"
+    content="Handling an SVG path from one single variable to show a wheel indicator.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/circle-progress-bar.png">
+  <meta property="og:title" content="Rounded Progress Bar">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/rounded-progress-bar">
+  <meta property="og:description"
+    content="Handling an SVG path from one single variable to show a wheel indicator.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/circle-progress-bar.png">
+
+
+  <style>
+    .experiment-workspace {
+      background: #0e2a36;
+      font-family: sans-serif;
+      color: #00c790;
+      height: 500px;
+    }
+
+    .experiment-workspace svg {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      left: 50%;
+      margin-left: -100px;
+      top: 50%;
+      margin-top: -100px;
+    }
+
+    #range {
+      display: block;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Rounded Progress Bar</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2012-10-29" itemprop="dateCreated">Oct, 2012</time></p>
+    <p class="entry-head__description" itemprop="description">Handling an SVG path from one single variable to show a wheel indicator.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <svg>
+      <path id="ring" fill="#00c790"/>
+      <circle cx="100" cy="100" r="82" fill="#0e2a36"/>
+      <circle cx="100" cy="100" r="73" fill="none" stroke="#00c790" stroke-width="7" opacity=".5"/>
+      <text x="100" y="100" text-anchor="middle" dominant-baseline="central" fill="#00c790" font-size="60" font-weight="bold">64</text>
+    </svg>
+    
+    <input type="range" name="range" value="64" id="range"/>
+    
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    var ring = document.getElementsByTagName('path')[0];
+    var range = document.getElementsByTagName('input')[0];
+    var text = document.getElementsByTagName('text')[0];
+    var toRadians = Math.PI / 180;
+    var r = 100;
+
+    function draw() {
+      // Update the wheel giving to it a value in degrees,
+      // getted from the percentage of the input value
+      // a.k.a. (value * 360) / 100
+      var degrees = range.value * 3.5999;
+      // Convert the degrees value to radians
+      var rad = degrees * toRadians;
+      // Determine X and cut to 2 decimals
+      var x = (Math.sin(rad) * r).toFixed(2);
+      // Determine Y and cut to 2 decimals
+      var y = -(Math.cos(rad) * r).toFixed(2);
+      // The another half ring. Same as (deg > 180) ? 1 : 0
+      var lenghty = Number(degrees > 180);
+      // Moveto + Arcto
+      var descriptions = ['M', 0, 0, 'v', -r, 'A', r, r, 1, lenghty, 1, x, y, 'z'];
+      // Apply changes to the path
+      ring.setAttribute('d', descriptions.join(' '));
+      // Update the numeric display
+      text.textContent = range.value;
+    }
+
+    // Translate the center axis to a half of total size
+    ring.setAttribute('transform', 'translate(' + r + ', ' + r + ')');
+    // Bind the change event to the input
+    range.addEventListener('input', draw);
+    // Force to init the first time
+    draw();
+
+  </script>
+</body>
+</html>

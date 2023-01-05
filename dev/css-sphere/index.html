@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>CSS-Only 3D Sphere - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="The perception of volume is created by stacking 21 different elements separated by equal distances.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/css-sphere">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/css-sphere.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/css-sphere">
+  <meta name="twitter:title" content="CSS-Only 3D Sphere">
+  <meta name="twitter:description"
+    content="The perception of volume is created by stacking 21 different elements separated by equal distances.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/css-sphere.png">
+  <meta property="og:title" content="CSS-Only 3D Sphere">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/css-sphere">
+  <meta property="og:description"
+    content="The perception of volume is created by stacking 21 different elements separated by equal distances.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/css-sphere.png">
+
+
+  <style>
+    :root {
+      --diameter: 50vmin;
+      --color-dark: #2a2b2d;
+      --color-light: #d9514e;
+      --gutter: 5%;
+    }
+
+    .experiment-workspace {
+      background-color: var(--color-light);
+      height: 100vmin;
+    }
+
+    .experiment-workspace ol, .ring {
+      width: var(--diameter);
+      height: var(--diameter);
+      list-style: none;
+      box-sizing: border-box;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+
+    .experiment-workspace ol {
+      transform: translateX(-25%) translateY(-95%) rotateX(67deg) rotateY(30deg) rotateZ(30deg);
+      padding-left: 0;
+      animation: tease 7s linear infinite;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+
+    .ring {
+      transform: rotateX(-90deg);
+      margin-bottom: calc(-1 * var(--diameter) + var(--gutter));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: top;
+    }
+
+    .ring::after {
+      content: '';
+      display: block;
+      border: 2px solid var(--color-dark);
+      width: var(--diameter);
+      height: var(--diameter);
+      border-radius: 100%;
+      animation: spin 1s linear infinite;
+    }
+
+    .ring:nth-child(1)::after, .ring:nth-last-child(1)::after { width: 21%; height: 21%; }
+    .ring:nth-child(2)::after, .ring:nth-last-child(2)::after { width: 42%; height: 42%; }
+    .ring:nth-child(3)::after, .ring:nth-last-child(3)::after { width: 59%; height: 59%; }
+    .ring:nth-child(4)::after, .ring:nth-last-child(4)::after { width: 70%; height: 70%; }
+    .ring:nth-child(5)::after, .ring:nth-last-child(5)::after { width: 79%; height: 79%; }
+    .ring:nth-child(6)::after, .ring:nth-last-child(6)::after { width: 86%; height: 86%; }
+    .ring:nth-child(7)::after, .ring:nth-last-child(7)::after { width: 91%; height: 91%; }
+    .ring:nth-child(8)::after, .ring:nth-last-child(8)::after { width: 95%; height: 95%; }
+    .ring:nth-child(9)::after, .ring:nth-last-child(9)::after { width: 97%; height: 97%; }
+    .ring:nth-child(10)::after, .ring:nth-last-child(10)::after { width: 99%; height: 99%; }
+
+    .ring:nth-child(1)::after { animation-delay: 100ms; }
+    .ring:nth-child(2)::after { animation-delay: 200ms; }
+    .ring:nth-child(3)::after { animation-delay: 300ms; }
+    .ring:nth-child(4)::after { animation-delay: 400ms; }
+    .ring:nth-child(5)::after { animation-delay: 500ms; }
+    .ring:nth-child(6)::after { animation-delay: 600ms; }
+    .ring:nth-child(7)::after { animation-delay: 700ms; }
+    .ring:nth-child(8)::after { animation-delay: 800ms; }
+    .ring:nth-child(9)::after { animation-delay: 900ms; }
+    .ring:nth-child(10)::after { animation-delay: 1000ms; }
+    .ring:nth-child(11)::after { animation-delay: 1100ms; }
+    .ring:nth-child(12)::after { animation-delay: 1200ms; }
+    .ring:nth-child(13)::after { animation-delay: 1300ms; }
+    .ring:nth-child(14)::after { animation-delay: 1400ms; }
+    .ring:nth-child(15)::after { animation-delay: 1500ms; }
+    .ring:nth-child(16)::after { animation-delay: 1600ms; }
+    .ring:nth-child(17)::after { animation-delay: 1700ms; }
+    .ring:nth-child(18)::after { animation-delay: 1800ms; }
+    .ring:nth-child(19)::after { animation-delay: 1900ms; }
+    .ring:nth-child(20)::after { animation-delay: 2000ms; }
+    .ring:nth-child(21)::after { animation-delay: 2100ms; }
+
+    @keyframes tease {
+      from { transform: translateX(-25%) translateY(-95%) rotateX(67deg) rotateY(30deg) rotateZ(0deg); }
+      to { transform: translateX(-25%) translateY(-95%) rotateX(67deg) rotateY(30deg) rotateZ(360deg); }
+    }
+
+    @keyframes spin {
+      from { transform: rotateZ(0deg); }
+      to { transform: rotateZ(360deg); }
+    }
+
+    /* VARIATIONS */
+
+    [data-len='3'] .ring::after {
+      border-bottom-color: transparent;
+    }
+
+    [data-len='2'] .ring::after {
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+
+    [data-len='1'] .ring::after {
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-top-color: transparent;
+    }
+
+    [name='len'] {
+      -webkit-appearance: none;
+      position: absolute;
+      left: 50%;
+      top: 85%;
+      transform: translateX(-50%);
+    }
+
+    [name='len']::-webkit-slider-runnable-track {
+      background: var(--color-dark);
+      height: 2px;
+    }
+
+    [name='len']::-webkit-slider-thumb {
+      margin-top: -6px;
+      width: 14px;
+      height: 14px;
+      background: var(--color-dark);
+      border-radius: 100%;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">CSS-Only 3D Sphere</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2021-02-26">Feb, 2021</time></p>
+    <p class="entry-head__description" itemprop="description">The perception of volume is created by stacking 21 different elements separated by equal distances.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <ol>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+      <li class="ring"></li>
+    </ol>
+    <input type="range" value="4" min="1" max="4" name="len">
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    const list = document.querySelector('ol');
+    document.querySelector('[name=len]').addEventListener('input', (ev) => { list.dataset.len = ev.target.value });
+  </script>
+</body>
+</html>

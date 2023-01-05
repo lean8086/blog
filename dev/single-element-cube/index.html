@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Single-Element Cube - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="The element and pseudo-elements are the faces. When it rotates, it changes the transform-origin to always display 3 faces.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/single-element-cube">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/css-cube.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/single-element-cube">
+  <meta name="twitter:title" content="Single-Element Cube">
+  <meta name="twitter:description"
+    content="The element and pseudo-elements are the faces. When it rotates, it changes the transform-origin to always display 3 faces.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/css-cube.png">
+  <meta property="og:title" content="Single-Element Cube">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/single-element-cube">
+  <meta property="og:description"
+    content="The element and pseudo-elements are the faces. When it rotates, it changes the transform-origin to always display 3 faces.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/css-cube.png">
+
+
+  <style>
+    :root {
+      --cube-size: 200px;
+    }
+
+    .experiment-workspace .context {
+      margin: var(--cube-size) auto 0;
+      transform-style: preserve-3d;
+      transform: rotateX(70deg) rotateZ(45deg);
+      width: var(--cube-size);
+      height: var(--cube-size);
+    }
+
+    .experiment-workspace b,
+    .experiment-workspace b::before,
+    .experiment-workspace b::after {
+      position: absolute;
+      width: var(--cube-size);
+      height: var(--cube-size);
+      content: '';
+      transform-style: preserve-3d;
+    }
+
+    .experiment-workspace b {
+      background: #e05038;
+      transform: translateZ(var(--cube-size));
+    }
+
+    .experiment-workspace b::before {
+      background: #f2cbbc;
+    }
+
+    [data-face-y="front"] b::before {
+      transform: rotateX(90deg);
+      transform-origin: bottom;
+    }
+
+    [data-face-y="back"] b::before {
+      transform: rotateX(-90deg);
+      transform-origin: top;
+    }
+
+    [data-face-y="none"] b::before {
+      content: none;
+    }
+
+    .experiment-workspace b::after {
+      background: #334431;
+    }
+
+    [data-face-x="right"] b::after {
+      transform: rotateY(-90deg);
+      transform-origin: right;
+    }
+
+    [data-face-x="left"] b::after {
+      transform: rotateY(90deg);
+      transform-origin: left;
+    }
+
+    [data-face-x="none"] b::after {
+      content: none;
+    }
+
+    .experiment-workspace {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e6af4b;
+      height: 600px;
+    }
+
+    .experiment-workspace .rangeZ {
+      position: absolute;
+      top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Single-Element Cube</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2019-02-10" itemprop="dateCreated">Feb, 2019</time></p>
+    <p class="entry-head__description" itemprop="description">The element and pseudo-elements are the faces. When it rotates, it changes the transform-origin to always display 3 faces.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <input type="range" class="rangeZ" min="0" max="360" value="45"/>
+
+    <div class="context" data-face-x="right" data-face-y="front">
+      <b></b>
+    </div>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    const context = document.querySelector('.context');
+
+    document.querySelector('.rangeZ').addEventListener('input', function () {
+      context.style.transform = `rotateX(70deg) rotateZ(${this.value}deg)`;
+      const [faceX, faceY] = calcFaces(this.value);
+      context.setAttribute('data-face-x', faceX);
+      context.setAttribute('data-face-y', faceY);
+    });
+
+    function calcFaces(z) {
+      // Default faces to none in case Z = 0, 180, etc.
+      let fX = 'none';
+      let fY = 'none';
+      if (z > 0) {
+        if (z < 180) {
+          fX = 'right';
+          if (z < 90) {
+            fY = 'front';
+          } else if (z > 90) {
+            fY = 'back';
+          }
+        } else if (z > 180) {
+          fX = 'left';
+          if (z < 270) {
+            fY = 'back';
+          } else if (z > 270) {
+            fY = 'front';
+          }
+        } else {
+          fY = 'back';
+        }
+      } else if (z < 0) {
+        if (z > -180) {
+          fX = 'left';
+          if (z > -90) {
+            fY = 'front';
+          } else if (z < -90) {
+            fY = 'back';
+          }
+        } else if (z < -180) {
+          fX = 'right';
+          if (z > -270) {
+            fY = 'back';
+          } else if (z < -270) {
+            fY = 'front';
+          }
+        }
+      } else {
+        fY = 'front';
+      }
+      return [fX, fY];
+    }
+
+  </script>
+</body>
+</html>

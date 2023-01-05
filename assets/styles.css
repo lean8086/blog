@@ -476,6 +476,13 @@ a.hero__contact {
   padding: var(--gutter-s);
 }
 
+/* EXPERIMENTS */
+.experiment-workspace {
+  position: relative;
+  margin-bottom: var(--gutter-l);
+  border-radius: var(--radius);
+}
+
 /* BIG SCREENS */
 @media (min-width: 48rem) {
   .header__nav li:not(:last-child) {

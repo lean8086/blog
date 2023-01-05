@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Time is Ticking - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="Modifying the new CSS property transform-origin to distribute letters around a circle.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/time-is-ticking">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/time-is-ticking.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/time-is-ticking">
+  <meta name="twitter:title" content="Time is Ticking">
+  <meta name="twitter:description"
+    content="Modifying the new CSS property transform-origin to distribute letters around a circle.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/time-is-ticking.png">
+  <meta property="og:title" content="Time is Ticking">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/time-is-ticking">
+  <meta property="og:description"
+    content="Modifying the new CSS property transform-origin to distribute letters around a circle.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/time-is-ticking.png">
+
+
+  <style>
+    #mask {
+      height: 325px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .experiment-workspace ul {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      font-size: 5em;
+      text-align: center;
+      list-style: none;
+      left: 50%;
+    }
+
+    .experiment-workspace li {
+      width: 1em;
+      height: 1em;
+      line-height: 1em;
+    }
+
+    .experiment-workspace #display {
+      margin-left: -42px;
+      border: 1px dashed #000;
+      border-radius: 10px;
+    }
+
+    .experiment-workspace #display :first-child {
+      margin-bottom: 1em;
+    }
+
+    @keyframes clock {
+      25%, 50%  { transform: rotate(-30deg) }
+      75%, 100% { transform: rotate(-60deg) }
+    }
+
+    #ring {
+      width: 400px;
+      height: 400px;
+      margin-left: -200px;
+      top: 88px;
+      animation: clock 2s ease-out infinite;
+    }
+
+    #ring li {
+      height: 200px;
+      left: 200px;
+      margin-left: -.5em;
+      position: absolute;
+      transform-origin: center bottom;
+    }
+
+    #ring li:nth-child(2) { transform: rotate(30deg) }
+    #ring li:nth-child(3) { transform: rotate(60deg) }
+    #ring li:nth-child(4) { transform: rotate(90deg) }
+    #ring li:nth-child(5) { transform: rotate(120deg) }
+    #ring li:nth-child(6) { transform: rotate(150deg) }
+    #ring li:nth-child(7) { transform: rotate(180deg) }
+    #ring li:nth-child(8) { transform: rotate(210deg) }
+    #ring li:nth-child(9) { transform: rotate(240deg) }
+    #ring li:nth-child(10) { transform: rotate(270deg) }
+    #ring li:nth-child(11) { transform: rotate(300deg) }
+    #ring li:nth-child(12) { transform: rotate(330deg) }
+
+    .experiment-workspace {
+      background: #FDD935;
+      font-family: Arial, sans-serif;
+      color: #000000;
+      height: 450px;
+      padding-top: calc((450px - 325px) / 2);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Time is Ticking</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2012-10-12" itemprop="dateCreated">Oct, 2012</time></p>
+    <p class="entry-head__description" itemprop="description">Modifying the new CSS property transform-origin to distribute letters around a circle.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <div id="mask">
+      <ul id="display">
+        <li>t</li>
+        <li>c</li>
+        <li>k</li>
+      </ul>
+    
+      <ul id="ring">
+        <li>i</li>
+        <li>o</li>
+        <li>i</li>
+        <li>o</li>
+        <li>i</li>
+        <li>o</li>
+        <li>i</li>
+        <li>o</li>
+        <li>i</li>
+        <li>o</li>
+        <li>i</li>
+        <li>o</li>
+      </ul>
+    </div>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+</body>
+</html>

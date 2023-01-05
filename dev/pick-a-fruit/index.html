@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Pick a fruit! - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="My first fully working experiment. It required so much processing to walk that the pace depended on the browser.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/pick-a-fruit">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/just-fruits.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/pick-a-fruit">
+  <meta name="twitter:title" content="Pick a fruit!">
+  <meta name="twitter:description"
+    content="My first fully working experiment. It required so much processing to walk that the pace depended on the browser.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/just-fruits.png">
+  <meta property="og:title" content="Pick a fruit!">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/pick-a-fruit">
+  <meta property="og:description"
+    content="My first fully working experiment. It required so much processing to walk that the pace depended on the browser.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/just-fruits.png">
+
+
+  <style>
+    #data {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      line-height: 50px;
+      margin: 0;
+      border-bottom: 1px solid #ccc;
+      background-color: rgba(240, 240, 240, 0.5);
+      z-index: -1;
+      color: #999;
+      font-size: 1.2em;
+    }
+
+    #hurry {
+      z-index: 2;
+      font-size: 100px;
+      width: 100%;
+      height: 100px;
+      position: absolute;
+      text-align: center;
+      left: 0;
+    }
+
+    .experiment-workspace {
+      height: 500px;
+      overflow: hidden;
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Pick a fruit!</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2009-08-13" itemprop="dateCreated">Aug, 2009</time></p>
+    <p class="entry-head__description" itemprop="description">My first fully working experiment. It required so much processing to walk that the pace depended on the browser.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <p id="data">Time: <span id="tiempo">60</span> - Fruits: <span id="puntos">0</span></p>
+    <p id="hurry"></p>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    var display = document.querySelector(".experiment-workspace"),
+      displayWidth = display.clientWidth,
+      displayHeight = display.clientHeight,
+      intTiempo,
+      intMove,
+      contMove,
+      onEvento,
+      thatLevel;
+
+    // Crear Escenario
+    function crearEscenario() {
+      var oEsc = document.createElement('div');
+      oEsc.id = 'escenario';
+      oEsc.ancho = 550;
+      oEsc.alto = 550;
+      oEsc.style.width = oEsc.ancho + 'px';
+      oEsc.style.height = oEsc.alto + 'px';
+      oEsc.style.backgroundImage = 'url("/dev/pick-a-fruit/cubo.png")';
+      oEsc.style.zIndex = -2;
+      oEsc.style.position = 'absolute';
+      // Centrado
+      oEsc.arriba = (displayHeight - oEsc.alto) / 2;
+      oEsc.izquierda = (displayWidth - oEsc.ancho) / 2;
+      oEsc.style.top =  oEsc.arriba + 'px';
+      oEsc.style.left = oEsc.izquierda + 'px';
+      display.appendChild(oEsc);
+    }
+
+    // Crear Personaje
+    function crearPersonaje() {
+      var oPer = document.createElement('div');
+      oPer.id = 'personaje';
+      oPer.ancho = 50;
+      oPer.alto = 50;
+      oPer.style.width = oPer.ancho + 'px';
+      oPer.style.height = oPer.alto + 'px';
+      oPer.style.backgroundImage = 'url("/dev/pick-a-fruit/personaje.png")';
+      oPer.style.backgroundRepeat = 'no-repeat';
+      oPer.style.position = 'absolute';
+      // Centrado
+      oPer.arriba = (displayHeight - oPer.alto) / 2;
+      oPer.izquierda = (displayWidth - oPer.ancho) / 2;
+      oPer.style.top =  oPer.arriba + 'px';
+      oPer.style.left = oPer.izquierda + 'px';
+      display.appendChild(oPer);
+    }
+
+    function correrCrono() {
+
+      var contador = document.getElementById('tiempo'),
+      hurry = document.getElementById('hurry'),
+      tiempo = Number(contador.innerHTML) - 1;
+
+      contador.innerHTML = tiempo;
+
+      if (tiempo <= 5) {
+        hurry.innerHTML = contador.innerHTML;
+
+        if (tiempo === 0) {
+          intTiempo = clearInterval(intTiempo);
+          intMove = clearInterval(intMove);
+          document.onkeypress = null;
+          hurry.innerHTML = document.getElementById('puntos').innerHTML + ' fruits!';
+        }
+      }
+    }
+
+    function contarTiempo() {
+      intTiempo = setInterval(correrCrono, 1000);
+    }
+
+    function Level() {
+      thatLevel = this;
+
+      /**
+      * Escenario
+      */
+      this.oEscenario = document.getElementById('escenario');
+
+      // Mover escenario
+      this.moverEscenario = function (ar, iz) {
+        // Personaje arriba = Escenario abajo
+        if (ar > 0) {
+          this.oEscenario.arriba += 5;
+          this.oEscenario.style.top = this.oEscenario.arriba + 'px';
+          // Personaje abajo = Escenario arriba
+        } else if (ar < 0) {
+          this.oEscenario.arriba -= 5;
+          this.oEscenario.style.top = this.oEscenario.arriba + 'px';
+          // Personaje izquierda = Escenario derecha
+        } else if (iz > 0) {
+          this.oEscenario.izquierda += 5;
+          this.oEscenario.style.left = this.oEscenario.izquierda + 'px';
+          // Personaje derecha = Escenario izquierda
+        } else if (iz < 0) {
+          this.oEscenario.izquierda -= 5;
+          this.oEscenario.style.left = this.oEscenario.izquierda + 'px';
+        }
+
+        if (contMove < 10) {
+          contMove += 1;
+        } else {
+          onEvento = 0;
+          contMove = 1;
+          intMove = clearInterval(intMove);
+          // Si pisa la fruta
+          if (thatLevel.oPersonaje.arriba === Number(thatLevel.oEscenario.arriba + thatLevel.oFruta.arriba) && thatLevel.oPersonaje.izquierda === Number(thatLevel.oEscenario.izquierda + thatLevel.oFruta.izquierda)) {
+            this.oEscenario.removeChild(document.getElementById('fruta'));
+            document.getElementById('puntos').innerHTML = Number(document.getElementById('puntos').innerHTML) + 1;
+            this.crearFruta();
+          }
+        }
+      };
+
+      // Ejecucion de movimiento de escenario
+      this.moverEscExe = function (ar, iz) {
+        onEvento = 1;
+        contMove = 1;
+        intMove = setInterval(function () { thatLevel.moverEscenario(ar, iz); }, 15);
+      };
+
+      /**
+      * Personaje
+      */
+      this.oPersonaje = document.getElementById('personaje');
+      this.oPersonaje.spriteX = 0;
+      this.oPersonaje.spriteY = -100;
+      this.actualizarSprite = function () {
+        this.oPersonaje.style.backgroundPosition = this.oPersonaje.spriteX + 'px ' + this.oPersonaje.spriteY + 'px';
+      };
+      this.actualizarSprite();
+
+      // Caminata
+      this.pQuiet = function (posicionY, aDnd) {
+        this.oPersonaje.spriteX = 0;
+        this.oPersonaje.spriteY = posicionY;
+        this.actualizarSprite();
+
+        switch (aDnd) {
+          case 'der':
+          this.pDer(posicionY);
+          setTimeout(function () { thatLevel.pDer(posicionY); }, 50);
+          break;
+          case 'izq':
+          this.pIzq(posicionY);
+          setTimeout(function () { thatLevel.pIzq(posicionY); }, 50);
+          break;
+        }
+      };
+
+      // Paso Derecho
+      this.pDer = function (posicionY) {
+        this.oPersonaje.spriteX = -50;
+        this.oPersonaje.spriteY = posicionY;
+        this.actualizarSprite();
+
+        setTimeout(function () { thatLevel.pQuiet(posicionY, 'izq'); }, 50);
+      };
+
+      // Paso Izquierdo
+      this.pIzq = function (posicionY) {
+        this.oPersonaje.spriteX = -100;
+        this.oPersonaje.spriteY = posicionY;
+        this.actualizarSprite();
+
+        setTimeout(function () { thatLevel.pQuiet(posicionY, 'end'); }, 50);
+      };
+
+      // Frutas
+      this.crearFruta = function () {
+        var oFru = document.createElement('div');
+        oFru.id = 'fruta';
+        oFru.style.width = '50px';
+        oFru.style.height = '50px';
+        // Fondo
+        oFru.style.backgroundImage = 'url("/dev/pick-a-fruit/frutas.png")';
+        oFru.style.backgroundRepeat = 'no-repeat';
+        oFru.style.position = 'relative';
+        oFru.frutas = [0, -50, -100, -150];
+        oFru.style.backgroundPosition = oFru.frutas[Math.floor(Math.random() * 5)] + 'px 0';
+        // Posicion
+        oFru.obtenerPos = function () {
+          var aPos = [],
+          i = 0;
+
+          for (i; i < 11; i += 1) {
+            aPos[i] = i * 50;
+          }
+
+          return aPos;
+        };
+        oFru.aPosiciones = oFru.obtenerPos();
+        oFru.arriba = Number(oFru.aPosiciones[Math.floor(Math.random() * 11)]);
+        oFru.izquierda = Number(oFru.aPosiciones[Math.floor(Math.random() * 11)]);
+        oFru.style.top =  oFru.arriba + 'px';
+        oFru.style.left = oFru.izquierda + 'px';
+        this.oEscenario.appendChild(oFru);
+
+        this.oFruta = document.getElementById('fruta');
+      };
+      this.crearFruta();
+    }
+
+    // Iniciar Game
+    function iniciarGame() {
+
+      crearEscenario();
+      crearPersonaje();
+      new Level();
+      contarTiempo();
+
+      onEvento = 0;
+
+      // Keypress General (w=119 / d=100 / s=115 / a=97)
+      document.onkeypress = function (event) {
+
+        if (onEvento !== 0) { return; }
+
+        var caract = event.keyCode;
+
+        thatLevel.oPersonaje.spriteX = 0;
+
+        switch (caract) {
+          case 119: // Arriba
+          thatLevel.oPersonaje.spriteY = 0;
+          thatLevel.actualizarSprite();
+
+          if (thatLevel.oPersonaje.arriba !== thatLevel.oEscenario.arriba) {
+            thatLevel.moverEscExe(50, 0);
+            thatLevel.pDer(0);
+          }
+          break;
+          case 100: // Derecha
+          thatLevel.oPersonaje.spriteY = -50;
+          thatLevel.actualizarSprite();
+
+          if ((thatLevel.oPersonaje.izquierda + thatLevel.oPersonaje.ancho) !== (thatLevel.oEscenario.izquierda + thatLevel.oEscenario.ancho)) {
+            thatLevel.moverEscExe(0, -50);
+            thatLevel.pDer(-50);
+          }
+          break;
+          case 115: // Abajo
+          thatLevel.oPersonaje.spriteY = -100;
+          thatLevel.actualizarSprite();
+
+          if ((thatLevel.oPersonaje.arriba + thatLevel.oPersonaje.alto) !== (thatLevel.oEscenario.arriba + thatLevel.oEscenario.alto)) {
+            thatLevel.moverEscExe(-50, 0);
+            thatLevel.pDer(-100);
+          }
+          break;
+          case 97: // Izquierda
+          thatLevel.oPersonaje.spriteY = -150;
+          thatLevel.actualizarSprite();
+
+          if (thatLevel.oPersonaje.izquierda !== thatLevel.oEscenario.izquierda) {
+            thatLevel.moverEscExe(0, 50);
+            thatLevel.pDer(-150);
+          }
+          break;
+        }
+      };
+    }
+
+    iniciarGame();
+  </script>
+</body>
+</html>

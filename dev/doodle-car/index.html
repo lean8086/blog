@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Doodle Car - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="My first experiment using canvas. It plays with forces like acceleration, inertia, momentum, etc.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/doodle-car">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/doodle-car.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/doodle-car">
+  <meta name="twitter:title" content="Doodle Car">
+  <meta name="twitter:description"
+    content="My first experiment using canvas. It plays with forces like acceleration, inertia, momentum, etc.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/doodle-car.png">
+  <meta property="og:title" content="Doodle Car">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/doodle-car">
+  <meta property="og:description"
+    content="My first experiment using canvas. It plays with forces like acceleration, inertia, momentum, etc.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/doodle-car.png">
+
+
+  <style>
+    .experiment-workspace {
+      overflow: hidden;
+      height: 500px;
+      background-color: #2E458C;
+      background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 2px),
+        linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 2px),
+        linear-gradient(#3C5498 1px, transparent 1px),
+        linear-gradient(90deg, #3C5498 1px, transparent 1px);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Doodle Car</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2012-05-12" itemprop="dateCreated">May, 2012</time></p>
+    <p class="entry-head__description" itemprop="description">My first experiment using canvas. It plays with forces like acceleration, inertia, momentum, etc.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <canvas id="game"/>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    var canvas = document.querySelector('canvas');
+    canvas.width = canvas.parentNode.clientWidth;
+    canvas.height = canvas.parentNode.clientHeight;
+
+    var ctx = canvas.getContext('2d'),
+      // Canvas Size
+      canvasWidth = ctx.canvas.clientWidth,
+      canvasHeight = ctx.canvas.clientHeight,
+      // Car Size
+      width = 46,
+      height = 26,
+      // Position into space
+      x = (canvasWidth - width) / 2,
+      y = (canvasHeight - height) / 2,
+      // Axis to rotate
+      center = width / -2,
+      middle = height / -2,
+      // Rotation
+      angle = 0,
+      handling = 4,
+      // How much does the car rotate each step/update (in radians)
+      rotationStep = (handling * Math.PI / 180).toFixed(2),
+      // Velocity
+      speed = 0,
+      step = 8,
+      // Determines the left/right direction
+      direction = 0,
+      // Flag to determine when user applies the throttle
+      throttling = false,
+      // Flag to determine when user applies the brake
+      braking = false,
+      // Reference to resource to be rendered
+      image = (function () {
+        var i = new window.Image();
+        i.src = '/dev/doodle-car/car.png';
+        return i;
+      }()),
+      lastTime = 0;
+
+    /**
+     * RequestAnimationFrame polyfill
+     * Based on pollyfill by Erik MÃ¶ller with fixes from Paul Irish and Tino Zijdel
+     * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+     * http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+     */
+    window.requestAnimationFrame = window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      function (callback) {
+        var currTime = new window.Date().getTime(),
+        timeToCall = window.Math.max(0, 16 - (currTime - lastTime));
+
+        lastTime = currTime + timeToCall;
+
+        return window.setTimeout(function () { callback(lastTime); }, timeToCall);
+      };
+
+    // Which key was pressed
+    document.addEventListener('keydown', function (event) {
+      switch (event.keyCode) {
+        // Throttle
+        case 38:
+        case 87:
+          event.preventDefault()
+          throttling = true;
+          break;
+        // Brake
+        case 40:
+        case 83:
+          event.preventDefault()
+          braking = true;
+          break;
+        // Turn left
+        case 37:
+        case 65:
+          event.preventDefault()
+          direction = -1;
+          break;
+        // Turn right
+        case 39:
+        case 68:
+          event.preventDefault()
+          direction = 1;
+          break;
+      }
+    });
+
+    // Which key was releaed
+    document.addEventListener('keyup', function (event) {
+      switch (event.keyCode) {
+        // Throttle
+        case 38:
+        case 87:
+          throttling = false;
+          break;
+        // Break
+        case 40:
+        case 83:
+          braking = false;
+          break;
+        // Turn left and turn right
+        case 37:
+        case 65:
+        case 39:
+        case 68:
+          direction = 0;
+          break;
+      }
+    });
+
+    function draw() {
+      // Clear the canvas with the DOM element size
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      // Throttling but not at max speed yet (Physic: Acceleration)
+      if (speed < 1 && throttling) { speed += 0.02; }
+      // Car will move this far along
+      var moveStep = speed * step;
+      // Car in movement
+      if (speed > 0) {
+        // Moving but not throttling (Physic: Inertia or braking)
+        if (!throttling) {
+          speed -= (braking ? 0.03 : 0.01);
+        }
+        // Rotate if direction != 0
+        angle += direction * (rotationStep * speed);
+        // Calculate new car position
+        x += Math.cos(angle) * moveStep;
+        y += Math.sin(angle) * moveStep;
+        // Check for right to left transportation
+        if (x > canvasWidth + width) {
+          x = -width;
+          // Check for left to right transportation
+        } else if (x < -width) {
+          x = canvasWidth + width;
+          // Check for bottom to top transportation
+        } else if (y > canvasHeight + width) {
+          y = -width;
+          // Check for top to bottom transportation
+        } else if (y < -width) {
+          y = canvasHeight + width;
+        }
+      }
+      // Save the coordinate system
+      ctx.save();
+      // Position (0,0) at, for example, (250, 50)
+      ctx.translate(x, y);
+      // Rotate coordinate system
+      ctx.rotate(angle);
+      // Draw the car
+      ctx.drawImage(image, center, middle);
+      // Restore the coordinate system back to (0,0)
+      ctx.restore();
+      // Restart the rAF cicle
+      window.requestAnimationFrame(draw);
+    }
+
+    /**
+     * Initialize
+     */
+    draw();
+  </script>
+</body>
+</html>

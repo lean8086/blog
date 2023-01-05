@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Single-Element Nintendo Switch Logo - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="Playing with shapes as borders, backgrounds, and characters as part of the content of the pseudo-elements.">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/nintendo-switch-logo-css">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/single-element-switch-logo.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/nintendo-switch-logo-css">
+  <meta name="twitter:title" content="Single-Element Nintendo Switch Logo">
+  <meta name="twitter:description"
+    content="Playing with shapes as borders, backgrounds, and characters as part of the content of the pseudo-elements.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/single-element-switch-logo.png">
+  <meta property="og:title" content="Single-Element Nintendo Switch Logo">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/nintendo-switch-logo-css">
+  <meta property="og:description"
+    content="Playing with shapes as borders, backgrounds, and characters as part of the content of the pseudo-elements.">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/single-element-switch-logo.png">
+
+
+  <style>
+    .switch {
+      width: 135px;
+      height: 135px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .switch::before,
+    .switch::after {
+      box-sizing: border-box;
+      content: '\2022';
+      display: block;
+      position: absolute;
+      height: 135px;
+      text-align: center;
+    }
+
+    .switch::before {
+      border-radius: 35px 1px 1px 35px;
+      line-height: 61px;
+      color: #fff;
+      width: 65px;
+      border: 11px solid #fff;
+      font-size: 88px;
+      text-indent: 3px;
+    }
+
+    .switch::after {
+      width: 56px;
+      right: 0;
+      border-radius: 1px 35px 35px 1px;
+      line-height: 151px;
+      color: #e60012;
+      background: #fff;
+      font-size: 94px;
+      text-indent: -3px;
+    }
+
+    .experiment-workspace {
+      background: #e60012;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 500px;
+      font-family: initial;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Single-Element Nintendo Switch Logo</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2018-09-22" itemprop="dateCreated">Sep, 2018</time></p>
+    <p class="entry-head__description" itemprop="description">Playing with shapes as borders, backgrounds, and characters as part of the content of the pseudo-elements.</p>
+  </header>
+
+  <main class="experiment-workspace">
+    <div class="switch"></div>
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+</body>
+</html>

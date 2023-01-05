@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Isometric World - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#000">
+  <meta name="description" content="DOM-based matrix of tiles rotated in CSS. When clicking on a tile, an algorithm calculates the shortest path (max. 2 directions).">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+  
+
+  <meta itemprop="mainEntityOfPage"
+    content="https://leandrolinares.com/isometric-world">
+  <meta itemprop="inLanguage" content="en">
+  <meta itemprop="image" content="https://leandrolinares.com/assets/covers/isometric-walker.png">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/isometric-world">
+  <meta name="twitter:title" content="Isometric World">
+  <meta name="twitter:description"
+    content="DOM-based matrix of tiles rotated in CSS. When clicking on a tile, an algorithm calculates the shortest path (max. 2 directions).">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://leandrolinares.com/assets/covers/isometric-walker.png">
+  <meta property="og:title" content="Isometric World">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/isometric-world">
+  <meta property="og:description"
+    content="DOM-based matrix of tiles rotated in CSS. When clicking on a tile, an algorithm calculates the shortest path (max. 2 directions).">
+  <meta property="og:site_name" content="Leandro Linares">
+  <meta property="og:image"
+    content="https://leandrolinares.com/assets/covers/isometric-walker.png">
+
+
+  <style>
+    .experiment-workspace  {
+      background-color:#c7ad88;
+      overflow:hidden;
+      height: 500px;
+    }
+    
+    .experiment-workspace * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      vertical-align: baseline;
+      background: transparent;
+    }
+
+    .sh-container {
+      position:absolute;
+    }
+
+    .sh-tile {
+      position:absolute;
+      width:75px;
+      height:75px;
+      background-color:#fff;
+      z-index:1;
+      text-indent:-99px;
+      overflow:hidden;
+      color:white;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      cursor:pointer;
+      border:1px solid #c7ad88;
+    }
+
+    .sh-tile.sh-type1 {
+      background:#ede9ce;
+    }
+
+
+    .sh-character {
+      background-image:url('/dev/isometric-world/cowboy.png');
+      width:128px;
+      height:128px;
+      margin-left:-30px;
+      margin-top:-75px;
+      position:absolute;
+      z-index:3;
+      pointer-events: none;
+
+      /* Walk movement animation */
+      -o-transition-property: left,top;
+      -o-transition-timing-function: linear;
+
+      -moz-transition-property: left,top;
+      -moz-transition-timing-function: linear;
+
+      -webkit-transition-property: left,top;
+      -webkit-transition-timing-function: linear;
+
+      transition-property: left,top;
+      transition-timing-function: linear;
+    }
+
+    @keyframes walking-top {
+      0% { background-position: -128px -650px; }
+      10% { background-position: -256px -650px; }
+      20% { background-position: -384px -650px; }
+      30% { background-position: -512px -650px; }
+      40% { background-position: -640px -650px; }
+      50% { background-position: -768px -650px; }
+      60% { background-position: -896px -650px; }
+      70% { background-position: -1024px -650px; }
+      80% { background-position: -1152px -650px; }
+      90% { background-position: -1280px -650px; }
+      100% { background-position: -128px -650px; }
+    }
+
+    @keyframes walking-left-top {
+      0% { background-position: -128px -780px; }
+      10% { background-position: -256px -780px; }
+      20% { background-position: -384px -780px; }
+      30% { background-position: -512px -780px; }
+      40% { background-position: -640px -780px; }
+      50% { background-position: -768px -780px; }
+      60% { background-position: -896px -780px; }
+      70% { background-position: -1024px -780px; }
+      80% { background-position: -1152px -780px; }
+      90% { background-position: -1280px -780px; }
+      100% { background-position: -128px -780px; }
+    }
+
+    @keyframes walking-right-top {
+      0% { background-position: -128px -512px; }
+      10% { background-position: -256px -512px; }
+      20% { background-position: -384px -512px; }
+      30% { background-position: -512px -512px; }
+      40% { background-position: -640px -512px; }
+      50% { background-position: -768px -512px; }
+      60% { background-position: -896px -512px; }
+      70% { background-position: -1024px -512px; }
+      80% { background-position: -1152px -512px; }
+      90% { background-position: -1280px -512px; }
+      100% { background-position: -128px -512px; }
+    }
+
+    @keyframes walking-left {
+      0% { background-position: -128px -896px; }
+      10% { background-position: -256px -896px; }
+      20% { background-position: -384px -896px; }
+      30% { background-position: -512px -896px; }
+      40% { background-position: -640px -896px; }
+      50% { background-position: -768px -896px; }
+      60% { background-position: -896px -896px; }
+      70% { background-position: -1024px -896px; }
+      80% { background-position: -1152px -896px; }
+      90% { background-position: -1280px -896px; }
+      100% { background-position: -128px -896px; }
+    }
+
+    @keyframes walking-right {
+      0% { background-position: -128px -384px; }
+      10% { background-position: -256px -384px; }
+      20% { background-position: -384px -384px; }
+      30% { background-position: -512px -384px; }
+      40% { background-position: -640px -384px; }
+      50% { background-position: -768px -384px; }
+      60% { background-position: -896px -384px; }
+      70% { background-position: -1024px -384px; }
+      80% { background-position: -1152px -384px; }
+      90% { background-position: -1280px -384px; }
+      100% { background-position: -128px -384px; }
+    }
+
+    @keyframes walking-left-bottom {
+      0% { background-position: -128px -1024px; }
+      10% { background-position: -256px -1024px; }
+      20% { background-position: -384px -1024px; }
+      30% { background-position: -512px -1024px; }
+      40% { background-position: -640px -1024px; }
+      50% { background-position: -768px -1024px; }
+      60% { background-position: -896px -1024px; }
+      70% { background-position: -1024px -1024px; }
+      80% { background-position: -1152px -1024px; }
+      90% { background-position: -1280px -1024px; }
+      100% { background-position: -128px -1024px; }
+    }
+
+    @keyframes walking-right-bottom {
+      0% { background-position: -128px -256px; }
+      10% { background-position: -256px -256px; }
+      20% { background-position: -384px -256px; }
+      30% { background-position: -512px -256px; }
+      40% { background-position: -640px -256px; }
+      50% { background-position: -768px -256px; }
+      60% { background-position: -896px -256px; }
+      70% { background-position: -1024px -256px; }
+      80% { background-position: -1152px -256px; }
+      90% { background-position: -1280px -256px; }
+      100% { background-position: -128px -256px; }
+    }
+
+    @keyframes walking-bottom {
+      0% { background-position: -128px -1152px; }
+      10% { background-position: -256px -1152px; }
+      20% { background-position: -384px -1152px; }
+      30% { background-position: -512px -1152px; }
+      40% { background-position: -640px -1152px; }
+      50% { background-position: -768px -1152px; }
+      60% { background-position: -896px -1152px; }
+      70% { background-position: -1024px -1152px; }
+      80% { background-position: -1152px -1152px; }
+      90% { background-position: -1280px -1152px; }
+      100% { background-position: -128px -1152px; }
+    }
+
+
+    .sh-character.sh-walking {
+      -o-animation-timing-function: step-start;
+      -o-animation-duration: 1s;
+      -o-animation-iteration-count: infinite;
+
+      -moz-animation-timing-function: step-start;
+      -moz-animation-duration: 1s;
+      -moz-animation-iteration-count: infinite;
+
+      -webkit-animation-timing-function: step-start;
+      -webkit-animation-duration: 1s;
+      -webkit-animation-iteration-count: infinite;
+
+      animation-timing-function: step-start;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
+
+    /* .sh-character.sh-right-top,
+    .sh-character.sh-right,
+    .sh-character.sh-right-bottom {
+      -o-transform: scaleX(-1);
+      -moz-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    } */
+
+    .sh-character.sh-top {
+      background-position:0 -640px;
+      -o-animation-name: 'walking-top';
+      -moz-animation-name: 'walking-top';
+      -webkit-animation-name: 'walking-top';
+      animation-name: 'walking-top';
+    }
+
+    .sh-character.sh-left-top {
+      background-position:0 -768px;
+      -o-animation-name: 'walking-left-top';
+      -moz-animation-name: 'walking-left-top';
+      -webkit-animation-name: 'walking-left-top';
+      animation-name: 'walking-left-top';
+    }
+
+    .sh-character.sh-right-top {
+      background-position:0 -512px;
+      -o-animation-name: 'walking-right-top';
+      -moz-animation-name: 'walking-right-top';
+      -webkit-animation-name: 'walking-right-top';
+      animation-name: 'walking-right-top';
+    }
+
+    .sh-character.sh-left {
+      background-position:0 -896px;
+      -o-animation-name: 'walking-left';
+      -moz-animation-name: 'walking-left';
+      -webkit-animation-name: 'walking-left';
+      animation-name: 'walking-left';
+    }
+
+    .sh-character.sh-right {
+      background-position:0 -384px;
+      -o-animation-name: 'walking-right';
+      -moz-animation-name: 'walking-right';
+      -webkit-animation-name: 'walking-right';
+      animation-name: 'walking-right';
+    }
+
+    .sh-character.sh-left-bottom {
+      background-position:0 -1024px;
+      -o-animation-name: 'walking-left-bottom';
+      -moz-animation-name: 'walking-left-bottom';
+      -webkit-animation-name: 'walking-left-bottom';
+      animation-name: 'walking-left-bottom';
+    }
+
+    .sh-character.sh-right-bottom {
+      background-position:0 -256px;
+      -o-animation-name: 'walking-right-bottom';
+      -moz-animation-name: 'walking-right-bottom';
+      -webkit-animation-name: 'walking-right-bottom';
+      animation-name: 'walking-right-bottom';
+    }
+
+    .sh-character.sh-bottom {
+      background-position:0 -1152px;
+      -o-animation-name: 'walking-bottom';
+      -moz-animation-name: 'walking-bottom';
+      -webkit-animation-name: 'walking-bottom';
+      animation-name: 'walking-bottom';
+    }
+
+
+    #sh-marker {
+      background-image:url('/dev/isometric-world/marker.png');
+      background-position:-5px 0;
+      width:20px;
+      height:31px;
+      margin-left:-10px;
+      margin-top:-31px;
+      position:absolute;
+      z-index:2;
+    }
+
+    .sh-transform-h-x {
+      -o-transform: matrix(1.42,0,0,0.71,0,0) rotate(45deg);
+      -moz-transform: matrix(1.42,0,0,0.71,0,0) rotate(45deg);
+      -webkit-transform: matrix(1.42,0,0,0.71,0,0) rotate(45deg);
+      transform: matrix(1.42,0,0,0.71,0,0) rotate(45deg);
+    }
+
+    .sh-transform-v-z {
+      -o-transform: matrix(1,-0.5,0,1,0,0);
+      -moz-transform: matrix(1,-0.5,0,1,0,0);
+      -webkit-transform: matrix(1,-0.5,0,1,0,0);
+      transform: matrix(1,-0.5,0,1,0,0);
+    }
+
+    .sh-transform-v-x {
+      -o-transform: matrix(1,0.5,0,1,0,0);
+      -moz-transform: matrix(1,0.5,0,1,0,0);
+      -webkit-transform: matrix(1,0.5,0,1,0,0);
+      transform: matrix(1,0.5,0,1,0,0);
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro Linares</a>
+    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul>
+        <li><a href="/#code">Code</a></li>
+        <li><a href="/#things">Things</a></li>
+        <li><a href="/#pixelart">Pixel Art</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Isometric World</h1>
+    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2011-07-15" itemprop="dateCreated">Jul, 2011</time></p>
+    <p class="entry-head__description" itemprop="description">DOM-based matrix of tiles rotated in CSS. When clicking on a tile, an algorithm calculates the shortest path (max. 2 directions).</p>
+  </header>
+
+  <main class="experiment-workspace">
+    
+  </main>
+  
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script>
+    /**
+     * Walk
+     */
+    // Size if current tiles
+    var tilesSize,
+
+    // Calculates coordinates from a tile
+      getCoordinates = function (x, y) {
+        "use strict";
+
+        x *= tilesSize;
+        y *= tilesSize;
+
+        return {
+          "x": x - y,
+          "y": (x + y) / 2
+        };
+      },
+
+    // Calculates a stretch coordinates, tile, distance and character direction
+      stretch = function (fromX, fromY, toX, toY) {
+        "use strict";
+
+        var coordinates = getCoordinates(toX, toY),
+
+          response = {
+            "tile": toX + ":" + toY,
+            "x": coordinates.x,
+            "y": coordinates.y
+          };
+
+        // Rect (vertical)
+        if (toX === fromX) {
+          response.direction = (toY > fromY) ? "left-bottom" : "right-top";
+          response.distance = Math.abs(toY - fromY);
+        // Rect (horizontal)
+        } else if (toY === fromY) {
+          response.direction = (toX < fromX) ? "left-top" : "right-bottom";
+          response.distance = Math.abs(toX - fromX);
+        // Diagonal (vertical)
+        } else if (toX - toY === fromX - fromY) {
+          response.direction = (toX < fromX) ? "top" : "bottom";
+          response.distance = Math.abs(toX - fromX);
+        // Diagonal (horizontal)
+        } else if (toX + toY === fromX + fromY) {
+          response.direction = (toX < fromX) ? "left" : "right";
+          response.distance = Math.abs(toX - fromX);
+        }
+
+        return response;
+
+      };
+
+    // Get the incoming information from the parent
+    function walkWorker(event) {
+      "use strict";
+
+      // Globalize the size of tiles
+      tilesSize = event.tilesSize;
+
+      // Slit "from" tile
+      var from = event.from.split(":"),
+        fromX = parseInt(from[0], 10),
+        fromY = parseInt(from[1], 10),
+
+      // Split "to" tile
+        to = event.to.split(":"),
+        toX = parseInt(to[0], 10),
+        toY = parseInt(to[1], 10),
+
+      // Define an intermediate stop
+        bridge,
+
+      // Final response
+        response = {
+          "stops": []
+        };
+
+      // Direct road (rect walk, only one stop)
+      if (toX === fromX || toY === fromY || toX - toY === fromX - fromY || toX + toY === fromX + fromY) {
+        // Add stop data
+        response.stops[0] = stretch(fromX, fromY, toX, toY);
+
+        // End function and post data
+        return response;
+      }
+
+      // Bridge road
+      bridge =
+        // Side: left
+        (toX < fromX) ?
+            // Side: left-top
+            (toY < fromY) ?
+                // Side: left-top-top
+                (toX - toY > fromX - fromY) ?
+                    [toX, -(fromX - fromY - toX)]
+                // Side: left-top-bottom
+                :
+                    [-(fromY - fromX - toY), toY]
+              // Side: left-bottom
+              :
+                // Side: left-bottom-top
+                (toX + toY < fromX + fromY) ?
+                    [fromX + fromY - toY, toY]
+                // Side: left-bottom-bottom
+                :
+                    [toX, fromY + fromX - toX]
+        // Side: right
+        :
+            // Side: right-top
+            (toY < fromY) ?
+                // Side: right-top-top
+                (toX + toY < fromX + fromY) ?
+                    [toX, fromY + fromX - toX]
+                // Side: right-top-bottom
+                :
+                    [fromX + fromY - toY, toY]
+            // Side: right-bottom
+            :
+                // Side: right-bottom-top
+                (toX - toY > fromX - fromY) ?
+                    [-(fromY - fromX - toY), toY]
+                // Side: right-bottom-bottom
+                :
+                    [toX, -(fromX - fromY - toX)];
+
+      // Add the stops data
+      response.stops[0] = stretch(fromX, fromY, bridge[0], bridge[1]);
+      response.stops[1] = stretch(bridge[0], bridge[1], toX, toY);
+
+      // Post data
+      return response;
+
+    }
+
+    /**
+     * Program
+     */
+    // TODO: replace number + "px" with Facebook gamebench things
+    // TODO: make removeclass function()
+
+    var sh = window.sh = {
+
+      version: "0.3",
+
+      // Speed that characters moves
+      speed: 0
+
+    };
+
+    sh.canvas = (function () {
+
+      // Object to be returned
+      var self = {},
+
+      // HTML Element
+        container = (function () {
+          var el = document.createElement("div");
+
+          el.className = "sh-container";
+          el.addEventListener("mousedown", function (event) {
+            sh.mainCharacter.tile(event.target.getAttribute("data-tile"));
+          }, false);
+          el.style.left = (window.innerWidth / 2) + "px";
+          el.style.top = (window.innerHeight / -4) + "px";
+
+          document.querySelector(".experiment-workspace").appendChild(el);
+
+          return el;
+        }());
+
+      // Add elements to stage
+      self.add = function (element) {
+
+        if (typeof element === "string") {
+          container.innerHTML += element;
+        } else {
+          container.appendChild(element);
+        }
+
+        return element;
+      };
+
+      // Remove elements from stage
+      self.rem = function (element) {
+        container.removeChild(element);
+      };
+
+      return self;
+
+    }());
+
+
+    sh.stage = (function () {
+
+      var self = {},
+        map = [],
+        tiles = {
+          horizontal: 0,
+          vertical: 0,
+          size: 0
+        };
+
+      self.getCoordinates = function (tile) {
+        tile = tile.split(":");
+
+        if (tile.length !== 2) { return; }
+
+        var x = tile[0] * tiles.size,
+          y = tile[1] * tiles.size;
+
+        return {
+          left: x - y,
+          top: (x + y) / 2
+        };
+      };
+
+      self.getTile = function (x, y) {
+
+        x = x / tiles.size;
+        y = y / tiles.size;
+
+        return ~~(x / 2 + y - 0.25) + ":" + ~~(y - x / 2 + 0.25);
+      };
+
+      self.loadScene = function () {
+        map = [
+          [1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1]
+        ];
+
+        tiles.size = 75;
+        tiles.horizontal = map[0].length;
+        tiles.vertical = map.length;
+        sh.speed = tiles.size / 200;
+
+        // TODO: delete current stage
+
+        var output = [],
+          counter = 0;
+
+        for (var v = 0; v < tiles.vertical; v += 1) {
+          for (var h = 0; h < tiles.horizontal; h += 1) {
+
+            var tileType = map[v][h];
+
+            if (tileType === 0) { continue; }
+
+            var id = h + ":" + v,
+              coordinates = self.getCoordinates(id);
+
+            output.push("<div class=\"sh-tile sh-transform-h-x sh-type" + tileType + "\" style=\"left:" + coordinates.left + "px; top:" + coordinates.top + "px;\" data-tile=\"" + id + "\">" + (counter += 1) + " (" + id + ")</div>");
+          };
+        };
+
+        sh.canvas.add(output.join(""));
+      };
+
+      self.loadScene();
+      self.tilesSize = tiles.size;
+      return self;
+
+    }());
+
+    sh.Character = function (tile) {
+
+      // Block where character is
+      tile = tile || "0:0";
+
+      // Object to be exposed
+      var self = {},
+
+        walking = false,
+
+      // HTML Element
+        element = (function () {
+
+          // Current tile in pixels
+          var coordinates = sh.stage.getCoordinates(tile),
+
+          // Element to be returned
+            el = document.createElement("div");
+
+          // Classnames including direction
+          el.className = "sh-character sh-left-bottom";
+
+          // Position
+          el.style.cssText = "left:" + coordinates.left + "px; top:" + coordinates.top + "px";
+
+          // Append element to container
+          sh.canvas.add(el);
+
+          // Save element reference
+          return el;
+
+        }());
+
+      // Walk to all stops
+      self.walk = function (stops) {
+        walking = true;
+        
+        // Get and cut first stop of stops
+        var stop = stops.splice(0, 1)[0];
+
+        // Set new CSS data
+        element.className = "sh-character sh-walking sh-" + stop.direction;
+        element.style.cssText = "left:" + stop.x + "px; top:" + stop.y + "px; transition-duration:" + (sh.speed * stop.distance) + "s;";
+
+        // Action after movement
+        var endMove = function () {
+
+          // Remove event of end of movement
+          element.removeEventListener("webkitTransitionEnd", endMove, true);
+
+          // Execute all stops in stops list
+          if (stops.length > 0) { return self.walk(stops); }
+
+          // Last stop
+          // Update current tile
+          tile = stop.tile;
+
+          // Remove walking classname
+          element.className = "sh-character sh-" + stop.direction;
+
+          walking = false;
+        };
+
+        // End of movement
+        element.addEventListener("webkitTransitionEnd", endMove, true);
+      };
+
+    /**
+    *	Protected members
+    */
+      // Gets or sets a tile for walk
+      self.tile = function (destination) {
+
+        // Getter
+        if (!destination) { return tile; }
+
+        // Exit if destination is same as current position
+        if (destination === tile) { return; }
+
+        if (walking) { return; }
+
+        // Setter
+        self.walk(walkWorker({
+          "from": tile,
+          "to": destination,
+          "tilesSize": sh.stage.tilesSize
+        }).stops);
+      };
+
+      return self;
+    };
+
+    sh.mainCharacter = sh.Character("4:3");
+  </script>
+</body>
+</html>
