@@ -1,6 +1,8 @@
 :root {
   --color-background: #fff;
-  --color-text: rgba(0, 0, 0, .85);
+  --color-main: 0, 0, 0;
+
+  --color-text: rgba(var(--color-main), .85);
   --color-link-default: #0074D9;
   --color-border: #dadcdd;
 
@@ -226,20 +228,6 @@ a.hero__contact {
   border-bottom: 1px solid var(--color-border);
 }
 
-@keyframes x-bounce {
-  from { transform: translateX(0) }
-  to { transform: translateX(1rem) }
-}
-
-.home-section:not(:last-of-type)::after {
-  content: '➼';
-  font-size: var(--font-size-m);
-  animation: x-bounce ease-in-out 1s infinite alternate;
-  display: inline-block;
-  align-self: flex-end;
-  margin-right: var(--gutter-s);
-}
-
 .home-section__title {
   font-size: var(--font-size-xl);
   line-height: var(--font-size-xl);
@@ -262,6 +250,15 @@ a.hero__contact {
   overflow-x: scroll;
   overflow-y: hidden;
   gap: var(--font-size-m);
+  background:
+    linear-gradient(to right, var(--color-background) 30%, transparent),
+    linear-gradient(to right, transparent, var(--color-background) 70%) 0 100%,
+    radial-gradient(farthest-side at 0% 50%, rgba(var(--color-main), .25), transparent),
+    radial-gradient(farthest-side at 100% 50%, rgba(var(--color-main), .25), transparent) 0 100%;
+  background-repeat: no-repeat;
+  background-size: var(--font-size-l) 100%, var(--font-size-l) 100%, var(--font-size-s) 100%, var(--font-size-s) 100%;
+  background-position: 0 0, 100%, 0 0, 100%;
+  background-attachment: local, local, scroll, scroll;
 }
 
 .card__image,
@@ -278,6 +275,7 @@ a.hero__contact {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  mix-blend-mode: multiply;
 }
 
 .card__image--border {
@@ -317,6 +315,7 @@ a.hero__contact {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  mix-blend-mode: multiply;
 }
 
 .pixelart__image {
