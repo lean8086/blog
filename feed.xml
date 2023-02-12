@@ -18,7 +18,7 @@
       <pubDate>Sun, 29 Nov 2020 01:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/post-processing-3d-prints/</guid>
       <author>Leandro Linares</author>
-      <description>I glued, smoothed, and painted this 3D printed Tesla Roadster 1/9 scale model.</description>
+      <description>I glued, smoothed, and painted this 3D printed Tesla Roadster 1/8 scale model.</description>
     </item>
     <item>
       <title>Building an Arduino MIDI Controller</title>
@@ -34,7 +34,7 @@
       <pubDate>Tue, 17 Dec 2019 01:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/using-emoji-as-favicon/</guid>
       <author>Leandro Linares</author>
-      <description>SVG favicons are being supported by browsers, SVG can render text and emojis are text as they are part of the unicode standard.</description>
+      <description>SVG favicons are supported by browsers. SVG can render text and emojis are text as they are part of the unicode standard.</description>
     </item>
     <item>
       <title>How I built an arcade machine from scratch</title>

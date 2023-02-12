@@ -1,5 +1,5 @@
 {
-  "short_name": "lean8086",
+  "short_name": "Leandro",
   "name": "Leandro Linares",
   "icons": [
     {
@@ -17,5 +17,5 @@
   "background_color": "#fff",
   "display": "browser",
   "scope": "/",
-  "theme_color": "#000"
+  "theme_color": "#fff"
 }
