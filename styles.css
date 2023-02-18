@@ -25,6 +25,7 @@
   --radius: .7rem;
 
   --break-point: 50rem;
+  --visual-correction: .0625rem;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -219,13 +220,16 @@ a.hero__contact {
 /* HOME SECTIONS */
 
 .home-section {
-  padding: var(--gutter-l) var(--gutter-s);
+  padding: var(--gutter-m) var(--gutter-s);
   display: flex;
   flex-direction: column;
 }
 
-.home-section:not(:last-of-type) {
-  border-bottom: 1px solid var(--color-border);
+.home-section__title span {
+  display: block;
+  font-size: var(--font-size-xs);
+  line-height: var(--font-size-m);
+  text-indent: var(--visual-correction);
 }
 
 .home-section__title {
@@ -235,7 +239,7 @@ a.hero__contact {
 }
 
 .home-section__description {
-  margin: var(--font-size-m) 0;
+  margin: var(--font-size-l) 0;
   line-height: var(--font-size-m);
 }
 
@@ -295,12 +299,12 @@ a.hero__contact {
 
 .card__title {
   font-family: var(--font-type-sans);
-  margin: var(--font-size-xs) 0 var(--font-size-xxs) 1px;
+  margin: var(--font-size-xs) 0 var(--font-size-xxs) var(--visual-correction);
   font-weight: 500;
 }
 
 .card__description {
-  margin: 0 0 0 1px;
+  margin: 0 0 0 var(--visual-correction);
 }
 
 /* PIXELART */
