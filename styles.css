@@ -200,6 +200,11 @@ a:hover {
   margin: 0;
 }
 
+.hero__subtitle {
+  font-size: 1rem;
+  margin: 0;
+}
+
 .hero__description {
   line-height: 1.6em;
 }
