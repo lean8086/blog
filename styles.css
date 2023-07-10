@@ -308,6 +308,10 @@ a.hero__contact {
   font-weight: 500;
 }
 
+.card__title time {
+  font-size: var(--font-size-xs);
+}
+
 .card__description {
   margin: 0 0 0 var(--visual-correction);
 }
