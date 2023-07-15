@@ -201,7 +201,7 @@ a:hover {
 }
 
 .hero__subtitle {
-  font-size: 1rem;
+  font-size: var(--font-size-xs);
   margin: 0;
 }
 
@@ -333,6 +333,11 @@ a.hero__contact {
 
 .pixelart__image {
   object-fit: cover;
+}
+
+#pixelart .card__title,
+#pixelart .card__description {
+  max-width: initial;
 }
 
 /* BLOG */
@@ -537,6 +542,10 @@ a.hero__contact {
 
   .hero__title {
     font-size: var(--font-size-xxl);
+  }
+
+  .hero__subtitle {
+    font-size: 1rem;
   }
 
   .hero__description {
