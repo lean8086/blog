@@ -201,14 +201,7 @@
   <section class="home-section" id="things">
     <h2 class="home-section__title"><span>I make</span> Things</h2>
     <p class="home-section__description">These contraptions are a mix between open-source hardware and software. I film myself building them to encourage others. When it comes to publishing videos, I don't follow a schedule. I believe the schedule pressure compromises quality, and I prefer to create things I genuinely enjoy.</p>
-    <ol class="home-section__cards">
-      <li class="card" itemscope itemtype="https://schema.org/Article">
-        <a class="card__link" href="https://youtu.be/g4vlmUQwt7o" itemprop="url" target="_blank" rel="noopener">
-          <img class="card__image" style="object-position:40%" src="/thumbnails/light.png" itemprop="image" alt="A filmmaking light with a grid">
-        </a>
-        <h3 class="card__title"><span itemprop="name">Filmmaking Light</span>, <time datetime="2023-10-19" itemprop="dateCreated">2023</time></h3>
-        <p class="card__description" itemprop="description">I took apart all the diffusion layers of a computer monitor and added a daylight high-CRI LED strip to it.</p>
-      </li>
+    <ul class="home-section__cards">
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://youtu.be/gkook0l_gsM" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" style="object-position:22%" src="/thumbnails/xboy.png" itemprop="image" alt="A 3D printed handheld console">
@@ -216,10 +209,12 @@
         <h3 class="card__title"><span itemprop="name">Game Console</span>, <time datetime="2022-01-10" itemprop="dateCreated">2022</time></h3>
         <p class="card__description" itemprop="description">The best electronics for game emulation inside a 3D printed case I designed using the xbox elite controller as a reference.</p>
       </li>
-      <li class="card" itemscope itemtype="https://schema.org/Article" hidden>
-        <img class="card__image" style="object-position:44%" src="/thumbnails/simpsons-tv.jpg" itemprop="image" alt="A 3D printed RC car">
-        <h3 class="card__title"><span itemprop="name">Simpsons TV</span>, <time datetime="2021-08-15" itemprop="dateCreated">2021</time></h3>
-        <p class="card__description" itemprop="description">Inspired by Brandon Withrow's project, a Raspberry Pi plays (offline) random episodes 24/7 on an old CRT TV.</p>
+      <li class="card" itemscope itemtype="https://schema.org/Article">
+        <a class="card__link" href="/blog/arcade-machine-build" itemprop="url">
+          <img class="card__image" style="object-position:57%" src="/thumbnails/arcade.jpg" itemprop="image" alt="Arcade machine">
+        </a>
+        <h3 class="card__title"><span itemprop="name">Arcade Machine</span>, <time datetime="2018-12-12" itemprop="dateCreated">2018</time></h3>
+        <p class="card__description" itemprop="description">I put together an old Raspberry Pi, monitor, and speakers with MDF boards, Sanwa-like joysticks, and HAPP push buttons.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://youtu.be/8MLCOW4ptQk" itemprop="url" target="_blank" rel="noopener">
@@ -227,6 +222,13 @@
         </a>
         <h3 class="card__title"><span itemprop="name">3D Printed RC Car</span>, <time datetime="2021-06-22" itemprop="dateCreated">2021</time></h3>
         <p class="card__description" itemprop="description">Fully-printed, 4WD, high-performance, 1:8 scale RC car. Even the gears are fully printed in PLA, and they work smoothly.</p>
+      </li>
+      <li class="card" itemscope itemtype="https://schema.org/Article">
+        <a class="card__link" href="/blog/arduino-midi-controller" itemprop="url">
+          <img class="card__image" style="object-position:39%" src="/thumbnails/punchy.jpg" itemprop="image" alt="MIDI Controller">
+        </a>
+        <h3 class="card__title"><span itemprop="name">MIDI Controller</span>, <time datetime="2020-06-28" itemprop="dateCreated">2020</time></h3>
+        <p class="card__description" itemprop="description">I built this as a minimum viable product for beginners. It has no knobs, sliders, or faders, and it runs with minimal code.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://youtu.be/-zKHCHPDaUg" itemprop="url" target="_blank" rel="noopener">
@@ -243,13 +245,6 @@
         <p class="card__description" itemprop="description">3D printed parts are rough, and I found the perfect project to learn as much as possible about how to post-process them.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
-        <a class="card__link" href="/blog/arduino-midi-controller" itemprop="url">
-          <img class="card__image" style="object-position:39%" src="/thumbnails/punchy.jpg" itemprop="image" alt="MIDI Controller">
-        </a>
-        <h3 class="card__title"><span itemprop="name">MIDI Controller</span>, <time datetime="2020-06-28" itemprop="dateCreated">2020</time></h3>
-        <p class="card__description" itemprop="description">I built this as a minimum viable product for beginners. It has no knobs, sliders, or faders, and it runs with minimal code.</p>
-      </li>
-      <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://youtu.be/_7N8hjOa46w" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" style="object-position:right" src="/thumbnails/lightbox.jpg" itemprop="image" alt="Multiple LED lights">
         </a>
@@ -257,13 +252,13 @@
         <p class="card__description" itemprop="description">This simple box can make cyanotypes, a photographic printing process that produces blueprints using artificial sunlight.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
-        <a class="card__link" href="/blog/arcade-machine-build" itemprop="url">
-          <img class="card__image" style="object-position:57%" src="/thumbnails/arcade.jpg" itemprop="image" alt="Arcade machine">
+        <a class="card__link" href="https://youtu.be/g4vlmUQwt7o" itemprop="url" target="_blank" rel="noopener">
+          <img class="card__image" style="object-position:40%" src="/thumbnails/light.png" itemprop="image" alt="A filmmaking light with a grid">
         </a>
-        <h3 class="card__title"><span itemprop="name">Arcade Machine</span>, <time datetime="2018-12-12" itemprop="dateCreated">2018</time></h3>
-        <p class="card__description" itemprop="description">I put together an old Raspberry Pi, monitor, and speakers with MDF boards, Sanwa-like joysticks, and HAPP push buttons.</p>
+        <h3 class="card__title"><span itemprop="name">Filmmaking Light</span>, <time datetime="2023-10-19" itemprop="dateCreated">2023</time></h3>
+        <p class="card__description" itemprop="description">I took apart all the diffusion layers of a computer monitor and added a daylight high-CRI LED strip to it.</p>
       </li>
-    </ol>
+    </ul>
   </section>
 
   <section class="home-section" id="pixelart">
