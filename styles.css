@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2, h3 {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 dt {
@@ -465,7 +465,7 @@ a:hover {
 
 .entry-body > p:first-of-type::first-letter {
   font-family: var(--font-type-serif);
-  font-weight: 500;
+  font-weight: 600;
   font-size: var(--font-size-xl);
   margin: var(--font-size-xxs) var(--font-size-xs) var(--font-size-xs) 0;
   display: block;
