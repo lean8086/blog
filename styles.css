@@ -213,7 +213,15 @@ a:hover {
   font-weight: 500;
 }
 
-a.hero__contact {
+.hero__nav ul {
+  list-style: none;
+  display: inline-flex;
+  gap: var(--gutter-s);
+  margin: 0;
+  padding: 0;
+}
+
+.hero__nav a {
   color: var(--color-text);
   font-size: var(--font-size-xs);
 }
@@ -230,17 +238,19 @@ a.hero__contact {
   flex-direction: column;
 }
 
-.home-section__title span {
-  display: block;
-  font-size: var(--font-size-xs);
-  line-height: var(--font-size-m);
-  text-indent: var(--visual-correction);
-}
-
 .home-section__title {
   font-size: var(--font-size-xl);
   line-height: var(--font-size-xl);
   margin: 0;
+  text-transform: capitalize;
+}
+
+.home-section__title span:first-of-type {
+  display: block;
+  font-size: var(--font-size-xs);
+  line-height: var(--font-size-m);
+  text-indent: var(--visual-correction);
+  text-transform: none;
 }
 
 .home-section__description {
