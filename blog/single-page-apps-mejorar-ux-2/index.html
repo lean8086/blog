@@ -33,25 +33,15 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Single Page Apps y cómo mejorar la UX, parte 2</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2015-04-20">April 20, 2015</time></p>
-    <p class="entry-head__description" itemprop="description">Cómo podemos aprovechar los beneficios que nos dan las SPA.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2015-04-20">April 20, 2015</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Cómo podemos aprovechar los beneficios que nos dan las SPA.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
     <p>Para recapitular sobre el tema, denle una leída a la <a
         href="/blog/single-page-apps-mejorar-ux/">Parte 1</a> del artículo. Igualmente, agrego
@@ -65,9 +55,9 @@
     <p>Encontramos estos 2 artículos super detallados sobre la percepción de velocidad del usuario y como mejorar la
       UX evitando bloquear la UI:</p>
     <ul>
-      <li><a href="http://www.callumhart.com/blog/non-blocking-uis-with-interface-previews">Non-blocking UI’s with
+      <li><a href="http://www.callumhart.com/blog/non-blocking-uis-with-interface-previews">Non-blocking UI's with
           interface previews</a></li>
-      <li><a href="http://www.mobify.com/blog/beginners-guide-to-perceived-performance/">A Beginner’s Guide to
+      <li><a href="http://www.mobify.com/blog/beginners-guide-to-perceived-performance/">A Beginner's Guide to
           Perceived Performance: 4 Ways to Make Your Mobile Site Feel Like a Native App</a></li>
     </ul>
     <h2 id="2-flujos-que-dejan-de-ser-lineales">2. Flujos que dejan de ser lineales</h2>
@@ -75,11 +65,11 @@
     <p>La primera vez que escuché sobre aprovechar las tareas de background, fue de la mano de Instagram. Ellos
       comparten algunos trucos para darle a los usuarios una sensación de constante respuesta.</p>
     <p>Según <a href="http://www.fastcodesign.com/1669788/the-3-white-lies-behind-instagrams-lightning-speed">este
-        artículo</a> que lei hace un tiempo, las 3 “mentiras blancas” de Instagram son:</p>
+        artículo</a> que lei hace un tiempo, las 3 “mentiras blancas" de Instagram son:</p>
     <ul>
       <li>La UI siempre finge que está trabajando.</li>
       <li>Se carga contenido basado en la importancia, no en el orden.</li>
-      <li>Se anticipan a cada movimiento del usuario. Por ejemplo, ¿por qué esperar a que cliquee “Enviar” para
+      <li>Se anticipan a cada movimiento del usuario. Por ejemplo, ¿por qué esperar a que cliquee “Enviar" para
         empezar a enviar información sin que se de cuenta?</li>
     </ul>
     <h2 id="3-la-conexi-n-a-internet-como-una-capa-de-mejora">3. La conexión a internet como una capa de mejora</h2>

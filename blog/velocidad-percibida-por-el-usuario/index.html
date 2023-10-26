@@ -33,25 +33,15 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Velocidad percibida por el usuario</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2015-05-11">May 11, 2015</time></p>
-    <p class="entry-head__description" itemprop="description">Cómo mejorar la experiencia de espera de los usuarios de una interfaz.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2015-05-11">May 11, 2015</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Cómo mejorar la experiencia de espera de los usuarios de una interfaz.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
     <p>Hace un tiempo leí un artículo sobre el aeropuerto de Houston. Ellos recibían muchísimas quejas sobre el
         tiempo de espera para retirar el equipaje.</p>
@@ -91,7 +81,7 @@
     <h2 id="critical-path">Critical path</h2>
     <p>Para mejorar significativamente la performance, se recomienda pegar el CSS del contenido visible
         <strong>directamente en el HTML</strong>. Esto le permite al browser tener lista, mucho antes, la
-        experiencia “above-the-fold”. Para esto tenemos que determinar qué estilos representan al contenido que
+        experiencia “above-the-fold". Para esto tenemos que determinar qué estilos representan al contenido que
         se muestra en el primer pantallazo para la mayoría de los usuarios.</p>
     <p>La idea es incluir esos estilos en un <code>&lt;style></code> dentro del <code>&lt;head></code>. El resto
         de los estilos deberían cargarse antes del cierre del <code>&lt;/body></code> o asíncronamente con JS.

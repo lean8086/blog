@@ -33,25 +33,15 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Single Page Apps y cómo mejorar la UX</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2015-02-03">February 03, 2015</time></p>
-    <p class="entry-head__description" itemprop="description">Cambios que proponen las SPA y cómo podemos aprovechar los beneficios.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2015-02-03">February 03, 2015</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Cambios que proponen las SPA y cómo podemos aprovechar los beneficios.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
     <p>Desde hace unos meses estoy implementando en algunos proyectos lo que se conoce como Single Page App. Para
       quienes no conocen el término, Wikipedia tiene una <a
@@ -64,7 +54,7 @@
     <p>En una SPA el usuario <strong>no percibe un tiempo de espera entre una página y la otra</strong>. <strong>Todo
         es instantáneo, literalmente.</strong></p>
     <p>Lo que sí tiene tiempo de carga es la información, pero no la UI. Entonces empiezan a aparecer patrones de
-      diseño como <em>Skeleton layout</em> o *”non-blocking interfaces”*, que ya lo habrán visto usando Facebook:</p>
+      diseño como <em>Skeleton layout</em> o <em>"non-blocking interfaces"</em>, que ya lo habrán visto usando Facebook:</p>
     <p><img alt="Facebook skeleton layout" loading="lazy"
         src="/blog/single-page-apps-mejorar-ux/facebook.png"></p>
     <p>Primero se carga el esqueleto de la página, porque es lo que nunca cambia y puede volver a imprimirse

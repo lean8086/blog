@@ -34,66 +34,44 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Calidad vs. velocidad en el desarrollo</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2014-11-21">November 21, 2014</time></p>
-    <p class="entry-head__description" itemprop="description">Notas acerca del video de Facebook donde introducen el concepto de Flux.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2014-11-21">November 21, 2014</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Notas acerca del video de Facebook donde introducen el concepto de Flux.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
-    <p>Les dejo el video <a href="http://youtu.be/nYkdrAPrdcw">Rethinking Web App Development at Facebook</a>. Está
+    <p>Les dejo el video <a href="http://youtu.be/nYkdrAPrdcw" rel="noopener">Rethinking Web App Development at Facebook</a>. Está
       bueno para ver las preguntas que se hacen, y las respuestas que encuentran.</p>
 
     <lite-youtube videoid="nYkdrAPrdcw"></lite-youtube>
 
-    <h2 id="mis-notas">Mis notas</h2>
-    <p>Un objetivo que Facebook persigue es <strong>generar software de calidad</strong>.</p>
-    <p>Según ellos, se entiende por calidad a:</p>
+    <p>Un objetivo que Facebook persigue es <strong>generar software de calidad</strong>. Según ellos, se entiende por calidad a:</p>
     <ul>
       <li><strong>un código seguro.</strong></li>
       <li><strong>un código performante.</strong></li>
-      <li><strong>una UI “disfrutable”.</strong></li>
+      <li><strong>una UI “disfrutable".</strong></li>
       <li><strong>una interfaz facil de usar (UX).</strong></li>
     </ul>
     <p>La calidad lleva tiempo. Cuanta más calidad se busca, más tiempo lleva desarrollarlo.</p>
-    <p>Lo que más se valora en Facebook es la habilidad de moverse rápido. Necesitan salir a producción cuanto antes
-      para recolectar métricas, feedback, etc. Así, pueden iterar lo mas rápido posible y tener el mejor producto.</p>
-    <p>En el video comentan que calidad y velocidad no conviven.</p>
-    <h2 id="c-mo-lograr-mejor-calidad-en-menos-tiempo">Cómo lograr mejor calidad en menos tiempo</h2>
-    <p>Intentaron varias cosas. A nivel equipo:</p>
+    <p>Lo que más se valora en Facebook es la habilidad de moverse rápido. Necesitan salir a producción cuanto antes para recolectar métricas, feedback, etc. Así, pueden iterar lo mas rápido posible y tener el mejor producto. En el video comentan que calidad y velocidad no conviven.</p>
+    <p>¿Cómo lograr mejor calidad en menos tiempo? Intentaron varias cosas. A nivel equipo:</p>
     <ul>
-      <li>Recortar features: <em>”pero si estás queriendo agregar valor a tu producto, eliminar funcionalidades para
-        tener lo mínimo indispensable no está bueno.”</em></li>
-      <li>Agregar gente: <em>”pero no podés agregar developers a un problema esperando que lo resuelvan mas rápido y con
-        buena calidad.”</em></li>
-      <li>Pedirle a la gente que trabaje mas duro: <em>”pero no es sustentable pedir que trabajen 15 horas por día.”</em>
+      <li>Recortar features: <em>"pero si estás queriendo agregar valor a tu producto, eliminar funcionalidades para tener lo mínimo indispensable no está bueno."</em></li>
+      <li>Agregar gente: <em>"pero no podés agregar developers a un problema esperando que lo resuelvan mas rápido y con buena calidad."</em></li>
+      <li>Pedirle a la gente que trabaje mas duro: <em>"pero no es sustentable pedir que trabajen 15 horas por día."</em>
       </li>
     </ul>
-    <p>A nivel stack tecnológico intentaron aplicar MVC, pero no escala porque se empieza a complicar muy rápido.
-      <strong>Cada vez que agregan nuevos features, el sistema entero cambia.</strong> Esto genera que el código sea
-      impredecible. Es decir que, entra gente nueva a ver el código y les toma tiempo para entender si lo que se va a
-      modificar impacta en el resto de la aplicación.</p>
-    <p>Para aumentar la calidad y reducir el tiempo, probaron hacer que el código sea predecible. Aplicaron Flux
-      Pattern: <strong>una arquitectura que genera un flujo de datos unidireccional (a diferencia del MVC)</strong>.
-    </p>
+    <p>A nivel stack tecnológico intentaron aplicar MVC, pero no escala porque se empieza a complicar muy rápido. <strong>Cada vez que agregan nuevos features, el sistema entero cambia.</strong> Esto genera que el código sea impredecible. Es decir que, entra gente nueva a ver el código y les toma tiempo para entender si lo que se va a modificar impacta en el resto de la aplicación.</p>
+    <p>Para aumentar la calidad y reducir el tiempo, probaron hacer que el código sea predecible. Aplicaron Flux Pattern: <strong>una arquitectura que genera un flujo de datos unidireccional (a diferencia del MVC)</strong>.</p>
     <h2 id="mvc-pattern">MVC pattern</h2>
     <p>Buenísimo para aplicaciones chicas pero difícil de entender qué vista se relaciona con qué modelo:</p>
     <p><img alt="MVC" src="/blog/calidad-vs-velocidad-desarrollo/mvc.png" loading="lazy"></p>
     <h2 id="flux-pattern">Flux pattern</h2>
-    <p>Flujo de datos de una sola dirección. Las “flechas” van en un solo sentido:</p>
+    <p>Flujo de datos de una sola dirección. Las “flechas" van en un solo sentido:</p>
     <p><img alt="Flux" src="/blog/calidad-vs-velocidad-desarrollo/flux.png"></p>
     <p>Ponen como ejemplo el chat de Facebook, que necesita comunicarse con la barra de notificaciones.</p>
     <p>A medida que fueron agregando features, el código se les hizo largo. Y en lugar de darle el control a un agente

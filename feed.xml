@@ -53,7 +53,7 @@
       <description>Step-by-step tutorial on how to setup your Raspberry Pi to make the most of it as retro games console.</description>
     </item>
     <item>
-      <title>Node 101 - dependencies vs. devDependencies</title>
+      <title>Node dependencies vs. devDependencies</title>
       <link>https://leandrolinares.com/blog/node-dependencies-vs-devdependencies/</link>
       <pubDate>Fri, 12  Aug 2016 02:00:00 +0200</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/node-dependencies-vs-devdependencies/</guid>

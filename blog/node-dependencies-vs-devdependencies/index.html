@@ -2,7 +2,7 @@
 <html lang="es" itemscope itemtype="https://schema.org/Article">
 <head>
   <meta charset="utf-8">
-  <title>Node 101 - dependencies vs. devDependencies - Leandro Linares</title>
+  <title>Node dependencies vs. devDependencies - Leandro Linares</title>
   <meta name="viewport" content="width=device-width">
   <meta name="theme-color" content="#fff">
   <meta name="description" content="Definición totalmente básica sobre las dependencias de Node JS.">
@@ -20,11 +20,11 @@
   <meta itemprop="inLanguage" content="es">
   <meta name="twitter:site" content="@lean8086">
   <meta name="twitter:url" content="https://leandrolinares.com/blog/node-dependencies-vs-devdependencies/">
-  <meta name="twitter:title" content="Node 101 - dependencies vs. devDependencies">
+  <meta name="twitter:title" content="Node dependencies vs. devDependencies">
   <meta name="twitter:description" content="Definición totalmente básica sobre las dependencias de Node JS.">
   <meta name="twitter:creator" content="@lean8086">
   <meta name="twitter:card" content="summary">
-  <meta property="og:title" content="Node 101 - dependencies vs. devDependencies">
+  <meta property="og:title" content="Node dependencies vs. devDependencies">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://leandrolinares.com/blog/node-dependencies-vs-devdependencies/">
   <meta property="og:description" content="Definición totalmente básica sobre las dependencias de Node JS.">
@@ -33,34 +33,19 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
-    <h1 class="entry-head__headline" itemprop="headline">Node 101 - dependencies vs. devDependencies</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2016-08-12">August 12, 2016</time></p>
-    <p class="entry-head__description" itemprop="description">Definición totalmente básica sobre las dependencias de Node JS.</p>
+    <h1 class="entry-head__headline" itemprop="headline">Node dependencies vs. devDependencies</h1>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2016-08-12">August 12, 2016</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Definición totalmente básica sobre las dependencias de Node JS.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
-    <p>Es un tema bastante básico pero que veo que se repite en varias implementaciones. Me encontré con varios
-      package.json en los que las dependencias no están ubicadas en el lugar correcto. Suelen estar todas en
-      <code>"dependencies"</code> o todas en <code>"devDependencies"</code>. A veces también las veo bastante
-      mezcladas.</p>
+    <p>Es un tema bastante básico pero que veo que se repite en varias implementaciones. Me encontré con varios package.json en los que las dependencias no están ubicadas en el lugar correcto. Suelen estar todas en <code>"dependencies"</code> o todas en <code>"devDependencies"</code>. A veces también las veo bastante mezcladas.</p>
     <p>En realidad hay diferencia.</p>
-    <h2 id="dependencies">Dependencies</h2>
-    <p>Son recursos que van a formar parte de los files descargables. Es decir que, cuando alguien instale el módulo,
-      va a descargar también todas esas dependencias.</p>
+    <p>Dependencies son recursos que van a formar parte de los files descargables. Es decir que, cuando alguien instale el módulo, va a descargar también todas esas dependencias.</p>
     <p>Un ejemplo correcto sería:</p>
     <pre><code>"dependencies": {
   "jquery": "2.2.1",
@@ -68,17 +53,13 @@
   "backbone.marionette": "2.4.4",
   "underscore": "1.8.3"
 }</code></pre>
-    <h2 id="dev-dependencies">Dev dependencies</h2>
-    <p>Son recursos que se van a usar <strong>solo para desarrollar el módulo</strong>.</p>
-    <p>Es decir que, cuando alguien lo instale, no va a necesitar descargar todas estas dependencias.</p>
-    <p>Éstas pueden ser herramientas de tests, de documentación, task runners, etc.</p>
+    <p>Dev dependencies son recursos que se van a usar <strong>solo para desarrollar el módulo</strong>. Es decir que, cuando alguien lo instale, no va a necesitar descargar todas estas dependencias. Éstas pueden ser herramientas de tests, de documentación, task runners, etc.</p>
     <p>Un ejemplo correcto sería:</p>
     <pre><code>"devDependencies": {
   "mocha": "2.3.4",
   "gulp": "3.9.1"
 }</code></pre>
-    <p>Para más info, les dejo la <a href="https://docs.npmjs.com/files/package.json#dependencies">doc oficial de
-        npm</a>.</p>
+    <p>Para más info, les dejo la <a href="https://docs.npmjs.com/files/package.json#dependencies" rel="noopener">doc oficial de npm</a>.</p>
   </section>
 
   <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>

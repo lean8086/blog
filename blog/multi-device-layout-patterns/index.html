@@ -33,29 +33,17 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Multi-Device Layout Patterns</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2014-05-12">May 12, 2014</time></p>
-    <p class="entry-head__description" itemprop="description">Introducción a los tipos de layouts más conocidos.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2014-05-12">May 12, 2014</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Introducción a los tipos de layouts más conocidos.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
-    <p>A medida que los layouts responsive fueron evolucionando, surgieron varios patrones que ya tienen nombre y apellido.</p>
-    <h2 id="los-m-s-populares">Los más populares</h2>
-    <p>Según <a href="https://twitter.com/lukew">Luke Wroblewski</a> (groso), los patrones más populares son:</p>
+    <p>A medida que los layouts responsive fueron evolucionando, surgieron varios patrones que ya tienen nombre y apellido. Según <a href="https://twitter.com/lukew" rel="noopener">Luke Wroblewski</a>, los patrones más populares son:</p>
     <ul>
       <li>Mostly Fluid</li>
       <li>Column Drop</li>
@@ -63,41 +51,34 @@
       <li>Tiny Tweaks</li>
       <li>Off Canvas</li>
     </ul>
-    <p>En su <a href="http://www.lukew.com/ff/entry.asp?1514">post</a> explica y grafica cada uno.</p>
+    <p>En su <a href="http://www.lukew.com/ff/entry.asp?1514" rel="noopener">post</a> explica y grafica cada uno.</p>
     <h2 id="off-canvas">Off Canvas</h2>
-    <p>Un web designer tomó el patrón Off Canvas (uno de los que mejor se adaptan) y profundizó un el concepto: <a
-        href="http://jasonweaver.name/lab/offcanvas/">http://jasonweaver.name/lab/offcanvas/</a></p>
-    <p>Básicamente se trata de un layout de 3 columnas que se acomoda segun el tamaño de pantalla. Dentro de las
-      columnas, <strong>el contenido principal se ubica en la columna central</strong>. Los elementos secundarios o de
-      navegación se ubican en las columnas de los costados.</p>
+    <p>Un web designer tomó el patrón Off Canvas (uno de los que mejor se adaptan) y profundizó un el concepto: <a href="http://jasonweaver.name/lab/offcanvas/" rel="noopener">http://jasonweaver.name/lab/offcanvas/</a></p>
+    <p>Básicamente se trata de un layout de 3 columnas que se acomoda segun el tamaño de pantalla. Dentro de las columnas, <strong>el contenido principal se ubica en la columna central</strong>. Los elementos secundarios o de navegación se ubican en las columnas de los costados.</p>
     <p>Centrado por default:</p>
-    <p><img alt="Centrado por default" src="/blog/multi-device-layout-patterns/small-centered.png" loading="lazy">
-    </p>
+    <img alt="Centrado por default" src="/blog/multi-device-layout-patterns/small-centered.png" loading="lazy">
     <p>Acceso a sección izquierda:</p>
-    <p><img alt="Sección izquierda" src="/blog/multi-device-layout-patterns/small-left.png"></p>
+    <img alt="Sección izquierda" src="/blog/multi-device-layout-patterns/small-left.png">
     <p>Cuanto mayor es el espacio en la pantalla, más columnas se muestran dentro del area visible:</p>
-    <p><img alt="Todas las columnas visibles" src="/blog/multi-device-layout-patterns/large.png"></p>
-    <h2 id="m-s-patrones">Más patrones</h2>
-    <p><a href="https://twitter.com/brad_frost">Brad Frost</a> (otro groso) escribió hace un par de años algunos posts
-      sobre patrones de navegación responsive. Explica en detalle pros y contras de varios:</p>
+    <img alt="Todas las columnas visibles" src="/blog/multi-device-layout-patterns/large.png">
+    <p><a href="https://twitter.com/brad_frost" rel="noopener">Brad Frost</a> escribió hace un par de años algunos posts sobre patrones de navegación responsive. Explica en detalle pros y contras de varios:</p>
     <ul>
-      <li>Top Nav or “Do Nothing” Approach</li>
+      <li>Top Nav or “Do Nothing" Approach</li>
       <li>Footer Anchor</li>
       <li>Select Menu</li>
       <li>The Toggle</li>
       <li>Left Nav Flyout</li>
       <li>Footer-Only</li>
-      <li>“Hide N’ Cry”</li>
+      <li>“Hide N' Cry"</li>
       <li>Multi-Toggle</li>
-      <li>Ol’ Right-to-Left</li>
-      <li>“Skip the Sub-Nav”</li>
+      <li>Ol' Right-to-Left</li>
+      <li>“Skip the Sub-Nav"</li>
       <li>The Carousel+</li>
     </ul>
     <p>Más info sobre estos patrones en:</p>
     <ul>
-      <li><a href="http://bradfrostweb.com/blog/web/responsive-nav-patterns/">Responsive Navigation Patterns</a></li>
-      <li><a href="http://bradfrostweb.com/blog/web/complex-navigation-patterns-for-responsive-design/">Complex
-          Navigation Patterns for Responsive Design</a></li>
+      <li><a href="http://bradfrostweb.com/blog/web/responsive-nav-patterns/" rel="noopener">Responsive Navigation Patterns</a></li>
+      <li><a href="http://bradfrostweb.com/blog/web/complex-navigation-patterns-for-responsive-design/" rel="noopener">Complex Navigation Patterns for Responsive Design</a></li>
     </ul>
   </section>
 

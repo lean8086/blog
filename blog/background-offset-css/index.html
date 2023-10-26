@@ -31,40 +31,26 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Background offset en CSS</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2014-01-13">January 13, 2014</time></p>
-    <p class="entry-head__description" itemprop="description">Cómo mejorar el posicionamiento de un background, usando el feature de offset.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2014-01-13">January 13, 2014</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Cómo mejorar el posicionamiento de un background, usando el feature de offset.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
-    <p>Hoy en día, en el AutoComplete de <a href="http://chico.mercadolibre.com/">Chico UI</a> (v1.0.0) tenemos
-        un loading spinner agregado como background de CSS, alineado a la derecha como
-        <code>right center</code>.</p>
-    <p>Eso hace que el spinner quede literalmente <strong>pegado al borde derecho</strong>:</p>
-    <p><img alt="Before" src="/blog/background-offset-css/before.png" loading="lazy"></p>
-    <p>Buscando un poco, encontré que <code>background-position</code> <strong>puede recibir un
-            offset!</strong>:</p>
+    <p>Hoy en día, en el AutoComplete de <a href="https://github.com/mercadolibre/chico" rel="noopener">Chico UI</a> (v1.0.0) tenemos un loading spinner agregado como background de CSS, alineado a la derecha como <code>right center</code>. Eso hace que el spinner quede literalmente <strong>pegado al borde derecho</strong>:</p>
+    <img alt="Before" src="/blog/background-offset-css/before.png">
+    <p>Buscando un poco, encontré que <code>background-position</code> <strong>puede recibir un offset!</strong>:</p>
     <pre><code>/* 10px es el offset */
 background-position: right 3em bottom 10px;</code></pre>
     <p>Se incluyó en la especificación de CSS3 y lo soportan todos los browsers, excepto IE8 y anteriores. Más
         específicamente es soportado en Opera 11+, IE9+, FF 13+, Chrome y Safari.</p>
     <p>Aplicando <code>right 10px center</code> al AutoComplete, podemos separar el spinner del borde derecho
         unos 10px:</p>
-    <p><img alt="After" src="/blog/background-offset-css/after.png"></p>
+    <img alt="After" src="/blog/background-offset-css/after.png">
 
     <p><strong>Antes:</strong></p>
     <pre><code>.ch-autocomplete-loading {

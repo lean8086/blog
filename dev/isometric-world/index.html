@@ -57,14 +57,13 @@
       height:75px;
       background-color:#fff;
       z-index:1;
-      text-indent:-99px;
       overflow:hidden;
-      color:white;
       user-select: none;
       -webkit-user-select: none;
       -moz-user-select: none;
       cursor:pointer;
       border:1px solid #c7ad88;
+      padding:5px;
     }
 
     .sh-tile.sh-type1 {
@@ -338,20 +337,12 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#code" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Isometric World</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time datetime="2011-07-15" itemprop="dateCreated">Jul, 2011</time></p>
+    <p class="entry-head__details"><time datetime="2011-07-15" itemprop="dateCreated">July 15, 2011</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
     <p class="entry-head__description" itemprop="description">DOM-based matrix of tiles. When clicking on them, it calculates the shortest path and moves the player there.</p>
   </header>
 
@@ -620,7 +611,7 @@
             var id = h + ":" + v,
               coordinates = self.getCoordinates(id);
 
-            output.push("<div class=\"sh-tile sh-transform-h-x sh-type" + tileType + "\" style=\"left:" + coordinates.left + "px; top:" + coordinates.top + "px;\" data-tile=\"" + id + "\">" + (counter += 1) + " (" + id + ")</div>");
+            output.push("<div class=\"sh-tile sh-transform-h-x sh-type" + tileType + "\" style=\"left:" + coordinates.left + "px; top:" + coordinates.top + "px;\" data-tile=\"" + id + "\">tile " + (counter += 1) + "<br>x:" + h + ", y:" + v + "</div>");
           };
         };
 

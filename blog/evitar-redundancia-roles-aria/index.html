@@ -33,25 +33,15 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Evitar redundancia de roles ARIA</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2014-02-24">February 24, 2014</time></p>
-    <p class="entry-head__description" itemprop="description">Análisis sobre dos casos similares de roles.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2014-02-24">February 24, 2014</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Análisis sobre dos casos similares de roles.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
     <p>Encontré en 2 implementaciones distintas estos casos que me llamaron la atención:</p>
     <p>Checkout:</p>
@@ -61,14 +51,12 @@
     <p>En principio ninguna de las dos está mal. Pero hay algunas definiciones que pueden ser de utilidad en estos
       casos:</p>
     <h2 id="1-aria-role-accesibilidad-">1. ARIA role (accesibilidad)</h2>
-    <p>La mayoría de los elementos HTML tienen un <code>role</code> por defecto.</p>
-    <p>Por ejemplo, el role de un <code>&lt;a></code> es <code>link</code>, pudiendo hacer:</p>
+    <p>La mayoría de los elementos HTML tienen un <code>role</code> por defecto. Por ejemplo, el role de un <code>&lt;a></code> es <code>link</code>, pudiendo hacer:</p>
     <pre><code>&lt;a href="foo.html" role="link">foo&lt;/a></code></pre>
     <p>Los browsers que soportan accesibilidad ya definen este rol internamente, por lo que el ejemplo anterior es lo
       mismo que el siguiente:</p>
     <pre><code>&lt;a href="foo.html">foo&lt;/a></code></pre>
-    <p>Entonces, para qué sirve el atributo role?: Para <strong>marcar la funcionalidad de un contenido</strong>.</p>
-    <p>Los ejemplos más claros pueden ser:</p>
+    <p>Entonces, para qué sirve el atributo role?: Para <strong>marcar la funcionalidad de un contenido</strong>. Los ejemplos más claros pueden ser:</p>
     <pre><code>&lt;header role="banner"></code></pre>
     <p>Va a contener el encabezado principal de la página. Donde va el logo, título, navegación principal, etc.</p>
     <pre><code>&lt;form role="search"></code></pre>
@@ -100,11 +88,11 @@
         ids.</strong></p>
     <p>Algunas referencias:</p>
     <ul>
-      <li><a href="http://www.w3.org/TR/wai-aria/roles">The Roles Model</a></li>
-      <li><a href="http://knowledge.onsubject.com/html-role-attributes/">HTML role attributes</a></li>
-      <li><a href="http://www.w3.org/wiki/Generic_containers_-_the_div_and_span_elements">Generic containers - the div
+      <li><a href="http://www.w3.org/TR/wai-aria/roles" rel="noopener">The Roles Model</a></li>
+      <li><a href="http://knowledge.onsubject.com/html-role-attributes/" rel="noopener">HTML role attributes</a></li>
+      <li><a href="http://www.w3.org/wiki/Generic_containers_-_the_div_and_span_elements" rel="noopener">Generic containers - the div
           and span elements</a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main">Main - MDN</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main" rel="noopener">Main - MDN</a></li>
     </ul>
   </section>
 

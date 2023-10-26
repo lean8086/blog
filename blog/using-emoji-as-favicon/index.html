@@ -34,26 +34,16 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <img class="entry-head__image pixelated" src="/assets/poo-icon.png" itemprop="image" alt="Emoji icon" width="60" height="58">
     <h1 class="entry-head__headline" itemprop="headline">Using an emoji as favicon with SVG</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2019-12-17">December 17, 2019</time></p>
-    <p class="entry-head__description" itemprop="description">SVG favicons are supported by browsers. SVG can render text and emojis are text as they are part of the unicode standard.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2019-12-17">December 17, 2019</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="SVG favicons are supported by browsers. SVG can render text and emojis are text as they are part of the unicode standard.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
     <p>The Google Chrome development team shipped <a href="https://chromium-review.googlesource.com/c/chromium/src/+/1541185" target="_blank" rel="noopener">basic support for SVG favicons</a>, already available in Chrome Canary and expected to be released in Chrome 80. Firefox <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=366324" target="_blank" rel="noopener">supports SVG favicons</a> since its version 41.</p>
 
@@ -61,7 +51,7 @@
 
     <p>Since <strong>SVG can render text and emojis are text</strong>, I made a little experiment to have an emoji as favicon. After some tweaks, it worked!</p>
 
-    <img class="retina" src="/blog/using-emoji-as-favicon/emoji-as-favicon.png" alt="A browser tab using a rocket emoji as favicon">
+    <img src="/blog/using-emoji-as-favicon/emoji-as-favicon.png" alt="A browser tab using a rocket emoji as favicon">
 
     <p>To do so, I set the favicon size (32 pixels) as both <strong>font-size and vertical baseline</strong>:</p>
 
@@ -94,11 +84,11 @@
 
     <p>The result is a flat emoji as favicon!</p>
 
-    <img class="retina" src="/blog/using-emoji-as-favicon/firefox-flat-emoji.png" alt="A firefox tab using a rocket emoji silhouette as favicon">
+    <img src="/blog/using-emoji-as-favicon/firefox-flat-emoji.png" alt="A firefox tab using a rocket emoji silhouette as favicon">
 
     <p>It only works in Firefox, though.</p>
 
-    <img class="retina" src="/blog/using-emoji-as-favicon/chrome-flat-emoji.png" alt="A chrome tab using a rocket emoji silhouette as favicon">
+    <img src="/blog/using-emoji-as-favicon/chrome-flat-emoji.png" alt="A chrome tab using a rocket emoji silhouette as favicon">
   </section>
 
   <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>

@@ -35,27 +35,19 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <img class="entry-head__image pixelated" src="/assets/punchy-icon.png" itemprop="image" alt="An icon representing a MIDI controller"  width="50" height="58">
     <h1 class="entry-head__headline" itemprop="headline">Building an Arduino MIDI Controller</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <meta itemprop="dateCreated" content="2020-06-28">June 28, 2020</time></p>
-    <p class="entry-head__description" itemprop="description">I'm a beginner in all things Arduino and I've been working on an easy, fast, and cheap project to learn more about it.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2019-12-17">June 28, 2020</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="I'm a beginner in all things Arduino and I've been working on an easy, fast, and cheap project to learn more about it.">
   </header>
 
-  <img class="entry-main-image" src="/blog/arduino-midi-controller/finished.jpg" alt="A MIDI controller with 16 buttons with an Arduino board"/>
-
   <section class="entry-body" itemprop="articleBody">
+    <img src="/blog/arduino-midi-controller/finished.jpg" alt="A MIDI controller with 16 buttons with an Arduino board"/>
+
     <p>I enjoy <a href="/#things">building stuff</a> that includes electronics, and I always wanted to build something using Arduino.</p>
 
     <p>One of the most common builds for beginners I found was a MIDI controller. <strong>A MIDI controller is any hardware that sends MIDI data (Musical Instrument Digital Interface) to a device to trigger sounds and make music.</strong></p>

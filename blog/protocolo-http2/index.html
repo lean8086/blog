@@ -33,29 +33,17 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Protocolo HTTP/2</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2015-03-03">March 03, 2015</time></p>
-    <p class="entry-head__description" itemprop="description">De qué se trata el nuevo protocolo de intercambio de datos.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2015-03-03">March 03, 2015</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="De qué se trata el nuevo protocolo de intercambio de datos.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
-    <p>El protocolo de intercambio de datos que usa la web hoy en día es lento y bastante antiguo (HTTP 1.1, es de
-      1999).</p>
-    <p>Para pedir cada archivo (html, css, js, imágenes, etc.) al servidor, se ejecuta un proceso bastante costoso en
+    <p>El protocolo de intercambio de datos que usa la web hoy en día es lento y bastante antiguo (HTTP 1.1, es de 1999). Para pedir cada archivo (html, css, js, imágenes, etc.) al servidor, se ejecuta un proceso bastante costoso en
       el que cliente y servidor se comunican y tratan de entenderse.</p>
     <p>Con el tiempo esto nos fue empujando a usar técnicas como:</p>
     <ul>
@@ -63,9 +51,7 @@
       <li>Juntar varios archivos JS o CSS en uno solo (bundles).</li>
       <li>Tener distintos sub-dominios para servir archivos estáticos.</li>
     </ul>
-    <p>Dentro de poco HTTP/2 va a dejar de ser borrador. Está basado en el conocido SPDY (de Google) que <strong>ya
-        está en todos los browsers</strong>.</p>
-    <p>HTTP/2, en resumidas cuentas, mejora muchísimo el tiempo de carga de una página.</p>
+    <p>Dentro de poco HTTP/2 va a dejar de ser borrador. Está basado en SPDY (de Google) que <strong>ya está en todos los browsers</strong>. HTTP/2, en resumidas cuentas, mejora muchísimo el tiempo de carga de una página.</p>
     <p>Algunos puntos importantes sobre esta versión:</p>
     <ul>
       <li>Deja la conexión con el server abierta, y así nos evitamos todos los siguientes handshakes.</li>

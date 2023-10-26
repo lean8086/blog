@@ -33,42 +33,23 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Incremental DOM</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2015-07-27">July 27, 2015</time></p>
-    <p class="entry-head__description" itemprop="description">Diferencias entre Virtual DOM de Facebook e Incremental DOM de Google.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2015-07-27">July 27, 2015</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Diferencias entre Virtual DOM de Facebook e Incremental DOM de Google.">
   </header>
 
-  <hr class="entry-line">
-    
   <section class="entry-body" itemprop="articleBody">
     <p>Google estuvo mejorando uno de los mejores features de React: el virtual DOM.</p>
     <p>Cuando una Single Page App re-renderiza una vista completa, se redibujan elementos que quizás no cambiaron.</p>
-    <h2 id="virtual-dom">Virtual DOM</h2>
-    <p>Es básicamente un DOM paralelo, en el que se aplica el redibujo de la vista completa. Entonces se analizan
-      cuales son las diferencias y se aplica al DOM real solo lo que cambió. Esto significa un aumento considerable en
-      la velocidad de render.</p>
+    <p>Es básicamente un DOM paralelo, en el que se aplica el redibujo de la vista completa. Entonces se analizan cuales son las diferencias y se aplica al DOM real solo lo que cambió. Esto significa un aumento considerable en la velocidad de render.</p>
     <p>La desventaja es que cuando el DOM tree es grande, la performance sufre por tener que replicar todo el DOM.</p>
-    <h2 id="incremental-dom">Incremental DOM</h2>
     <p>Google redujo el uso de memoria de esta forma:</p>
-    <blockquote>
-      <p>While creating the new (virtual) DOM tree walk along the existing tree and figure out changes as you go.
-        Allocate no memory if there is no change; if there is, mutate the existing tree (only allocating memory if
-        absolutely necessary) and apply the diff to the physical DOM.</p>
-    </blockquote>
-    <p>Les dejo el link del artículo: <a
-        href="https://github.com/google/incremental-dom">https://github.com/google/incremental-dom</a>﻿</p>
+    <blockquote>While creating the new (virtual) DOM tree walk along the existing tree and figure out changes as you go. Allocate no memory if there is no change; if there is, mutate the existing tree (only allocating memory if absolutely necessary) and apply the diff to the physical DOM.</blockquote>
+    <p>Les dejo el link del artículo: <a href="https://github.com/google/incremental-dom" rel="noopener">https://github.com/google/incremental-dom</a>﻿</p>
   </section>
 
   <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>

@@ -33,62 +33,36 @@
 
 <body>
   <header class="header" role="banner">
-    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
-        <li><a href="/#code">Code</a></li>
-        <li><a href="/#things">Things</a></li>
-        <li><a href="/#pixelart">Pixel Art</a></li>
-        <li><a href="/#blog">Blog</a></li>
-      </ul>
-    </nav>
+    <a class="header__logo pixelated" href="/#blog" title="Homepage">Leandro's Web Site</a>
   </header>
 
   <header class="entry-head">
     <h1 class="entry-head__headline" itemprop="headline">Card pattern</h1>
-    <p class="entry-head__details">by <span itemprop="author">Leandro Linares</span> — <time itemprop="dateCreated" datetime="2015-05-19">May 19, 2015</time></p>
-    <p class="entry-head__description" itemprop="description">Características de este patrón de diseño, más alla de su aspecto visual.</p>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2015-05-19">May 19, 2015</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Características de este patrón de diseño, más alla de su aspecto visual.">
   </header>
 
-  <hr class="entry-line">
-
   <section class="entry-body" itemprop="articleBody">
-    <p>Si bien la definición de qué es una Card es subjetiva, suelo escuchar el término usado para referirse a una
-      caja blanca con bordes y sombra. Pero más allá del diseño, el Card pattern se enfoca en cómo interactúa el
-      usuario con ese elemento.</p>
+    <p>Si bien la definición de qué es una Card es subjetiva, suelo escuchar el término usado para referirse a una caja blanca con bordes y sombra. Pero más allá del diseño, el Card pattern se enfoca en cómo interactúa el usuario con ese elemento.</p>
     <p>En un artículo encontré esto que me parece bastante textual:</p>
-    <blockquote>
-      <p>Designers can call the things on the screen “cards” simply because those rectangular regions look like the
-        small physical cards that have fit into our pockets for centuries. However, beyond how they look, the cards
-        I’m talking about have interactive qualities.</p>
-    </blockquote>
-    <h2 id="interacci-n-con-el-usuario">Interacción con el usuario</h2>
+    <blockquote>Designers can call the things on the screen “cards" simply because those rectangular regions look like the small physical cards that have fit into our pockets for centuries. However, beyond how they look, the cards I'm talking about have interactive qualities.</blockquote>
     <p><strong>Las Cards se centran en interacciones.</strong> Por ejemplo:</p>
     <ul>
       <li>Dar vuelta una card para ver más datos.</li>
       <li>Correr la card un poco al costado para descubrir acciones.</li>
-      <li>Hacer “pinch” en la imagen para agrandarla temporalmente.</li>
+      <li>Hacer “pinch" en la imagen para agrandarla temporalmente.</li>
       <li>Compartirla tal cual está en una red social.</li>
       <li>Moverla para generar distintas acciones.</li>
     </ul>
     <p>Un acercamiento a Cards que está implementado en MercadoLibre, son los artículos en la homepage:</p>
-    <p><img alt="Artículo de la homepage" loading="lazy" src="/blog/card-pattern/item.gif"></p>
-    <p>En un estado inicial se ve la foto y el precio del artículo. Al pasar por encima con el cursor se ve además:
-      título, cuotas, envío y la acción de agregar a favoritos.</p>
-    <p>Más allá de que está pensado únicamente para usuarios que tienen un mouse/cursor, creo que se acerca muchísimo
-      al concepto de Cards.</p>
-    <h2 id="portabilidad">Portabilidad</h2>
-    <p>Otra característica que me parece importante de las Cards es la portabilidad. Entonces, <strong>una Card de una
-        página de búsqueda podría usarse también en la homepage, en una página de producto y en un listado de Mi
-        cuenta</strong>. No solo la interacción, sino también la implementación (HTML, CSS, JS).</p>
-    <hr>
+    <p><img alt="Artículo de la homepage" src="/blog/card-pattern/item.gif"></p>
+    <p>En un estado inicial se ve la foto y el precio del artículo. Al pasar por encima con el cursor se ve además: título, cuotas, envío y la acción de agregar a favoritos. Más allá de que está pensado únicamente para usuarios que tienen un mouse/cursor, creo que se acerca muchísimo al concepto de Cards.</p>
+    <p>Otra característica que me parece importante de las Cards es la <strong>portabilidad</strong>. Entonces, <strong>una Card de una página de búsqueda podría usarse también en la homepage, en una página de producto y en un listado de Mi cuenta</strong>. No solo la interacción, sino que también la implementación (HTML, CSS, JS).</p>
     <p>Más info sobre este patrón:</p>
     <ul>
-      <li><a href="http://pando.com/2013/05/16/scroll-down-the-future-of-online-media-is-in-the-cards/">Scroll down:
-          The future of online media is in the cards</a></li>
-      <li><a href="http://echouser.com/blog/cards-the-next-paradigm/">Cards: The Next Paradigm?</a></li>
-      <li><a href="http://insideintercom.io/why-cards-are-the-future-of-the-web/">Why cards are the future of the
-          web</a></li>
+      <li><a href="http://pando.com/2013/05/16/scroll-down-the-future-of-online-media-is-in-the-cards/" rel="noopener">Scroll down: The future of online media is in the cards</a></li>
+      <li><a href="http://echouser.com/blog/cards-the-next-paradigm/" rel="noopener">Cards: The Next Paradigm?</a></li>
+      <li><a href="http://insideintercom.io/why-cards-are-the-future-of-the-web/" rel="noopener">Why cards are the future of the web</a></li>
     </ul>
   </section>
 
