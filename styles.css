@@ -415,6 +415,7 @@ a:hover {
 .entry-body {
   max-width: var(--break-point);
   margin: 0 auto;
+  font-size: 18px;
 }
 
 .entry-body .image-group {
