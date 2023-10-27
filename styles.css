@@ -511,14 +511,6 @@ a:hover {
 
 /* BIG SCREENS */
 @media (min-width: 48rem) {
-  /* .header {
-    position: fixed;
-  }
-
-  .homepage .header {
-    position: initial;
-  } */
-
   .header__nav ul {
     gap: var(--gutter-m);
   }
