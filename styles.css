@@ -51,16 +51,17 @@ body {
   max-width: 68rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-type-serif);
+h1, h2, h3, h4, h5, h6, dt {
+  font-weight: 500;
 }
 
 h1, h2, h3 {
-  font-weight: 500;
+  font-family: var(--font-type-serif);
 }
 
-dt {
-  font-weight: 500;
+h4, h5, h6 {
+  font-family: var(--font-type-sans);
+  margin-bottom: 1em;
 }
 
 a {
@@ -440,6 +441,23 @@ a:hover {
 .entry-body img,
 .entry-body lite-youtube {
   border-radius: var(--radius);
+}
+
+.entry-body figure {
+  margin: var(--gutter-m) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gutter-s);
+}
+
+.entry-body figure img {
+  margin: 0;
+}
+
+.entry-body figcaption {
+  font-size: var(--font-size-s);
+  font-style: italic;
 }
 
 .entry-body__video {
