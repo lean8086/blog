@@ -11,15 +11,23 @@
     <link>https://leandrolinares.com</link>
     <description>I use code to create human-friendly interfaces and tools to build nerdy things. I document my coding journey in tweets and blog posts, and my building process in cinematic videos.</description>
     <pubDate>Tue, 8 Dec 2020 01:00:00 +0100</pubDate>
-    <lastBuildDate>Sat, 25 Nov 2020 01:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 2 Jan 2024 01:00:00 +0100</lastBuildDate>
     <language>en</language>
     <item>
-      <title>Post-processing 3D prints</title>
+      <title>What's next for the handheld game console</title>
+      <link>https://leandrolinares.com/blog/handheld-console-next-steps/</link>
+      <pubDate>Tue, 2 Jan 2024 01:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://leandrolinares.com/blog/handheld-console-next-steps/</guid>
+      <author>Leandro Linares</author>
+      <description>What's new, what I'm working on, and what comes next.</description>
+    </item>
+    <item>
+      <title>How to build a handheld game console</title>
       <link>https://leandrolinares.com/blog/diy-handheld-game-console/</link>
-      <pubDate>Sat, 25 Nov 2020 01:00:00 +0100</pubDate>
+      <pubDate>Sat, 25 Nov 2023 01:00:00 +0100</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/diy-handheld-game-console/</guid>
       <author>Leandro Linares</author>
-      <description>I glued, smoothed, and painted this 3D printed Tesla Roadster 1/8 scale model.</description>
+      <description>All the information that I gathered building this handheld game console compiled in one place so anyone can build it.</description> 
     </item>
     <item>
       <title>Post-processing 3D prints</title>
