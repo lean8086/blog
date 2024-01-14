@@ -69,29 +69,6 @@
       margin: var(--gutter-s) 0;
     }
 
-    #lemme-know {
-      display: flex;
-      gap: var(--gutter-s);
-    }
-
-    #lemme-know [name="email"],
-    #lemme-know button {
-      height: 2rem;
-      border: 1px solid var(--color-text);
-      font-size: var(--font-size-s);
-    }
-
-    #lemme-know [name="email"] {
-      width: 60%;
-      color: var(--color-text);
-    }
-
-    #lemme-know button {
-      width: 40%;
-      background-color: var(--color-text);
-      color: var(--color-background);
-    }
-
     /* BIG SCREENS */
     @media (min-width: 48rem) {
       .entry-body--side-by-side {
@@ -176,6 +153,14 @@
       <img src="/blog/diy-handheld-game-console/opened-console-front.png" alt=""/>
 
       <p>Check out <a href="/blog/handheld-console-next-steps/">this post</a> with the details of what needs to be fixed.</p>
+
+      <p>Do you want me to e-mail you when I have news about the console? Drop your address here:</p>
+
+      <form class="lemme-know" method="post" action="https://script.google.com/macros/s/AKfycbxW332fsZdmjH0TsUDYXkLr-esSLQAKMYdsqLKbGbLp66tJo_gAvJsQbA4AkJ4MrsWJ/exec">
+        <input type="email" name="email" required placeholder="Your e-mail address"/>
+        <input type="hidden" name="src" value="/blog/diy-handheld-game-console#results"/>
+        <button type="submit">Send</button>
+      </form>
 
       <h2 id="philosophy">Philosophy</h2>
 
@@ -589,9 +574,9 @@ ENTER       26           # Start</code></pre></li>
 
           <p>Do you want me to e-mail you when I have news about the console? Drop your address here:</p>
 
-          <form id="lemme-know" method="post" action="https://script.google.com/macros/s/AKfycbxW332fsZdmjH0TsUDYXkLr-esSLQAKMYdsqLKbGbLp66tJo_gAvJsQbA4AkJ4MrsWJ/exec">
+          <form class="lemme-know" method="post" action="https://script.google.com/macros/s/AKfycbxW332fsZdmjH0TsUDYXkLr-esSLQAKMYdsqLKbGbLp66tJo_gAvJsQbA4AkJ4MrsWJ/exec">
             <input type="email" name="email" required placeholder="Your e-mail address"/>
-            <input type="hidden" name="src" value="/blog/diy-handheld-game-console"/>
+            <input type="hidden" name="src" value="/blog/diy-handheld-game-console#step-5"/>
             <button type="submit">Send</button>
           </form>
         </div>
@@ -623,15 +608,16 @@ ENTER       26           # Start</code></pre></li>
 
   <script defer src="/assets/lite-yt-embed.js"></script>
   <script>
-    const form = document.querySelector("#lemme-know")
-    form.addEventListener('submit', ev => {
-      ev.preventDefault()
-      const btn = form.querySelector("[type='submit']")
-      btn.disabled = true
-      btn.textContent = 'Sending...'
-      fetch(form.action, { method: 'POST', body: new FormData(form) })
-        .then(() => form.outerHTML = '<p class="good-message"><strong>Received! I\'ll let you know when I have news 🫡</strong></p>')
-        .catch(() => { btn.disabled = false; btn.textContent = 'Send'; btn.insertAdjacentHTML("afterend", '<p class="bad-message">There was an error. Try again, maybe?</p>') })
+    Array.from(document.querySelectorAll(".lemme-know")).forEach(form => {
+      form.addEventListener('submit', ev => {
+        ev.preventDefault()
+        const btn = form.querySelector("[type='submit']")
+        btn.disabled = true
+        btn.textContent = 'Sending...'
+        fetch(form.action, { method: 'POST', body: new FormData(form) })
+          .then(() => form.outerHTML = '<p class="good-message"><strong>Received! I\'ll let you know when I have news 🫡</strong></p>')
+          .catch(() => { btn.disabled = false; btn.textContent = 'Send'; btn.insertAdjacentHTML("afterend", '<p class="bad-message">There was an error. Try again, maybe?</p>') })
+      })
     })
   </script>
   <script>var disqus_config=function(){this.page.url='https://leandrolinares.com/blog/diy-handheld-game-console'};(function(){var d=document,s=d.createElement('script');s.src='https://lean8086.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script>

@@ -528,6 +528,40 @@ a:hover {
   border-radius: var(--radius);
 }
 
+/* DISQUS MODULE */
+
+#disqus_thread {
+  margin-top: var(--gutter-l);
+}
+
+/* LEMME KNOW MODULE */
+
+.lemme-know {
+  display: flex;
+  gap: var(--gutter-s);
+}
+
+.lemme-know [name="email"],
+.lemme-know button {
+  height: 3rem;
+  border: 1px solid var(--color-text);
+  font-size: var(--font-size-s);
+  border-radius: var(--radius);
+  padding: 0 var(--gutter-s);
+}
+
+.lemme-know [name="email"] {
+  width: 60%;
+  color: var(--color-text);
+}
+
+.lemme-know button {
+  width: 40%;
+  background-color: var(--color-text);
+  color: var(--color-background);
+  cursor: pointer;
+}
+
 /* BIG SCREENS */
 @media (min-width: 48rem) {
   .header__nav ul {

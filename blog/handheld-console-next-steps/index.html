@@ -116,10 +116,10 @@
 
     <img src="/blog/handheld-console-next-steps/ABXY-pc-layout.jpg" alt="ABXY buttons with the PC layout."/>
 
+    <p>My main priority right now is to <strong>fix those issues to make the case available to everyone</strong>. Then I'll focus on the next iteration of the console with <strong>analog thumbsticks, xbox controller buttons, a custom PCB and a good paint job</strong>.</p>
+
 
     <h2>3. What comes next</h2>
-
-    <p>My main priority right now is to <strong>fix those 3 issues to make the case available to everyone</strong>. Then I'll focus on the next iteration of the console with <strong>analog thumbsticks, xbox controller buttons, a custom PCB and a good paint job</strong>.</p>
 
     
     <h3>Thumbsticks</h3>
@@ -144,6 +144,14 @@
 
     <p>I'm looking for a name since I can't keep calling it "the handheld game console", so I'm up to hear your ideas.</p>
 
+    <p>Btw, do you want me to e-mail you when I have news about the console? Drop your address here:</p>
+
+    <form class="lemme-know" method="post" action="https://script.google.com/macros/s/AKfycbxW332fsZdmjH0TsUDYXkLr-esSLQAKMYdsqLKbGbLp66tJo_gAvJsQbA4AkJ4MrsWJ/exec">
+      <input type="email" name="email" required placeholder="Your e-mail address"/>
+      <input type="hidden" name="src" value="/blog/handheld-console-next-steps"/>
+      <button type="submit">Send</button>
+    </form>
+
     <p>That's it for now! Thank you for the patience and keep the good feedback coming.</p>
 
     <section id="disqus_thread"></section>
@@ -152,6 +160,19 @@
   <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
 
   <script defer src="/assets/lite-yt-embed.js"></script>
+  <script>
+    Array.from(document.querySelectorAll(".lemme-know")).forEach(form => {
+      form.addEventListener('submit', ev => {
+        ev.preventDefault()
+        const btn = form.querySelector("[type='submit']")
+        btn.disabled = true
+        btn.textContent = 'Sending...'
+        fetch(form.action, { method: 'POST', body: new FormData(form) })
+          .then(() => form.outerHTML = '<p class="good-message"><strong>Received! I\'ll let you know when I have news 🫡</strong></p>')
+          .catch(() => { btn.disabled = false; btn.textContent = 'Send'; btn.insertAdjacentHTML("afterend", '<p class="bad-message">There was an error. Try again, maybe?</p>') })
+      })
+    })
+  </script>
   <script>var disqus_config=function(){this.page.url='https://leandrolinares.com/blog/diy-handheld-game-console'};(function(){var d=document,s=d.createElement('script');s.src='https://lean8086.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script>
 </body>
 </html>
