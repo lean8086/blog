@@ -542,7 +542,7 @@ a:hover {
 }
 
 .lemme-know [name="email"],
-.lemme-know button {
+.lemme-know [type="submit"] {
   height: 3rem;
   border: 1px solid var(--color-text);
   font-size: var(--font-size-s);
@@ -555,11 +555,15 @@ a:hover {
   color: var(--color-text);
 }
 
-.lemme-know button {
+.lemme-know [type="submit"] {
   width: 40%;
   background-color: var(--color-text);
   color: var(--color-background);
   cursor: pointer;
+}
+
+.lemme-know [type="submit"]::after {
+  content: ' →';
 }
 
 /* BIG SCREENS */
