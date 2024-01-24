@@ -20,3 +20,4 @@ https://leandrolinares.com/blog/single-page-apps-mejorar-ux
 https://leandrolinares.com/blog/single-page-apps-mejorar-ux-2
 https://leandrolinares.com/blog/using-emoji-as-favicon
 https://leandrolinares.com/blog/velocidad-percibida-por-el-usuario
+https://leandrolinares.com/blog/web-accessibility
