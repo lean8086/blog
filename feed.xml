@@ -38,6 +38,14 @@
       <description>I glued, smoothed, and painted this 3D printed Tesla Roadster 1/8 scale model.</description>
     </item>
     <item>
+      <title>Web Accessibility</title>
+      <link>https://leandrolinares.com/blog/web-accessibility</link>
+      <pubDate>Tue, 22 Sep 2020 01:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://leandrolinares.com/blog/web-accessibility</guid>
+      <author>Leandro Linares</author>
+      <description>Introduction to the basic concepts of Web Accessibility (a11y).</description>
+    </item>
+    <item>
       <title>Building an Arduino MIDI Controller</title>
       <link>https://leandrolinares.com/blog/arduino-midi-controller/</link>
       <pubDate>Sun, 28 Jun 2020 01:00:00 +0100</pubDate>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Web Accessibility - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fff">
+  <meta name="description" content="Basic concepts to understand about Web Accessibility (a11y)">
+  <link rel="icon" href="/favicon.gif">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+
+  <meta itemprop="articleSection" content="code">
+  <meta itemprop="about" content="code">
+  <meta itemprop="mainEntityOfPage" content="https://leandrolinares.com/blog/web-accessibility">
+  <meta itemprop="inLanguage" content="es">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/blog/web-accessibility">
+  <meta name="twitter:title" content="Web Accessibility">
+  <meta name="twitter:description" content="Basic concepts to understand about Web Accessibility (a11y)">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:title" content="Web Accessibility">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/blog/web-accessibility">
+  <meta property="og:description" content="Basic concepts to understand about Web Accessibility (a11y)">
+  <meta property="og:site_name" content="Leandro Linares">
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Web Accessibility</h1>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2020-09-22">September 22, 2020</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Basic concepts to understand about Web Accessibility (a11y)">
+  </header>
+
+  <section class="entry-body" itemprop="articleBody">
+    <p>Accessibility is the practice of <strong>guaranteeing that interfaces are designed and developed to be usable by people with disabilities</strong>. It is often referred to as <strong><abbr>a11y</abbr></strong> due to having eleven letters between the first one (a) and the last one (y).</p>
+      
+    <p>The first mistake I see people make is to <strong>associate the word "disabilities" with permanent disabilities</strong>. The truth is, <strong>disabilities can be situational, temporary or permanent</strong> meaning that we all can experience them on a daily basis.</p>
+    
+    <p>These are some examples of each type of disability if we consider all the senses that a person can use on a <abbr>UI</abbr>:</p>
+
+    <img class="card__image--border" src="/blog/web-accessibility/types-of-disabilities.png" alt=""/>
+
+    <!-- <p>Here's a text-only version of the image avobe:</p>
+
+    <table>
+      <thead>
+        <tr><td></td><td>Permanent</td><td>Temporary</td><td>Situational</td></tr>
+      </thead>
+      <tbody>
+        <tr><td>Touch</td><td>One arm</td><td>Arm injury</td><td>New parent</td></tr>
+        <tr><td>See</td><td>Blind</td><td>Cataract</td><td>Distracted driver</td></tr>
+        <tr><td>Hear</td><td>Deaf</td><td>Ear infection</td><td>Bartender</td></tr>
+        <tr><td>Speak</td><td>Non-verbal</td><td>Laryngitis</td><td>Heavy accent</td></tr>
+      </tbody>
+    </table> -->
+
+    <p>Situations as commonplace as being in a subway can be considered a situational hearing disability. Considering the previous image, if your app or website requires the user to hear properly, <strong>you are not only excluding deaf people, but people with an ear infection, people who works on a noisy environment, and people using public transportation</strong>.</p>
+
+    <h2>The web is accessible by default</h2>
+    
+    <p>As front-end engineers, <strong>we choose to break it or not all the time.</strong></p>
+    
+    <p><strong>All the native <abbr>HTML</abbr> elements are built with a purpose, and they accomplish that purpose in the best possible way.</strong> As developers, we often build interactions using JavaScript as our first option, making everything work as we need. That way <strong>we might be rewriting features that <abbr>HTML</abbr> already provides, bypassing the built-in accessibility they have</strong>.</p>
+    
+    <p>The best way to avoid this is to <strong>use the right <abbr>HTML</abbr> elements for the right purpose and then enhance them</strong>. This applies not only to basic elements but also to more complex components. Some native <abbr>HTML</abbr> controls that can be used with little or no tweaking are:</p>
+
+    <ul>
+      <li><code>&lt;details&gt;</code> creates an accordion.</li>
+      <li><code>&lt;dialog&gt;</code> defines a modal window.</li>
+      <li><code>&lt;progress&gt;</code> shows a progress bar.</li>
+      <li><code>&lt;input type="date"&gt;</code> displays a whole calendar.</li>
+      <li><code>&lt;input type="color"&gt;</code> opens a complete color palette component.</li>
+      <li><code>&lt;input autocomplete="one-time-code"&gt;</code> allows to fill the input with an auth code without the need to manually copy it.</li>
+      <li><code>&lt;form&gt;</code> submits data to a server.</li>
+      <li><code>&lt;select&gt;</code> displays a list of options to choose from.</li>
+    </ul>
+
+    <p>If what you're implementing works as a button, make it a <code>&lt;button&gt;</code>. If it works as a link, make it an <code>&lt;a&gt;</code>. You can change the way it looks using <abbr>CSS</abbr>. That's what <abbr>CSS</abbr> is for. <strong>Avoid creating functionality from scratch using <code>&lt;span&gt;</code> or <code>&lt;div&gt;</code> when there are native elements for it.</strong> This should be the obvious approach, especially to more seasoned developers.</p>
+
+    <!-- <h3>The <code>alt</code> vs. <code>&lt;figcaption&gt;</code> case</h3>
+
+    <p>Study what native elements are built for</p>
+
+    <p>img alt vs figcaption https://stackoverflow.com/questions/58447538/accessibility-difference-between-img-alt-and-figcaption</p> -->
+
+    
+    <h2>WAI-ARIA</h2>
+
+    <p>WAI-ARIA is a set of attributes that <strong>add semantics to <abbr>HTML</abbr> to let browsers and assistive technologies know what is happening in the <abbr>UI</abbr></strong>. It helps to communicate advanced interactions and dynamic content.</p>
+
+    <h3>Example 1: Button that opens a dialog window</h3>
+    
+    <p>A simple example can be this markup of a button that opens a dialog window using JavaScript. As a human developer, <strong>you understand that this button shows/hides the section element, but the browser can't deduce that right away</strong>.</p>
+
+    <pre><code>&lt;button id="modal-trigger"&gt;Open modal window&lt;/button&gt;
+
+&lt;section id="modal-content"&gt;Content inside modal window&lt;/section&gt;</code></pre>
+
+    <p>To help the browser understand this better, you can add some attributes. For example:</p>
+
+    <ul>
+      <li><code>aria-haspopup</code> will say "this button opens a dialog".</li>
+      <li><code>aria-controls</code> will say "this button affects another element (id)."</li>
+      <li><code>role=dialog</code> will say "this is a UI dialog".</li>
+      <li><code>aria-hidden</code> will say "remove this from the a11y tree".</li>
+    </ul>
+
+    <p>This is how it would look like:</p>
+    
+    <pre><code>&lt;button aria-haspopup="true" aria-controls="modal-content" id="modal-trigger"&gt;Open modal window&lt;/button&gt;
+
+&lt;section role="dialog" aria-hidden="true" id="modal-content"&gt;Content inside modal window&lt;/section&gt;</code></pre>
+
+    <h3>Example 2: Button that closes a dialog window</h3>
+
+    <p>Use WAI-ARIA only when necessary. <strong>Using the right markup is often enough.</strong> This is a counter-example of a button that closes a dialog window:</p>
+
+    <pre><code>&lt;div role="button" tabindex="0"&gt;X&lt;/div&gt;</code></pre>
+    
+    <p>I've seen similar code in production uncountable times. These are some ways to take advantage of the native <abbr>HTML</abbr> elements:</p>
+
+    <ul>
+      <li>Use <code>&lt;button&gt;</code> instead of adding a <code>role=""</code> to any element.</li>
+      <li>Keep in mind that <code>&lt;span&gt;</code> and <code>&lt;div&gt;</code> are elements with no semantic meaning.</li>
+      <li>A <code>&lt;div&gt;</code> needs <code>tabindex=""</code> to make it focusable but <code>&lt;button&gt;</code> is focusable by default.</li>
+      <li>The text "X" will be read literaly as "X". Use readable words instead. You can always replace it visually with CSS.</li>
+    </ul>
+
+    <p>Here is the exact same example but using cleaner, accessible code:</p>
+
+    <pre><code>&lt;button&gt;Close&lt;/button&gt;</code></pre></code></pre>
+
+    <p>WAI-ARIA is like talking with the browser and assistive technologies to give them more information about dynamic interactions and content.</p>
+      
+    <p>Find more info about it on the <a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics" rel="noopener">MDN documentation</a>.</p>
+
+
+
+    <h3><abbr title="Accessibility Object Model">AOM</abbr> and <abbr title="Document Object Model">DOM</abbr></h3>
+
+    <p>There is an Accessibility Object Model (<abbr>AOM</abbr>) in the browser that is built from the <abbr>DOM</abbr> tree and updated whenever the <abbr>DOM</abbr> is updated.</p>
+
+    <p>Here's the <a href="https://wicg.github.io/aom/spec/" rel="noopener">unofficial draft</a>.</p>
+
+    <p>The attribute <code>aria-hidden</code> removes elements from this tree.</p>
+
+
+    <h2>User's choice</h2>
+
+    <p>Making a website accessible is basically <strong>giving the users the choice over how they consume your content</strong>.</p>
+
+    <p>For example, for animations on the UI, you can start with a static element and add an animation <strong>only when users have no preference for reduced motion</strong>:</p>
+
+    <pre><code>.logo {
+  color: black;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: alternate-colors 1s linear infinite;
+  }
+}
+
+@keyframes alternate-colors {
+  0% { color: red; }
+  50% { color: green; }
+  100% { color: blue; }
+}</code></pre>
+
+
+    <h2>Tools</h2>
+
+    <p>Some tools I use to check <abbr>a11y</abbr> include, but are not limited to:</p>
+    
+    <ul>
+      <li><a href="https://developer.chrome.com/docs/lighthouse/" rel="noopener">Lighthouse</a></li>
+      <li><a href="https://contrast-ratio.com" rel="noopener">contrast-ratio.com</a> compares 2 colors using the guidelines by the <abbr>W3C</abbr>.</li>
+      <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector" rel="noopener">Accessibility Inspector</a> on Firefox</li>
+    </ul>
+  </section>
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+</body>
+</html>
