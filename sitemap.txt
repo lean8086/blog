@@ -4,6 +4,7 @@ https://leandrolinares.com/blog/arduino-midi-controller
 https://leandrolinares.com/blog/background-offset-css
 https://leandrolinares.com/blog/calidad-vs-velocidad-desarrollo
 https://leandrolinares.com/blog/card-pattern
+https://leandrolinares.com/blog/developer-happiness
 https://leandrolinares.com/blog/diy-handheld-game-console
 https://leandrolinares.com/blog/dudas-comunes-microdata
 https://leandrolinares.com/blog/evitar-redundancia-roles-aria
