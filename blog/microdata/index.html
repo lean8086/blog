@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Microdata - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fff">
+  <meta name="description" content="Introduction to the basic concepts of Microdata: the structured data on the Internet.">
+  <link rel="icon" href="/favicon.gif">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+
+  <meta itemprop="articleSection" content="code">
+  <meta itemprop="about" content="code">
+  <meta itemprop="mainEntityOfPage" content="https://leandrolinares.com/blog/microdata">
+  <meta itemprop="inLanguage" content="es">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/blog/microdata">
+  <meta name="twitter:title" content="Microdata">
+  <meta name="twitter:description" content="Introduction to the basic concepts of Microdata: the structured data on the Internet.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:title" content="Microdata">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/blog/microdata">
+  <meta property="og:description" content="Introduction to the basic concepts of Microdata: the structured data on the Internet.">
+  <meta property="og:site_name" content="Leandro Linares">
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Microdata</h1>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2020-10-15">October 15, 2020</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="Introduction to the basic concepts of Microdata: the structured data on the Internet.">
+  </header>
+
+  <section class="entry-body" itemprop="articleBody">
+    <p>Microdata is a set of tags and attributes you can add to your HTML to <strong>optimize how your content is read by search engines</strong> (also known as Search Engine Optimization or SEO).</p>
+
+    <p><strong>Search engines can't understand the structure of the content of your website the same way your human users do.</strong> Let's use this HTML of a product as an example:</p>
+
+    <pre><code>&lt;article&gt;
+  &lt;h3&gt;Bose QuietComfort 35 II&lt;/h3&gt;
+  &lt;p&gt;$217.99&lt;/p&gt;
+  &lt;a href="..."&gt;See all options&lt;/a&gt;
+  &lt;img src="..." alt="..."&gt;
+&lt;/article&gt;</code></pre>
+
+    <p>Users will understand that information not only because they know what a product is and what attributes it has (name, price, images), but also because your website or app probably presents it in an understandable way. <strong>Search engines read HTML.</strong> You can help them to understand better how you are using those tags by adding some metadata.</p>
+
+    <p><strong><a href="https://schema.org" rel="noopener">Schema.org</a> is the most important maintainer of schemas for structured data.</strong> Simply define a scope and its properties. For this example I defined the card as the scope of a "Product" by defining the attributes <code>itemscope</code> and <code>itemtype</code> on the tag <code>&lt;article&gt;</code>. For the children elements, the attribute <code>itemprop</code> helps in specifying the data of the product like the <code>name</code>, <code>offers</code> (price), and <code>image</code>.</p>
+
+    <pre><code>&lt;article itemscope itemtype="https://schema.org/Product"&gt;
+  &lt;h3 itemprop="name"&gt;Bose QuietComfort 35 II&lt;/h3&gt;
+  &lt;p itemprop="offers"&gt;$217.99&lt;/p&gt;
+  &lt;a href="..."&gt;See all options&lt;/a&gt;
+  &lt;img itemprop="image" src="..." alt="..."&gt;
+&lt;/article&gt;</code></pre>
+
+    <p>Find every available scope and its properties at <a href="https://schema.org" rel="noopener">schema.org</a></p>
+
+    <p>You can check if everything looks good using <a href="https://search.google.com/test/rich-results" rel="noopener">Google Rich Results Test</a>.</p>
+    
+    <!-- Microdata is part of the HTML standard and widely accepted by all the major browsers! -->
+  </section>
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+</body>
+</html>

@@ -10,6 +10,7 @@ https://leandrolinares.com/blog/evitar-redundancia-roles-aria
 https://leandrolinares.com/blog/handheld-console-next-steps
 https://leandrolinares.com/blog/imagenes-retina-hidpi
 https://leandrolinares.com/blog/incremental-dom
+https://leandrolinares.com/blog/microdata
 https://leandrolinares.com/blog/microinteractions
 https://leandrolinares.com/blog/multi-device-layout-patterns
 https://leandrolinares.com/blog/node-dependencies-vs-devdependencies
