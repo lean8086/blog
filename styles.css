@@ -591,8 +591,12 @@ a:hover {
     padding-right: var(--gutter-m);
   }
 
+  .blog-entries {
+    align-items: baseline;
+  }
+
   .blog-entry {
-    flex-basis: 45%;
+    flex-basis: 30%;
   }
 
   .entry-head {
