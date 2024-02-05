@@ -10,8 +10,8 @@
     <atom:link href="https://leandrolinares.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>https://leandrolinares.com</link>
     <description>I use code to create human-friendly interfaces and tools to build nerdy things. I document my coding journey in tweets and blog posts, and my building process in cinematic videos.</description>
-    <pubDate>Tue, 8 Dec 2020 02:00:00 +0100</pubDate>
-    <lastBuildDate>Sun, 4 Feb 2024 01:00:00 +0100</lastBuildDate>
+    <pubDate>Tue, 8 Dec 2020 01:00:00 +0100</pubDate>
+    <lastBuildDate>Mon, 5 Feb 2024 01:00:00 +0100</lastBuildDate>
     <language>en</language>
     <item>
       <title>What's next for the handheld game console</title>
@@ -52,6 +52,14 @@
       <guid isPermaLink="true">https://leandrolinares.com/blog/microdata/</guid>
       <author>Leandro Linares</author>
       <description>Introduction to the basic concepts of Microdata: the structured data on the Internet.</description>
+    </item>
+    <item>
+      <title>Learning UX over DX</title>
+      <link>https://leandrolinares.com/blog/learning-ux-over-dx</link>
+      <pubDate>Tue, 22 Sep 2020 01:00:00 +0100</pubDate>
+      <guid isPermaLink="true">https://leandrolinares.com/blog/learning-ux-over-dx</guid>
+      <author>Leandro Linares</author>
+      <description>Frameworks are tools for developers, not for users. Good UX is the end, the frameworks we use are the means to that end.</description>
     </item>
     <item>
       <title>Web Accessibility</title>

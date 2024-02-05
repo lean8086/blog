@@ -452,6 +452,7 @@ a:hover {
 .entry-body figcaption {
   font-size: var(--font-size-s);
   font-style: italic;
+  text-align: center;
 }
 
 .entry-body__video {
