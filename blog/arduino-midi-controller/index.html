@@ -56,7 +56,7 @@
 
     <h2 id="the-project">The Project</h2>
 
-    <p>By building my own Arduino MIDI Controller, I intended to <strong>do an enjoyable project</strong>, keeping the noise at the lowest. <strong>Something any beginner could follow.</strong> To accomplish that, I used the <a href="https://www.midifighter.com/#3D" target="_blank" rel="noopener">MIDI Fighter 3D</a> as a base inspiration and <strong>removed every non-essential feature</strong>.</p>
+    <p>By building my own Arduino MIDI Controller, I intended to <strong>do an enjoyable project</strong>, keeping the noise at the lowest. <strong>Something any beginner could follow.</strong> To accomplish that, I used the <a href="https://www.midifighter.com/#Spectra" target="_blank" rel="noopener">MIDI Fighter Spectra</a> as a base inspiration and <strong>removed every non-essential feature</strong>.</p>
 
     <p><strong>The total cost of my project was under $30</strong>, and the list of materials was concise (affiliate links):</p>
     <ul>
@@ -78,19 +78,19 @@
 
     <p>The official Arduino boards with native USB support are <strong>Arduino Due, Arduino Zero, Arduino Leonardo, Arduino Micro</strong>. These boards have integrated USB support, which means they can act as a USB MIDI device.</p>
 
-    <p>I decided to go with a clone of the <a href="https://www.arduino.cc/en/Main/Arduino_BoardLeonardo" target="_blank" rel="noopener">Arduino Leonardo</a>. It has enough inputs for this project, and it also includes headers, which makes it easier to plug/unplug wires.</p>
+    <p>I decided to go with a clone of the <a href="https://docs.arduino.cc/hardware/leonardo/" target="_blank" rel="noopener">Arduino Leonardo</a>. It has enough inputs for this project, and it also includes headers, which makes it easier to plug/unplug wires.</p>
 
     <h2 id="first-steps">First Steps</h2>
 
     <p>Although I'll explain step-by-step how I implemented the code for this project, <strong>you can download the <a href="https://gist.github.com/lean8086/7de896c3b8f29d15e092e17ad177d055" target="_blank" rel="noopener">final version</a></strong>.</p>
 
-    <p>To upload code to the board, you need to use the <a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener">Arduino IDE</a>. They also have a handy Web editor, but they have a limited quota on times per day to compile code.</p>
+    <p>To upload code to the board, you need to use the <a href="https://www.arduino.cc/en/software" target="_blank" rel="noopener">Arduino IDE</a>. They also have a handy Web editor, but they have a limited quota on times per day to compile code.</p>
 
     <h3 id="step-1">Step 1. Blinking the built-in LED</h3>
 
     <p>It's funny how the "Hello World" in the world of hardware is blinking an LED.</p>
 
-    <p>It was a pleasant surprise for me to discover that <strong>Arduino Leonardo has a built-in LED that <a href="https://www.arduino.cc/en/Tutorial/Blink" target="_blank" rel="noopener">you can blink</a> to test your code</strong>. That way, you don't need to build an external circuit on a breadboard with an LED and a resistor.</p>
+    <p>It was a pleasant surprise for me to discover that <strong>Arduino Leonardo has a built-in LED that <a href="https://docs.arduino.cc/built-in-examples/basics/Blink/" target="_blank" rel="noopener">you can blink</a> to test your code</strong>. That way, you don't need to build an external circuit on a breadboard with an LED and a resistor.</p>
 
     <script src="https://gist.github.com/lean8086/4a4d95c33e937a29585d8c9d601156ac.js"></script>
 
@@ -105,7 +105,7 @@
 
     <p><strong>Every time I join the wires' exposed ends, I'm closing the circuit, and thus I can execute code in consequence.</strong></p>
 
-    <p>Each of the 20 digital pins on the Leonardo has an <a href="https://www.arduino.cc/en/Tutorial/DigitalPins" target="_blank" rel="noopener">internal resistor</a> (disconnected by default) that can be enabled using <code>INPUT_PULLUP</code>. Keep in mind that <strong>a pull-up input means the button state is inverted</strong>:</p>
+    <p>Each of the 20 digital pins on the Leonardo has an <a href="https://docs.arduino.cc/learn/microcontrollers/digital-pins/" target="_blank" rel="noopener">internal resistor</a> (disconnected by default) that can be enabled using <code>INPUT_PULLUP</code>. Keep in mind that <strong>a pull-up input means the button state is inverted</strong>:</p>
 
     <ul>
       <li><code>HIGH</code> when the circuit is open (button is NOT pressed).</li>
@@ -118,7 +118,7 @@
 
     <p><strong>This library allows an Arduino board with USB capabilities to act as a MIDI instrument over USB.</strong> Check the <a href="https://github.com/arduino-libraries/MIDIUSB" target="_blank" rel="noopener">official documentation</a> for more info.</p>
 
-    <p>Using the <a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener">Arduino IDE</a>, you can install extra <a href="https://www.arduino.cc/en/Guide/Libraries" target="_blank" rel="noopener">Arduino Libraries</a> using the Library Manager:</p>
+    <p>Using the <a href="https://www.arduino.cc/en/software" target="_blank" rel="noopener">Arduino IDE</a>, you can install extra <a href="https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-installing-a-library/" target="_blank" rel="noopener">Arduino Libraries</a> using the Library Manager:</p>
 
     <ol>
       <li>Open the IDE and click on the <strong>"Sketch" menu</strong>, then <strong>"Include Library"</strong>, then <strong>"Manage Libraries"</strong>.</li>
@@ -266,7 +266,7 @@
 
     <h3 id="ableton">Set up Ableton Live</h3>
 
-    <p>To make the MIDI Controller work with Ableton Live, follow <a href="https://help.ableton.com/hc/en-us/blog/360011853159-How-to-use-MIDI-controllers-with-Live" target="_blank" rel="noopener">these simple steps</a> from their official documentation.</p>
+    <p>To make the MIDI Controller work with Ableton Live, follow <a href="https://help.ableton.com/hc/en-us/articles/360011853159-Using-MIDI-controllers-with-Live" target="_blank" rel="noopener">these simple steps</a> from their official documentation.</p>
 
     <p><strong>Go to Preferences → Link MIDI and make sure the "Input" has "Track" and "Remote" ON and the output has "Remote" ON</strong> as well as mentioned in the guide:</p>
 
