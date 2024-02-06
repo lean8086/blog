@@ -48,12 +48,12 @@
     <pre><code>&lt;meta itemprop="price" content="123.45"/></code></pre>
     <p>Otras veces, hay data en elementos comunes:</p>
     <pre><code>&lt;span itemprop="priceCurrency" content="ARS">$&lt;/span></code></pre>
-    <p>¿Cuál es la correcta? Según la doc de <a href="https://schema.org/" rel="noopener">schema.org</a> <strong>la data se agrega a los elementos comunes</strong>. Y los meta tags son solamente para aquellos casos en los que:</p>
+    <p>¿Cuál es la correcta? Según la doc de <a href="https://schema.org/" target="_blank" rel="noopener">schema.org</a> <strong>la data se agrega a los elementos comunes</strong>. Y los meta tags son solamente para aquellos casos en los que:</p>
     <blockquote>...a web page has information that would be valuable to mark up, but the information can't be marked up because of the way it appears on the page.</blockquote>
     <p>¿Qué pasa si tengo, por ejemplo, muchos <code>itemprop="price"</code> en una misma página? Esta ok, pero todo depende del scope que se le defina a su contenedor.</p>
     <p>Los scopes pueden anidarse y se recomienda que su “tipo" esté definido:</p>
     <pre><code>&lt;div itemscope itemtype="https://schema.org/Product"></code></pre>
-    <p>Les recomiendo echarle un vistazo al <a href="https://schema.org/docs/gs.html" rel="noopener">Getting started de Schema.org</a>. Muy completo y no lleva más de 5 minutos de lectura.</p>
+    <p>Les recomiendo echarle un vistazo al <a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener">Getting started de Schema.org</a>. Muy completo y no lleva más de 5 minutos de lectura.</p>
   </section>
 
   <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
