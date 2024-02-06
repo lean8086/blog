@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="260" height="128" fill="#E8E8E8">
+<svg xmlns="https://www.w3.org/2000/svg" width="260" height="128" fill="#E8E8E8">
 <polygon points="191,5 129,0 68,5 0,52 0,63 48,73 55,115 129,128 204,115 210,73 259,63 259,52"/>
 <path d="M44,123c0,0,1-17-5-28h-2c0,0-9,14-10,28H44z"/>
 <path d="M25,121c0,0,5-16,1-29l-2-1c0,0-12,12-16,25L25,121z"/>

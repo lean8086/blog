@@ -55,23 +55,23 @@
             molestia y stress del tiempo de espera</strong>. <strong>La gente pasó mucho menos tiempo esperando,
             y así redujeron las quejas casi a cero.</strong></p>
     <p>El artículo: <a
-            href="http://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html">Why
+            href="https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html">Why
             Waiting Is Torture</a>.</p>
     <h2 id="percepci-n-de-velocidad-en-pantallas-cr-ticas">Percepción de velocidad en pantallas críticas</h2>
     <p>Un usuario común de MercadoLibre suele moverse, por ejemplo, desde la homepage o resultados de busqueda
         hacia la página de un producto.</p>
     <p>Si tenemos en cuenta algunas buenas técnicas, podemos aprovechar al máximo esa relación.</p>
     <h2 id="prefetching">Prefetching</h2>
-    <p>Si generáramos un mapa de calor con Crazy Egg (<a href="http://crazyegg.com" target="_blank" rel="noopener">http://crazyegg.com</a>)
+    <p>Si generáramos un mapa de calor con Crazy Egg (<a href="https://crazyegg.com" target="_blank" rel="noopener">https://crazyegg.com</a>)
         podríamos predecir en la homepage y en el Search, cual es la ubicación de los artículos que son
         altamente probables que sean visitados.</p>
     <p>Sabiendo esto, <strong>en la carga inicial de esas páginas podemos pre-cargar (de fondo) las páginas de
             producto que son altamente probables que el usuario visite</strong>.</p>
     <p>Para eso, en la homepage y Search deberíamos especificar qué artículos podrían ser los próximos en ser
         visitados:</p>
-    <pre><code>&lt;link rel="prefetch" href="http://articulo.ml.com.ar/MLA-123-foo-_JM" />
-&lt;link rel="prefetch" href="http://articulo.ml.com.ar/MLA-456-bar-_JM" />
-&lt;link rel="prefetch" href="http://articulo.ml.com.ar/MLA-789-baz-_JM" /></code></pre>
+    <pre><code>&lt;link rel="prefetch" href="https://articulo.ml.com.ar/MLA-123-foo-_JM" />
+&lt;link rel="prefetch" href="https://articulo.ml.com.ar/MLA-456-bar-_JM" />
+&lt;link rel="prefetch" href="https://articulo.ml.com.ar/MLA-789-baz-_JM" /></code></pre>
     <p>De esta forma, cuando se hace clic en un artículo, la carga de la página de producto es instantánea.</p>
     <p>Esto mismo pueden verlo al buscar en Google. Ellos pre-cargan siempre el primer resultado (denle unos
         segundos, a veces tarda en pre-cargarse).</p>
