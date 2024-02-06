@@ -185,17 +185,17 @@
 
     <script src="https://gist.github.com/lean8086/7de896c3b8f29d15e092e17ad177d055.js"></script>
 
-    <h3 id="step-6">Step 6 (optional): Setting up channels</h3>
+    <!-- <h3 id="step-6">For experienced coders only:</h3>
+    
+    <h4>Setting up channels</h4>
 
-    <p>In case you want to add more buttons with <strong>the ability to switch channels</strong>, like in the MIDI Fighter 3D (see image below), the Arduino Leonardo has four more pins you can use. <strong>The Arduino Leonardo has 20 digital input/output pins, of which only 16 are in use for playing notes.</strong></p>
-
-    <img src="/blog/arduino-midi-controller/midi-fighter-banks.png" alt="A MIDI Fighter with the banks buttons highlighted"/>
-
-    <p>You can use those extra buttons to update a variable in the code and send its value as a parameter to the <strong>MidiUSB.sendMIDI</strong> method:</p>
+    <p>In case you want to add push buttons with <strong>the ability to switch channels</strong>, you can update a variable in the code and send its value as a parameter to the <code>MidiUSB.sendMIDI</code> method.</p>
+    
+    <p>In this example, I define 2 push buttons on pins <code>18</code> and <code>19</code>, and read them to update the <code>channel</code> variable. Then I send the channel on the second parameter of <code>sendMIDI</code>:</p>
 
     <script src="https://gist.github.com/lean8086/ec8da7486ec3621f9f0b90542a06fcea.js"></script>
 
-    <hr class="entry-line"/>
+    <hr class="entry-line"/> -->
 
     <h2 id="the-case">The Case</h2>
 
