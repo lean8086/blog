@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <meta name="theme-color" content="#fff">
   <meta name="description" content="All the information that I gathered building this handheld game console compiled in one place so anyone can build it.">
+
   <link rel="icon" href="/favicon.gif">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
@@ -14,12 +15,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/assets/lite-yt-embed.css">
+  <link rel="canonical" href="https://leandrolinares.com/blog/diy-handheld-game-console">
 
-  <meta itemprop="mainEntityOfPage" content="https://leandrolinares.com/blog/diy-handheld-game-console/">
+  <meta itemprop="mainEntityOfPage" content="https://leandrolinares.com/blog/diy-handheld-game-console">
   <meta itemprop="inLanguage" content="en">
   <meta itemprop="image" content="https://leandrolinares.com/blog/diy-handheld-game-console/finishedl.png">
   <meta name="twitter:site" content="@lean8086">
-  <meta name="twitter:url" content="https://leandrolinares.com/blog/diy-handheld-game-console/">
+  <meta name="twitter:url" content="https://leandrolinares.com/blog/diy-handheld-game-console">
   <meta name="twitter:title" content="How to build a handheld game console">
   <meta name="twitter:description" content="All the information that I gathered building this handheld game console compiled in one place so anyone can build it.">
   <meta name="twitter:creator" content="@lean8086">
@@ -27,7 +29,7 @@
   <meta name="twitter:image" content="https://leandrolinares.com/blog/diy-handheld-game-console/finishedl.png">
   <meta property="og:title" content="How to build a handheld game console">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://leandrolinares.com/blog/diy-handheld-game-console/">
+  <meta property="og:url" content="https://leandrolinares.com/blog/diy-handheld-game-console">
   <meta property="og:description" content="All the information that I gathered building this handheld game console compiled in one place so anyone can build it.">
   <meta property="og:site_name" content="Leandro Linares">
   <meta property="og:image" content="https://leandrolinares.com/blog/diy-handheld-game-console/finishedl.png">
@@ -148,12 +150,12 @@
 
       <p>Anyone should be able to build a fully-working handheld console following this guide.</p>
 
-      <p>However, <a href="/blog/handheld-console-next-steps/">I'm currently working on fixing some structural issues on the enclusure</a>, like the way the shoulder buttons interact with their respective tactile push buttons, or the way in which the different pieces join together. <strong>This means that the farthest this guide will take you for now will be to have these results:</strong></p>
+      <p>However, <a href="/blog/handheld-console-next-steps">I'm currently working on fixing some structural issues on the enclusure</a>, like the way the shoulder buttons interact with their respective tactile push buttons, or the way in which the different pieces join together. <strong>This means that the farthest this guide will take you for now will be to have these results:</strong></p>
 
       <img src="/blog/diy-handheld-game-console/opened-console-back.png" alt=""/>
       <img src="/blog/diy-handheld-game-console/opened-console-front.png" alt=""/>
 
-      <p>Check out <a href="/blog/handheld-console-next-steps/">this post</a> with the details of what needs to be fixed.</p>
+      <p>Check out <a href="/blog/handheld-console-next-steps">this post</a> with the details of what needs to be fixed.</p>
 
       <p>Do you want me to e-mail you when I have news about the console? Drop your address here:</p>
 
@@ -212,7 +214,7 @@
       <h2>01. CPU</h2>
       <div>
         <div class="side-a">
-          <p>In order to run games or, like in my case, emulators the main thing needed is any kind of computer. Since I wanted this to be a handheld game console, <strong>my main priority was to get a small yet powerful computer. That's why I chose to work with a Single Board Computer (SBC).</strong> I've used one of them before to <a href="/blog/arcade-machine-build/">build an arcade cabinet</a> so I know that SBCs can run games smoothly.</p>
+          <p>In order to run games or, like in my case, emulators the main thing needed is any kind of computer. Since I wanted this to be a handheld game console, <strong>my main priority was to get a small yet powerful computer. That's why I chose to work with a Single Board Computer (SBC).</strong> I've used one of them before to <a href="/blog/arcade-machine-build">build an arcade cabinet</a> so I know that SBCs can run games smoothly.</p>
           
           <p>A single-board computer is a <strong>complete computer built on a single circuit board</strong>, with microprocessor, memory, input/output and other features required of a functional computer.</p>
 
@@ -240,7 +242,7 @@
 
           <h3>Overclocking the Raspberry Pi</h3>
 
-          <p>I covered this topic in another <a href="/blog/setting-up-retropie/">blog post about setting up RetroPie</a>. In my opinion, only overclock it if you have an <strong>old Raspberry Pi model and you want to run very specific games</strong>. Also, keep in mind that <strong>doing it the wrong way voids the guarantee</strong>, so do it the right way as I described here.</p>
+          <p>I covered this topic in another <a href="/blog/setting-up-retropie">blog post about setting up RetroPie</a>. In my opinion, only overclock it if you have an <strong>old Raspberry Pi model and you want to run very specific games</strong>. Also, keep in mind that <strong>doing it the wrong way voids the guarantee</strong>, so do it the right way as I described here.</p>
           
           <p><strong>The trade off on a handheld console is being conscious about heat dissipation.</strong> I added passive and active cooling to the case in case I wanted to overclock the Raspberry Pi, but I think it was unnecessary.</p>
 
@@ -559,7 +561,7 @@ ENTER       26           # Start</code></pre></li>
             <li>Glue the shoulder pieces to the main piece with super glue. The end result should look like this:
               <figure>
                 <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-shoulders.png" alt=""/>
-                <figcaption>Important: This is a terrible way of having push button at 90 degrees. I'm currently <a href="/blog/handheld-console-next-steps/">redesigning this piece to use proper 90-degrees push-buttons</a>, so in the future this can be a custom PCB.</figcaption>
+                <figcaption>Important: This is a terrible way of having push button at 90 degrees. I'm currently <a href="/blog/handheld-console-next-steps">redesigning this piece to use proper 90-degrees push-buttons</a>, so in the future this can be a custom PCB.</figcaption>
               </figure>
             </li>
             <li>Insert the push buttons into the holes. I put the squishy buttons on the d-pad and ABXY buttons, and the normal ones on the rest. The buttons should stay tight in place. Try changing the settings on the slicer if that's not the case. <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-buttons.png" alt=""/></li>
@@ -571,7 +573,7 @@ ENTER       26           # Start</code></pre></li>
 
           <h4>External shell</h4>
 
-          <p><strong>The enclosure that I designed is not publicly available yet.</strong> <a href="/blog/handheld-console-next-steps/">I'm fixing some big flaws in the design</a> before releasing it. In a nutshell: the mechanism that joins the main parts is weak, and the shoulder buttons are unusable after months (I'm switching to 90-degrees tactile buttons to imitate the xbox controller mechanism). Check out <a href="/blog/handheld-console-next-steps/">this post</a> with the details.</p>
+          <p><strong>The enclosure that I designed is not publicly available yet.</strong> <a href="/blog/handheld-console-next-steps">I'm fixing some big flaws in the design</a> before releasing it. In a nutshell: the mechanism that joins the main parts is weak, and the shoulder buttons are unusable after months (I'm switching to 90-degrees tactile buttons to imitate the xbox controller mechanism). Check out <a href="/blog/handheld-console-next-steps">this post</a> with the details.</p>
           
           <p>In the meantime, <strong>try making your own case!</strong> Use cardboard, or a metal tin box. If you have a 3d printer, try designing one yourself on <a href="https://www.tinkercad.com" target="_blank" rel="noopener">Thinkercad</a>. It can be as simple as a rectangle. <strong>You can also modify existing enclosures to fit your components</strong>.</p>
 
