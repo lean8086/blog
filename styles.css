@@ -575,8 +575,7 @@ a:hover {
 /* GALLERY MODULE */
 
 [name="galeri"],
-[name="galeri"] + img,
-.galeri label:nth-last-of-type(-n+3) {
+[name="galeri"] + img {
   display: none;
 }
 
@@ -601,12 +600,6 @@ a:hover {
   margin: 0;
   border-radius: calc(var(--radius) / 2);
   cursor: pointer;
-}
-
-@media (min-width: 48rem) {
-  .galeri label:nth-last-of-type(-n+3) {
-    display: block;
-  }
 }
 
 /* BIG SCREENS */

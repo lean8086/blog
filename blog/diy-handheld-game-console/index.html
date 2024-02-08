@@ -72,6 +72,10 @@
       margin: var(--gutter-s) 0;
     }
 
+    .galeri label:nth-last-of-type(-n+3) {
+      display: none;
+    }
+
     /* BIG SCREENS */
     @media (min-width: 48rem) {
       .entry-body--side-by-side {
@@ -111,6 +115,10 @@
       .side-b h3 {
         margin-top: 0;
         line-height: 1.4em;
+      }
+
+      .galeri label:nth-last-of-type(-n+3) {
+        display: block;
       }
     }
   </style>
