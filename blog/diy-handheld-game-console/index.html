@@ -169,11 +169,11 @@
 
       <p>I wanted the person building this console to be able to play games as early as the first step. That means <strong>having a proper game console from day one, and adding improvements in layers</strong> whenever the person can afford to work on it.</p>
 
-      <p>For example, I started playing games with just the Raspberry Pi connected to my PC monitor, an old keyboard, and a phone charger to power it. I later added a portable screen, then buttons, then a battery. And <strong>I was always able to play games no matter in which step of the process I was</strong>.</p>
+      <p>For example, I started playing games with just the Raspberry Pi connected to my PC monitor, an old keyboard, and a phone charger to power it. Later, I added a portable screen, then buttons, then a battery. And <strong>I was always able to play games regardless of which step of the process I was in</strong>.</p>
       
       <!-- <img src="/blog/diy-handheld-game-console/mvp.png" alt=""/> -->
 
-      <p>I believe building your own things make you enjoy them the most. And, <strong>enjoying them with no need to wait until you finish building them, can make the process even more enjoyable</strong>.</p>
+      <p>I believe building your own things make you enjoy them the most. And, <strong>using them with no need to wait until you finish building them, can make the process even more enjoyable</strong>.</p>
 
       <!-- <p>Building the console with those layers of improvement in mind meant for me to carefully plan my approach. <strong>I had to identify the core functionality first, and the improvements next.</strong> I boiled down the first step as this:</p>
 
@@ -206,13 +206,18 @@
       <p>These are the materials for the exact same final version I built. All of the listed items <strong>contain affiliate links</strong>. This means that <strong>without any cost to you, I might receive a small commision for sales</strong>:</p>
 
       <ul>
-        <li><a href="https://amzn.to/3rEKhcD" target="_blank" rel="noopener"><strong>Raspberry Pi 4 Model B, 4GB RAM.</strong></a> Any Raspberry Pi 1, 2, 3, 4, or 5 is ok.</li>
-        <li><a href="https://amzn.to/3ryVvPP" target="_blank" rel="noopener"><strong>5-inches 800x480 IPS Screen with integrated speaker.</strong></a> Any screen of any size and resolution will do the job. Though, in my case, <strong>the housing that I designed can only accomodate the display that I linked here</strong>.</li>
-        <li><a href="https://amzn.to/49Uliaz" target="_blank" rel="noopener"><strong>PiSugar 2 Pro / 2 Plus / S Plus / 3 Plus.</strong></a> Any UPS hat with battery suitable for the model of Raspberry Pi you got will do the job. Though, in my case, <strong>the housing that I designed can only accomodate the UPS that I linked here</strong>.</li>
-        <li><a href="https://amzn.to/3FN7VbN" target="_blank" rel="noopener"><strong>Soft silicone 6mm push-buttons</strong></a>, or any tactile button is more than ok.</li>
-        <li><a href="https://amzn.to/3AlhsWl" target="_blank" rel="noopener"><strong>Soft tactile 8mm buttons.</strong></a> These ones are more squishy, but no required.</li>
-        <!-- <li><a href="" rel="noopener"><strong>SD card.</strong></a> Any SD card on <a href="https://elinux.org/RPi_SD_cards" rel="noopener">this compatibility list</a> is suitable.</li>
-        <li><a href="" rel="noopener"><strong>22 AWG silicon-wrapped wires.</strong></a> Similar sizes are also ok. Don't get one that is too thin or too fat.</li> -->
+        <li><a href="https://amzn.to/3rEKhcD" target="_blank" rel="noopener"><strong>Raspberry Pi 4 Model B, 4GB RAM</strong></a>. Any Raspberry Pi 1, 2, 3, 4, or 5 is ok.</li>
+        <li><a href="https://amzn.to/3ryVvPP" target="_blank" rel="noopener"><strong>5-inches 800x480 IPS Screen with integrated speaker</strong></a>. Any screen of any size and resolution will do the job. Though, in my case, <strong>the housing that I designed can only accomodate the display that I linked here</strong>.</li>
+        <li><a href="https://amzn.to/49Uliaz" target="_blank" rel="noopener"><strong>PiSugar 2 Pro / 2 Plus / S Plus / 3 Plus</strong></a>. Any UPS hat with battery suitable for the model of Raspberry Pi you got will do the job. Though, in my case, <strong>the housing that I designed can only accomodate the UPS that I linked here</strong>.</li>
+        <li><a href="https://amzn.to/3FN7VbN" target="_blank" rel="noopener"><strong>Soft Silicone 6mm Push-Buttons</strong></a>, or any tactile button is more than ok.</li>
+        <li><a href="https://amzn.to/3AlhsWl" target="_blank" rel="noopener"><strong>Soft Tactile 8mm Buttons</strong></a>. These ones are more squishy, but no required.</li>
+        
+        <li><a href="https://amzn.to/488Cd75" target="_blank" rel="noopener"><strong>SD Card</strong></a>. Any SD card on <a href="https://elinux.org/RPi_SD_cards" rel="noopener">this compatibility list</a> is suitable.</li>
+        <li><a href="https://amzn.to/48irCGY" target="_blank" rel="noopener"><strong>Breadboard</strong></a> to prototype a gamepad with the push buttons.</li>
+        <li><a href="https://amzn.to/3wjZgOU" target="_blank" rel="noopener"><strong>Male to Female Jumper Wires</strong></a>. Sometimes you can get them bundled with the breadboard.</li>
+        <li><a href="https://amzn.to/4bJoE19" target="_blank" rel="noopener"><strong>40-Pins (2x20) Female GPIO Header</strong></a> to convert the PiSugar into a top-mounted hat.</li>
+        <li><a href="https://amzn.to/3SAw5i6" target="_blank" rel="noopener"><strong>M2.5 Screws and M2.5 Male to Female Standoff Spacers</strong></a>. They are often sold together and can be used on a variety of electronic projects.</li>
+        <li><a href="https://amzn.to/4bJqgYL" target="_blank" rel="noopener"><strong>Aluminum Heatsink</strong></a> or any type of cooling for Raspberry Pi that can co-exist with a hat.</li>
       </ul>
     </div>
 
@@ -248,7 +253,7 @@
 
           <h3>Overclocking the Raspberry Pi</h3>
 
-          <p>I covered this topic in another <a href="/blog/setting-up-retropie">blog post about setting up RetroPie</a>. In my opinion, only overclock it if you have an <strong>old Raspberry Pi model and you want to run very specific games</strong>. Also, keep in mind that <strong>doing it the wrong way voids the guarantee</strong>, so do it the right way as I described here.</p>
+          <p>I covered this topic in another <a href="/blog/setting-up-retropie#overclocking-the-raspberry-pi">blog post about setting up RetroPie</a>. In my opinion, only overclock it if you have an <strong>old Raspberry Pi model and you want to run very specific games</strong>. Also, keep in mind that <strong>doing it the wrong way voids the guarantee</strong>, so do it the right way as I described <a href="/blog/setting-up-retropie#overclocking-the-raspberry-pi">here</a>.</p>
           
           <p><strong>The trade off on a handheld console is being conscious about heat dissipation.</strong> I added passive and active cooling to the case in case I wanted to overclock the Raspberry Pi, but I think it was unnecessary.</p>
 
@@ -265,7 +270,9 @@
 
           <p>Another option would've been to use the Raspberry Pi Compute Module (CM3 or CM4) which <strong>features the same components of a normal Pi but in a reduced space</strong>.</p>
           
-          <p>The main cons was that I've never worked with it. <strong>I wanted to make this first iteration of the console with the things that I know the most</strong>, and then I could make it slimmer and faster adding another layer of enhacement.</p>
+          <p>The main con was that I've never worked with it. <strong>I wanted to make this first iteration of the console with the things that I know the most</strong>, and then I could make it slimmer and faster adding another layer of enhacement.</p>
+
+          <p>Also, using the Compute Module would narrow down the options people have to build this console. I guess it's way more people who have a Pi laying around than those who have a CM.</p>
 
           <figure>
             <img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-cm4.jpg" alt=""/>
@@ -283,8 +290,8 @@
 
           <ul>
             <li><a href="https://amzn.to/3rEKhcD" rel="noopener"><strong>Raspberry Pi.</strong></a> Any Raspberry Pi 1, 2, 3, 4, or 5 is ok.</li>
-            <li><a href="" rel="noopener"><strong>SD card.</strong></a> Any SD card on <a href="https://elinux.org/RPi_SD_cards" rel="noopener">this compatibility list</a> is suitable.</li>
-            <li><a href="" rel="noopener"><strong>SD card reader</strong></a>, if your computer doesn't have one integrated.</li>
+            <li><a href="" target="_blank" rel="noopener"><strong>SD card.</strong></a> Any SD card on <a href="https://elinux.org/RPi_SD_cards" rel="noopener">this compatibility list</a> is suitable.</li>
+            <li><a href="" target="_blank" rel="noopener"><strong>SD card reader</strong></a>, if your computer doesn't have one integrated.</li>
           </ul> -->
 
           <!-- <h4>Steps:</h4> -->
@@ -351,11 +358,11 @@
 
           <ul>
             <li><a href="https://amzn.to/3ryVvPP" rel="noopener"><strong>5-inches 800x480 IPS Screen with integrated speaker.</strong></a> Any screen of any size and resolution will do the job. Though, in my case, the housing that I designed can only accomodate the display that I linked here.</li>
-            <li><a href="" rel="noopener"><strong>HDMI cable.</strong></a></li>
-            <li><a href="" rel="noopener"><strong>Mini HDMI to HDMI adapter</strong></a>, if you're using a Raspberry Pi model 4 or newer.</li>
-            <li><a href="" rel="noopener"><strong>Keyboard.</strong></a></li>
-            <li><a href="" rel="noopener"><strong>USB-C power supply</strong></a>, if you're using a Raspberry Pi model 4 or newer.</li>
-            <li><a href="" rel="noopener"><strong>Micro-USB power supply</strong></a>, if you're using a Raspberry Pi model 1, 2, or 3.</li>
+            <li><a href="" target="_blank" rel="noopener"><strong>HDMI cable.</strong></a></li>
+            <li><a href="" target="_blank" rel="noopener"><strong>Mini HDMI to HDMI adapter</strong></a>, if you're using a Raspberry Pi model 4 or newer.</li>
+            <li><a href="" target="_blank" rel="noopener"><strong>Keyboard.</strong></a></li>
+            <li><a href="" target="_blank" rel="noopener"><strong>USB-C power supply</strong></a>, if you're using a Raspberry Pi model 4 or newer.</li>
+            <li><a href="" target="_blank" rel="noopener"><strong>Micro-USB power supply</strong></a>, if you're using a Raspberry Pi model 1, 2, or 3.</li>
           </ul> -->
 
           <!-- <h4>Steps:</h4> -->
@@ -457,7 +464,7 @@
             <li>Connected to the Raspberry Pi, download the <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/main/retrogame.sh" target="_blank" rel="noopener">Retrogame script</a> from <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts" target="_blank" rel="noopener">Raspberry-Pi-Installer-Scripts</a> to install the <a href="https://github.com/adafruit/Adafruit-Retrogame" target="_blank" rel="noopener">Adafruit-Retrogame</a> utility. This will allow you to map the GPIO pins to a virtual keyboard. <pre><code>$ curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/retrogame.sh > retrogame.sh
 $ sudo bash retrogame.sh</code></pre> You will be prompted to select a configuration. Choose any option and follow the steps to reboot.</li>
 
-            <li>Edit the Retrogame configuration file to map the GPIO pins to the keys you setted on <a href="#step-2">step 2</a>: <pre><code>$ sudo nano /boot/retrogame.cfg</code></pre> For a list of all the possible key IDs take a look at <a href="https://github.com/adafruit/Adafruit-Retrogame/blob/master/keyTable.h" target="_blank" rel="noopener">Retrogame's keyTable.h file</a>. Here's an example mapping my keyboard keys to the pins I've chosen: <pre><code># Key      Pin           Button
+            <li>Edit the Retrogame configuration file to map the GPIO pins to the keys you setted on <a href="#step-2">step 2</a>: <pre><code>$ sudo nano /boot/retrogame.cfg</code></pre> For a list of all the possible key IDs take a look at <a href="https://github.com/adafruit/Adafruit-Retrogame/blob/master/keyTable.h" target="_blank" rel="noopener">Retrogame's keyTable.h file</a>. Here's an example of my retrogame.cfg file where I map my keyboard keys to the pins I've chosen: <pre><code># Key      Pin           Button
 
 W           19           # Up
 S            5           # Down
@@ -476,6 +483,8 @@ C            7           # R2
 
 RIGHTSHIFT  10           # Select
 ENTER       26           # Start</code></pre></li>
+
+            <li>Save the changes and exit Nano. You can do both by just pressing Ctrl+X.</li>
 
             <li>Reboot the console and check that everything works as expected. <pre><code>$ sudo reboot</code></pre> You should be able to navigate the interface, start games, and play them using your custom gamepad. <img loading="lazy" src="/blog/diy-handheld-game-console/playing-game-with-breadboard.png" alt=""/></li>
           </ol>
