@@ -591,6 +591,7 @@ a:hover {
 
 .galeri {
   display: flex;
+  justify-content: center;
   gap: var(--gutter-s);
   margin-bottom: var(--gutter-m);
 }

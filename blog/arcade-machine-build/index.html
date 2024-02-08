@@ -31,6 +31,12 @@
   <meta property="og:description" content="I mixed old hardware with new materials to make a full-sized retro cabinet that fits in a small apartment.">
   <meta property="og:site_name" content="Leandro Linares">
   <meta property="og:image" content="https://leandrolinares.com/blog/arcade-machine-build/finished.jpg">
+
+  <style>
+    .galeri img {
+      width: 36px;
+    }
+  </style>
 </head>
 
 <body>
@@ -46,7 +52,25 @@
   </header>
 
   <section class="entry-body" itemprop="articleBody">
+    <input type="radio" name="galeri" checked/>
     <img src="/blog/arcade-machine-build/finished.jpg" alt="Finished arcade machine"/>
+    <input type="radio" name="galeri" id="galeri-0"/>
+    <img src="/blog/arcade-machine-build/gal/left-iso.jpg" alt=""/>
+    <input type="radio" name="galeri" id="galeri-1"/>
+    <img src="/blog/arcade-machine-build/gal/front.jpg" alt=""/>
+    <input type="radio" name="galeri" id="galeri-2"/>
+    <img src="/blog/arcade-machine-build/gal/lateral.jpg" alt=""/>
+    <input type="radio" name="galeri" id="galeri-4"/>
+    <img src="/blog/arcade-machine-build/gal/right-iso.jpg" alt=""/>
+    <input type="radio" name="galeri" id="galeri-5"/>
+    <img src="/blog/arcade-machine-build/gal/back-iso.jpg" alt=""/>
+    <nav class="galeri">
+      <label for="galeri-0"><img src="/blog/arcade-machine-build/gal/left-iso_s.jpg" alt=""/></label>
+      <label for="galeri-1"><img src="/blog/arcade-machine-build/gal/front_s.jpg" alt=""/></label>
+      <label for="galeri-2"><img src="/blog/arcade-machine-build/gal/lateral_s.jpg" alt=""/></label>
+      <label for="galeri-4"><img src="/blog/arcade-machine-build/gal/right-iso_s.jpg" alt=""/></label>
+      <label for="galeri-5"><img src="/blog/arcade-machine-build/gal/back-iso_s.jpg" alt=""/></label>
+    </nav>
 
     <p>Everything started back in 2013 when I luckily won a starter kit from <a href="https://makezine.com/" target="_blank" rel="noopener">Make: Magazine</a> with a Raspberry Pi Model 1.</p>
     <!-- <img loading="lazy" alt="Raspberry Pi kit" src="/blog/arcade-machine-build/01-raspberry-pi-kit.jpg"> -->
