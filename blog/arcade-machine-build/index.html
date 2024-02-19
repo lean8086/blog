@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
   <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Roboto:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
   <link rel="stylesheet" href="/styles.css">
   <link rel="canonical" href="https://leandrolinares.com/blog/arcade-machine-build">
 
@@ -55,276 +55,335 @@
     <input type="radio" name="galeri" checked/>
     <img src="/blog/arcade-machine-build/finished.jpg" alt="Finished arcade machine"/>
     <input type="radio" name="galeri" id="galeri-0"/>
-    <img src="/blog/arcade-machine-build/gal/left-iso.jpg" alt=""/>
+    <img src="/blog/arcade-machine-build/gal/left-iso.jpg" alt="The arcade machine from a front-right perspective"/>
     <input type="radio" name="galeri" id="galeri-1"/>
-    <img src="/blog/arcade-machine-build/gal/front.jpg" alt=""/>
+    <img src="/blog/arcade-machine-build/gal/front.jpg" alt="The arcade machine from a front perspective"/>
     <input type="radio" name="galeri" id="galeri-2"/>
-    <img src="/blog/arcade-machine-build/gal/lateral.jpg" alt=""/>
+    <img src="/blog/arcade-machine-build/gal/lateral.jpg" alt="The arcade machine from a lateral perspective"/>
     <input type="radio" name="galeri" id="galeri-4"/>
-    <img src="/blog/arcade-machine-build/gal/right-iso.jpg" alt=""/>
+    <img src="/blog/arcade-machine-build/gal/right-iso.jpg" alt="The arcade machine from the left perspective"/>
     <input type="radio" name="galeri" id="galeri-5"/>
-    <img src="/blog/arcade-machine-build/gal/back-iso.jpg" alt=""/>
+    <img src="/blog/arcade-machine-build/gal/back-iso.jpg" alt="The arcade machine from the back perspective"/>
     <nav class="galeri">
-      <label for="galeri-0"><img src="/blog/arcade-machine-build/gal/left-iso_s.jpg" alt=""/></label>
-      <label for="galeri-1"><img src="/blog/arcade-machine-build/gal/front_s.jpg" alt=""/></label>
-      <label for="galeri-2"><img src="/blog/arcade-machine-build/gal/lateral_s.jpg" alt=""/></label>
-      <label for="galeri-4"><img src="/blog/arcade-machine-build/gal/right-iso_s.jpg" alt=""/></label>
-      <label for="galeri-5"><img src="/blog/arcade-machine-build/gal/back-iso_s.jpg" alt=""/></label>
+      <label for="galeri-0"><img src="/blog/arcade-machine-build/gal/left-iso_s.jpg" alt="Thumbnail for the arcade machine from a front-right perspective"/></label>
+      <label for="galeri-1"><img src="/blog/arcade-machine-build/gal/front_s.jpg" alt="Thumbnail for the arcade machine from a front perspective"/></label>
+      <label for="galeri-2"><img src="/blog/arcade-machine-build/gal/lateral_s.jpg" alt="Thumbnail for the arcade machine from a lateral perspective"/></label>
+      <label for="galeri-4"><img src="/blog/arcade-machine-build/gal/right-iso_s.jpg" alt="Thumbnail for the arcade machine from the left perspective"/></label>
+      <label for="galeri-5"><img src="/blog/arcade-machine-build/gal/back-iso_s.jpg" alt="Thumbnail for the arcade machine from the back perspective"/></label>
     </nav>
 
-    <p>Everything started back in 2013 when I luckily won a starter kit from <a href="https://makezine.com/" target="_blank" rel="noopener">Make: Magazine</a> with a Raspberry Pi Model 1.</p>
-    <!-- <img loading="lazy" alt="Raspberry Pi kit" src="/blog/arcade-machine-build/01-raspberry-pi-kit.jpg"> -->
-    <p>Since then, I was looking for something interesting to build, but it was more difficult than I thought.</p>
-    <p>I've almost given up when I found <a href="https://retropie.org.uk/">RetroPie</a>.</p>
+    <p>Back in 2013 I won a starter kit for makers from the Make Magazine. It had a Raspberry Pi Model 1 and some basic components. <strong>I spent several months looking for something interesting to build, but nothing caught my attention.</strong> I remember I almost gave up when I found <a href="https://retropie.org.uk/">RetroPie</a>. <strong>RetroPie allows you to turn your Raspberry Pi into a retro-gaming machine.</strong></p>
 
+    <!-- <img loading="lazy" alt="Raspberry Pi kit" src="/blog/arcade-machine-build/01-raspberry-pi-kit.jpg"> -->
     <!-- <h2 id="retropie">RetroPie</h2> -->
-    <p>This <a href="https://retropie.org.uk/" target="_blank" rel="noopener">project</a> allows you to turn your Raspberry Pi into a retro-gaming machine. So I made a quick test with some ROMs to check how it worked. It was effortless to have a working retro console with almost zero configuration.</p>
+
+    <p>I ran a quick experiment installing some ROMs to check how it worked. I was surprised <strong>how straightforward it was to have a working retro console with almost zero configuration</strong>. Though, it took me a while to set it up properly to make the most of it. I wrote a <a href="/blog/setting-up-retropie">complete guide</a> with the entire process step by step.</p>
+
     <!-- <img loading="lazy" alt="Super Mario Bros. 3 running on RetroPie" src="/blog/arcade-machine-build/02-super-mario-bros-raspi.jpg"> -->
-    <p>It took me <a href="/blog/setting-up-retropie">many attempts to setup RetroPie to make the most of it</a>, but everything was worth it in the end.</p>
 
     <h2 id="goals">Goals</h2>
-    <p>When I had RetroPie running, I realized that I could fit everything inside an arcade cabinet.</p>
-    <p>I started looking everywhere for cabinets to restore. I only found costly wooden boxes in terrible conditions.</p>
-    <p>Most of them were:</p>
+
+    <p>After successfully running RetroPie, I realized I could fit the Raspberry Pi with its tiny footprint inside an arcade cabinet. I looked everywhere for cabinets to restore, only to find <strong>costly wooden boxes in terrible conditions. Most of them were not worthwhile for restore, heavy, difficult to move, too big for an apartment, and expensive.</strong></p>
+
+    <p>The only way to get the results I wanted would be by <strong>building an arcade cabinet from scratch</strong>. In those terms, I was looking for something that was:</p>
+
     <ul>
-      <li>Not worthwhile for restore.</li>
-      <li>Heavy/Hard to move.</li>
-      <li>Too big for an apartment.</li>
-      <li>Expensive.</li>
-    </ul>
-    <p>So I realized that the only way to get the results I wanted would be by building my arcade cabinet from scratch.</p>
-    <p>In those terms, I was looking for something that was:</p>
-    <ul>
-      <li>Easy to build and move.</li>
+      <li>Easy to build and move around.</li>
       <li>Affordable.</li>
       <li>Suitable for an apartment.</li>
       <li>Old-school/Nostalgic shape.</li>
     </ul>
 
     <h2 id="the-plans">The plans</h2>
-    <p>Right after I defined an ideal arcade machine, I looked for some information on building one.</p>
-    <p>I found <a href="https://estherkoenig.dk/mame/eng/" target="_blank" rel="noopener">Project MAME</a> that provides open-source plans to build an arcade cabinet from scratch.</p>
-    <p>It holds a PC with a keyboard and everything. But it was also a good adaptation from old-school cabinets. The most important feature is that it fits a flat-screen inside.</p>
-    <p>One of the cabinets that came up from Project MAME was this beautiful <a href="https://web.archive.org/web/20220701142857/https://zonaarcade.forumcommunity.net/?t=48865036" target="_blank" rel="noopener">Paper Mario themed arcade (in Spanish)</a>.</p>
-    <p>This maker <a href="https://img543.imageshack.us/img543/5624/repordiviciacosplanos.gif" target="_blank" rel="noopener">improved the original plans</a> to use only MAME controllers and to have a taller marquee. He also made available the <a href="https://web.archive.org/web/20220701142854/https://zonaarcade.forumcommunity.net/?t=45015457" target="_blank" rel="noopener">side art</a> and a SketchUp model.</p>
-    <img loading="lazy" alt="3D model of arcade cabinet" src="/blog/arcade-machine-build/05-3D-model.jpg">
-    <p>I only had to modify the original plans' width by 2cm so the cabinet could fit an old 26" monitor that I've already had. I followed the rest as specified.</p>
+    
+    <p>Right after setting my expectations for an ideal arcade machine, I looked for some information on building one and quickly found <a href="https://estherkoenig.dk/mame/eng/" target="_blank" rel="noopener">Project MAME</a>. <strong>The project has open-source plans to build different types of arcade cabinets from scratch.</strong> The one with the shape I was looking for was able to hold a PC with a keyboard and all. That added complexity to the build for something I didn't want to. The good part was that <strong>it was able to fit a flat screen inside</strong>.</p>
 
-    <img src="/blog/arcade-machine-build/arcade-cabinet-plans.jpg"/>
+    <p>One of the many adaptations of that cabinet was this <a href="https://web.archive.org/web/20220701142857/https://zonaarcade.forumcommunity.net/?t=48865036" target="_blank" rel="noopener">Paper Mario themed arcade (in Spanish)</a>. The author <a href="https://img543.imageshack.us/img543/5624/repordiviciacosplanos.gif" target="_blank" rel="noopener">improved the original plans</a> to <strong>use only MAME controllers and to have a taller marquee</strong>. <strong>He also made available the <a href="https://web.archive.org/web/20220701142854/https://zonaarcade.forumcommunity.net/?t=45015457" target="_blank" rel="noopener">side art</a> and a SketchUp 3D model:</strong></p>
+    
+    <img loading="lazy" alt="A 3D model of the arcade cabinet" src="/blog/arcade-machine-build/05-3D-model.jpg"/>
+    
+    <p>I only modified the width of the original plans by 2 cm. so the cabinet could fit an old 26" monitor that I've already had. I followed the rest of the plans as specified:</p>
+
+    <img src="/blog/arcade-machine-build/arcade-cabinet-plans.jpg" alt="A notebook with the hand drawn plans"/>
 
     <!-- <h2 id="a-model-in-cardboard">A model in cardboard</h2> -->
-    <p>The first approach to test the elements' size and the position was making a 1:10 model in cardboard.</p>
-    <p>That way, I was sure that all made sense and checked if something needed to be adjusted or redefined, especially after the width modification that I had to do.</p>
+
+    <p>Before even buying materials, <strong>I built a 1/10th model in cardboard to see everything together</strong>. That way, I was sure that all made sense and was able to check if anything needed to be adjusted or redefined, especially after the width modification that I had to do. The model was 17 cm. height and <strong>it helped in defining the size and distribution of the speaker grills</strong>.</p>
+
     <!-- <img loading="lazy" alt="Model in cardboard" src="/blog/arcade-machine-build/06-cardboard.jpg"> -->
-    <p>The model is 17cm in height and helped define the speakers' size and distribution.</p>
 
     <h2 id="materials">Materials</h2>
-    <p>Before I spent money on materials, there was a crucial decision to choose what kind of wood I should use: <strong>MDF, plywood, or particleboard</strong>.</p>
-    <p>I chose MDF, but if I knew how hard it was to clean up the thin powder result of sanding, I would choose another material. On the other hand, it was a very versatile wood: easy to cut, drill, and shape.</p>
+
+    <p>The most important decision was to choose what type of wood I'd use. <strong>I was between MDF, plywood, and particleboard</strong>. I chose MDF, but if I had known how hard it was to clean up the thin dust when sanding it, <strong>I'd have chosen another one</strong>. On the other hand, it was a very versatile material: <strong>easy to cut and drill</strong>.</p>
+
     <!-- <img loading="lazy" alt="MDF boards" src="/blog/arcade-machine-build/07-MDF-boards.jpg"> -->
+
     <p>The materials I used trough the entire project were:</p>
-    <h3 id="mdf-boards-15mm-">MDF boards (15mm):</h3>
+    
+    <h4 id="mdf-boards-15mm-">MDF boards (15 mm thickness):</h4>
+
+    <table>
+      <tr><th>Quantity</th><th>Width</th><th>Height</th><th>Usage</th></tr>
+      <tr><td>2</td><td>169 cm</td><td>60 cm</td><td>Both laterals</td></tr>
+      <tr><td>2</td><td>16 cm</td><td>62 cm</td><td>Marquee bottom panel and speakers panel</td></tr>
+      <tr><td>2</td><td>25 cm</td><td>62 cm</td><td>Monitor support and controllers top panel</td></tr>
+      <tr><td>1</td><td>28 cm</td><td>62 cm</td><td>Marquee top panel</td></tr>
+      <tr><td>1</td><td>12 cm</td><td>62 cm</td><td>Controllers front panel</td></tr>
+      <tr><td>1</td><td>75 cm</td><td>62 cm</td><td>Front panel</td></tr>
+      <tr><td>1</td><td>60 cm</td><td>62 cm</td><td>Back panel</td></tr>
+      <tr><td>1</td><td>45 cm</td><td>62 cm</td><td>Bottom cover</td></tr>
+      <tr><td>1</td><td>94 cm</td><td>62 cm</td><td>Back door. I went for 5 mm thickness on this one</td></tr>
+    </table>
+
+    <h4 id="crystal-clear-acrylic-sheets-">Acrylic sheets:</h4>
+
+    <table>
+      <tr><th>Quantity</th><th>Width</th><th>Height</th><th>Thickness</th><th>Usage</th></tr>
+      <tr><td>1</td><td>55 cm</td><td>62 cm</td><td>2.4 mm</td><td>Monitor cover</td></tr>
+      <tr><td>1</td><td>25 cm</td><td>62 cm</td><td>2.4 mm</td><td>Controllers art cover</td></tr>
+      <tr><td>2</td><td>13 cm</td><td>62 cm</td><td>4 mm</td><td>Marquee back and front</td></tr>
+    </table>
+
+    <h4 id="others-">Other materials:</h4>
+
     <ul>
-      <li><strong>(2) 169cm x 60cm:</strong> Both laterals</li>
-      <li><strong>28cm x 62cm:</strong> Marquee top panel</li>
-      <li><strong>(2) 16cm x 62cm:</strong> Marquee bottom panel and speakers panel</li>
-      <li><strong>(2) 25cm x 62cm:</strong> Monitor support and controllers top panel</li>
-      <li><strong>12cm x 62cm:</strong> Controllers front panel</li>
-      <li><strong>75cm x 62cm:</strong> Front panel</li>
-      <li><strong>60cm x 62cm:</strong> Back panel</li>
-      <li><strong>45cm x 62cm</strong> Bottom cover</li>
-      <li><strong>94cm x 62cm x 5mm thickness</strong> Back door</li>
-    </ul>
-    <h3 id="crystal-clear-acrylic-sheets-">Crystal-clear acrylic sheets:</h3>
-    <ul>
-      <li><strong>55cm x 62cm x 2.4mm thickness:</strong> Monitor cover</li>
-      <li><strong>25cm x 62cm x 2.4mm thickness:</strong> Controllers art cover</li>
-      <li><strong>(2) 13cm x 62cm x 4mm thickness:</strong> Marquee back and front</li>
-    </ul>
-    <h3 id="others-">Others:</h3>
-    <ul>
-      <li><a href="#strips">4cm x 2cm pine strips</a></li>
-      <li><a href="#sandpaper">80- and 360-grit sandpaper</a></li>
-      <li>#6 x 1¼" golden screws for the strips</li>
-      <li>#6 x 1½" black screws for the MDF boards</li>
+      <li>4 cm x 2 cm pine strips</li>
+      <li>80- and 360-grit sandpaper</li>
+      <li>3.5 mm x 30 mm golden screws for the strips</li>
+      <li>3.5 mm x 40 mm black screws for the MDF boards</li>
+      <li>Wood putty</li>
+      <li>White primer for MDF</li>
+      <li>Glossy white spray paint</li>
+      <li>Matte black spray paint</li>
+      <li>2 small speaker grills: 9 cm black mesh (12 cm including frame)</li>
+      <li>2 big speaker grills: 15 cm black mesh (18 cm including frame)</li>
     </ul>
 
     <h2 id="first-cuts">First cuts</h2>
-    <p>After bringing home all the MDF boards, I started drawing the shape in both laterals based on the plans. I've also used a pair of compasses to draw the curves.</p>
-    <img loading="lazy" alt="Drawings on the board" src="/blog/arcade-machine-build/08-MDF-drawings.jpg">
-    <p>I joined both laterals with paper tape to make only one cut. Then, using a jigsaw, I went from bottom to top. I always recommend moving with caution to stick to the line as much as possible.</p>
-    <!-- <figure class="image-group">
+
+    <p>After getting all the MDF boards, <strong>I drawed the shape of the cabinet in both laterals based on the plans</strong>. I've also used a pair of compasses to draw the curves.</p>
+
+    <img loading="lazy" alt="Drawings with measurements on the lateral board" src="/blog/arcade-machine-build/08-MDF-drawings.jpg"/>
+    
+    <p>I sticked both laterals together with paper tape to make only one cut. <strong>This was actually a mistake, since the thicker the surface to cut, the more the blade will bow.</strong> I fixed it later just sanding the edges.</p>
+
+    <!-- <figure>
       <img loading="lazy" alt="Jigsaw" src="/blog/arcade-machine-build/67-jigsaw.jpg"> -->
-      <img loading="lazy" alt="Boards after cut" src="/blog/arcade-machine-build/09-first-cut.jpg">
     <!-- </figure> -->
-    <p>When I finished cutting, I learned some things:</p>
-    <ul>
-      <li><strong>MDF detaches a thin powder:</strong> It doesn't matter how much protection I wore (gloves, mask, safety glasses). I've had to deal with powder in my hair and clothes for days. It was a nightmare to clean up after cut or sand. I even broke a vacuum cleaner, trying to clean it up.</li>
-      <li><strong>The hot blade will burn the wood:</strong> Unless you let the jigsaw cool down from time to time. Don't try to cut all in one single run. <img loading="lazy" alt="Burned wood" src="/blog/arcade-machine-build/10-burned-wood.jpg"></li>
-      <li><strong>While cutting thick wood, the blade curves:</strong> In my case, it would have been better not to cut both boards together. That's because the wider is what you're cutting, the more the blade tends to curve. I've had to fix the uneven edges by sanding.</li>
-    </ul>
+    <img loading="lazy" alt="The lateral boards after making cuts" src="/blog/arcade-machine-build/09-first-cut.jpg"/>
+
+    <p>After making all the cuts, I learned a couple of valuable lessons:</p>
+    
+    <ol>
+      <li><strong>MDF produces fine dust when sanded:</strong> It doesn't matter how much gloves, masks, safety glasses I wore, <strong>I had to deal with dust in my hair and clothes for days</strong>. It was a nightmare to clean up after cutting or sanding. I even broke a vacuum cleaner trying to clean everything up.</li>
+
+      <li><strong>While cutting thick wood, the blade may flex or bow:</strong> In my case, it would have been better <strong>not to cut both boards together</strong>.</li>
+
+      <li><strong>The jigsaw blade gets hot and burns the wood</strong> unless you let the jigsaw cool down from time to time. My mistake was to make lengthy cuts in one single run: <img loading="lazy" alt="Some curved cuts that appear to be burned" src="/blog/arcade-machine-build/10-burned-wood.jpg"/></li>
+    </ol>
 
     <!-- <h2 id="sandpaper">Sandpaper</h2> -->
-    <p>I used 80- and 360-grit sandpaper. While the first one is a coarse grit for smoothing surfaces and removing imperfections, the latest one is a fine grit for finishing surfaces smoothly.</p>
+    
     <!-- <img loading="lazy" alt="White sandpaper" src="/blog/arcade-machine-build/11-sandpapers.jpg"> -->
-    <p>After sanding all the edges, I achieved excellent results giving a rounded shape to the corners and fixing some mistakes I made during the cut.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Both boards sanded" src="/blog/arcade-machine-build/12-sanded-boards.jpg">
-      <img loading="lazy" alt="One of the boards sanded" src="/blog/arcade-machine-build/13-sanded-board-detail.jpg">
-    </figure>
-    <p>I later used the 360-grit sandpaper to smooth the surfaces between each paint coat.</p>
+
+    <p>I used 80- and 360-grit sandpaper to smooth the edges and surfaces. <strong>While the former is a coarse grit for smoothing surfaces and removing imperfections, the latter is a fine grit for finishing surfaces smoothly.</strong> Sanding was also good for covering all the mistakes I made during the cuts.</p>
+    
+    <img loading="lazy" alt="Both lateral boards, back to back, sanded" src="/blog/arcade-machine-build/12-sanded-boards.jpg"/>
+    <img loading="lazy" alt="Close up of one of the lateral boards, sanded" src="/blog/arcade-machine-build/13-sanded-board-detail.jpg"/>
+
+    <!-- <p>I later used the 360-grit sandpaper to smooth the surfaces between each paint coat.</p> -->
 
     <h2 id="strips">Strips</h2>
-    <p>I decided to join all the pieces with strips, glued and fixed with screws. That way, I had millimetric precision to position the MDF boards.</p>
-    <p>I cut a bunch of 4cm x 2cm pine strips to the size of boards they had to join.</p>
-    <img loading="lazy" alt="4cm x 2cm strips" src="/blog/arcade-machine-build/14-battens.jpg">
-    <p>It's unnecessary to use glue when you're already using screws, but I decided to use it anyway to hold tight the entire structure. I've also made a bigger hole for the head of the screws to give the strips a better finish.</p>
-    <img loading="lazy" alt="Holes in strips" src="/blog/arcade-machine-build/15-battens-detail.jpg">
-    <p>I attached all the strips to both lateral boards using #6 x 1¼" golden screws and carpenter's wood glue.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Attached strips - both laterals" src="/blog/arcade-machine-build/19-attached-battens-laterals.jpg">
-      <img loading="lazy" alt="Attached strips - top" src="/blog/arcade-machine-build/16-attached-battens-top.jpg">
-      <img loading="lazy" alt="Attached strips - middle" src="/blog/arcade-machine-build/17-attached-battens-middle.jpg">
-      <img loading="lazy" alt="Attached strips - bottom" src="/blog/arcade-machine-build/18-attached-battens-bottom.jpg">
-    </figure>
+
+    <p><strong>I decided to join all the pieces using strips.</strong> That way, I not only achieved millimetric precision in positioning the MDF boards but also managed to do so alone, without any help. I cut a bunch of 4 cm x 2 cm pine strips to the size of the boards they will be joining.</p>
+
+    <img loading="lazy" alt="Multiple pine strips on a table" src="/blog/arcade-machine-build/14-battens.jpg"/>
+
+    <p>It wasn't necessary to use glue when I was already using screws, but I decided to use it anyway to hold the entire structure tight. I've also used a bigger drill bit on the surface to make the screws go deeper.</p>
+
+    <img loading="lazy" alt="Pine strips being held to one of the lateral boards using paper tape" src="/blog/arcade-machine-build/15-battens-detail.jpg"/>
+
+    <p>I attached all the strips to both lateral boards using 3.5 mm x 30 mm screws and carpenter's wood glue.</p>
+
+    <img loading="lazy" alt="Pine strips attached to the lateral boards" src="/blog/arcade-machine-build/19-attached-battens-laterals.jpg"/>
+    <img loading="lazy" alt="Pine strips attached to the top board" src="/blog/arcade-machine-build/16-attached-battens-top.jpg"/>
+    <img loading="lazy" alt="Pine strips attached to the middle board" src="/blog/arcade-machine-build/17-attached-battens-middle.jpg"/>
+    <img loading="lazy" alt="Pine strips attached to the bottom board" src="/blog/arcade-machine-build/18-attached-battens-bottom.jpg"/>
 
     <h2 id="first-assembly">First assembly</h2>
-    <p>I put all the pieces together to see the final shape and size. My first impression was to see a massive fridge inside my apartment, but it was improving as the project progressed.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="First assembly" src="/blog/arcade-machine-build/20-first-assembly.jpg">
-      <img loading="lazy" alt="First assembly top details" src="/blog/arcade-machine-build/21-first-assembly-top-detail.jpg">
-    </figure>
-    <p>I started by joining the front and back panels with #6 x 1½" black screws but using no glue until I made the final touches.</p>
-    <img loading="lazy" alt="First assembly middle details" src="/blog/arcade-machine-build/22-first-assembly-middle-detail.jpg">
-    <p>I've also installed the bottom cover and attached two wheels to handle the cabinet around. I made a diagonal cut in both laterals to let the wheels lean on the floor when the cabinet is inclined.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="A wheel installed" src="/blog/arcade-machine-build/23-wheel.jpg">
-      <img loading="lazy" alt="Both wheels installed" src="/blog/arcade-machine-build/24-both-wheels.jpg">
-    </figure>
+
+    <p>I assembled all the pieces to see the final shape and size. At first, <strong>it looked like a massive fridge inside my apartment, but it began to take shape and improved as the project progressed</strong>.</p>
+
+    <img loading="lazy" alt="A half-way done cabinet standing against the wall" src="/blog/arcade-machine-build/20-first-assembly.jpg"/>
+    <img loading="lazy" alt="Top board on top of both lateral boards" src="/blog/arcade-machine-build/21-first-assembly-top-detail.jpg"/>
+
+    <p>I attached the front and back panels with 3.5 mm x 40 mm screws.</p>
+
+    <img loading="lazy" alt="Controllers board on top of both lateral boards" src="/blog/arcade-machine-build/22-first-assembly-middle-detail.jpg"/>
+
+    <p><strong>I've also installed the bottom cover and attached two wheels to move the cabinet around.</strong> I made a diagonal cut in both laterals to let the wheels lean on the floor when the cabinet is inclined.</p>
+
+    <img loading="lazy" alt="A wheel installed on the bottom back of the cabinet" src="/blog/arcade-machine-build/23-wheel.jpg"/>
+    <img loading="lazy" alt="Both wheels installed on the bottom of the cabinet" src="/blog/arcade-machine-build/24-both-wheels.jpg"/>
 
     <h2 id="monitor">Monitor</h2>
-    <p>I had an old Samsung T260n 26" LCD monitor that was perfect for this cabinet. In my opinion, an ideal size would be about 23", but I wouldn't spend money on a new monitor when I had this one at home.</p>
-    <p>One constraint was this monitor has no holes in the back to attach to a wall mount. But I found an unofficial mount that replaces the original base.</p>
+
+    <p>I had an old 26" Samsung monitor that was perfect for this cabinet. I believe that a 26-inch screen is too large for playing retro games when standing so close to it. <strong>An ideal size would be around 22" to 24", but I wouldn't spend money on a new monitor when I had this one at home.</strong></p>
+
+    <p>The problem was that this monitor has no VESA holes in the back to attach it to a wall mount. But, I found an unofficial mount that replaces the original base. <strong>I installed the mount onto a board, adding a small "T" for extra support to prevent bending under the weight of the monitor.</strong></p>
+
     <!-- <img loading="lazy" alt="Mount" src="/blog/arcade-machine-build/25-mount.jpg"> -->
-    <p>I installed the mount over a “T" board of 25cm x 62cm that I improvised to support all the weight it could handle.</p>
-    <img loading="lazy" alt="T support" src="/blog/arcade-machine-build/26-T-support.jpg">
-    <p>To make the maths to align the monitor, I made a paper doodle with the screen's size and installed it inside the cabinet.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Paper monitor" src="/blog/arcade-machine-build/27-paper-monitor.jpg">
-      <img loading="lazy" alt="Real monitor" src="/blog/arcade-machine-build/28-real-monitor.jpg">
-    </figure>
-    <img loading="lazy" alt="Installed mount, fixed inside structure" src="/blog/arcade-machine-build/29-installed-mount.jpg">
-    <p>Using some strips leftovers, I cut two back supports for the monitor and two triangles to hold the <a href="#acrylics">acrylic cover</a>.</p>
-    <!-- <figure class="image-group"> -->
-      <img loading="lazy" alt="Monitor batten supports" src="/blog/arcade-machine-build/30-monitor-supports.jpg">
+    <img loading="lazy" alt="A board with a little strip glued behind, forming a T" src="/blog/arcade-machine-build/26-T-support.jpg"/>
+
+    <p>I made a placeholder in paper to be able <strong>to see more clearly where the screen needed to be mounted</strong>.</p>
+
+    <img loading="lazy" alt="A sketch of a monitor made out of paper, installed on the wooden cabinet" src="/blog/arcade-machine-build/27-paper-monitor.jpg"/>
+    <img loading="lazy" alt="A monitor installed on the wooden cabinet" src="/blog/arcade-machine-build/28-real-monitor.jpg"/>
+
+    <img loading="lazy" alt="The metal connector that holds the monitor, installed on the wooden cabinet. The monitor is missing." src="/blog/arcade-machine-build/29-installed-mount.jpg"/>
+
+    <p>Using some leftovers of the strips, <strong>I added 2 supports on the back and 2 triangles to hold the acrylic cover</strong>.</p>
+    
+    <img loading="lazy" alt="2 wooden strips to the sides of the metal connector" src="/blog/arcade-machine-build/30-monitor-supports.jpg"/>
+    
+    <!-- <figure> -->
       <!-- <img loading="lazy" alt="Acrylic batten supports" src="/blog/arcade-machine-build/31-acrylic-supports.jpg"> -->
     <!-- </figure> -->
-    <img loading="lazy" alt="All the batten supports for the monitor area" src="/blog/arcade-machine-build/32-monitor-area-supports.jpg">
+    
+    <img loading="lazy" alt="The wooden cabinet empty. It has 4 strips that allow the monitor to be held in place" src="/blog/arcade-machine-build/32-monitor-area-supports.jpg"/>
 
     <h2 id="controllers">Controllers</h2>
-    <p>It's plenty of controllers available for DIY projects out there. I bought a MAME kit which includes:</p>
+
+    <p>There are lots of different game controllers available for DIY projects out there. <strong>I bought a "MAME kit" which included</strong>:</p>
+
     <ul>
       <li>2 Sanwa-like joysticks.</li>
-      <li>16 HAPP push buttons: 7 in red, 7 in blue, and <a href="#final-form">2 in white to play pinball</a>.</li>
+      <li>16 HAPP push buttons: 7 in red, 7 in blue, and 2 in white that I attached to the sides to play pinball games.</li>
       <li>1P/2P buttons.</li>
-      <li>USB board with cables for each button and both joysticks.</li>
+      <li>USB board with cables for every button.</li>
     </ul>
-    <p>I did a little research about button positions in arcade cabinets. I found this <a href="https://www.slagcoin.com/joystick/layout.html" target="_blank" rel="noopener">complete article</a> about the most common panel layouts.</p>
-    <p>The author of the article has also made his distributions based on all the controllers.</p>
-    <img loading="lazy" alt="Joystick layout" src="/blog/arcade-machine-build/68-joystick-layout.png">
-    <p>I used a mix between some Sega layouts and tested it on a cardboard box.</p>
-    <img loading="lazy" alt="Controllers mounted in cardboard" src="/blog/arcade-machine-build/33-controllers-in-cardboard.jpg">
-    <p>I drew the layout for both players on the MDF board and drilled.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Controllers draw in wood" src="/blog/arcade-machine-build/34-controllers-draw.jpg">
-      <img loading="lazy" alt="Controllers holes in wood - close" src="/blog/arcade-machine-build/35-controllers-holes-detail.jpg">
-    </figure>
-    <img loading="lazy" alt="Controllers holes in wood" src="/blog/arcade-machine-build/36-controllers-holes.jpg">
-    <p>Then I installed the MAME kit, including joysticks, 14 push buttons, 1P/2P buttons, and the USB board.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Installing controllers" src="/blog/arcade-machine-build/37-installing-controllers.jpg">
-      <img loading="lazy" alt="Controllers installed in the cabinet" src="/blog/arcade-machine-build/38-controllers-installed.jpg">
-    </figure>
+
+    <p>I did a little research about button positions in arcade cabinets. I found <a href="https://www.slagcoin.com/joystick/layout.html" target="_blank" rel="noopener">this article</a> about the most common layouts. The author of the post has also made their own distribution based on an average of several controllers.</p>
+
+    <img loading="lazy" alt="A diagram of 8 rounded buttons and one joystick" src="/blog/arcade-machine-build/68-joystick-layout.png"/>
+
+    <p>In my case <strong>I went for a mix between a couple of Sega layouts. I tested it on a cardboard box to be sure it looked good.</strong></p>
+
+    <img loading="lazy" alt="6 plastic red buttons and a joystick with a red ball, mounted on a cardboard box" src="/blog/arcade-machine-build/33-controllers-in-cardboard.jpg"/>
+
+    <p>I drew the holes for all the components on the MDF board and drilled all the 18 holes.</p>
+
+    <img loading="lazy" alt="A wooden board with 18 circles where the buttons are going to be" src="/blog/arcade-machine-build/34-controllers-draw.jpg"/>
+    <img loading="lazy" alt="A closeup of holes in the wood" src="/blog/arcade-machine-build/35-controllers-holes-detail.jpg"/>
+
+    <img loading="lazy" alt="All 18 holes in a wooden panel" src="/blog/arcade-machine-build/36-controllers-holes.jpg"/>
+
+    <p>I installed the MAME kit, including joysticks, 14 push buttons, 1P/2P buttons, and the USB board.</p>
+
+    <img loading="lazy" alt="All 18 buttons installed. The all the wires that connect them can be seen. There is a board in the middle where all the cables go to." src="/blog/arcade-machine-build/37-installing-controllers.jpg"/>
+    <img loading="lazy" alt="All 18 buttons installed. Half of them are red, the other half are blue" src="/blog/arcade-machine-build/38-controllers-installed.jpg"/>
 
     <h2 id="speakers">Speakers</h2>
-    <p>I had a Genius 2.1 channel speaker system with a wooden cabinet that I bought back in 2007 with my first job. It has an exceptional deep bass.</p>
-    <p>he cardboard model was handy to make the first check on speakers' size and distribution. Then I used some paper stencils to make adjustments in the actual cabinet to find the perfect spot for speakers holes and grills.</p>
-    <img loading="lazy" alt="Speaker holes" src="/blog/arcade-machine-build/40-speaker-holes.jpg">
-    <p>Besides the speaker system has only one subwoofer, I decided to make two holes to hold a 140mm computer case fan.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Bottom stencils" src="/blog/arcade-machine-build/41-bottom-stencils.jpg">
-      <img loading="lazy" alt="Attached cooler" src="/blog/arcade-machine-build/42-attached-cooler.jpg">
-    </figure>
-    <img loading="lazy" alt="Speakers installed" src="/blog/arcade-machine-build/43-speakers-installed.jpg">
-    <p>I found generic speakers grilles on <a href="https://www.aliexpress.com" target="_blank" rel="noopener">AliExpress.com</a>:</p>
+
+    <p>I had a Genius 2.1-channels speaker with subwoofer that I got back in 2007 with my first job. It has a wooden cabinet and an exceptional deep bass. The cardboard model was handy to make the first check on the size and place of the speakers. <strong>Now with the arcade cabinet right in front of me, I could double-check the ideal spots for the holes and grills.</strong></p>
+
+    <img loading="lazy" alt="Arcade cabinet with 2 rounded holes for small speakers on the top board" src="/blog/arcade-machine-build/40-speaker-holes.jpg"/>
+
+    <img loading="lazy" alt="2 rounded papers on the front bottom of the cabinet, where the speakers holes will be" src="/blog/arcade-machine-build/41-bottom-stencils.jpg"/>
+
+    <p>Even though the speakers come with only one subwoofer, <strong>I decided to make 2 holes to the cabinet. I ended up using the second one to hold a 140 mm fan.</strong></p>
+
+    <img loading="lazy" alt="A PC fan attached to one of the big holes" src="/blog/arcade-machine-build/42-attached-cooler.jpg"/>
+
+    <img loading="lazy" alt="The arcade cabinet, with everything installed. A game can be seen on the monitor." src="/blog/arcade-machine-build/43-speakers-installed.jpg"/>
+
+    <!-- <p>I found generic speakers grilles on <a href="https://www.aliexpress.com" target="_blank" rel="noopener">AliExpress.com</a>:</p>
     <ul>
       <li>(2) 9cm black mesh (12cm including frame)</li>
       <li>(2) 15cm black mesh (18cm including frame)</li>
-    </ul>
+    </ul> -->
 
     <h2 id="acrylics">Acrylics</h2>
-    <p>I bought some crystal clear acrylic boards to cover the monitor, controllers, and marquee.</p>
+
     <!-- <h3 id="monitor-cover">Monitor cover</h3> -->
-    <p>After sanding some edges of the acrylic board of 55cm x 62cm x 2.4mm, I attached it to the triangle strips and put some screws in the speakers' board's back.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Attachment to triangle strips" src="/blog/arcade-machine-build/44-triangle-battens-attach.jpg">
-      <img loading="lazy" alt="Attachment to speakers board" src="/blog/arcade-machine-build/45-speakers-board-attach.jpg">
-    </figure>
+    <p>I bought some crystal-clear <strong>acrylic boards to cover the monitor, controllers, and marquee</strong>. After sanding some edges of the biggest acrylic board, I attached it to the triangle strips and put some screws in the back of the speakers board.</p>
+
+    <img loading="lazy" alt="An acrylic attached to the front of the cabinet with screws" src="/blog/arcade-machine-build/44-triangle-battens-attach.jpg"/>
+    <img loading="lazy" alt="An acrylic attached to the back of the cabinet with screws" src="/blog/arcade-machine-build/45-speakers-board-attach.jpg"/>
+
     <!-- <h3 id="marquee">Marquee</h3> -->
-    <p>I used two acrylic sheets of 13cm x 62cm x 4mm to hold a transparent print in between. I attached both sheets with four stainless steel clamps.</p>
-    <img loading="lazy" alt="Marquee" src="/blog/arcade-machine-build/46-marquee.jpg">
+    
+    <p>For the marquee, I used <strong>2 sheets of acrylic to hold a semi-transparent print in between</strong>. I attached both sheets with 4 stainless steel clamps.</p>
+
+    <img loading="lazy" alt="The marquee on the top of the cabinet, with its light on" src="/blog/arcade-machine-build/46-marquee.jpg"/>
+
     <!-- <h3 id="controllers-cover">Controllers cover</h3> -->
-    <p>I had to drill 18 holes in the acrylic sheet of 25cm x 62cm x 2.4mm for the controllers. So I decided to get one extra sheet to do some tests.</p>
-    <p>It was a perfect choice because the first experience of drilling acrylic was awful. The sheet melted down over the heat of the drill bit and gave uneven results.</p>
-    <img loading="lazy" alt="Melted holes" src="/blog/arcade-machine-build/47-melted-holes.jpg">
-    <p>Then I realized that using water keeps the drill bit and the acrylic sheet cold.</p>
-    <img loading="lazy" alt="Drilling with water" src="/blog/arcade-machine-build/48-drilling-with-water.jpg">
-    <p>It took nearly 10 minutes to make each hole, but I finished the job with a lot of patience.</p>
-    <img loading="lazy" alt="Final acrylic holes" src="/blog/arcade-machine-build/49-final-acrylic-holes.jpg">
+
+    <p><strong>I had to drill 18 holes in an acrylic sheet to install the buttons.</strong> I'm glad I decided to get one extra sheet to do some tests because the first experience of drilling acrylic was terrible. <strong>The acrylic melted down over the heat of the drill bit.</strong></p>
+
+    <img loading="lazy" alt="4 holes on an acrylic sheet. The acrylic is melted." src="/blog/arcade-machine-build/47-melted-holes.jpg"/>
+
+    <p>Then I realized that using water keeps the drill bit and the acrylic cold.</p>
+
+    <img loading="lazy" alt="Drilling holes in the acrylic using water" src="/blog/arcade-machine-build/48-drilling-with-water.jpg"/>
+
+    <p>It took around 10 minutes to make each hole. I finished the job with a lot of patience.</p>
+    
+    <img loading="lazy" alt="An acrylic sheet with 18 holes" src="/blog/arcade-machine-build/49-final-acrylic-holes.jpg"/>
 
     <h2 id="painting">Painting</h2>
+
     <!-- <img loading="lazy" alt="Paint kit" src="/blog/arcade-machine-build/50-paint-kit.jpg"> -->
     <!-- <h3 id="wood-putty">Wood putty</h3> -->
-    <p>I covered all the screws with wood putty and sanded them until I got a smooth surface.</p>
-    <img loading="lazy" alt="Putty" src="/blog/arcade-machine-build/51-putty.jpg">
+
+    <p><strong>I covered all the screws with wood putty and sanded everything until I got a smooth surface.</strong></p>
+
+    <img loading="lazy" alt="The arcade cabinet with all the screws covered in putty" src="/blog/arcade-machine-build/51-putty.jpg"/>
+    
     <!-- <h3 id="primer">Primer</h3> -->
-    <p>I applied white primer paint for MDF to the entire cabinet. That seals the pores of the wood and set a base color to apply another painting coats.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="First coat of base paint" src="/blog/arcade-machine-build/52-first-paint.jpg">
-      <img loading="lazy" alt="Base paint" src="/blog/arcade-machine-build/53-base-paint.jpg">
-    </figure>
+    
+    <p><strong>I applied white primer paint for MDF to the entire cabinet.</strong> I made sure the first coat was applied with a more liquid consistency than necessary. That way the wood absorves the paint more easily. <strong>The primer paint seals the pores of the wood and sets a base color to apply other painting coats.</strong></p>
+
+    <img loading="lazy" alt="The lateral of the cabinet, half wooden color, half white" src="/blog/arcade-machine-build/52-first-paint.jpg"/>
+    <img loading="lazy" alt="The arcade cabinet all white" src="/blog/arcade-machine-build/53-base-paint.jpg"/>
+
     <!-- <h3 id="black-and-white">Black and white</h3> -->
-    <p>I masked all except both laterals and one of the faces of the controllers' board.</p>
-    <img loading="lazy" alt="Mask in black" src="/blog/arcade-machine-build/54-mask-in-black.jpg">
-    <p>Then applied Krylon Colormaster Gloss White to highlight the colors where later I'd place the printed art.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="White spray paint" src="/blog/arcade-machine-build/55-white-spray-paint.jpg">
-      <img loading="lazy" alt="White controllers" src="/blog/arcade-machine-build/56-white-controllers.jpg">
-    </figure>
-    <p>I used Krylon Colormaster Flat Black for the rest of the cabinet:</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Black on top" src="/blog/arcade-machine-build/57-black-on-top.jpg">
-      <img loading="lazy" alt="Black on middle" src="/blog/arcade-machine-build/58-black-on-middle.jpg">
-    </figure>
-    <img loading="lazy" alt="Black and white" src="/blog/arcade-machine-build/59-black-and-white.jpg">
+
+    <p>I masked everything except both laterals, using blue paper tape.</p>
+
+    <img loading="lazy" alt="The arcade cabinet on the floor, masked with blue tape and plastic bags" src="/blog/arcade-machine-build/54-mask-in-black.jpg"/>
+
+    <p>Then, <strong>I applied glossy white spraypaint to the sides and to the controllers board</strong>. Having a white surface helps making the colors of the printed art pop out.</p>
+
+    <img loading="lazy" alt="The lateral of the cabinet painted in glossy white" src="/blog/arcade-machine-build/55-white-spray-paint.jpg"/>
+    <img loading="lazy" alt="The wooden board with 18 holes painted in glossy white" src="/blog/arcade-machine-build/56-white-controllers.jpg"/>
+
+    <p>I applied matte black spraypaint to the rest of the cabinet.</p>
+
+    <img loading="lazy" alt="The top part of the cabinet painted in matte black" src="/blog/arcade-machine-build/57-black-on-top.jpg"/>
+    <img loading="lazy" alt="The middle part of the caninet painted in matte black" src="/blog/arcade-machine-build/58-black-on-middle.jpg"/>
+
+    <p>This is how the arcade cabinet looked like before applying the vinyls:</p>
+
+    <img loading="lazy" alt="The arcade cabinet painted in black and white" src="/blog/arcade-machine-build/59-black-and-white.jpg"/>
 
     <h2 id="self-adhesive-vinyls">Self-adhesive vinyl</h2>
-    <p>The author of the Paper Mario arcade cabinet made available the <a href="https://web.archive.org/web/20220701142854/https://zonaarcade.forumcommunity.net/?t=45015457" target="_blank" rel="noopener">side art</a>. I printed it in vinyl and installed it on all the white sides.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Vinyl in controllers" src="/blog/arcade-machine-build/60-vinyl-controllers.jpg">
-      <img loading="lazy" alt="Vinyl in marquee" src="/blog/arcade-machine-build/61-vinyl-marquee.jpg">
-      <img loading="lazy" alt="Vinyl in left side" src="/blog/arcade-machine-build/62-vinyl-left.jpg">
-      <img loading="lazy" alt="Vinyl in right side" src="/blog/arcade-machine-build/63-vinyl-right.jpg">
-      <img loading="lazy" alt="Vinyl installed in right side" src="/blog/arcade-machine-build/64-vinyl-right-installed.jpg">
-      <img loading="lazy" alt="Vinyl installed in left side" src="/blog/arcade-machine-build/65-vinyl-left-installed.jpg">
-    </figure>
 
-    <h2 id="finale">Finale</h2>
-    <p>In these two-years-long puzzle, the last piece was the white buttons on both sides to play pinball games. Those HAPP buttons are extensions of some existing buttons. That's because every retro pinball game I installed uses those controllers as a standard.</p>
-    <figure class="image-group">
-      <img loading="lazy" alt="Vinyl and pinball buttons installed in its final form" src="/blog/arcade-machine-build/00-final.jpg">
-      <img loading="lazy" alt="Vinyl installed - front view" src="/blog/arcade-machine-build/66-vinyl-front.jpg">
-    </figure>
+    <p>The author of the Paper Mario cabinet <strong>made the <a href="https://web.archive.org/web/20220701142854/https://zonaarcade.forumcommunity.net/?t=45015457" target="_blank" rel="noopener">side art</a> available</strong>. So, I printed it in vinyl and installed it on all the white boards.</p>
+
+    <img loading="lazy" alt="Vinyl applied to the controllers board." src="/blog/arcade-machine-build/60-vinyl-controllers.jpg"/>
+    <img loading="lazy" alt="Vinyl applied to the marquee" src="/blog/arcade-machine-build/61-vinyl-marquee.jpg"/>
+    <img loading="lazy" alt="Vinyl applied to the left side" src="/blog/arcade-machine-build/62-vinyl-left.jpg"/>
+    <img loading="lazy" alt="Vinyl applied to the right side" src="/blog/arcade-machine-build/63-vinyl-right.jpg"/>
+
+    <h2 id="finale">Results</h2>
+
+    <p>The cherry on the cake were the <strong>white buttons I added on both sides of the cabinet</strong>. That way <strong>I'm able to play pinball games</strong>. I connected those buttons directly to other existing buttons (left d-pad and "A") because that's what every retro pinball game uses.</p>
+
+    <img loading="lazy" alt="Vinyl and pinball buttons installed on the cabinet" src="/blog/arcade-machine-build/00-final.jpg"/>
+    <img loading="lazy" alt="The arcade machine, front perspective" src="/blog/arcade-machine-build/66-vinyl-front.jpg"/>
+    <img loading="lazy" alt="The arcade machine, right perspective" src="/blog/arcade-machine-build/64-vinyl-right-installed.jpg"/>
+    <img loading="lazy" alt="The arcade machine, left perspective" src="/blog/arcade-machine-build/65-vinyl-left-installed.jpg"/>
 
     <section id="disqus_thread"></section>
   </section>

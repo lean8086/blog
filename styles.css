@@ -7,8 +7,8 @@
   --color-border: #dadcdd;
 
   --gutter-l: 4rem;
-  --gutter-m: calc(var(--gutter-l) / 2);
-  --gutter-s: calc(var(--gutter-m) / 2);
+  --gutter-m: 2rem;
+  --gutter-s: 1rem;
 
   --font-type-sans: 'Roboto', sans-serif;
   --font-type-serif: 'Playfair Display', serif;
@@ -23,6 +23,7 @@
   --font-size-xxs: .5rem;
 
   --radius: .7rem;
+  --radius-half: .35rem;
   --visual-correction: .0625rem;
 }
 
@@ -71,6 +72,24 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+table {
+  width: 100%;
+  border-radius: var(--radius-half);
+  border: 1px solid var(--color-text);
+}
+
+th {
+  background-color: var(--color-text);
+  border-radius: var(--radius-half);
+  color: var(--color-background);
+  font-weight: 400;
+  text-align: left;
+}
+
+th, td {
+  padding: 0 .5rem;
 }
 
 .pixelated {
@@ -429,10 +448,6 @@ a:hover {
   line-height: 1.5em;
 }
 
-.entry-body .image-group {
-  margin: 0;
-}
-
 .entry-body img {
   max-width: 100%;
   max-height: 75vh;
@@ -508,7 +523,7 @@ a:hover {
   padding: .1em .3em;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  border-radius: calc(var(--radius) / 2);
+  border-radius: var(--radius-half);
   font-size: .9em;
 }
 
@@ -598,7 +613,7 @@ a:hover {
 .galeri img {
   width: 72px;
   margin: 0;
-  border-radius: calc(var(--radius) / 2);
+  border-radius: var(--radius-half);
   cursor: pointer;
 }
 
