@@ -16,6 +16,7 @@ https://leandrolinares.com/blog/microdata
 https://leandrolinares.com/blog/microinteractions
 https://leandrolinares.com/blog/multi-device-layout-patterns
 https://leandrolinares.com/blog/node-dependencies-vs-devdependencies
+https://leandrolinares.com/blog/optimistic-ui
 https://leandrolinares.com/blog/post-processing-3d-prints
 https://leandrolinares.com/blog/protocolo-http2
 https://leandrolinares.com/blog/setting-up-retropie

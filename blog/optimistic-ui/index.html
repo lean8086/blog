@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Optimistic UI - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fff">
+  <meta name="description" content="The trick to make interactions feel lightning fast.">
+  <link rel="icon" href="/favicon.gif">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+
+  <meta itemprop="mainEntityOfPage" content="https://leandrolinares.com/blog/optimistic-ui">
+  <meta itemprop="inLanguage" content="en">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/blog/optimistic-ui">
+  <meta name="twitter:title" content="Optimistic UI">
+  <meta name="twitter:description" content="The trick to make interactions feel lightning fast.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:title" content="Optimistic UI">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/blog/optimistic-ui">
+  <meta property="og:description" content="The trick to make interactions feel lightning fast.">
+  <meta property="og:site_name" content="Leandro Linares">
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
+  </header>
+
+  <header class="entry-head">
+    <h1 class="entry-head__headline" itemprop="headline">Optimistic UI</h1>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2020-11-6">November 6, 2020</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="The trick to make interactions feel lightning fast.">
+  </header>
+
+  <section class="entry-body" itemprop="articleBody">
+    <p>Back in 2012 (before the Facebook acquisition) <strong>Instagram's flow for uploading images felt like magic</strong>.</p>
+    
+    <p>The user selected a picture to upload, applied some filters, and when the "Next" button was pressed, <strong>there was no loading time to the next page</strong>. There was nothing crazy up until this point, but when the user tapped the "Publish" button after adding a title, location, and hashtags, <strong>there was once again no loading time</strong>.</p>
+    
+    <p><strong>The picture with all the data was instantly online.</strong> No waiting for the image to upload, no waiting for the post to be online. <strong>No waiting time at all.</strong> None.</p>
+
+    <img src="/blog/optimistic-ui/instagram-flow.png" alt=""/>
+
+    <p>The best analogy I could find to explain this was this case study from the Houston Airport.</p>
+
+    <h2>Houston Airport</h2>
+
+    <p>The Houston Airport was <strong>receiving a high number of complains about long waits at the baggage claim</strong>. In order to try to fix this problem, <strong>they increased the amount of baggage handlers</strong>. Naturally, the average wait fell to 8 minutes total. The problem is, <strong>they still received a high number of complains about waiting times</strong>.</p>
+
+    <p>They conducted an on-site analysis and this is what they found. After offboarding the airplane, <strong>people walked an average of 1 minute to the baggage claim area, and waited an average of 7 minutes for their luggage</strong>. That's around 12% of the time walking and 88% of the time waiting.</p>
+
+    <img src="/blog/optimistic-ui/houston-problem.png" alt=""/>
+
+    <p>The solution was to <strong>move the baggage claim area to a more distant location</strong>. The total amount of time spent was <strong>exactly the same, but now people spent more time walking than waiting</strong>.</p>
+    
+    <p><strong>It now took nearly 6 minutes to walk to the baggage claim, and only 2 minutes to wait for the luggage.</strong> This meant that people spent around 75% of the time walking and 15% of the time waiting.</p>
+
+    <img src="/blog/optimistic-ui/houston-solution.png" alt=""/>
+
+    <p>The complaints about waiting times <strong>dropped to near zero</strong>, and the conclusion was that waiting is torture. The problem is the time people <strong>spend waiting without doing anything</strong>.</p>
+
+    <p>Source: <a href="https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html" target="_blank" rel="noopener">Why Waiting Is Torture</a></p>
+
+    <h2>Instagram flow</h2>
+
+    <p>Going back to the Instagram example, a similar solution can be found. <strong>The picture starts uploading to the server the moment it is selected.</strong> In the meantime, <strong>the user is busy</strong> applying filters, and later adding a title, location and hashtags. <strong>Everything is uploaded asynchronously.</strong></p>
+      
+    <p>The moment the user taps "Publish", <strong>all the data is already on the server</strong>, so the UI can just display a success message right away.</p>
+
+    <img src="/blog/optimistic-ui/instagram-flow-explained.png" alt=""/>
+
+    <p>Source: <a href="https://www.fastcompany.com/1669788/the-3-white-lies-behind-instagrams-lightning-speed" target="_blank" rel="noopener">The 3 White Lies Behind Instagram's Lightning Speed</a></p>
+
+
+    <h2>Technical side</h2>
+
+    <p>Optimistic UI is about <strong>providing instant visual feedback to the user, without making them wait for a server response</strong>. In simple terms, the app makes it look like it's always working, even when it's not.</p>
+
+    <p>An example of an interaction that does NOT follow this pattern is something we see often. After clicking a button, its state is changed to disabled or it shows a loading spinner to make the user wait. After getting a response from the server, some feedback is given to the user:</p>
+
+    <img src="/blog/optimistic-ui/synchronous-ui.jpeg" alt=""/>
+
+    <p>The thing is that <strong>any request to a server will probably be ok the mayority of times</strong>. The UI could assume that a positive response will come and switch instantly to the final state. In the case of getting an unsuccessful response (the big minority of times), <strong>the UI could handle the failure elegantly</strong>.</p>
+
+    <p>On an optimistic UI, the button gives instant positive feedback. At the same time, it sends the request to the server and ONLY provides feedback to the user if something went wrong. This way <strong>the user doesn't have to wait for something that will be positive in most of the cases</strong>.</p>
+
+    <img src="/blog/optimistic-ui/optimistic-ui.jpeg" alt=""/>
+  </section>
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+</body>
+</html>
