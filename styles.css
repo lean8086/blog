@@ -52,7 +52,7 @@ body {
   max-width: 68rem;
 }
 
-h1, h2, h3, h4, h5, h6, dt {
+h1, h2, h3, h4, h5, h6, dt, strong {
   font-weight: 500;
 }
 
@@ -196,7 +196,7 @@ th, td {
   font-size: var(--font-size-m);
   transform: rotate(90deg);
   display: block;
-  margin: 2rem 0 1rem;
+  margin: var(--gutter-m) 0 var(--gutter-s);
 }
 
 .hero__title {
@@ -211,10 +211,6 @@ th, td {
 
 .hero__description {
   line-height: 1.6em;
-}
-
-.hero__description strong {
-  font-weight: 500;
 }
 
 .hero__nav ul {
@@ -286,6 +282,7 @@ th, td {
 
 .card {
   position: relative;
+  mix-blend-mode: multiply;
 }
 
 .card__image,
@@ -302,7 +299,6 @@ th, td {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  mix-blend-mode: multiply;
 }
 
 .card__image--border {
@@ -362,7 +358,6 @@ th, td {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  mix-blend-mode: multiply;
 }
 
 .pixelart__image {
@@ -498,10 +493,6 @@ th, td {
 
 .entry-body p {
   margin-bottom: var(--gutter-s);
-}
-
-.entry-body strong {
-  font-weight: 500;
 }
 
 .entry-body ol,
