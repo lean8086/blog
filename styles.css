@@ -288,6 +288,11 @@ th, td {
   margin-top: var(--gutter-l);
 }
 
+#disqus_thread p,
+#disqus_thread a {
+  color: var(--color-text);
+}  
+
 /* LEMME KNOW MODULE */
 
 .lemme-know {
