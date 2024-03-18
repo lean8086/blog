@@ -14,12 +14,299 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
   <link rel="stylesheet" href="/styles.css">
   <link rel="canonical" href="https://leandrolinares.com/">
+
+  <style>
+    /* Colorless links */
+    .header__nav a,
+    .hero__nav a,
+    .card__link,
+    .blog-entry__title a {
+      color: var(--color-text);
+    }
+
+    .header::before {
+      content: '';
+    }
+
+    .header__nav {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      gap: var(--gutter-s);
+      text-transform: uppercase;
+      font-size: var(--font-size-xs);
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero__figure {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__image {
+      height: 100%;
+      width: 69px;
+      max-height: 20rem;
+      margin: var(--gutter-s);
+      object-fit: contain;
+    }
+
+    .hero__details::after {
+      content: '➼';
+      font-size: var(--font-size-m);
+      transform: rotate(90deg);
+      display: block;
+      margin: var(--gutter-m) 0 var(--gutter-s);
+    }
+
+    .hero__title {
+      font-size: var(--font-size-l);
+      margin: 0;
+    }
+
+    .hero__subtitle {
+      font-size: var(--font-size-xs);
+      margin: 0;
+    }
+
+    .hero__description {
+      line-height: 1.6em;
+    }
+
+    .hero__nav {
+      list-style: none;
+      display: inline-flex;
+      gap: var(--gutter-s);
+      margin: 0;
+      padding: 0;
+      font-size: var(--font-size-xs);
+    }
+
+    .home-section {
+      padding: var(--gutter-m) var(--gutter-s);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .home-section__title {
+      font-size: var(--font-size-xl);
+      line-height: var(--font-size-xl);
+      margin: 0;
+      text-transform: capitalize;
+    }
+
+    .home-section__title-verb {
+      font-size: var(--font-size-xs);
+      line-height: var(--font-size-m);
+      text-indent: var(--visual-correction);
+      text-transform: none;
+    }
+
+    .home-section__description {
+      margin: var(--font-size-l) 0;
+      line-height: var(--font-size-m);
+    }
+
+    .home-section__cards {
+      margin: 0;
+      padding-left: 0;
+      padding-bottom: var(--font-size-m);
+      list-style: none;
+      display: flex;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      gap: var(--font-size-m);
+      background:
+        linear-gradient(to right, var(--color-background) 30%, transparent),
+        linear-gradient(to right, transparent, var(--color-background) 70%) 0 100%,
+        radial-gradient(farthest-side at 0% 50%, rgba(var(--color-main), .25), transparent),
+        radial-gradient(farthest-side at 100% 50%, rgba(var(--color-main), .25), transparent) 0 100%;
+      background-repeat: no-repeat;
+      background-size: var(--font-size-l) 100%, var(--font-size-l) 100%, var(--font-size-s) 100%, var(--font-size-s) 100%;
+      background-position: 0 0, 100%, 0 0, 100%;
+      background-attachment: local, local, scroll, scroll;
+    }
+
+    .card {
+      position: relative;
+      mix-blend-mode: multiply;
+    }
+
+    .card__image,
+    .card__title,
+    .card__description {
+      max-width: 11rem;
+    }
+
+    .card__image {
+      border-radius: var(--radius);
+      height: 16rem;
+      object-fit: cover;
+      -moz-user-select: -moz-none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .card__image--border {
+      border: 1px solid var(--color-border);
+    }
+
+    .card__link:hover {
+      text-decoration: none;
+    }
+
+    .card__title,
+    .card__description {
+      font-size: var(--font-size-s);
+      line-height: 1.5em;
+    }
+
+    .card__title {
+      font-family: var(--font-type-sans);
+      margin: var(--font-size-xs) 0 var(--font-size-xxs) var(--visual-correction);
+      font-weight: 500;
+    }
+
+    .card__date {
+      font-size: var(--font-size-xs);
+    }
+
+    .card__title--yt::before {
+      content: 'youtube.com';
+      border-radius: 4px;
+      font-size: 10px;
+      position: absolute;
+      background-color: rgba(0, 0, 0, .6);
+      color: rgba(255, 255, 255, .85);
+      /* card__link is mixblended so I had to put this inside the
+      .card__title (for it to be white) and calc the position */
+      top: calc(16rem - 15px - 8px);
+      left: 8px;
+      padding: 0 4px;
+      height: 15px;
+      line-height: 15px;
+    }
+
+    .card__description {
+      margin: 0 0 0 var(--visual-correction);
+    }
+
+    .pixelart__container {
+      background: var(--art-bg-color);
+      width: 16rem;
+      height: 16rem;
+      display: flex;
+      margin: 0 0 var(--gutter-s);
+      border-radius: var(--radius);
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .pixelart__image {
+      object-fit: cover;
+    }
+
+    #pixelart .card__title,
+    #pixelart .card__description {
+      max-width: initial;
+    }
+
+    .blog-entries {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font-size: var(--font-size-s);
+    }
+
+    .blog-entry {
+      margin: var(--gutter-s) 0;
+    }
+
+    .blog-entry__details {
+      display: flex;
+      align-items: center;
+    }
+
+    .blog-entry__title {
+      font-size: var(--font-size-m);
+      margin: var(--gutter-s) 0;
+    }
+
+    .blog-entry__description {
+      line-height: 1.5em;
+    }
+
+    @media (min-width: 48rem) {
+      .header__nav {
+        gap: var(--gutter-m);
+      }
+
+      .hero__details::after {
+        margin-top: 3rem;
+      }
+
+      .hero__title {
+        font-size: var(--font-size-xxl);
+      }
+
+      .hero__subtitle {
+        font-size: 1rem;
+      }
+
+      .hero__description {
+        width: 30rem;
+      }
+
+      .home-section {
+        padding-left: var(--gutter-m);
+        padding-right: var(--gutter-m);
+      }
+
+      .blog-entries {
+        align-items: baseline;
+      }
+
+      .blog-entry {
+        flex-basis: 30%;
+      }
+    }
+
+    /* MOTION IS ALLOWED */
+    @media (prefers-reduced-motion: no-preference) {
+      .header__logo {
+        background-image: url('data:image/gif;base64,R0lGODlhDwAPAIAAAAAAAP///yH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDphOGY0ZGJmOC0wNzVmLTQ4ZWMtODc4Ny0yYTAzYjQ4ZDFlOTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QThBNkJGNDcxODhBMTFFQTlCQzZGNkU2N0VFQTE4MjQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QThBNkJGNDYxODhBMTFFQTlCQzZGNkU2N0VFQTE4MjQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDplNGU0MDRkNi1hYWUxLTRjZjktOWZhOS1kZWZiNjRlZGFkMWUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6YThmNGRiZjgtMDc1Zi00OGVjLTg3ODctMmEwM2I0OGQxZTk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEBJABAAAsAAAAAA8ADwAAAh+Mj6nL7QliiGBKWvPcmntdWaAojqb1pRhJkc8Lx00BACH5BAQAAAAALAAAAgAPAAsAAAIdhGOAl+oIX5xP0cjSrYvthTmZF5TmOaGqpJ5aexYAIfkEBDIAAAAsAAAAAA8ADwAAAiSEY4CX6ghfnE/RyNKta9OaOY0VlOYpneq0qmlbvrDc0qsGmwUAIfkEBAAAAAAsAAAAAA8ADwAAAiaEg6kI0QubPGZShyXOXD+fXc4Ffl1XhVa4QezjTm00Hm5953pSAAAh+QQEMgAAACwAAAIADwANAAACIUQcqXvNbyKQdMZ2Ucac5+lsYjJ+FnWA18OsrOK+nZwCBQAh+QQEAAAAACwAAAQADwAJAAACGkQcqXvND+KR0VTbMM5cJ29RX9dVJGimIlAAACH5BAQyAAAALAAABgAPAAkAAAIaRBype4DMjHRtUnky1hwjr10OSDbdOVpVVQAAIfkEBAAAAAAsAAAGAA8ACQAAAhmEY4CX6ghfnE/RyMKtK/OadKKkleZ0pkkBACH5BAQyAAAALAAABAAPAAkAAAIZRAx5mo0HX5zP0MjCrXBThzCZpZXmdKZIAQAh+QQEAAAAACwAAAIADwAJAAACGUQMeZp8j96KVFbkoK67mwk2YECWpnamSAEAIfkEBDIAAAAsAAAAAA8ACQAAAhmEY4CX6ghfnE+teiHdFvuQJSFIlqZopk4BACH5BAQAAAAALAAAAAALAAsAAAIWjI+pywwfHogy2onxvVVLv0FgJpZAAQAh+QQEMgAAACwAAAQACwALAAACFoyPqcsMHx6IMtqJ8b1VS79BYCaWQAEAIfkEBAAAAAAsAAAAAA8ADwAAAiKMj6nLCt8OiGhSY9/UgecObqEXlht5ipBqduzrrnJ61UkBADs=');
+        height: 15px;
+      }
+
+      @keyframes bounce {
+        from { transform: rotate(90deg) translateX(0) }
+        to { transform: rotate(90deg) translateX(1rem) }
+      }
+
+      .hero__details::after {
+        animation: bounce ease-in-out 1s infinite alternate;
+      }
+    }
+  </style>
 </head>
 <body class="homepage">
   <header class="header" role="banner">
     <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
-    <nav class="header__nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-      <ul>
+    <nav itemscope itemtype="https://schema.org/SiteNavigationElement">
+      <ul class="header__nav">
         <li><a href="/#code">Code</a></li>
         <li><a href="/#things">Things</a></li>
         <li><a href="/#pixelart">Pixel Art</a></li>
@@ -34,10 +321,10 @@
     </figure>
     <div class="hero__details">
       <h1 class="hero__title" itemtype="name">Leandro Linares</h1>
-      <h2 class="hero__subtitle" aria-hidden="true">[Leh&dash;AHN&dash;dro]&nbsp;&nbsp;<em>pron.</em></h2>
+      <h2 class="hero__subtitle" aria-hidden="true">[Leh&dash;AHN&dash;draw, &dash;dro]&nbsp;&nbsp;<em>pron.</em></h2>
       <p class="hero__description" itemtype="description">I use code to <strong>create human-friendly interfaces</strong>, and tools to <strong>build nerdy things</strong>. I document my coding journey in <a href="https://twitter.com/lean8086" target="_blank" rel="noopener">tweets</a> and <a href="/#blog">blog posts</a>, and my building process in cinematic <a href="https://youtube.com/leandrolinares" target="_blank" rel="noopener">videos</a>.</p>
-      <nav class="hero__nav">
-        <ul>
+      <nav>
+        <ul class="hero__nav">
           <li><a href="https://twitter.com/lean8086" target="_blank" rel="noopener">Twitter</a></li>
           <li><a href="https://github.com/lean8086" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="https://linkedin.com/in/leandrolinares" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -48,287 +335,287 @@
   </section>
 
   <section class="home-section" id="code">
-    <h2 class="home-section__title"><span>I write</span> code</h2>
+    <h2 class="home-section__title"><div class="home-section__title-verb">I write</div> code</h2>
     <p class="home-section__description">Whether it's a new Web standard about to be introduced in a specific browser version, or I've had a spontaneous idea while on the tram, I always strive to create a quick demo for myself. This helps me gain a better understanding of the available possibilities.</p>
     <ol class="home-section__cards">
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/css-sphere" itemprop="url">
           <img class="card__image" src="/thumbnails/css-sphere.png" itemprop="image" alt="Screenshot of a sphere in CSS">
         </a>
-        <h3 class="card__title"><span itemprop="name">CSS 3D Sphere</span>, <time datetime="2021-02-26" itemprop="dateCreated">2021</time></h3>
+        <h3 class="card__title"><span itemprop="name">CSS 3D Sphere</span>, <time class="card__date" datetime="2021-02-26" itemprop="dateCreated">2021</time></h3>
         <p class="card__description" itemprop="description">21 stacked, bordered elements separated by equal distances create the perception of volume.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://lean8086.github.io/grammatik" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image card__image--border" style="object-position:37%;" src="/thumbnails/grammatik.png" itemprop="image" alt="Screenshot of a spell checker">
         </a>
-        <h3 class="card__title"><span itemprop="name">Spell checker</span>, <time datetime="2020-11-19" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title"><span itemprop="name">Spell checker</span>, <time class="card__date" datetime="2020-11-19" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">After counting words from 20 popular books, it suggests the nearest word for spelling mistakes.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://lean8086.github.io/wunderpaint" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" src="/thumbnails/wunderpaint.png" itemprop="image" alt="The letter W representing the name Wunderpaint">
         </a>
-        <h3 class="card__title"><span itemprop="name">Wunderpaint</span>, <time datetime="2020-10-11" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title"><span itemprop="name">Wunderpaint</span>, <time class="card__date" datetime="2020-10-11" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">A pixel art editor that only uses a canvas for processing i/o. The user interacts with an image.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://lean8086.github.io/punchy" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" src="/thumbnails/punchyjs.jpg" itemprop="image" alt="The headphones emoji">
         </a>
-        <h3 class="card__title"><span itemprop="name">Punchy</span>, <time datetime="2020-05-14" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title"><span itemprop="name">Punchy</span>, <time class="card__date" datetime="2020-05-14" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">WebMIDI and WebAudio allow playing a MIDI controller on a synthesizer or sampler.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://aggregator.now.sh" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" src="/thumbnails/aggregator0.jpg" itemprop="image" alt="Screenshot of Aggregator">
         </a>
-        <h3 class="card__title"><span itemprop="name">Feeds Aggregator</span>, <time datetime="2019-11-16" itemprop="dateCreated">2019</time></h3>
+        <h3 class="card__title"><span itemprop="name">Feeds Aggregator</span>, <time class="card__date" datetime="2019-11-16" itemprop="dateCreated">2019</time></h3>
         <p class="card__description" itemprop="description">It reads RSS feeds using a serverless function and normalizes the output for display in a list.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/css-voxels-chicken/" itemprop="url">
           <img class="card__image" src="/thumbnails/crossy-road.png" itemprop="image" alt="Screenshot of Crossy Road Chicken CSS Voxels">
         </a>
-        <h3 class="card__title"><span itemprop="name">CSS Voxels Chicken</span>, <time datetime="2019-02-16" itemprop="dateCreated">2019</time></h3>
+        <h3 class="card__title"><span itemprop="name">CSS Voxels Chicken</span>, <time class="card__date" datetime="2019-02-16" itemprop="dateCreated">2019</time></h3>
         <p class="card__description" itemprop="description">Each voxel is one HTML element with three faces. Voxels are stacked in layers along the z-axis.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/single-element-cube" itemprop="url">
           <img class="card__image" src="/thumbnails/css-cube.png" itemprop="image" alt="Screenshot of Single element CSS cube">
         </a>
-        <h3 class="card__title"><span itemprop="name">Single-Element Cube</span>, <time datetime="2019-02-10" itemprop="dateCreated">2019</time></h3>
+        <h3 class="card__title"><span itemprop="name">Single-Element Cube</span>, <time class="card__date" datetime="2019-02-10" itemprop="dateCreated">2019</time></h3>
         <p class="card__description" itemprop="description">The element and pseudo-elements serve as the 3 faces. When it rotates, it changes the origin.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://lean8086.github.io/casio-calculator" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" src="/thumbnails/calc.jpg" itemprop="image" alt="Screenshot of CSS Retro Calculator">
         </a>
-        <h3 class="card__title"><span itemprop="name">CSS Calculator</span>, <time datetime="2018-09-09" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">CSS Calculator</span>, <time class="card__date" datetime="2018-09-09" itemprop="dateCreated">2018</time></h3>
         <p class="card__description">A fully functional CSS Casio calculator built with Create React App and reducers.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://lean8086.github.io/human-readable-foursquare-filters" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" style="object-position:0" src="/thumbnails/human-readable-foursquare-filters.png" itemprop="image" alt="Screenshot of Human-readable Foursquare filters">
         </a>
-        <h3 class="card__title"><span itemprop="name">Filters for Humans</span>, <time datetime="2018-06-29" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">Filters for Humans</span>, <time class="card__date" datetime="2018-06-29" itemprop="dateCreated">2018</time></h3>
         <p class="card__description">A conceptual experiment aimed at minimizing users' learning curves for filtering lists.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/autumn-leaf" itemprop="url">
           <img class="card__image" src="/thumbnails/leaf.png" itemprop="image" alt="Screenshot of Autumn leaf">
         </a>
-        <h3 class="card__title"><span itemprop="name">Autumn Leaf</span>, <time datetime="2018-06-02" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">Autumn Leaf</span>, <time class="card__date" datetime="2018-06-02" itemprop="dateCreated">2018</time></h3>
         <p class="card__description">An emoji flattened using the text-shadow technique, over-rotating in multiple axes.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/rounded-progress-bar" itemprop="url">
           <img class="card__image" src="/thumbnails/circle-progress-bar.png" itemprop="image" alt="Screenshot of Circle progress bar">
         </a>
-        <h3 class="card__title"><span itemprop="name">Rounded Bar</span>, <time datetime="2012-10-29" itemprop="dateCreated">2012</time></h3>
+        <h3 class="card__title"><span itemprop="name">Rounded Bar</span>, <time class="card__date" datetime="2012-10-29" itemprop="dateCreated">2012</time></h3>
         <p class="card__description">Handling an SVG path from one single variable to display a wheel indicator.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/time-is-ticking" itemprop="url">
           <img class="card__image" src="/thumbnails/time-is-ticking.png" itemprop="image" alt="Screenshot of Time is ticking">
         </a>
-        <h3 class="card__title"><span itemprop="name">Time is Ticking</span>, <time datetime="2012-10-12" itemprop="dateCreated">2012</time></h3>
+        <h3 class="card__title"><span itemprop="name">Time is Ticking</span>, <time class="card__date" datetime="2012-10-12" itemprop="dateCreated">2012</time></h3>
         <p class="card__description">Modifying the new CSS property transform-origin to distribute letters around a circle.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/doodle-lander" itemprop="url">
           <img class="card__image" src="/thumbnails/doodle-lander.png" itemprop="image" alt="Screenshot of Doodle Lander">
         </a>
-        <h3 class="card__title"><span itemprop="name">Doodle Lander</span>, <time datetime="2012-10-08" itemprop="dateCreated">2012</time></h3>
+        <h3 class="card__title"><span itemprop="name">Doodle Lander</span>, <time class="card__date" datetime="2012-10-08" itemprop="dateCreated">2012</time></h3>
         <p class="card__description">Experimenting with artificial gravity on canvas to recreate some of the physics of MoonLander.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/curiosity-rover" itemprop="url">
           <img class="card__image" src="/thumbnails/mars.jpg" itemprop="image" alt="Screenshot of 70 seconds of terror">
         </a>
-        <h3 class="card__title"><span itemprop="name">70 Sec. of Terror</span>, <time datetime="2012-09-13" itemprop="dateCreated">2012</time></h3>
+        <h3 class="card__title"><span itemprop="name">70 Sec. of Terror</span>, <time class="card__date" datetime="2012-09-13" itemprop="dateCreated">2012</time></h3>
         <p class="card__description">An interactive infographic about the landing of Curiosity. It weights 13kB total.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/doodle-car" itemprop="url">
           <img class="card__image" src="/thumbnails/doodle-car.png" itemprop="image" alt="Screenshot of Doodle Car">
         </a>
-        <h3 class="card__title"><span itemprop="name">Doodle Car</span>, <time datetime="2012-05-12" itemprop="dateCreated">2012</time></h3>
+        <h3 class="card__title"><span itemprop="name">Doodle Car</span>, <time class="card__date" datetime="2012-05-12" itemprop="dateCreated">2012</time></h3>
         <p class="card__description">My first experiment using canvas. It plays with forces like acceleration, inertia, momentum, etc.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/isometric-world" itemprop="url">
           <img class="card__image" src="/thumbnails/isometric-walker.png" itemprop="image" alt="Screenshot of Isometric walker">
         </a>
-        <h3 class="card__title"><span itemprop="name">Isometric World</span>, <time datetime="2011-07-15" itemprop="dateCreated">2011</time></h3>
+        <h3 class="card__title"><span itemprop="name">Isometric World</span>, <time class="card__date" datetime="2011-07-15" itemprop="dateCreated">2011</time></h3>
         <p class="card__description">A DOM-based matrix of tiles. Clicking on them calculates the shortest path for movement.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/skifree" itemprop="url">
           <img class="card__image card__image--border" style="object-position:0" src="/thumbnails/skifree.png" itemprop="image" alt="Screenshot of SkiFree">
         </a>
-        <h3 class="card__title"><span itemprop="name">SkiFree DOM</span>, <time datetime="2011-02-06" itemprop="dateCreated">2011</time></h3>
+        <h3 class="card__title"><span itemprop="name">SkiFree DOM</span>, <time class="card__date" datetime="2011-02-06" itemprop="dateCreated">2011</time></h3>
         <p class="card__description">A recreation of the Windows game using HTML elements controlled via JavaScript.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/dev/pick-a-fruit" itemprop="url">
           <img class="card__image card__image--border" src="/thumbnails/just-fruits.png" itemprop="image" alt="Screenshot of Just fruits">
         </a>
-        <h3 class="card__title"><span itemprop="name">Pick a fruit!</span>, <time datetime="2009-08-13" itemprop="dateCreated">2009</time></h3>
+        <h3 class="card__title"><span itemprop="name">Pick a fruit!</span>, <time class="card__date" datetime="2009-08-13" itemprop="dateCreated">2009</time></h3>
         <p class="card__description">My first fully functional experiment moving DOM elements, albeit resource-intensive.</p>
       </li>
     </ol>
   </section>
 
   <section class="home-section" id="things">
-    <h2 class="home-section__title"><span>I make</span> things</h2>
+    <h2 class="home-section__title"><div class="home-section__title-verb">I make</div> things</h2>
     <p class="home-section__description">These contraptions are a fusion of open-source hardware and software. I film my construction process to inspire others. When it comes to publishing videos, I don't follow a schedule. I believe the schedule pressure compromises quality, and I prefer to create things I genuinely enjoy.</p>
     <ul class="home-section__cards">
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/blog/diy-handheld-game-console" itemprop="url">
           <img class="card__image" style="object-position:22%" src="/thumbnails/xboy.png" itemprop="image" alt="A 3D printed handheld console">
         </a>
-        <h3 class="card__title"><span itemprop="name">Game Console</span>, <time datetime="2022-01-10" itemprop="dateCreated">2022/23</time></h3>
+        <h3 class="card__title"><span itemprop="name">Game Console</span>, <time class="card__date" datetime="2022-01-10" itemprop="dateCreated">2022/23</time></h3>
         <p class="card__description" itemprop="description">The best electronics for emulation housed within a 3D-printed case designed using the Xbox Elite controller as a reference.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/blog/arcade-machine-build" itemprop="url">
           <img class="card__image" style="object-position:57%" src="/thumbnails/arcade.jpg" itemprop="image" alt="Arcade machine">
         </a>
-        <h3 class="card__title"><span itemprop="name">Arcade Machine</span>, <time datetime="2018-12-12" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">Arcade Machine</span>, <time class="card__date" datetime="2018-12-12" itemprop="dateCreated">2018</time></h3>
         <p class="card__description" itemprop="description">I assembled an old Raspberry Pi, monitor, and speakers with MDF boards, Sanwa-like joysticks, and HAPP push buttons.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/blog/arduino-midi-controller" itemprop="url">
           <img class="card__image" style="object-position:39%" src="/thumbnails/punchy.jpg" itemprop="image" alt="MIDI Controller">
         </a>
-        <h3 class="card__title"><span itemprop="name">MIDI Controller</span>, <time datetime="2020-06-28" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title"><span itemprop="name">MIDI Controller</span>, <time class="card__date" datetime="2020-06-28" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">I designed this as a product for beginners. It lacks knobs, sliders, or faders and runs with minimal code.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://youtu.be/8MLCOW4ptQk" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" style="object-position:39%" src="/thumbnails/tarmo.jpg" itemprop="image" alt="A 3D printed RC car">
         </a>
-        <h3 class="card__title card__title--yt"><span itemprop="name">3D Printed RC Car</span>, <time datetime="2021-06-22" itemprop="dateCreated">2021</time></h3>
+        <h3 class="card__title card__title--yt"><span itemprop="name">3D Printed RC Car</span>, <time class="card__date" datetime="2021-06-22" itemprop="dateCreated">2021</time></h3>
         <p class="card__description" itemprop="description">A fully-printed, 4WD, high-performance, 1:8 scale RC car. Even the gears are entirely printed in PLA, and they function smoothly.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://youtu.be/-zKHCHPDaUg" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" src="/thumbnails/wordclock2.jpg" itemprop="image" alt="An old clock with words in it">
         </a>
-        <h3 class="card__title card__title--yt"><span itemprop="name">Word Clock</span>, <time datetime="2021-02-15" itemprop="dateCreated">2021</time></h3>
+        <h3 class="card__title card__title--yt"><span itemprop="name">Word Clock</span>, <time class="card__date" datetime="2021-02-15" itemprop="dateCreated">2021</time></h3>
         <p class="card__description" itemprop="description">I found a vintage clock on the street and upcycled it into a word clock using an individually addressable LED strip and Arduino.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="/blog/post-processing-3d-prints" itemprop="url">
           <img class="card__image" src="/thumbnails/roadster.jpg" itemprop="image" alt="A scale model of a Tesla Roadster">
         </a>
-        <h3 class="card__title"><span itemprop="name">Tesla Roadster</span>, <time datetime="2020-11-29" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title"><span itemprop="name">Tesla Roadster</span>, <time class="card__date" datetime="2020-11-29" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">3D printed parts are rough, and I found the perfect project to learn as much as possible about post-processing them.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://youtu.be/_7N8hjOa46w" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" style="object-position:right" src="/thumbnails/lightbox.jpg" itemprop="image" alt="Multiple LED lights">
         </a>
-        <h3 class="card__title card__title--yt"><span itemprop="name">UV Light Box</span>, <time datetime="2020-05-16" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title card__title--yt"><span itemprop="name">UV Light Box</span>, <time class="card__date" datetime="2020-05-16" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">This simple box can create cyanotypes, a photographic process that produces blueprints using artificial sunlight.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://youtu.be/g4vlmUQwt7o" itemprop="url" target="_blank" rel="noopener">
           <img class="card__image" style="object-position:40%" src="/thumbnails/light.png" itemprop="image" alt="A filmmaking light with a grid">
         </a>
-        <h3 class="card__title card__title--yt"><span itemprop="name">Filmmaking Light</span>, <time datetime="2023-10-19" itemprop="dateCreated">2023</time></h3>
+        <h3 class="card__title card__title--yt"><span itemprop="name">Filmmaking Light</span>, <time class="card__date" datetime="2023-10-19" itemprop="dateCreated">2023</time></h3>
         <p class="card__description" itemprop="description">I dismantled all the diffusion layers of a computer monitor and added a high-CRI daylight LED strip.</p>
       </li>
     </ul>
   </section>
 
   <section class="home-section" id="pixelart">
-    <h2 class="home-section__title"><span>I draw</span> pixel art</h2>
+    <h2 class="home-section__title"><div class="home-section__title-verb">I draw</div> Pixel Art</h2>
     <p class="home-section__description">This medium challenges me to work within a set of strict constraints, such as using a significantly reduced amount of space and colors. So, I delve into Pixel Art not only to evoke nostalgia but also for the art of abstraction.</p>
     <ol class="home-section__cards">
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#eee">
           <img class="pixelart__image pixelated" src="/pixelart/die-welt.png" itemprop="image" alt="Welt Balloon">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Weltballon</span>, <time datetime="2020-08-23" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title"><span itemprop="name">Weltballon</span>, <time class="card__date" datetime="2020-08-23" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">Another unusual sight that never fails to grab my attention. I typically work with fewer colors and a smaller canvas size, but I wanted to include every detail.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#a4aa88">
           <img class="pixelart__image pixelated" src="/pixelart/wasserturm.png" itemprop="image" alt="Wasserturm am Ostkreuz">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Wasserturm Ostkreuz</span>, <time datetime="2020-08-16" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title"><span itemprop="name">Wasserturm Ostkreuz</span>, <time class="card__date" datetime="2020-08-16" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">I'm fortunate to see this one-hundred-something-year-old water tower frequently while commuting via Ostkreuz.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#d3d3d0">
           <img class="pixelart__image pixelated" src="/pixelart/haus-der-statistik.png" itemprop="image" alt="Haus Der Statistik">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Haus Der Statistik</span>, <time datetime="2020-01-14" itemprop="dateCreated">2020</time></h3>
+        <h3 class="card__title"><span itemprop="name">Haus Der Statistik</span>, <time class="card__date" datetime="2020-01-14" itemprop="dateCreated">2020</time></h3>
         <p class="card__description" itemprop="description">The first time I saw this building it in person, I wasn't even looking for it. It presents a striking view right in the heart of the city.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#ececec">
           <img class="pixelart__image pixelated" src="/pixelart/tram-berlin.png" itemprop="image" alt="Tram of Berlin" width="300" height="300">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Berliner Strassenbahn</span>, <time datetime="2019-12-22" itemprop="dateCreated">2019</time></h3>
+        <h3 class="card__title"><span itemprop="name">Berliner Strassenbahn</span>, <time class="card__date" datetime="2019-12-22" itemprop="dateCreated">2019</time></h3>
         <p class="card__description" itemprop="description">Having never lived in a city with trams, riding one remains a pleasant novelty for me.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#b3c2bf">
           <img class="pixelart__image pixelated" src="/pixelart/bell-nexus.png" itemprop="image" alt="Bell Nexus air taxi" width="168" height="120">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Bell's Air Taxi</span>, <time datetime="2019-01-10" itemprop="dateCreated">2019</time></h3>
+        <h3 class="card__title"><span itemprop="name">Bell's Air Taxi</span>, <time class="card__date" datetime="2019-01-10" itemprop="dateCreated">2019</time></h3>
         <p class="card__description" itemprop="description">In 2019, Bell unveiled Nexus at CES, an air taxi concept. Here's my isometric representation of the hybrid-electric flying car.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#c2dde6">
           <img class="pixelart__image pixelated" src="/pixelart/vespa-helmet.png" itemprop="image" alt="Vespa Helmet" width="93" height="93">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Vespa Helmet</span>, <time datetime="2018-02-16" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">Vespa Helmet</span>, <time class="card__date" datetime="2018-02-16" itemprop="dateCreated">2018</time></h3>
         <p class="card__description" itemprop="description">Another week, another challenge on #spriteweekly. I practiced handling lighting and shadows on an Italian Vespa-like helmet in 32x32.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#111">
           <img class="pixelart__image pixelated" src="/pixelart/guy-hawkes-mask.png" itemprop="image" alt="Guy Hawkes Mask" width="78" height="96">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Guy Hawkes Mask</span>, <time datetime="2018-02-10" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">Guy Hawkes Mask</span>, <time class="card__date" datetime="2018-02-10" itemprop="dateCreated">2018</time></h3>
         <p class="card__description" itemprop="description">I grappled with a 16x16 grid due to limited space and color options. But, this challenge let me enjoy working within constraints for #spriteweekly.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#c7ad88">
           <img class="pixelart__image pixelated" src="/pixelart/rolleiflex.png" itemprop="image" alt="Rolleiflex" width="98" height="112">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Rolleiflex</span>, <time datetime="2018-02-03" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">Rolleiflex</span>, <time class="card__date" datetime="2018-02-03" itemprop="dateCreated">2018</time></h3>
         <p class="card__description" itemprop="description">A beautiful German twin-lens reflex camera. I chose to create a frontal drawing instead of my usual isometric style to keep it simple.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#c9c9c9">
           <img class="pixelart__image pixelated" src="/pixelart/toyota-e-palette.png" itemprop="image" alt="Toyota e-palette on-road commerce" width="256" height="256">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Toyota e-Palette</span>, <time datetime="2018-01-31" itemprop="dateCreated">2018/19</time></h3>
+        <h3 class="card__title"><span itemprop="name">Toyota e-Palette</span>, <time class="card__date" datetime="2018-01-31" itemprop="dateCreated">2018/19</time></h3>
         <p class="card__description" itemprop="description">Fully-automated, electric, customizable, multi-purpose vehicle. The most challenging part was drawing the logos in its isometric form.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#98dafc">
           <img class="pixelart__image pixelated" src="/pixelart/telephone-kiosk.png" itemprop="image" alt="Telephone Kiosk" width="74" height="156">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Telephone Kiosk</span>, <time datetime="2018-01-27" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">Telephone Kiosk</span>, <time class="card__date" datetime="2018-01-27" itemprop="dateCreated">2018</time></h3>
         <p class="card__description" itemprop="description">I selected the K6 (kiosk number six) from 1936 for the second challenge of #spriteweekly #red.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <figure class="pixelart__container" style="--art-bg-color:#667467">
           <img class="pixelart__image pixelated" src="/pixelart/raspberry-pi.png" itemprop="image" alt="Raspberry Pi" width="168" height="94">
         </figure>
-        <h3 class="card__title"><span itemprop="name">Raspberry Pi Model 1</span>, <time datetime="2018-01-20" itemprop="dateCreated">2018</time></h3>
+        <h3 class="card__title"><span itemprop="name">Raspberry Pi Model 1</span>, <time class="card__date" datetime="2018-01-20" itemprop="dateCreated">2018</time></h3>
         <p class="card__description" itemprop="description">My first pixel art drawing in over a decade. It feels good to give it another try.</p>
       </li>
     </ol>
   </section>
 
   <section class="home-section" id="blog">
-    <h2 class="home-section__title"><span>I keep a</span> blog</h2>
+    <h2 class="home-section__title"><div class="home-section__title-verb">I keep a</div> blog</h2>
     <p class="home-section__description">My list of notes and drafts is scattered. I write whatever crosses my mind, and sometimes I dedicate time to refine these ideas and thoughts into something substantial.</p>
     <div class="blog-entries">
       <article class="blog-entry" itemscope itemtype="https://schema.org/Article">
@@ -549,6 +836,7 @@
         <time class="blog-entry__created" datetime="2014-01-13" itemprop="dateCreated">January 13, 2014</time>
         <p class="blog-entry__description" itemprop="description">Cómo mejorar el posicionamiento de un background, usando el feature de offset.</p>
       </article>
+      <div class="blog-entry" aria-hidden="true"></div>
     </div>
   </section>
 
