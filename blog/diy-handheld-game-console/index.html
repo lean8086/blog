@@ -605,15 +605,15 @@ ENTER       26           # Start</code></pre></li>
           <h3>Step 5. Bring it all together.</h3>
 
           <ol class="steps-list">
-            <li><a href="/blog/diy-handheld-game-console/pcb-prototype-v0-leandrolinares.com.stl">Download the pcb-prototype-v0 (147 KB)</a> and print it in PLA with 0.15mm layers and 15% infill. <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-in-prusaslicer.png" alt=""/></li>
+            <li><a href="/blog/diy-handheld-game-console/pcb-prototype-v0-leandrolinares.com.stl">Download the file pcb-prototype-v0.stl (147 KB)</a> and print it in PLA with 0.15mm layers and 15% infill. You don't need supports, skirt, or brim for this. <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-in-prusaslicer.png" alt=""/></li>
             <li>Glue the shoulder pieces to the main piece with super glue. The end result should look like this:
               <figure>
                 <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-shoulders.png" alt=""/>
-                <figcaption>Important: This is a terrible way of having push button at 90 degrees. I'm currently <a href="/blog/handheld-console-next-steps">redesigning this piece to use proper 90-degrees push-buttons</a>, so in the future this can be a custom PCB.</figcaption>
+                <figcaption>Important: This is a terrible way of having push buttons at 90 degrees. I'm currently <a href="/blog/handheld-console-next-steps">redesigning this piece to use proper 90-degrees push-buttons</a>, so in the future this can be a custom PCB.</figcaption>
               </figure>
             </li>
             <li>Insert the push buttons into the holes. I put the squishy buttons on the d-pad and ABXY buttons, and the normal ones on the rest. The buttons should stay tight in place. Try changing the settings on the slicer if that's not the case. <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-buttons.png" alt=""/></li>
-            <li>Solder the buttons to the PiSugar header. <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-pi-sugar.png" alt=""/></li>
+            <li>Solder the buttons to the PiSugar header. I soldered all the ground wires (black wires) in series for simplicity: <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-pi-sugar.png" alt=""/></li>
             <li>Attach the Raspberry Pi to the PCB-prototype using (2x) screws on the pins side and (2x) 10mm brass spacers on the other side. <img loading="lazy" src="/blog/diy-handheld-game-console/screwing-pi.png" alt=""/> <img loading="lazy" src="/blog/diy-handheld-game-console/brass-spacer-installing.jpg" alt=""/></li>
             <li>Add an aluminum heatsink to the Raspberry Pi processor. Although this step is entirely optional, for more demanding tasks such as gaming, it's recommended to have some form of passive cooling. <img loading="lazy" src="/blog/diy-handheld-game-console/heatsink-install.png" alt=""/></li>
             <li>Connect the PiSugar to the Raspberry Pi board and secure it with 2 screws. <img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-connected-to-raspberry-pi.png" alt=""/></li>
