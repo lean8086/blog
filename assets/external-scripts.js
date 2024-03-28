@@ -54,7 +54,7 @@ document.head.insertAdjacentHTML('beforeend', `
       left: 12px;
     }
 
-    body > .header__logo {
+    body > .header .header__logo {
       opacity: .9;
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAHCAYAAADXhRcnAAAAQUlEQVQYlaWPWwoAIAgEZ6P7X9kgkEosP9q/8cUowFg52Mwk6dpvW5EwVLEaH+luWJyI/ck37Zj0jS9tX061ngwM3psOEDmut7oAAAAASUVORK5CYII=');
       background-repeat: no-repeat;
@@ -84,6 +84,7 @@ document.head.insertAdjacentHTML('beforeend', `
       text-align: center;
       font-family: var(--font-type-serif);
       font-weight: 500;
+      font-size: .9rem;
     }
 
     body > .footer a {
