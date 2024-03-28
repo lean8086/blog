@@ -30,15 +30,15 @@ document.head.insertAdjacentHTML('beforeend', `
       flex-direction: column;
     }
 
-    .header,
-    .footer {
+    body > .header,
+    body > .footer {
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       color: var(--color-text);
     }
 
-    .header {
+    body > .header {
       padding: 0 var(--gutter-m);
       display: flex;
       justify-content: space-between;
@@ -48,13 +48,13 @@ document.head.insertAdjacentHTML('beforeend', `
       font-family: var(--font-type-sans);
     }
 
-    .header::before {
+    body > .header::before {
       content: '←';
       position: absolute;
       left: 12px;
     }
 
-    .header__logo {
+    body > .header__logo {
       opacity: .9;
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAHCAYAAADXhRcnAAAAQUlEQVQYlaWPWwoAIAgEZ6P7X9kgkEosP9q/8cUowFg52Mwk6dpvW5EwVLEaH+luWJyI/ck37Zj0jS9tX061ngwM3psOEDmut7oAAAAASUVORK5CYII=');
       background-repeat: no-repeat;
@@ -69,28 +69,24 @@ document.head.insertAdjacentHTML('beforeend', `
       image-rendering: pixelated;
     }
 
-    .header a {
+    body > .header a {
       color: var(--color-link-default);
       text-decoration: none;
     }
 
-    .header a:hover,
-    .footer a:hover {
+    body > .header a:hover,
+    body > .footer a:hover {
       text-decoration: underline;
     }
 
-    .footer {
+    body > .footer {
       margin: var(--gutter-l) 0 var(--gutter-m);
       text-align: center;
       font-family: var(--font-type-serif);
       font-weight: 500;
     }
 
-    .footer::before {
-      content: '— '
-    }
-
-    .footer a {
+    body > .footer a {
       color: var(--color-text);
       text-decoration: none;
     }
@@ -101,19 +97,23 @@ document.head.insertAdjacentHTML('beforeend', `
 
     .experiment-workspace {
       position: relative;
-      margin-bottom: var(--gutter-l);
+      margin: 0 var(--gutter-m) var(--gutter-l);
       border-radius: var(--radius);
     }
   </style>
 `);
 
-document.body.insertAdjacentHTML('afterbegin', `
-  <header class="header" role="banner">
-    <a class="header__logo pixelated" href="https://leandrolinares.com/">Leandro's Web Site</a>
-    ${location.hostname === 'lean8086.github.io' ? `<a href="https://github.com/lean8086${location.pathname}" target="_blank">View Source Code</a>` : ''}
-  </header>
-`);
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.insertAdjacentHTML('afterbegin', `
+    <header class="header" role="banner">
+      <a class="header__logo pixelated" href="https://leandrolinares.com/">Leandro's Web Site</a>
+      ${location.hostname === 'lean8086.github.io' ? `<a href="https://github.com/lean8086${location.pathname}" target="_blank">View Source Code</a>` : ''}
+    </header>
+  `);
 
-document.body.insertAdjacentHTML('beforeend', `
-  <footer class="footer" role="contentinfo"><a href="https://leandrolinares.com/">Leandro Linares</a></footer>
-`);
+  document.body.insertAdjacentHTML('beforeend', `
+    <footer class="footer" role="contentinfo">
+      ${document.title.split(' - ')[0] ?? ''} — <a href="https://leandrolinares.com/">Leandro Linares</a>
+    </footer>
+  `);
+});
