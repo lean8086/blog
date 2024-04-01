@@ -76,6 +76,11 @@
       display: none;
     }
 
+    .content-lists ol {
+      list-style: none;
+      padding-left: var(--gutter-s);
+    }
+
     /* BIG SCREENS */
     @media (min-width: 48rem) {
       .entry-body--side-by-side {
@@ -119,6 +124,12 @@
 
       .galeri label:nth-last-of-type(-n+3) {
         display: block;
+      }
+
+      .content-lists {
+        display: flex;
+        gap: var(--gutter-l);
+        white-space: nowrap;
       }
     }
   </style>
@@ -168,16 +179,31 @@
       <p>I compiled all the information that I gathered designing and building this handheld game console so anyone can build it. This step-by-step guide contains <strong>the explanation of all the choices that I made, and the options that I left out of the table</strong>.</p>
       
       <p><strong>Feel free to challenge anything that doesn't make sense to you,</strong> since I'm no expert in any of these topics and I've just built this prototype to learn. Also, make sure to check the <a href="#sources">list of original sources</a> for more detail documentation.</p>
-      
-      <!-- <p>Here are the links to jump direcly to the building steps, to make things easier for those who are already building the console:</p>
 
-      <ul>
-        <li><a href="#step-1">Step 1. Install RetroPie on a Raspberry Pi.</a></li>
-        <li><a href="#step-2">Step 2. Connect it to a TV or monitor and plug in a keyboard or gamepad.</a></li>
-        <li><a href="#step-3">Step 3. Add your own custom buttons.</a></li>
-        <li><a href="#step-4">Step 4. Install the PiSugar hardware.</a></li>
-        <li><a href="#step-5">Step 5. Bring it all together.</a></li>
-      </ul> -->
+      <h2 id="contents">Contents</h2>
+      
+      <section class="content-lists">
+        <div>
+          <span role="heading" aria-level="3">Context + Decisions:</span>
+          <ol>
+            <li><a href="#cpu">01. CPU</a></li>
+            <li><a href="#periferals">02. Periferals</a></li>
+            <li><a href="#gamepad">03. Gamepad</a></li>
+            <li><a href="#power-supply">04. Power supply</a></li>
+            <li><a href="#housing">05. Housing</a></li>
+          </ol>
+        </div>
+        <div>
+          <span role="heading" aria-level="3">Building Steps:</span>
+          <ol>
+            <li><a href="#step-1">Step 1. Install RetroPie on a Raspberry Pi.</a></li>
+            <li><a href="#step-2">Step 2. Connect it to a TV and a keyboard.</a></li>
+            <li><a href="#step-3">Step 3. Add your own custom buttons.</a></li>
+            <li><a href="#step-4">Step 4. Install the PiSugar hardware.</a></li>
+            <li><a href="#step-5">Step 5. Wire and assemble.</a></li>
+          </ol>
+        </div>
+      </section>
 
       <h2 id="results">Results</h2>
 
