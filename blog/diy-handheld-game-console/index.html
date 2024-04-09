@@ -81,6 +81,10 @@
       padding-left: var(--gutter-s);
     }
 
+    .entry-body--side-by-side > h2 {
+      margin: var(--gutter-m) 0;
+    }
+
     /* BIG SCREENS */
     @media (min-width: 48rem) {
       .entry-body--side-by-side {
@@ -91,6 +95,10 @@
       .entry-body--side-by-side > div {
         display: flex;
         gap: var(--gutter-l);
+      }
+
+      .entry-body--side-by-side > h2 {
+        font-size: var(--font-size-xl);
       }
 
       .entry-body--side-by-side h3 {
@@ -187,20 +195,22 @@
           <span role="heading" aria-level="3">Context + Decisions:</span>
           <ol>
             <li><a href="#cpu">01. CPU</a></li>
-            <li><a href="#periferals">02. Periferals</a></li>
+            <li><a href="#screen">02. Screen</a></li>
             <li><a href="#gamepad">03. Gamepad</a></li>
             <li><a href="#power-supply">04. Power supply</a></li>
-            <li><a href="#housing">05. Housing</a></li>
+            <li><a href="#circuitry">05. Circuitry</a></li>
+            <li><a href="#case">06. Case</a></li>
           </ol>
         </div>
         <div>
           <span role="heading" aria-level="3">Building Steps:</span>
           <ol>
             <li><a href="#step-1">Step 1. Install RetroPie on a Raspberry Pi.</a></li>
-            <li><a href="#step-2">Step 2. Connect it to a TV and a keyboard.</a></li>
+            <li><a href="#step-2">Step 2. Connect it to a TV and keyboard.</a></li>
             <li><a href="#step-3">Step 3. Add your own custom buttons.</a></li>
             <li><a href="#step-4">Step 4. Install the PiSugar hardware.</a></li>
             <li><a href="#step-5">Step 5. Wire and assemble.</a></li>
+            <li><a href="#step-6">Step 6. Build an enclosure.</a></li>
           </ol>
         </div>
       </section>
@@ -211,8 +221,8 @@
 
       <p>However, <a href="/blog/handheld-console-next-steps">I'm currently working on fixing some structural issues on the enclusure</a>, like the way the shoulder buttons interact with their respective tactile push buttons, or the way in which the different pieces join together. <strong>This means that the farthest this guide will take you for now will be to have these results:</strong></p>
 
-      <img src="/blog/diy-handheld-game-console/opened-console-back.png" alt=""/>
-      <img src="/blog/diy-handheld-game-console/opened-console-front.png" alt=""/>
+      <img src="/blog/diy-handheld-game-console/opened-console-back.jpg" alt=""/>
+      <img src="/blog/diy-handheld-game-console/opened-console-front.jpg" alt=""/>
 
       <p>Check out <a href="/blog/handheld-console-next-steps">this post</a> with the details of what needs to be fixed.</p>
 
@@ -248,7 +258,7 @@
         
       <lite-youtube videoid="gkook0l_gsM" style="background-image: url('https://i.ytimg.com/vi/gkook0l_gsM/maxresdefault.jpg');"></lite-youtube>
 
-      <h3>Affordability</h3>
+      <h2>Affordability</h2>
 
       <p>Even though I understand that not everyone can access the components that I've used for this build, you'll find that <strong>most of the decisions I made are ultimately defined by having more than one option available</strong>. For example, you can use a 10 years-old Raspberry Pi that you might have laying around collecting dust or buy one for cheap (they all have the same footprint).</p>
       
@@ -266,8 +276,8 @@
 
       <ul>
         <li><a href="https://amzn.to/3rEKhcD" target="_blank" rel="noopener"><strong>Raspberry Pi 4 Model B, 4GB RAM</strong></a>. Any Raspberry Pi 1, 2, 3, 4, or 5 is ok.</li>
-        <li><a href="https://amzn.to/3ryVvPP" target="_blank" rel="noopener"><strong>5-inches 800x480 IPS Screen with integrated speaker</strong></a>. Any screen of any size and resolution will do the job. Though, in my case, <strong>the housing that I designed can only accomodate the display that I linked here</strong>.</li>
-        <li><a href="https://amzn.to/49Uliaz" target="_blank" rel="noopener"><strong>PiSugar 2 Pro / 2 Plus / S Plus / 3 Plus</strong></a>. Any UPS hat with battery suitable for the model of Raspberry Pi you got will do the job. Though, in my case, <strong>the housing that I designed can only accomodate the UPS that I linked here</strong>.</li>
+        <li><a href="https://amzn.to/3ryVvPP" target="_blank" rel="noopener"><strong>5-inches 800x480 IPS Screen with integrated speaker</strong></a>. Any screen of any size and resolution will do the job. Though, in my case, <strong>the case that I designed can only accomodate the display that I linked here</strong>.</li>
+        <li><a href="https://amzn.to/49Uliaz" target="_blank" rel="noopener"><strong>PiSugar 2 Pro / 2 Plus / S Plus / 3 Plus</strong></a>. Any UPS hat with battery suitable for the model of Raspberry Pi you got will do the job. Though, in my case, <strong>the case that I designed can only accomodate the UPS that I linked here</strong>.</li>
         <li><a href="https://amzn.to/3FN7VbN" target="_blank" rel="noopener"><strong>Soft Silicone 6mm Push-Buttons</strong></a>, or any tactile button is more than ok.</li>
         <li><a href="https://amzn.to/3AlhsWl" target="_blank" rel="noopener"><strong>Soft Tactile 8mm Buttons</strong></a>. These ones are more squishy, but no required.</li>
         
@@ -288,16 +298,16 @@
           
           <p>A single-board computer is a <strong>complete computer built on a single circuit board</strong>, with microprocessor, memory, input/output and other features required of a functional computer.</p>
 
-          <figure>
-            <img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-4-model-b.png" alt=""/>
-            <figcaption>The Raspberry Pi 4 Model B that I used.</figcaption>
-          </figure>
+          <p>There are plenty of options in the market for SBCs. <strong>In my case I went for a Raspberry Pi 4 Model B.</strong> Note that at the time of building the console the model 4 was the latest on the market.</p>
 
-          <p>There are plenty of options in the market for SBCs. <strong>In my case I went for a Raspberry Pi 4 Model B.</strong> Note that at the time of building the console the Raspberry Pi model 4 was the latest on the market.</p>
+          <!-- <figure> -->
+            <img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-4-model-b.jpg" alt=""/>
+            <!-- <figcaption>The Raspberry Pi 4 Model B that I used.</figcaption> -->
+          <!-- </figure> -->
           
           <p>I like the Raspberry Pi for many reasons: <strong>it has a massive community</strong>, meaning that if you have a problem it is <strong>most likely that someone already found a solution for it</strong>. Also, <strong>all the models have the exact same footprint</strong>, meaning that <strong>you can build a project using a board from 2012 up until the most recent one</strong>, and the physical constraints to build a case around it are gonna be the same. This also makes it even more budget friendly.</p>
           
-          <p>Depending on the model there are more or less games that it will be able to emulate. Because of the games I wanted to be able to run, the Raspberry Pi that I went with has these specifications:</p>
+          <!-- <p>Depending on the model there are more or less games that it will be able to emulate. Because of the games I wanted to be able to run, the Raspberry Pi that I went with has these specifications:</p>
 
           <ul>
             <li><strong>Raspberry Pi 4 Model B</strong></li>
@@ -306,17 +316,21 @@
             <li>4 GB of RAM</li>
             <li>Micro HDMI</li>
             <li>Powered via USB-C</li>
-          </ul>
+          </ul> -->
 
           <p>Other option that I think it was worth it considering was the Orange Pi 5, but it has a completely different footprint, and also it's too expensive.</p>
 
-          <h3>Overclocking the Raspberry Pi</h3>
+          <h3>Operating Systems</h3>
+
+          <p>I tried different projects that turn the Pi into an emulation powerhouse. The main 3 were <a href="https://www.lakka.tv" target="_blank" rel="noopener">Lakka</a>, <a href="https://retropie.org.uk" target="_blank" rel="noopener">RetroPie</a> and <a href="https://www.recalbox.com" target="_blank" rel="noopener">Recalbox</a>. In my opinion, RetroPie is <strong>the most beginner friendly and it has a massive community behind</strong>. Feel free to explore the other ones by yourself if you're interested.</p>
+
+          <h3>Overclocking</h3>
 
           <p>I covered this topic in another <a href="/blog/setting-up-retropie#overclocking-the-raspberry-pi">blog post about setting up RetroPie</a>. In my opinion, only overclock it if you have an <strong>old Raspberry Pi model and you want to run very specific games</strong>. Also, keep in mind that <strong>doing it the wrong way voids the guarantee</strong>, so do it the right way as I described <a href="/blog/setting-up-retropie#overclocking-the-raspberry-pi">here</a>.</p>
           
           <p><strong>The trade off on a handheld console is being conscious about heat dissipation.</strong> I added passive and active cooling to the case in case I wanted to overclock the Raspberry Pi, but I think it was unnecessary.</p>
 
-          <h3>Slimming down the Raspberry Pi</h3>
+          <h3>Slimming down</h3>
 
           <p>At some point, my idea was to slim down the Raspberry Pi board to save some space. The idea of slimming down the board is simple: <strong>get rid of the tallest ports.</strong> The thing is, it would've been an interesting-to-watch video but <strong>I would force people to follow the exact same process to build the console</strong>.</p>
 
@@ -333,14 +347,10 @@
 
           <p>Also, using the Compute Module would narrow down the options people have to build this console. I guess it's way more people who have a Pi laying around than those who have a CM.</p>
 
-          <figure>
+          <!-- <figure>
             <img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-cm4.jpg" alt=""/>
             <figcaption>Source: <a href="https://www.raspberrypi.com/products/compute-module-4" target="_blank" rel="noopener">Compute Module 4</a> by Raspberry Pi.</figcaption>
-          </figure>
-
-          <h3>Operating Systems</h3>
-
-          <p>I tried different projects that turn the Pi into an emulation powerhouse. The main 3 were <a href="https://www.lakka.tv" target="_blank" rel="noopener">Lakka</a>, <a href="https://retropie.org.uk" target="_blank" rel="noopener">RetroPie</a> and <a href="https://www.recalbox.com" target="_blank" rel="noopener">Recalbox</a>. In my opinion, RetroPie is <strong>the most beginner friendly and it has a massive community behind</strong>. Feel free to explore the other ones by yourself if you're interested.</p>
+          </figure> -->
         </div>
         <div class="side-b" id="step-1">
           <h3>Step 1. Install RetroPie on a Raspberry Pi.</h3>
@@ -356,13 +366,14 @@
           <!-- <h4>Steps:</h4> -->
 
           <ol class="steps-list">
-            <li>Identify which model of Raspberry Pi you have. <img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-4-model-b-closeup.png" alt=""/></li>
-            <li>Connect a <a href="https://elinux.org/RPi_SD_cards" target="_blank" rel="noopener">compatible SD card</a> to your computer. <img loading="lazy" src="/blog/diy-handheld-game-console/inserting-sd-card.png" alt=""/></li>
-            <li>Download and install the official <a href="https://www.raspberrypi.org/software/" target="_blank" rel="noopener">Raspberry Pi Imager</a>.</li>
-            <li>On the Raspberry Pi Imager, go to "Operating System", then "RetroPie".</li>
-            <li>Select the version that belongs to your Raspberry Pi model.</li>
-            <li>Choose your SD card on the list to install RetroPie into it. <img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-imager.png" alt=""/></li>
-            <li>Install games. I wrote an <a href="/blog/setting-up-retropie">in-depth guide about it</a>. You can always check <a href="https://retropie.org.uk" target="_blank" rel="noopener">RetroPie's official documentation</a> for more details.</li>
+            <li>Identify which model of Raspberry Pi you have. <img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-4-model-b-closeup.jpg" alt=""/></li>
+            <li>Connect a <a href="https://elinux.org/RPi_SD_cards" target="_blank" rel="noopener">compatible SD card</a> to your computer. <img loading="lazy" src="/blog/diy-handheld-game-console/inserting-sd-card.jpg" alt=""/></li>
+            <li>Download and install the official <a href="https://www.raspberrypi.org/software/" target="_blank" rel="noopener">Raspberry Pi Imager</a>. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-ui.png" alt=""/></li>
+            <li>On the Raspberry Pi Imager, <strong>click on "Choose device"</strong> under "Raspberry Pi Device" <strong>and select your Raspberry Pi model</strong>. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-model.png" alt=""/></li>
+            <li>Click "Choose OS" under "Operating System". <strong>Select "Emulation and game OS" and then "RetroPie".</strong> <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-os.png" alt=""/></li>
+            <li>Choose the version of RetroPie that corresponds to your specific Raspberry Pi model. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-retropie.png" alt=""/></li>
+            <li>Click on "Choose storage" and select your SD card on the list to install RetroPie into it. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-sd.png" alt=""/></li>
+            <li><strong>Now you can install games.</strong> I wrote an <a href="/blog/setting-up-retropie">in-depth guide about installing games in RetroPie</a>. You can always check <a href="https://retropie.org.uk" target="_blank" rel="noopener">RetroPie's official documentation</a> for more details.</li>
           </ol>
 
           <!-- <h4>Next steps:</h4>
@@ -375,21 +386,21 @@
       </div>
     </section>
 
-    <section id="periferals" class="entry-body entry-body--side-by-side">
-      <h2>02. Periferals</h2>
+    <section id="screen" class="entry-body entry-body--side-by-side">
+      <h2>02. Screen</h2>
       <div>
         <div class="side-a">
           <p>I've chosen a 5-inch screen because, in my opinion, <strong>the size went better with the case that I wanted to design</strong>. I knew that I wanted to use a normal console controller as a reference, and add a screen that fell like it was part of the design.</p>
           
-          <img loading="lazy" src="/blog/diy-handheld-game-console/screen-back.png" alt=""/>
+          <img loading="lazy" src="/blog/diy-handheld-game-console/screen-back.jpg" alt=""/>
             
           <p>A counterexample for me was the PlayStation Portal, which is literally a PS5 controller cut in half and glued to the sides of a tablet. <strong>I didn't want that.</strong></p>
 
-          <img loading="lazy" class="card__image--border" src="/blog/diy-handheld-game-console/playstation-portal.jpg" alt=""/>
+          <!-- <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/playstation-portal.jpg" alt=""/> -->
           
           <p><strong>Aspect ratio:</strong> For this project I went for a screen with 4:3 ratio which is the same aspect ratio in old TVs. <strong>I wanted this console to be mostly a retro game machine.</strong> The 4:3 ratio is still good for running the newest games in 16:9 with horizontal black bars.</p>
 
-          <img loading="lazy" src="/blog/diy-handheld-game-console/horizontal-black-bars.png" alt=""/>
+          <img loading="lazy" src="/blog/diy-handheld-game-console/horizontal-black-bars.jpg" alt=""/>
           
           <p><strong>Resolution:</strong> 800x480 looks great for the size, although I wouldn't accept less than that resolution and I would definitely go higher if the price doesn't jump abruptly on a better model.</p>
 
@@ -404,7 +415,7 @@
           <p>For projects like this I always think about audio as part of the display because HDMI is a standard for audio/video interface. The display that I've used <strong>came with an integrated speaker</strong> that made this build easier.</p>
 
           <figure>
-            <img loading="lazy" class="card__image--border" src="/blog/diy-handheld-game-console/elecrow-diagram.png" alt=""/>
+            <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/elecrow-diagram.jpg" alt=""/>
             <figcaption>Source: <a href="https://www.elecrow.com/rc050s-hdmi-5-inch-800x480-capacitive-touch-monitor-built-in-speaker-with-backlight-control.html" target="_blank" rel="noopener">Elecrow</a></figcaption>
           </figure>
           
@@ -427,10 +438,10 @@
           <!-- <h4>Steps:</h4> -->
 
           <ol class="steps-list" start="2">
-            <li>Using HDMI, connect the board to any TV, computer monitor, or the display I specified. <img loading="lazy" src="/blog/diy-handheld-game-console/hdmi-connection.png" alt=""/></li>
-            <li>Connect a keyboard. <img loading="lazy" src="/blog/diy-handheld-game-console/keyboard-connection.png" alt=""/></li>
+            <li>Using HDMI, connect the board to any TV, computer monitor, or the display I specified. <img loading="lazy" src="/blog/diy-handheld-game-console/hdmi-connection.jpg" alt=""/></li>
+            <li>Connect a keyboard. <img loading="lazy" src="/blog/diy-handheld-game-console/keyboard-connection.jpg" alt=""/></li>
             <li>Connect the Raspberry Pi to a power supply. <img loading="lazy" src="/blog/diy-handheld-game-console/power-connection.png" alt=""/></li>
-            <li>Turn on the Raspberry Pi. <img loading="lazy" src="/blog/diy-handheld-game-console/turned-on-raspberry-pi.png" alt=""/></li>
+            <li>Turn on the Raspberry Pi. <img loading="lazy" src="/blog/diy-handheld-game-console/turned-on-raspberry-pi.jpg" alt=""/></li>
             <li>The first time you enter RetroPie it will ask you to set up all your buttons. <strong>Use your keyboard to map the keys you want. Important: take note of which keys you're assigning to which functionality.</strong> <img loading="lazy" src="/blog/diy-handheld-game-console/welcome-screen.png" alt=""/></li>
           </ol>
 
@@ -445,10 +456,10 @@
             <li><strong>G key</strong>: B</li>
             <li><strong>F key</strong>: X</li>
             <li><strong>T key</strong>: Y</li>
-            <li><strong>Q key</strong>: L1</li>
-            <li><strong>E key</strong>: L2</li>
-            <li><strong>Z key</strong>: R1</li>
-            <li><strong>C key</strong>: R2</li>
+            <li><strong>Q key</strong>: L1 (Left-top shoulder)</li>
+            <li><strong>E key</strong>: L2 (Left-bottom shoulder)</li>
+            <li><strong>Z key</strong>: R1 (Right-top shoulder)</li>
+            <li><strong>C key</strong>: R2 (Right-bottom shoulder)</li>
             <li><strong>Right Shift key</strong>: Select</li>
             <li><strong>Enter key</strong>: Start</li>
           </ul>
@@ -472,11 +483,11 @@
 
           <p><strong>Buttons:</strong> For any project that need buttons, there is this standard 6mm tactile switch buttons that are everywhere. The only problem is that they feel super clicky. I found 2 variants that improve how they feel to the touch. These made out of silicone (still clicky but not so much):
             
-          <img loading="lazy" src="/blog/diy-handheld-game-console/silicone-buttons.png" alt=""/>
+          <img loading="lazy" src="/blog/diy-handheld-game-console/silicone-buttons.jpg" alt=""/>
             
           <p>And these ones are very squishy buttons (perfect for emulating that gamepad feeling):</p>
 
-          <img loading="lazy" src="/blog/diy-handheld-game-console/squishy-buttons.png" alt=""/>
+          <img loading="lazy" src="/blog/diy-handheld-game-console/squishy-buttons.jpg" alt=""/>
 
           <!-- GPIO vs usb encoder (zero delay) vs custom microcontroller -->
           <p><strong>GPIO pins:</strong> The Raspberry Pi has 40 pins (except for early models) that can be used for many different things. <strong>Any pin in green and yellow here is available to be used as a digital input.</strong> That means that you can connect any push button to them to be readed by the board.</p>
@@ -487,8 +498,15 @@
           </figure>
 
           <p><strong>Analog joysticks:</strong> For this first prototype <strong>I decided not to include analog sticks</strong>. The Raspberry Pi doesn't have any analog inputs, so it needs an entire implementation for that. I'm currently working on adding thumb sticks to the next version of the console by adding an Arduino Pro Micro connected via USB.</p>
+
+          <figure>
+            <img loading="lazy" src="/blog/handheld-console-next-steps/thumbsticks-arduino.jpg"/>
+            <figcaption>The idea that's currently in the works.</figcaption>
+          </figure>
           
-          <p>When I started the project, I had the idea to use "fake" analog sticks. By simply using an 8-way tactile switch <strong>I could have read the 8 directions as digital inputs</strong>, but I couldn't find any model to buy.</p>
+          <p>When I started the project, I had the idea to use some "fake" analog sticks. By simply using an 8-way navigation switch <strong>I could have read the 8 directions as digital inputs</strong>, but I couldn't find any model to buy. I bought a 5-way switch to test it, but as the name implies, it doesn't support moving in diagonal:</p>
+
+          <img loading="lazy" src="/blog/diy-handheld-game-console/5-way-navigation-switch.jpeg" alt=""/>
         </div>
         <div class="side-b" id="step-3">
           <h3>Step 3. Add your own custom buttons.</h3>
@@ -505,9 +523,9 @@
           <!-- <h4>Steps:</h4> -->
 
           <ol class="steps-list">
-            <li>Add tactile buttons to the breadboard and wire one of the legs to the ground row (-) of the board. <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-with-buttons-and-connections.png" alt=""/></li>
+            <li>Add tactile buttons to the breadboard and wire one of the legs to the ground row (-) of the board. <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-with-buttons-and-connections.jpg" alt=""/></li>
             
-            <li>Use jumper wires to connect the other leg of the push button to a pin on the Rasbperry Pi. <strong>You can connect any button to any available pin (<a href="#raspberry-pi-pinout">see here</a>) but it is imporant to take note of which button you're connecting to which pin.</strong> These are the pins I used: <img loading="lazy" src="/blog/diy-handheld-game-console/controller-pins.jpg" alt=""/> <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-connected-to-raspberry-pi.png" alt=""/></li>
+            <li>Use jumper wires to connect the other leg of the push button to a pin on the Rasbperry Pi. <strong>You can connect any button to any available pin (<a href="#raspberry-pi-pinout">see here</a>) but it is imporant to take note of which button you're connecting to which pin.</strong> These are the pins I used: <img loading="lazy" src="/blog/diy-handheld-game-console/controller-pins.jpg" alt=""/> <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-connected-to-raspberry-pi.jpg" alt=""/></li>
             
             <li><a href="https://www.raspberrypi.org/documentation/remote-access/ssh/" target="_blank" rel="noopener">Enable SSH</a> to be able to send files and to connect remotely to the Raspberry Pi. Consider <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a> to the Raspberry Pi in order to make your workflow easier.</li>
             
@@ -566,11 +584,16 @@ ENTER       26           # Start</code></pre></li>
 
           <img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-setup.png" alt=""/>
 
-          <p>The PiSugar is a UPS. <strong>An UPS is a device that provides near-instantaneous backup electric power to the board when the input power source or main power "fails"</strong>. It maintains the operation uninterrupted, and safely shut down when the power is too low.</p>
+          <p>The PiSugar is a UPS (Uninterruptible Power Supply). <strong>It's a device that provides near-instantaneous backup electric power to the board when the input power source or main power "fails"</strong>. It maintains the operation uninterrupted, and safely shut down when the power is too low.</p>
           
           <p>The PiSugar connects via pogo pins. Unlike other hats, <strong>it sits on the back of the Rasbperry Pi, making it almost imperceptible</strong>. The sad thing was that I needed to transform the PiSugar into a normal hat because <strong>the connectors that hold the Raspberry Pi attached to the display (HDMI and USB) don't allow to have anything between them</strong>.</p>
 
-          <p><strong>Batteries:</strong> Any lithium-ion battery with around 2500mAh should be enough to power a Raspberry Pi handheld console. <strong>The PiSugar came with 5000mAh, and they claim the battery life is 8-10 hours.</strong> For me it's been around half that time in total when making the Rasbperry Pi work at its maximum, emulating console games, and with the fan turned on.</p>
+          <figure>
+            <img loading="lazy" src="/blog/diy-handheld-game-console/pogo-pins.jpg"/>
+            <figcaption>Raspberry Pi and PiSugar connected via pogo pins.</figcaption>
+          </figure>
+
+          <p><strong>Batteries:</strong> Any lithium-ion battery with at least 2500mAh should be enough to power a Raspberry Pi handheld console. <strong>The PiSugar came with 5000mAh, and they claim the battery life is 8-10 hours.</strong> For me it's been around half that time in total when making the Rasbperry Pi work at its maximum, emulating console games, and with the fan turned on 100% of the time.</p>
         </div>
         <div class="side-b" id="step-4">
           <h3>Step 4. Install the PiSugar hardware.</h3>
@@ -586,12 +609,12 @@ ENTER       26           # Start</code></pre></li>
           <!-- <h4>Steps:</h4> -->
 
           <ol class="steps-list">
-            <li>Remove the pogo pins carefully from the PiSugar. They should come out easily by pushing gently and twisting them in the right direction. <strong>If done correctly, this mod is completely reversible.</strong></li>
-            <li>Solder a 2x20 pins female GPIO header to the PiSugar. Note: there are solderless headers that require no soldering.</li>
-            <li>Solder wires to the GPIO pins you will use for the buttons (the ones you set up in <a href="#step-3">step 3</a>). <img loading="lazy" src="/blog/diy-handheld-game-console/soldering-buttons-to-pi-sugar.png" alt=""/></li>
-            <li>Connect the battery to the PiSugar.</li>
-            <li>Attach the PiSugar to the Raspberry Pi for a quick first test. <img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-connected-to-raspberry-pi.png" alt=""/></li>
-            <li>Turn the Rasbperry Pi on and disconnect it from power to make sure it works wirelessly.</li>
+            <li><strong>Remove the pogo pins</strong> (the golden cylindrical connectors) <strong>with great care from the PiSugar.</strong> They should come out easily by gently pulling them straight out, with little or no resistance. If you find yourself applying force, stop and watch a video tutorial. <strong>If done correctly, this mod is completely reversible.</strong></li>
+            <li><strong>Solder a 2x20 pins female GPIO header to the PiSugar.</strong> Note: there are solderless headers that require no soldering. <figure><img loading="lazy" src="/blog/diy-handheld-game-console/2x20-pins-female-gpio-header.jpg"/><figcaption>Source: <a href="https://www.adafruit.com/product/2222" target="_blank" rel="noopener">Adafruit</a></figcaption></figure></li>
+            <li><strong>Solder wires to the GPIO pins you will use for the buttons</strong> (the ones you set up in <a href="#step-3">step 3</a>). <img loading="lazy" src="/blog/diy-handheld-game-console/soldering-buttons-to-pi-sugar.png" alt=""/></li>
+            <li><strong>Connect the battery to the PiSugar.</strong></li>
+            <li><strong>Attach the PiSugar to the Raspberry Pi</strong> for a quick first test. <img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-connected-to-raspberry-pi.png" alt=""/></li>
+            <li><strong>Turn on the Rasbperry Pi and disconnect it from power</strong> to make sure it works wirelessly.</li>
           </ol>
 
           <!-- <h4>Next steps:</h4>
@@ -601,31 +624,41 @@ ENTER       26           # Start</code></pre></li>
       </div>
     </section>
     
-    <section id="housing" class="entry-body entry-body--side-by-side">
-      <h2>05. Housing</h2>
+    <section id="circuitry" class="entry-body entry-body--side-by-side">
+      <h2>05. Circuitry</h2>
       <div>
         <div class="side-a">
-          <p>Designing my own case took me a very long time. It wasn't time spent only on planning and execution, but also the compound results of uncountable years of dissasembling gamepads to repair them and taking note on how every piece works. I'll try to point the main things I had in mind while designing this console.</p>
+          <p>When it comes to <strong>take a prototype from the breadboard to the next level</strong>, there are plenty of options. The one that would make more sense for this project is designing a custom PCB. However <strong>there are other methods that allow for quicker prototyping</strong>.</p>
 
-          <img loading="lazy" src="/blog/diy-handheld-game-console/3d-render.png" alt=""/>
+          <h3>Printed Circuit Board</h3>
 
-          <p>I started drawing 4 different versions with slightly different dimensions on Procreate for iPad. I already had all the components in hand so I already knew that the size of the screen and the depth of all the things were a constant. I made tiny changes in the position of the d-pad, the other buttons, and the length of the handles. The idea was to see which one looked more natural.</p>
-          
-          <img loading="lazy" src="/blog/diy-handheld-game-console/2d-sketch.png" alt=""/>
+          <p><strong>A PCB is a board that holds all the electronic components needed for a device to work.</strong> For example, the Raspberry Pi's green board is a PCB. Same with PiSugar's black board. Every electronic device has one inside, and <strong>you can design your own to suit your own needs</strong>. There are services that print the board for you like <a href="https://jlcpcb.com" target="_blank" rel="noopener">JLCPCB</a> or <a href="https://www.pcbway.com" target="_blank" rel="noopener">PCBWay</a> among others. The quality is great for a low price.</p>
 
-          <p>I modeled the console out of a rectangle box using t-splines. I basically defined one of the halves as a mirror of the other one (the green line on the screenshot) and started pulling its vectors until I got the shape I was looking for.</p>
+          <figure>
+            <img loading="lazy" src="/blog/diy-handheld-game-console/custom-pcb.jpg"/>
+            <figcaption>Source: <a href="https://rasterweb.net/raster/2018/08/19/pcbway-prototyping-service/" target="_blank" rel="noopener">RasterWeb</a></figcaption>
+          </figure>
 
-          <img loading="lazy" src="/blog/diy-handheld-game-console/first-3d-sketch.png" alt=""/>
+          <p>For me the only problem with this approach is that <strong>the process of iterating is slow</strong>. I needed to remove as much bottlenecks as possible for a first prototype. I'll eventually design my own custom PCB, but <strong>I needed to understand the place for each component first</strong>. For example, I'm currently <a href="/blog/handheld-console-next-steps/">working on fixing some flaws in the shoulder buttons</a> and it means that I potentially need to move the battery around.</p>
 
-          <p>It took several iterations to get it right. One thing is drawing something on the screen and another different thing is to have it in its physical form. Also, 3d printing has its own set of constraints that you need to respect.</p>
-            
-          <p>I printed all the prototypes in PLA to be able to iterate fast, but I used PETG to print the final product. This was actually a mistake. PETG ended up being an extremely soft material, so sanding it didn't result on a smooth surface. The reason I printed it in PETG was because I feared that the console could reach temperatures high enough to soften PLA. It turns out that that's not the case and I'm even working on the posibility of removing the active cooling system.</p>
+          <h3>Perfboard</h3>
 
-          <img loading="lazy" src="/blog/diy-handheld-game-console/3d-printing.png" alt=""/>
+          <p><strong>Perfboards are boards that are pre-drilled in a grid disposition.</strong> <strong>It allows you to insert the electronic components on the designated places</strong>, as in a breadboard, and solder them to the board. This is like a step in the middle between a breadboard and a custom PCB. The problem for me is that <strong>I'm forced to place each push button on a very specific spot</strong>. <strong>I wanted to have 100% freedom of placing the buttons wherever the design would make it more visually attractive.</strong> I've seen plenty of consoles using perfboards, and the thing I don't like is how <strong>the design adapts to where the components need to be placed</strong>. I wanted that to be the exact opposite. <strong>The desing must dictate where the components will be placed, not the other way around.</strong></p>
 
-          <p>Since 3d printing is a different manufacture process than, for example, casting, it allows for different ways of assembly. Instead of the tradicional cut in half of any game console or gamepad, I made 3 different parts. The main reason was to being able to print it on my Prusa Mini (28 x 28 x 28 cm). I love the results and that the components are assembled from the sides instead of from the back.</p>
+          <figure>
+            <img loading="lazy" src="/blog/diy-handheld-game-console/perfboard.jpg"/>
+            <figcaption>Source: <a href="https://commons.wikimedia.org/wiki/File:Arduino_Uno_shield_-_generic_green_-_side_B.jpg">Retired electrician</a>, CC0, via Wikimedia Commons</figcaption>
+          </figure>
 
-          <img loading="lazy" src="/blog/diy-handheld-game-console/3-printed-pieces.png" alt=""/>
+          <h3>3D-printed board</h3>
+
+          <p>I wouldn't recommend using a 3D printed board to hold electronics that can raise temperature or that need to do things with electric currents. <strong>Since I only needed to hold tactile push buttons, I decided give this technique a try.</strong> The main advantage of doing it this way is that <strong>it's an ultra fast way of prototyping a board</strong>.</p>
+
+          <img loading="lazy" src="/blog/diy-handheld-game-console/3d-pcb.jpg" alt=""/>
+
+          <p><strong>There is another advantage: you can work with crazy shapes</strong>, like I did with the parts that hold the shoulder buttons or where I inserted the fan. The problem is, <strong>I'm limiting the people who build this console to 3D print the board just because of those unique shapes</strong>. What I learned in the process is that <strong>by using the right components for the right circumstances I'll be able to design a proper standard PCB</strong>. For example, I'm working on using 90-degrees tactile buttons for the shoulder.</p>
+
+          <img loading="lazy" src="/blog/handheld-console-next-steps/90-degrees-push-buttons.jpg"/>
         </div>
         <div class="side-b" id="step-5">
           <h3>Step 5. Wire and assemble.</h3>
@@ -638,20 +671,65 @@ ENTER       26           # Start</code></pre></li>
                 <figcaption>Important: This is a terrible way of having push buttons at 90 degrees. I'm currently <a href="/blog/handheld-console-next-steps">redesigning this piece to use proper 90-degrees push-buttons</a>, so in the future this can be a custom PCB.</figcaption>
               </figure>
             </li>
-            <li><strong>Insert the push buttons into the frame.</strong> Put the squishy buttons on the d-pad and ABXY buttons. Put the non-squishy buttons on the rest. The buttons should stay tight in place. Play around with the layers thickness on the slicer if that's not the case. <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-buttons.png" alt=""/></li>
-            <li><strong>Solder the buttons to the PiSugar header.</strong> As a recommendation, wire all the GND connections in series (black wires in the picture). That way you will only use 1 or 2 GND pins on the Raspberry Pi: <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-pi-sugar.png" alt=""/></li>
+            <li><strong>Insert the push buttons into the frame.</strong> Put the squishy buttons on the d-pad and ABXY buttons. Put the non-squishy buttons on the rest. The buttons should stay tight in place. Play around with the layers thickness on the slicer if that's not the case. <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-buttons.jpg" alt=""/></li>
+            <li><strong>Solder the buttons to the PiSugar header.</strong> As a recommendation, wire all the GND connections in series (black wires in the picture). That way you will only use 1 or 2 GND pins on the Raspberry Pi: <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-pi-sugar.jpg" alt=""/></li>
             
             <h4 aria-hidden="true">Assemble</h4>
 
-            <li><strong>Add an aluminum heatsink to the Raspberry Pi.</strong> Although this step is entirely optional, for more demanding tasks such as gaming, it's recommended to have some form of cooling. <img loading="lazy" src="/blog/diy-handheld-game-console/heatsink-install.png" alt=""/></li>
-            <li><strong>Attach the Raspberry Pi to the PCB-prototype</strong> using (2x) screws on the pins side and (2x) 10mm spacers on the other side. <!--<img loading="lazy" src="/blog/diy-handheld-game-console/screwing-pi.png" alt=""/> <img loading="lazy" src="/blog/diy-handheld-game-console/brass-spacer-installing.jpg" alt=""/>--><figure><img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-screws-and-spacers.jpg" alt=""/><figcaption>(A) and (B) are the 10mm spacers. (C) and (D) are the screws.</figcaption></figure> <!--img loading="lazy" src="/blog/diy-handheld-game-console/pcb-prototype-screws.jpg" alt=""/--></li>
+            <li><strong>Add an aluminum heatsink to the Raspberry Pi.</strong> Although this step is entirely optional, for more demanding tasks such as gaming, it's recommended to have some form of cooling. <img loading="lazy" src="/blog/diy-handheld-game-console/heatsink-install.jpg" alt=""/></li>
+            <li><strong>Attach the Raspberry Pi to the PCB-prototype</strong> using (2x) screws on the pins side and (2x) 10mm spacers on the other side. <!--<img loading="lazy" src="/blog/diy-handheld-game-console/screwing-pi.jpg" alt=""/> <img loading="lazy" src="/blog/diy-handheld-game-console/brass-spacer-installing.jpg" alt=""/>--><figure><img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-screws-and-spacers.jpg" alt=""/><figcaption>(A) and (B) are the 10mm spacers. (C) and (D) are the screws.</figcaption></figure> <!--img loading="lazy" src="/blog/diy-handheld-game-console/pcb-prototype-screws.jpg" alt=""/--></li>
             <li><strong>Connect the PiSugar to the Raspberry Pi <!--<img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-connected-to-raspberry-pi.png" alt=""/>--> and secure it to the spacers using 2 screws.</strong> Make sure you connect the battery to the PiSugar first. <figure><img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-screws.jpg" alt=""/><figcaption>The screws fasten the PiSugar to the spacers.</figcaption></figure></li>
           </ol>
+        </div>
+      </div>
+    </section>
 
-          <h4>External shell</h4>
+    <section id="case" class="entry-body entry-body--side-by-side">
+      <h2>06. Case</h2>
+      <div>
+        <div class="side-a">
+          <p>Designing my own case took me a very long time. It wasn't time spent only on planning and execution, but also the compound results of uncountable years of dissasembling gamepads to repair them noting how every piece works. I'll try to point the main things I had in mind while designing this console.</p>
 
-          <p><strong>The enclosure that I designed is not publicly available yet.</strong> <a href="/blog/handheld-console-next-steps">I'm fixing some big flaws in the design</a> before releasing it. In a nutshell: the mechanism that joins the main parts is weak, and the shoulder buttons are unusable after months (I'm switching to 90-degrees tactile buttons to imitate the xbox controller mechanism). Check out <a href="/blog/handheld-console-next-steps">this post</a> with the details.</p>
+          <!-- <img loading="lazy" src="/blog/diy-handheld-game-console/3d-render.png" alt=""/> -->
+
+          <p>I started drawing 4 different versions with slightly different dimensions on Procreate for iPad. I already had all the components in hand so I already knew that the size of the screen and the depth of all the things were a constant. I made tiny changes in the position of the d-pad, the other buttons, and the length of the handles. The idea was to see which one looked more natural.</p>
           
+          <img loading="lazy" src="/blog/diy-handheld-game-console/2d-sketch.jpg" alt=""/>
+
+          <p>I modeled the console out of a rectangular box using t-splines. I basically defined one of the halves as a mirror of the other one (the green line on the screenshot) and started pulling its vectors until I got the shape I was looking for.</p>
+
+          <img loading="lazy" src="/blog/diy-handheld-game-console/first-3d-sketch.jpg" alt=""/>
+
+          <p>It took several iterations to get it right. One thing is drawing something on the screen and another different thing is to have it in its physical form. Also, 3d printing has its own set of constraints that you need to respect.</p>
+            
+          <p>I printed all the prototypes in PLA to be able to iterate fast, but I used PETG to print the final product. This was actually a mistake. PETG ended up being an extremely soft material, so sanding it didn't result on a smooth surface. The reason I printed it in PETG was because I feared that the console could reach temperatures high enough to soften PLA. It turns out that that's not the case and I'm even working on the posibility of removing the active cooling system.</p>
+
+          <img loading="lazy" src="/blog/diy-handheld-game-console/3d-printing.jpg" alt=""/>
+
+          <p>Since 3d printing is a different manufacture process than, for example, mold casting, it allows for different ways of assembly. Instead of the tradicional cut in half of any game console or gamepad, I made 3 different parts. The main reason was to being able to print it on my Prusa Mini (28cm<sup>3</sup>).</p>
+          
+          <img loading="lazy" src="/blog/diy-handheld-game-console/3-printed-pieces.png" alt=""/>
+
+          <p>I like that the components are assembled from the sides instead of from the back.</p>
+        </div>
+        <div class="side-b" id="step-6">
+          <h3>Step 6. Build an enclosure.</h3>
+
+          <!-- <ol class="steps-list"> -->
+          <p><strong>The case that I designed is not available yet.</strong> <a href="/blog/handheld-console-next-steps">I'm fixing some big flaws in the design</a> before releasing it.</p>
+          
+          <p>The mechanism that joins the main parts is weak:</p>
+          
+          <img loading="lazy" src="/blog/handheld-console-next-steps/guides.jpg" alt="">
+            
+          <p>And the shoulder buttons are mounted on 90-degrees 3D-printed pieces, which makes them very unstable:</p>
+          
+          <img loading="lazy" src="/blog/handheld-console-next-steps/shoulder-buttons-current.jpg" alt="">
+  
+          <p>Check out this post with more details:</p>
+
+          <p><a href="/blog/handheld-console-next-steps"><img class="pixelated" style="display:inline;margin:0 5px 0 0;vertical-align:middle" src="/blog/handheld-console-next-steps/abxy-icon.gif" itemprop="image" alt="An icon representing the ABXY buttons of a gamepad"  width="30" height="32"> What's next for the handheld game console</a></p>
+        
           <p>In the meantime, <strong>try making your own case!</strong> Use cardboard, or a metal tin box. If you have a 3d printer, try designing one yourself on <a href="https://www.tinkercad.com" target="_blank" rel="noopener">Thinkercad</a>. It can be as simple as a rectangle. <strong>You can also modify existing enclosures to fit your components</strong>.</p>
 
           <p>Do you want me to e-mail you when I have news about the console? Drop your address here:</p>
