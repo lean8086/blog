@@ -3,7 +3,6 @@ document.head.insertAdjacentHTML('beforeend', `
     :root {
       --color-background: #fff;
       --color-text: rgba(0, 0, 0, .85);
-      --color-link-default: #0074D9;
 
       --gutter-l: 4rem;
       --gutter-m: 2rem;
@@ -70,7 +69,7 @@ document.head.insertAdjacentHTML('beforeend', `
     }
 
     body > .header a {
-      color: var(--color-link-default);
+      color: var(--color-text);
       text-decoration: none;
     }
 
