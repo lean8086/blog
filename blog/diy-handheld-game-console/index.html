@@ -180,8 +180,8 @@
         <label for="galeri-3"><img src="/blog/diy-handheld-game-console/gal/abxy_s.jpg" alt=""/></label>
         <label for="galeri-4"><img src="/blog/diy-handheld-game-console/gal/psp-game_s.jpg" alt=""/></label>
         <label for="galeri-5"><img src="/blog/diy-handheld-game-console/gal/back_s.jpg" alt=""/></label>
-        <label for="galeri-6"><img src="/blog/diy-handheld-game-console/gal/genesis-megadrive-game_s.jpg" alt=""/></label>
-        <label for="galeri-7"><img src="/blog/diy-handheld-game-console/gal/ps1-game_s.jpg" alt=""/></label>
+        <label for="galeri-6"><img src="/blog/diy-handheld-game-console/gal/ps1-game_s.jpg" alt=""/></label>
+        <label for="galeri-7"><img src="/blog/diy-handheld-game-console/gal/genesis-megadrive-game_s.jpg" alt=""/></label>
       </nav>
 
       <p>I compiled all the information that I gathered designing and building this handheld game console so anyone can build it. This step-by-step guide contains <strong>the explanation of all the choices that I made, and the options that I left out of the table</strong>.</p>
@@ -369,10 +369,11 @@
             <li>Identify which model of Raspberry Pi you have. <img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-4-model-b-closeup.jpg" alt=""/></li>
             <li>Connect a <a href="https://elinux.org/RPi_SD_cards" target="_blank" rel="noopener">compatible SD card</a> to your computer. <img loading="lazy" src="/blog/diy-handheld-game-console/inserting-sd-card.jpg" alt=""/></li>
             <li>Download and install the official <a href="https://www.raspberrypi.org/software/" target="_blank" rel="noopener">Raspberry Pi Imager</a>. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-ui.png" alt=""/></li>
-            <li>On the Raspberry Pi Imager, <strong>click on "Choose device"</strong> under "Raspberry Pi Device" <strong>and select your Raspberry Pi model</strong>. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-model.png" alt=""/></li>
-            <li>Click "Choose OS" under "Operating System". <strong>Select "Emulation and game OS" and then "RetroPie".</strong> <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-os.png" alt=""/></li>
-            <li>Choose the version of RetroPie that corresponds to your specific Raspberry Pi model. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-retropie.png" alt=""/></li>
-            <li>Click on "Choose storage" and select your SD card on the list to install RetroPie into it. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-sd.png" alt=""/></li>
+            <li>On the Raspberry Pi Imager, <strong>click <span class="faux-code">Choose device</span> and select your Raspberry Pi model</strong>. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-model.png" alt=""/></li>
+            <li>Click <span class="faux-code">Choose OS</span>. <strong>Select <em>"Emulation and game OS"</em>, then <em>"RetroPie"</em>.</strong> <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-os.png" alt=""/></li>
+            <li>Choose the version of RetroPie that corresponds to your specific board. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-retropie.png" alt=""/></li>
+            <li>Click <span class="faux-code">Choose storage</span> and select your SD card on the list to install RetroPie into it. <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/rasbperry-pi-imager-sd.png" alt=""/></li>
+            <li>Click <span class="faux-code">Next</span> and install RetroPie on the SD card.</li>
             <li><strong>Now you can install games.</strong> I wrote an <a href="/blog/setting-up-retropie">in-depth guide about installing games in RetroPie</a>. You can always check <a href="https://retropie.org.uk" target="_blank" rel="noopener">RetroPie's official documentation</a> for more details.</li>
           </ol>
 
@@ -448,20 +449,20 @@
           <p>These are the keys and the functionalities that I picked up for my prototype:</p>
           
           <ul>
-            <li><strong>W key</strong>: D-pad up</li>
-            <li><strong>S key</strong>: D-pad down</li>
-            <li><strong>A key</strong>: D-pad left</li>
-            <li><strong>D key</strong>: D-pad right</li>
-            <li><strong>H key</strong>: A</li>
-            <li><strong>G key</strong>: B</li>
-            <li><strong>F key</strong>: X</li>
-            <li><strong>T key</strong>: Y</li>
-            <li><strong>Q key</strong>: L1 (Left-top shoulder)</li>
-            <li><strong>E key</strong>: L2 (Left-bottom shoulder)</li>
-            <li><strong>Z key</strong>: R1 (Right-top shoulder)</li>
-            <li><strong>C key</strong>: R2 (Right-bottom shoulder)</li>
-            <li><strong>Right Shift key</strong>: Select</li>
-            <li><strong>Enter key</strong>: Start</li>
+            <li><strong><span class="faux-code">W</span> key</strong>: D-pad up</li>
+            <li><strong><span class="faux-code">S</span> key</strong>: D-pad down</li>
+            <li><strong><span class="faux-code">A</span> key</strong>: D-pad left</li>
+            <li><strong><span class="faux-code">D</span> key</strong>: D-pad right</li>
+            <li><strong><span class="faux-code">H</span> key</strong>: A</li>
+            <li><strong><span class="faux-code">G</span> key</strong>: B</li>
+            <li><strong><span class="faux-code">F</span> key</strong>: X</li>
+            <li><strong><span class="faux-code">T</span> key</strong>: Y</li>
+            <li><strong><span class="faux-code">Q</span> key</strong>: L1 (Left-top shoulder)</li>
+            <li><strong><span class="faux-code">E</span> key</strong>: L2 (Left-bottom shoulder)</li>
+            <li><strong><span class="faux-code">Z</span> key</strong>: R1 (Right-top shoulder)</li>
+            <li><strong><span class="faux-code">C</span> key</strong>: R2 (Right-bottom shoulder)</li>
+            <li><strong><span class="faux-code">Right Shift</span> key</strong>: Select</li>
+            <li><strong><span class="faux-code">Enter</span> key</strong>: Start</li>
           </ul>
 
           <!-- <h4>Next steps:</h4>
@@ -506,7 +507,7 @@
           
           <p>When I started the project, I had the idea to use some "fake" analog sticks. By simply using an 8-way navigation switch <strong>I could have read the 8 directions as digital inputs</strong>, but I couldn't find any model to buy. I bought a 5-way switch to test it, but as the name implies, it doesn't support moving in diagonal:</p>
 
-          <img loading="lazy" src="/blog/diy-handheld-game-console/5-way-navigation-switch.jpeg" alt=""/>
+          <img loading="lazy" src="/blog/diy-handheld-game-console/5-way-navigation-switch.jpg" alt=""/>
         </div>
         <div class="side-b" id="step-3">
           <h3>Step 3. Add your own custom buttons.</h3>
@@ -523,11 +524,11 @@
           <!-- <h4>Steps:</h4> -->
 
           <ol class="steps-list">
-            <li>Add tactile buttons to the breadboard and wire one of the legs to the ground row (-) of the board. <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-with-buttons-and-connections.jpg" alt=""/></li>
+            <li><strong>Add all the tactile buttons to the breadboard</strong> and wire one of the legs to the ground row (<span class="faux-code">-</span>) of the board. <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-with-buttons-and-connections.jpg" alt=""/></li>
             
-            <li>Use jumper wires to connect the other leg of the push button to a pin on the Rasbperry Pi. <strong>You can connect any button to any available pin (<a href="#raspberry-pi-pinout">see here</a>) but it is imporant to take note of which button you're connecting to which pin.</strong> These are the pins I used: <img loading="lazy" src="/blog/diy-handheld-game-console/controller-pins.jpg" alt=""/> <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-connected-to-raspberry-pi.jpg" alt=""/></li>
+            <li><strong>Connect the other leg of the buttons (<span class="faux-code">+</span>) to a pin on the Rasbperry Pi using jumper wires.</strong> You can connect any button to any <a href="#raspberry-pi-pinout">available pin</a> but it's important to take note of which buttons you connect to which pins.</strong> <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-connected-to-raspberry-pi.jpg" alt=""/> <p>These are the pins I used:</p> <img loading="lazy" src="/blog/diy-handheld-game-console/controller-pins.jpg" alt=""/></li>
             
-            <li><a href="https://www.raspberrypi.org/documentation/remote-access/ssh/" target="_blank" rel="noopener">Enable SSH</a> to be able to send files and to connect remotely to the Raspberry Pi. Consider <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a> to the Raspberry Pi in order to make your workflow easier.</li>
+            <li><strong><a href="https://retropie.org.uk/docs/Wifi/" target="_blank" rel="noopener">Connect to wi-fi</a> and <a href="https://retropie.org.uk/docs/SSH/" target="_blank" rel="noopener">enable SSH</a></strong> to be able to connect remotely to the Raspberry Pi. Consider <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a> to make your workflow easier.</li>
             
             
             <!-- <li>Download the file <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/main/retrogame.sh" rel="noopener">retrogame.sh</a> from <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts" rel="noopener">Raspberry-Pi-Installer-Scripts</a>.</li> -->
@@ -538,10 +539,10 @@
 
             <li>Connect remotely to the Raspberry Pi: <pre><code>$ ssh pi@192.168.X.X</code></pre></li>
 
-            <li>Connected to the Raspberry Pi, download the <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/main/retrogame.sh" target="_blank" rel="noopener">Retrogame script</a> from <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts" target="_blank" rel="noopener">Raspberry-Pi-Installer-Scripts</a> to install the <a href="https://github.com/adafruit/Adafruit-Retrogame" target="_blank" rel="noopener">Adafruit-Retrogame</a> utility. This will allow you to map the GPIO pins to a virtual keyboard. <pre><code>$ curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/retrogame.sh > retrogame.sh
+            <li>Once connected, <strong>download <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/main/retrogame.sh" target="_blank" rel="noopener">retrogame.sh</a> from <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts" target="_blank" rel="noopener">Raspberry-Pi-Installer-Scripts</a> and execute it.</strong> It will install the <a href="https://github.com/adafruit/Adafruit-Retrogame" target="_blank" rel="noopener">Adafruit-Retrogame</a> utility. This will allow you to map the GPIO pins to a virtual keyboard. <pre><code>$ curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/retrogame.sh > retrogame.sh
 $ sudo bash retrogame.sh</code></pre> You will be prompted to select a configuration. Choose any option and follow the steps to reboot.</li>
 
-            <li>Edit the Retrogame configuration file to map the GPIO pins to the keys you setted on <a href="#step-2">step 2</a>: <pre><code>$ sudo nano /boot/retrogame.cfg</code></pre> For a list of all the possible key IDs take a look at <a href="https://github.com/adafruit/Adafruit-Retrogame/blob/master/keyTable.h" target="_blank" rel="noopener">Retrogame's keyTable.h file</a>. Here's an example of my retrogame.cfg file where I map my keyboard keys to the pins I've chosen: <pre><code># Key      Pin           Button
+            <li><strong>Edit the <span class="faux-code">retrogame.cfg</span> file to link the GPIO pins to the keys you setted on <a href="#step-2">step 2</a>:</strong> <pre><code>$ sudo nano /boot/retrogame.cfg</code></pre> For a list of all the possible key IDs take a look at <a href="https://github.com/adafruit/Adafruit-Retrogame/blob/master/keyTable.h" target="_blank" rel="noopener">Retrogame's keyTable.h file</a>. Here's an example of my <span class="faux-code">retrogame.cfg</span> file where I map my keyboard keys to the pins I've chosen: <pre><code># Key      Pin           Button
 
 W           19           # Up
 S            5           # Down
@@ -561,9 +562,9 @@ C            7           # R2
 RIGHTSHIFT  10           # Select
 ENTER       26           # Start</code></pre></li>
 
-            <li>Save the changes and exit Nano. You can do both by just pressing Ctrl+X.</li>
+            <li><strong>Save the changes and exit Nano.</strong> You can do both by pressing <span class="faux-code">ctrl + X</span>.</li>
 
-            <li>Reboot the console and check that everything works as expected. <pre><code>$ sudo reboot</code></pre> You should be able to navigate the interface, start games, and play them using your custom gamepad. <img loading="lazy" src="/blog/diy-handheld-game-console/playing-game-with-breadboard.png" alt=""/></li>
+            <li><strong>Reboot the console</strong> and check that everything works as expected. <pre><code>$ sudo reboot</code></pre> You should be able to navigate the interface, start games, and play them using your custom gamepad. <img loading="lazy" src="/blog/diy-handheld-game-console/playing-game-with-breadboard.png" alt=""/></li>
           </ol>
 
           <!-- <h4>Next steps:</h4>
@@ -672,7 +673,7 @@ ENTER       26           # Start</code></pre></li>
               </figure>
             </li>
             <li><strong>Insert the push buttons into the frame.</strong> Put the squishy buttons on the d-pad and ABXY buttons. Put the non-squishy buttons on the rest. The buttons should stay tight in place. Play around with the layers thickness on the slicer if that's not the case. <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-buttons.jpg" alt=""/></li>
-            <li><strong>Solder the buttons to the PiSugar header.</strong> As a recommendation, wire all the GND connections in series (black wires in the picture). That way you will only use 1 or 2 GND pins on the Raspberry Pi: <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-pi-sugar.jpg" alt=""/></li>
+            <li><strong>Solder the buttons to the PiSugar header.</strong> As a recommendation, wire all the <span class="faux-code">GND</span> connections in series (black wires in the picture). That way you will only use 1 or 2 <span class="faux-code">GND</span> pins on the Raspberry Pi: <img loading="lazy" src="/blog/diy-handheld-game-console/skeleton-with-pi-sugar.jpg" alt=""/></li>
             
             <h4 aria-hidden="true">Assemble</h4>
 

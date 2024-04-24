@@ -236,7 +236,8 @@ a:hover {
   font-style: italic;
 }
 
-.entry-body code {
+.entry-body code,
+.faux-code {
   font-family: var(--font-type-mono);
   border: 1px solid var(--color-text);
   padding: .1em .3em;
@@ -335,11 +336,32 @@ a:hover {
   margin-bottom: var(--gutter-m);
 }
 
+.galeri label {
+  position: relative;
+}
+
 .galeri img {
   width: 72px;
   margin: 0;
   border-radius: var(--radius-half);
   cursor: pointer;
+}
+
+/* TODO: ¯\_(ツ)_/¯ */
+[name="galeri"]:nth-of-type(2):checked ~ .galeri label:nth-of-type(2)::after,
+[name="galeri"]:nth-of-type(3):checked ~ .galeri label:nth-of-type(3)::after,
+[name="galeri"]:nth-of-type(4):checked ~ .galeri label:nth-of-type(4)::after,
+[name="galeri"]:nth-of-type(5):checked ~ .galeri label:nth-of-type(5)::after,
+[name="galeri"]:nth-of-type(6):checked ~ .galeri label:nth-of-type(6)::after,
+[name="galeri"]:nth-of-type(7):checked ~ .galeri label:nth-of-type(7)::after,
+[name="galeri"]:nth-of-type(8):checked ~ .galeri label:nth-of-type(8)::after {
+  content: "•";
+  position: absolute;
+  top: 85%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: var(--font-size-m);
 }
 
 /* BIG SCREENS */
