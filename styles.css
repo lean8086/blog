@@ -283,7 +283,7 @@ a:hover {
 
 /* LEMME KNOW MODULE */
 
-.lemme-know {
+/* .lemme-know {
   display: flex;
   gap: var(--gutter-s);
 }
@@ -311,7 +311,7 @@ a:hover {
 
 .lemme-know [type="submit"]::after {
   content: ' →';
-}
+} */
 
 /* GALLERY MODULE */
 
