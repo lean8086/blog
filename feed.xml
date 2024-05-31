@@ -1,114 +1,136 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"
-  xmlns:content="https://purl.org/rss/1.0/modules/content/"
-  xmlns:wfw="https://wellformedweb.org/CommentAPI/"
-  xmlns:dc="https://purl.org/dc/elements/1.1/"
-  xmlns:atom="https://www.w3.org/2005/Atom"
->
+     xmlns:content="https://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="https://wellformedweb.org/CommentAPI/"
+     xmlns:dc="https://purl.org/dc/elements/1.1/"
+     xmlns:atom="https://www.w3.org/2005/Atom">
   <channel>
     <title>Leandro Linares</title>
-    <atom:link href="https://leandrolinares.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <atom:link href="https://leandrolinares.com/feed.xml" rel="self" type="application/rss+xml"/>
     <link>https://leandrolinares.com/</link>
     <description>I use code to create human-friendly interfaces and tools to build nerdy things. I document my coding journey in tweets and blog posts, and my building process in cinematic videos.</description>
-    <pubDate>Tue, 8 Dec 2020 01:00:00 +0100</pubDate>
-    <lastBuildDate>Tue, 9 Apr 2024 01:00:00 +0100</lastBuildDate>
+    <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+    <lastBuildDate>Fri, 31 May 2024 00:00:00 +0000</lastBuildDate>
     <language>en</language>
+
+    <item>
+      <title>Second update on the Handheld Console</title>
+      <link>https://leandrolinares.com/blog/handheld-console-2nd-update/</link>
+      <pubDate>Fri, 31 May 2024 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://leandrolinares.com/blog/handheld-console-2nd-update/</guid>
+      <author>Leandro Linares</author>
+      <description>A quick, and hopefully final, update on what changed with the DIY handheld game console.</description>
+    </item>
+
     <item>
       <title>What's next for the handheld game console</title>
       <link>https://leandrolinares.com/blog/handheld-console-next-steps/</link>
-      <pubDate>Tue, 2 Jan 2024 01:00:00 +0100</pubDate>
+      <pubDate>Tue, 2 Jan 2024 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/handheld-console-next-steps/</guid>
       <author>Leandro Linares</author>
       <description>What's new, what I'm working on, and what comes next.</description>
     </item>
+
     <item>
       <title>How to build a handheld game console</title>
       <link>https://leandrolinares.com/blog/diy-handheld-game-console/</link>
-      <pubDate>Sat, 25 Nov 2023 01:00:00 +0100</pubDate>
+      <pubDate>Sat, 25 Nov 2023 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/diy-handheld-game-console/</guid>
       <author>Leandro Linares</author>
       <description>All the information that I gathered building this handheld game console compiled in one place so anyone can build it.</description> 
     </item>
+
     <item>
       <title>Post-processing 3D prints</title>
       <link>https://leandrolinares.com/blog/post-processing-3d-prints/</link>
-      <pubDate>Sun, 29 Nov 2020 01:00:00 +0100</pubDate>
+      <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/post-processing-3d-prints/</guid>
       <author>Leandro Linares</author>
       <description>I glued, smoothed, and painted this 3D printed Tesla Roadster 1/8 scale model.</description>
     </item>
+
     <item>
       <title>Developer Happiness</title>
       <link>https://leandrolinares.com/blog/developer-happiness/</link>
-      <pubDate>Tue, 10 Nov 2020 01:00:00 +0100</pubDate>
+      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/developer-happiness/</guid>
       <author>Leandro Linares</author>
       <description>My highlights from the 2020 analysis on what makes software engineers happy.</description>
     </item>
+
     <item>
       <title>Optimistic UI</title>
       <link>https://leandrolinares.com/blog/optimistic-ui/</link>
-      <pubDate>Tue, 6 Nov 2020 01:00:00 +0100</pubDate>
+      <pubDate>Tue, 6 Nov 2020 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/optimistic-ui/</guid>
       <author>Leandro Linares</author>
       <description>The trick to make interactions feel lightning fast.</description>
     </item>
+
     <item>
       <title>Microdata</title>
       <link>https://leandrolinares.com/blog/microdata/</link>
-      <pubDate>Thu, 15 Oct 2020 01:00:00 +0100</pubDate>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/microdata/</guid>
       <author>Leandro Linares</author>
       <description>Introduction to the basic concepts of Microdata: the structured data on the Internet.</description>
     </item>
+
     <item>
       <title>Learning UX over DX</title>
       <link>https://leandrolinares.com/blog/learning-ux-over-dx/</link>
-      <pubDate>Tue, 22 Sep 2020 01:00:00 +0100</pubDate>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/learning-ux-over-dx/</guid>
       <author>Leandro Linares</author>
       <description>Frameworks are tools for developers, not for users. Good UX is the end, the frameworks we use are the means to that end.</description>
     </item>
+
     <item>
       <title>Web Accessibility</title>
       <link>https://leandrolinares.com/blog/web-accessibility/</link>
-      <pubDate>Tue, 22 Sep 2020 01:00:00 +0100</pubDate>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/web-accessibility/</guid>
       <author>Leandro Linares</author>
       <description>Introduction to the basic concepts of Web Accessibility (a11y).</description>
     </item>
+
     <item>
       <title>Building an Arduino MIDI Controller</title>
       <link>https://leandrolinares.com/blog/arduino-midi-controller/</link>
-      <pubDate>Sun, 28 Jun 2020 01:00:00 +0100</pubDate>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/arduino-midi-controller/</guid>
       <author>Leandro Linares</author>
       <description>I'm a beginner in all things Arduino and I've been working on an easy, fast, and cheap project to learn more about it.</description>
     </item>
+
     <item>
       <title>Using an emoji as favicon with SVG</title>
       <link>https://leandrolinares.com/blog/using-emoji-as-favicon/</link>
-      <pubDate>Tue, 17 Dec 2019 01:00:00 +0100</pubDate>
+      <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/using-emoji-as-favicon/</guid>
       <author>Leandro Linares</author>
       <description>SVG favicons are supported by browsers. SVG can render text and emojis are text as they are part of the unicode standard.</description>
     </item>
+
     <item>
       <title>How I built an arcade machine from scratch</title>
       <link>https://leandrolinares.com/blog/arcade-machine-build/</link>
-      <pubDate>Wed, 12 Dec 2018 01:00:00 +0100</pubDate>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/arcade-machine-build/</guid>
       <author>Leandro Linares</author>
       <description>I mixed old hardware with new materials to make a full-sized retro cabinet that fits in a small apartment.</description>
     </item>
+
     <item>
       <title>A complete guide to setting up RetroPie</title>
       <link>https://leandrolinares.com/blog/setting-up-retropie/</link>
-      <pubDate>Tue, 8 Dec 2020 01:00:00 +0100</pubDate>
+      <pubDate>Wed, 28 Jun 2017 00:00:00 +0000</pubDate>
+      <dc:date>2024-05-10T00:00:00+01:00</dc:date>
       <guid isPermaLink="true">https://leandrolinares.com/blog/setting-up-retropie/</guid>
       <author>Leandro Linares</author>
       <description>Step-by-step tutorial on how to setup your Raspberry Pi to make the most of it as retro games console.</description>
     </item>
+
     <item>
       <title>Node dependencies vs. devDependencies</title>
       <link>https://leandrolinares.com/blog/node-dependencies-vs-devdependencies/</link>
@@ -117,6 +139,7 @@
       <author>Leandro Linares</author>
       <description>Definición totalmente básica sobre las dependencias de Node JS.</description>
     </item>
+
     <item>
       <title>Dudas comunes de microdata</title>
       <link>https://leandrolinares.com/blog/dudas-comunes-microdata/</link>
@@ -125,6 +148,7 @@
       <author>Leandro Linares</author>
       <description>Las consultas sobre microdata que recibo más a menudo.</description>
     </item>
+
     <item>
       <title>Incremental DOM</title>
       <link>https://leandrolinares.com/blog/incremental-dom/</link>
@@ -133,6 +157,7 @@
       <author>Leandro Linares</author>
       <description>Diferencias entre Virtual DOM de Facebook e Incremental DOM de Google.</description>
     </item>
+
     <item>
       <title>Imágenes retina en tablets con HiDPI</title>
       <link>https://leandrolinares.com/blog/imagenes-retina-hidpi/</link>
@@ -141,6 +166,7 @@
       <author>Leandro Linares</author>
       <description>Qué tamaños de imágenes tener en cuenta para distintas resoluciones y cómo implementarlas.</description>
     </item>
+
     <item>
       <title>Card pattern</title>
       <link>https://leandrolinares.com/blog/card-pattern/</link>
@@ -149,6 +175,7 @@
       <author>Leandro Linares</author>
       <description>Características de este patrón de diseño, más alla de su aspecto visual.</description>
     </item>
+
     <item>
       <title>Microinteractions</title>
       <link>https://leandrolinares.com/blog/microinteractions/</link>
@@ -157,6 +184,7 @@
       <author>Leandro Linares</author>
       <description>Introducción y punto de partida para saber más sobre este patrón de diseño.</description>
     </item>
+
     <item>
       <title>Velocidad percibida por el usuario</title>
       <link>https://leandrolinares.com/blog/velocidad-percibida-por-el-usuario/</link>
@@ -165,6 +193,7 @@
       <author>Leandro Linares</author>
       <description>Cómo mejorar la experiencia de espera de los usuarios de una interfaz.</description>
     </item>
+
     <item>
       <title>Single Page Apps y cómo mejorar la UX (parte 2)</title>
       <link>https://leandrolinares.com/blog/single-page-apps-mejorar-ux-2/</link>
@@ -173,30 +202,34 @@
       <author>Leandro Linares</author>
       <description>Cómo podemos aprovechar los beneficios que nos dan las SPA.</description>
     </item>
+
     <item>
       <title>Protocolo HTTP/2</title>
       <link>https://leandrolinares.com/blog/protocolo-http2/</link>
-      <pubDate>Tue, 03 Mar 2015 01:00:00 +0100</pubDate>
+      <pubDate>Tue, 03 Mar 2015 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/protocolo-http2/</guid>
       <author>Leandro Linares</author>
       <description>De qué se trata el nuevo protocolo de intercambio de datos.</description>
     </item>
+
     <item>
       <title>Single Page Apps y cómo mejorar la UX (parte 1)</title>
       <link>https://leandrolinares.com/blog/single-page-apps-mejorar-ux/</link>
-      <pubDate>Tue, 03 Feb 2015 01:00:00 +0100</pubDate>
+      <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/single-page-apps-mejorar-ux/</guid>
       <author>Leandro Linares</author>
       <description>Cambios que proponen las SPA y cómo podemos aprovechar los beneficios.</description>
     </item>
+
     <item>
       <title>Calidad vs. velocidad en el desarrollo</title>
       <link>https://leandrolinares.com/blog/calidad-vs-velocidad-desarrollo/</link>
-      <pubDate>Fri, 21 Nov 2014 01:00:00 +0100</pubDate>
+      <pubDate>Fri, 21 Nov 2014 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/calidad-vs-velocidad-desarrollo/</guid>
       <author>Leandro Linares</author>
       <description>Notas acerca del video de Facebook donde introducen el concepto de Flux.</description>
     </item>
+
     <item>
       <title>Multi-Device Layout Patterns</title>
       <link>https://leandrolinares.com/blog/multi-device-layout-patterns/</link>
@@ -205,18 +238,20 @@
       <author>Leandro Linares</author>
       <description>Introducción a los tipos de layouts más conocidos.</description>
     </item>
+
     <item>
       <title>Evitar redundancia de roles ARIA</title>
       <link>https://leandrolinares.com/blog/evitar-redundancia-roles-aria/</link>
-      <pubDate>Mon, 24 Feb 2014 01:00:00 +0100</pubDate>
+      <pubDate>Mon, 24 Feb 2014 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/evitar-redundancia-roles-aria/</guid>
       <author>Leandro Linares</author>
       <description>Análisis sobre dos casos similares de roles.</description>
     </item>
+
     <item>
       <title>Background offset en CSS</title>
       <link>https://leandrolinares.com/blog/background-offset-css/</link>
-      <pubDate>Mon, 13 Jan 2014 01:00:00 +0100</pubDate>
+      <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/background-offset-css/</guid>
       <author>Leandro Linares</author>
       <description>Cómo mejorar el posicionamiento de un background, usando el feature de offset.</description>

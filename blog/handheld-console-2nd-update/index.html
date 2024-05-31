@@ -1,0 +1,119 @@
+<!doctype html>
+<html land="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Second update on the Handheld Console - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fff">
+  <meta name="description" content="A quick, and hopefully final, update on what changed with the DIY handheld game console.">
+
+  <link rel="icon" href="/favicon.gif">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/assets/lite-yt-embed.css">
+  <link rel="canonical" href="https://leandrolinares.com/blog/handheld-console-2nd-update/">
+
+  <meta itemprop="mainEntityOfPage" content="https://leandrolinares.com/blog/handheld-console-2nd-update/">
+  <meta itemprop="inLanguage" content="en">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/blog/handheld-console-2nd-update/">
+  <meta name="twitter:title" content="Second update on the Handheld Console">
+  <meta name="twitter:description" content="A quick, and hopefully final, update on what changed with the DIY handheld game console.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:title" content="Second update on the Handheld Console">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/blog/handheld-console-2nd-update/">
+  <meta property="og:description" content="A quick, and hopefully final, update on what changed with the DIY handheld game console.">
+  <meta property="og:site_name" content="Leandro Linares">
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
+  </header>
+
+  <header class="entry-head">
+    <img class="entry-head__image pixelated" src="/blog/handheld-console-2nd-update/bayx-icon.gif" itemprop="image" alt="An icon representing the A,B,X,Y buttons"  width="60" height="64">
+    <h1 class="entry-head__headline" itemprop="headline">Second update on the Handheld Console</h1>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2024-05-31">May 31, 2024</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="A quick, and hopefully final, update on what changed with the DIY handheld game console.">
+  </header>
+
+  <section class="entry-body" itemprop="articleBody">
+    <p>The 3D-printable case is closer to release. I've been making tons of improvements to make it available soon and wanted to keep you all posted.</p>
+
+    <p>In case you don't know what I'm talking about, here is the original guide and an update on what needs to be done:</p>
+
+    <p><a href="/blog/diy-handheld-game-console"><img class="pixelated" style="display:inline;margin:0 5px 0 0;vertical-align:middle" src="/blog/diy-handheld-game-console/handheld-icon.gif" alt="An icon representing a D-pad of a gamepad"  width="28" height="32"> How to build a handheld game console</a></p>
+    <p><a href="/blog/handheld-console-next-steps"><img class="pixelated" style="display:inline;margin:0 5px 0 0;vertical-align:middle" src="/blog/handheld-console-next-steps/abxy-icon.gif" alt="An icon representing a D-pad of a gamepad"  width="30" height="32"> What's next for the handheld game console</a></p>
+
+    <p>There's also a YouTube video with the building process:</p>
+
+    <lite-youtube videoid="gkook0l_gsM" style="background-image: url('https://i.ytimg.com/vi/gkook0l_gsM/maxresdefault.jpg');"></lite-youtube>
+
+    <p>Check out my <a href="https://youtube.com/leandrolinares?sub_confirmation=1" target="_blank" rel="noopener">YouTube channel</a> for more projects.</p>
+
+    <h2>Issue 1. Joints</h2>
+
+    <p>I decided to abandon the idea of having a case split into 3 for a more traditional joint: front and back halves. This required me to redistribute most of the parts inside since they were engineered to be printed on the side.</p>
+
+    <figure>
+      <img src="/blog/handheld-console-2nd-update/handheld-console-front-half.png"/>
+      <figcaption>Front half of the console with all the buttons in place: D-pad, ABXY, Select, Start, and the 4 shoulders.</figcaption>
+    </figure>
+
+    <p>It will take way more time to print it this way, but now the case can withstand the pressure from the hands.</p>
+
+    <figure>
+      <img src="/blog/handheld-console-2nd-update/handheld-console-front-half-slicer.png"/>
+      <figcaption>Front half on Prusaslicer held by organic supports. It fits the Prusa Mini bed at a 40-degree angle.</figcaption>
+    </figure>
+
+
+    <h2>Issue 2. Shoulder buttons</h2>
+
+    <p>I redesigned both shoulders to have hinges so the 3D printed pieces can support all the stress they need to support.</p>
+
+    <figure>
+      <img src="/blog/handheld-console-2nd-update/handheld-console-shoulder-button.png"/>
+      <figcaption>Left-top shoulder inside the case. The other button was removed to display the hinge mechanism.</figcaption>
+    </figure>
+
+    <p>I also worked on distributing the new 90-degree tactile push buttons inside the case. It wasn't an easy task because the battery needed to be positioned a little bit to the bottom to make space for the mechanism.</p>
+
+    <figure>
+      <img src="/blog/handheld-console-2nd-update/90-degrees-push-buttons.png"/>
+      <figcaption>3D-printed PCB to test how the 90-degree push buttons coexist with the normal tactile buttons.</figcaption>
+    </figure>
+
+
+    <h2>3. Ergonomics</h2>
+
+    <p>Since I was making so many changes to the case, I addressed something that was bothering me since the beginning: the flatness of the overall shape.</p>
+    
+    <p>Even though the previous shape resembled more a Nintendo Switch or a PSP/PSVita, the bump in the middle and the flatness on the sides were something that didn't look balanced.</p>
+
+    <img src="/blog/handheld-console-2nd-update/handheld-console-side.png" alt="The handheld console seen from the left side. The new bumps can be seen at the back of the console."/>
+    
+    <p>I pulled 2 nodes from the back to form a couple of bumps. This way is not only more visually balanced but also easier for the hands.</p>
+
+
+    <h2>4. New video in the works</h2>
+
+    <p>All these updates, along with the previous ones and more, will be on the next video. I've been shooting lots of scenes already.</p>
+
+    <p>Stay tuned by <a href="https://youtube.com/leandrolinares?sub_confirmation=1" target="_blank" rel="noopener">subscribing to my YouTube channel</a>. I'll be posting on the community tab and on new videos.</p>
+
+    <p>Hopefully, the next update will be to share the downloadable file of the case.</p>
+  </section>
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script defer src="/assets/lite-yt-embed.js"></script>
+</body>
+</html>

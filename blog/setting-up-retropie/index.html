@@ -43,7 +43,7 @@
   <header class="entry-head">
     <img class="entry-head__image pixelated" src="/blog/setting-up-retropie/retropie-icon.gif" itemprop="image" alt="Arcade icon" width="48" height="64">
     <h1 class="entry-head__headline" itemprop="headline">A complete guide to setting up RetroPie</h1>
-    <p class="entry-head__details"><time itemprop="dateCreated" content="2017-06-28">June 28, 2017</time> (Updated <time itemprop="dateModified" datetime="2024-05-0X">2024</time>) by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <p class="entry-head__details"><time itemprop="dateCreated" content="2017-06-28" style="text-decoration:line-through">June 28, 2017</time> | <time itemprop="dateModified" datetime="2024-05-10">May 10, 2024</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
     <meta itemprop="description" content="Step-by-step tutorial on how to setup your Raspberry Pi to make the most of it as retro games console.">
   </header>
 
@@ -71,7 +71,7 @@
         </ol>
       </li>
       <li><a href="#overclocking">Overclocking the Raspberry Pi</a></li>
-      <li><a href="#hdmi-sound">Forcing HDMI sound</a></li>
+      <li><a href="#hdmi-audio">Getting audio from HDMI</a></li>
       <li><a href="#arcade-controller">Setting up an arcade controller</a></li>
     </ol>
 
@@ -123,10 +123,6 @@
     </ol>
 
     <p>Find more info about this in the <a href="https://retropie.org.uk/docs/Transferring-Roms/" target="_blank" rel="noopener">official RetroPie documentation</a>.</p>
-
-
-
-
 
     <h2 id="fine-tuning-emulators">03. Fine-tuning emulators</h2>
     <p>Following the steps above, you'll have access to the most common consoles and games. But there are some consideration you need to have for specific emulators.</p>
@@ -211,7 +207,7 @@
     </ol>
 
 
-    <h2 id="hdmi-sound">05. Forcing HDMI sound</h2>
+    <h2 id="hdmi-audio">05. Getting audio from HDMI</h2>
 
     <p>I used an old computer monitor that doesn't have built-in speakers. In some cases, this kind of monitor has a 3.5mm (aux) jack to output sound to external speakers. In that case, you need to make the HDMI take control over the sound:</p>
 
@@ -256,11 +252,6 @@
     <p>You can change this later and also <a href="https://retropie.org.uk/docs/RetroArch-Configuration/">set up different controller distributions for individual consoles and games</a>.</li>
 
     <p><strong>The A button becomes the Enter key, and the B button becomes Escape.</strong></p>
-
-    <!-- <p>To set up the controller for the second player:</p>
-    <ul>
-      <li><strong>Step 13.</strong> Press <code>Start</code> to open the menu, then select <code>Configure input</code>, this time keeping any button of the second controller pressed.</li>
-    </ul> -->    
   </section>
 
   <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>

@@ -8,6 +8,7 @@ https://leandrolinares.com/blog/developer-happiness/
 https://leandrolinares.com/blog/diy-handheld-game-console/
 https://leandrolinares.com/blog/dudas-comunes-microdata/
 https://leandrolinares.com/blog/evitar-redundancia-roles-aria/
+https://leandrolinares.com/blog/handheld-console-2nd-update/
 https://leandrolinares.com/blog/handheld-console-next-steps/
 https://leandrolinares.com/blog/imagenes-retina-hidpi/
 https://leandrolinares.com/blog/incremental-dom/
