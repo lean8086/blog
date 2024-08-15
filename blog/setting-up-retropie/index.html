@@ -71,6 +71,7 @@
         </ol>
       </li>
       <li><a href="#overclocking">Overclocking the Raspberry Pi</a></li>
+      <li><a href="#overscan">Disabling Overscan</a></li>
       <li><a href="#hdmi-audio">Getting audio from HDMI</a></li>
       <li><a href="#arcade-controller">Setting up an arcade controller</a></li>
     </ol>
@@ -211,8 +212,20 @@
       <li><strong>Save the changes and exit Nano.</strong> You can do both by pressing <span class="faux-code">ctrl + X</span>.</li>
     </ol>
 
+    
+    <h2 id="overscan">05. Disabling Overscan</h2>
 
-    <h2 id="hdmi-audio">05. Getting audio from HDMI</h2>
+    <p>In case you notice the image doesn't fill the entire screen (black bars all around), <strong>disable overscan in the Retropie config</strong>.</p>
+
+    <ol>
+      <li>Edit the file <span class="faux-code">/config.txt</span>: <pre><code>$ sudo nano /config.txt</code></pre></li>
+      <li>Uncomment the line <code>#disable_overscan=1</code> to disable overscan, and add the line <code>overscan_scale=1</code> for scaling: <pre><code>disable_overscan=1
+overscan_scale=1</code></pre></li>
+      <li><strong>Save the changes and exit Nano.</strong> You can do both by pressing <span class="faux-code">ctrl + X</span>.</li>
+      <li>Reboot the Raspberry Pi for the changes to take effect.</li>
+    </ol>
+
+    <h2 id="hdmi-audio">06. Getting audio from HDMI</h2>
 
     <p>I used an old computer monitor that doesn't have built-in speakers. In some cases, this kind of monitor has a 3.5mm (aux) jack to output sound to external speakers. In that case, you need to make the HDMI take control over the sound:</p>
 
@@ -233,7 +246,7 @@
     <p><strong>The headphone jack's sound is a lot clearer with a lot less static</strong> using that configuration.</p>
 
 
-    <h2 id="arcade-controller">06. Setting up an arcade controller</h2>
+    <h2 id="arcade-controller">07. Setting up an arcade controller</h2>
 
     <p>It took me a while to understand how to set up an arcade controller. Even though <a href="https://retropie.org.uk/docs/Xin-Mo-Controller/" target="_blank" rel="noopener">the documentation is right there</a>, I didn't know <strong>the arcade controllers are called Xin-Mo</strong>.</p>
 
