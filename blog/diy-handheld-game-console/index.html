@@ -49,13 +49,13 @@
       padding-left: 0;
     }
 
-    .steps-list li {
+    .steps-list > li {
       position: relative;
       padding-left: 2.5rem;
       margin-bottom: var(--gutter-m);
     }
 
-    .steps-list li::before {
+    .steps-list > li::before {
       counter-increment: substep;
       content: counter(step) '.' counter(substep) '. ';
       position: absolute;
@@ -438,32 +438,33 @@
             <li>Connect a keyboard. <img loading="lazy" src="/blog/diy-handheld-game-console/keyboard-connection.jpg" alt=""/></li>
             <li>Connect the Raspberry Pi to a power supply. <img loading="lazy" src="/blog/diy-handheld-game-console/power-connection.png" alt=""/></li>
             <li>Turn on the Raspberry Pi. <img loading="lazy" src="/blog/diy-handheld-game-console/turned-on-raspberry-pi.jpg" alt=""/></li>
-            <li>The first time you enter RetroPie it will ask you to set up all your buttons. <strong>Use your keyboard to map the keys you want. Important: take note of which keys you're assigning to which functionality.</strong> <img loading="lazy" src="/blog/diy-handheld-game-console/welcome-screen.png" alt=""/></li>
+            <li>The first time you enter RetroPie it will ask you to set up all your buttons. <strong>Use your keyboard to map the keys you want. Important: take note of which keys you're assigning to which functionality.</strong> <img loading="lazy" src="/blog/diy-handheld-game-console/welcome-screen.png" alt=""/>
+
+              <p>These are the keys I set up:</p>
+              
+              <ul>
+                <li><span class="faux-code">D-PAD UP</span> <span aria-hidden="true" aria-label="to">→</span> Key W</li>
+                <li><span class="faux-code">D-PAD DOWN</span> <span aria-hidden="true" aria-label="to">→</span> Key S</li>
+                <li><span class="faux-code">D-PAD LEFT</span> <span aria-hidden="true" aria-label="to">→</span> Key A</li>
+                <li><span class="faux-code">D-PAD RIGHT</span> <span aria-hidden="true" aria-label="to">→</span> Key D</li>
+
+                <li><span class="faux-code">START</span> <span aria-hidden="true" aria-label="to">→</span> Key Return (Enter)</li>
+                <li><span class="faux-code">SELECT</span> <span aria-hidden="true" aria-label="to">→</span> Key Right Shift</li>
+
+                <li><span class="faux-code">BUTTON A / EAST</span> <span aria-hidden="true" aria-label="to">→</span> Key H</li>
+                <li><span class="faux-code">BUTTON B / SOUTH</span> <span aria-hidden="true" aria-label="to">→</span> Key G</li>
+                <li><span class="faux-code">BUTTON X / NORTH</span> <span aria-hidden="true" aria-label="to">→</span> Key T</li>
+                <li><span class="faux-code">BUTTON Y / WEST</span> <span aria-hidden="true" aria-label="to">→</span> Key F</li>
+
+                <li><span class="faux-code">LEFT SHOULDER</span> <span aria-hidden="true" aria-label="to">→</span> Key Q</li>
+                <li><span class="faux-code">RIGHT SHOULDER</span> <span aria-hidden="true" aria-label="to">→</span> Key E</li>
+                <li><span class="faux-code">LEFT TRIGGER</span> <span aria-hidden="true" aria-label="to">→</span> Key Z</li>
+                <li><span class="faux-code">RIGHT TRIGGER</span> <span aria-hidden="true" aria-label="to">→</span> Key C</li>
+              </ul>
+
+              <p>You'll need to use all those keys to navigate RetroPie's interface. For example, use the <span class="faux-code">D-PAD</span> keys to move through the menus and <span class="faux-code">BUTTON A / EAST</span> to confirm.</p>
+            </li>
           </ol>
-
-          <p>These are the keys and the functionalities that I picked up for my prototype:</p>
-          
-          <ul>
-            <li><span class="faux-code">D-PAD UP</span> <span aria-hidden="true" aria-label="to">→</span> Key W</li>
-            <li><span class="faux-code">D-PAD DOWN</span> <span aria-hidden="true" aria-label="to">→</span> Key S</li>
-            <li><span class="faux-code">D-PAD LEFT</span> <span aria-hidden="true" aria-label="to">→</span> Key A</li>
-            <li><span class="faux-code">D-PAD RIGHT</span> <span aria-hidden="true" aria-label="to">→</span> Key D</li>
-
-            <li><span class="faux-code">START</span> <span aria-hidden="true" aria-label="to">→</span> Key Return (Enter)</li>
-            <li><span class="faux-code">SELECT</span> <span aria-hidden="true" aria-label="to">→</span> Key Right Shift</li>
-
-            <li><span class="faux-code">BUTTON A / EAST</span> <span aria-hidden="true" aria-label="to">→</span> Key H</li>
-            <li><span class="faux-code">BUTTON B / SOUTH</span> <span aria-hidden="true" aria-label="to">→</span> Key G</li>
-            <li><span class="faux-code">BUTTON X / NORTH</span> <span aria-hidden="true" aria-label="to">→</span> Key T</li>
-            <li><span class="faux-code">BUTTON Y / WEST</span> <span aria-hidden="true" aria-label="to">→</span> Key F</li>
-
-            <li><span class="faux-code">LEFT SHOULDER</span> <span aria-hidden="true" aria-label="to">→</span> Key Q</li>
-            <li><span class="faux-code">RIGHT SHOULDER</span> <span aria-hidden="true" aria-label="to">→</span> Key E</li>
-            <li><span class="faux-code">LEFT TRIGGER</span> <span aria-hidden="true" aria-label="to">→</span> Key Z</li>
-            <li><span class="faux-code">RIGHT TRIGGER</span> <span aria-hidden="true" aria-label="to">→</span> Key C</li>
-          </ul>
-
-          <p>You'll need to use all those keys to navigate RetroPie's interface. For example, use the <span class="faux-code">D-PAD</span> keys to move through the menus and <span class="faux-code">BUTTON A / EAST</span> to confirm.</p>
 
           <!-- <h4>Next steps:</h4>
 
