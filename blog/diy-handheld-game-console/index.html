@@ -152,6 +152,7 @@
     <img class="entry-head__image pixelated" src="/blog/diy-handheld-game-console/handheld-icon.gif" itemprop="image" alt="An icon representing a D-pad of a gamepad"  width="56" height="64">
     <h1 class="entry-head__headline" itemprop="headline">How to build a handheld game console</h1>
     <p class="entry-head__details"><time itemprop="dateCreated" datetime="2023-11-25">November 25, 2023</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="dateModified" datetime="2024-08-15">
     <meta itemprop="description" content="All the information that I gathered building this handheld game console compiled in one place so anyone can build it.">
   </header>
 
@@ -443,21 +444,26 @@
           <p>These are the keys and the functionalities that I picked up for my prototype:</p>
           
           <ul>
-            <li><strong><span class="faux-code">W</span> key</strong>: D-pad up</li>
-            <li><strong><span class="faux-code">S</span> key</strong>: D-pad down</li>
-            <li><strong><span class="faux-code">A</span> key</strong>: D-pad left</li>
-            <li><strong><span class="faux-code">D</span> key</strong>: D-pad right</li>
-            <li><strong><span class="faux-code">H</span> key</strong>: A</li>
-            <li><strong><span class="faux-code">G</span> key</strong>: B</li>
-            <li><strong><span class="faux-code">F</span> key</strong>: X</li>
-            <li><strong><span class="faux-code">T</span> key</strong>: Y</li>
-            <li><strong><span class="faux-code">Q</span> key</strong>: L1 (Left-top shoulder)</li>
-            <li><strong><span class="faux-code">E</span> key</strong>: L2 (Left-bottom shoulder)</li>
-            <li><strong><span class="faux-code">Z</span> key</strong>: R1 (Right-top shoulder)</li>
-            <li><strong><span class="faux-code">C</span> key</strong>: R2 (Right-bottom shoulder)</li>
-            <li><strong><span class="faux-code">Right Shift</span> key</strong>: Select</li>
-            <li><strong><span class="faux-code">Enter</span> key</strong>: Start</li>
+            <li><span class="faux-code">D-PAD UP</span> <span aria-hidden="true" aria-label="to">→</span> Key W</li>
+            <li><span class="faux-code">D-PAD DOWN</span> <span aria-hidden="true" aria-label="to">→</span> Key S</li>
+            <li><span class="faux-code">D-PAD LEFT</span> <span aria-hidden="true" aria-label="to">→</span> Key A</li>
+            <li><span class="faux-code">D-PAD RIGHT</span> <span aria-hidden="true" aria-label="to">→</span> Key D</li>
+
+            <li><span class="faux-code">START</span> <span aria-hidden="true" aria-label="to">→</span> Key Return (Enter)</li>
+            <li><span class="faux-code">SELECT</span> <span aria-hidden="true" aria-label="to">→</span> Key Right Shift</li>
+
+            <li><span class="faux-code">BUTTON A / EAST</span> <span aria-hidden="true" aria-label="to">→</span> Key H</li>
+            <li><span class="faux-code">BUTTON B / SOUTH</span> <span aria-hidden="true" aria-label="to">→</span> Key G</li>
+            <li><span class="faux-code">BUTTON X / NORTH</span> <span aria-hidden="true" aria-label="to">→</span> Key T</li>
+            <li><span class="faux-code">BUTTON Y / WEST</span> <span aria-hidden="true" aria-label="to">→</span> Key F</li>
+
+            <li><span class="faux-code">LEFT SHOULDER</span> <span aria-hidden="true" aria-label="to">→</span> Key Q</li>
+            <li><span class="faux-code">RIGHT SHOULDER</span> <span aria-hidden="true" aria-label="to">→</span> Key E</li>
+            <li><span class="faux-code">LEFT TRIGGER</span> <span aria-hidden="true" aria-label="to">→</span> Key Z</li>
+            <li><span class="faux-code">RIGHT TRIGGER</span> <span aria-hidden="true" aria-label="to">→</span> Key C</li>
           </ul>
+
+          <p>You'll need to use all those keys to navigate RetroPie's interface. For example, use the <span class="faux-code">D-PAD</span> keys to move through the menus and <span class="faux-code">BUTTON A / EAST</span> to confirm.</p>
 
           <!-- <h4>Next steps:</h4>
 
@@ -522,41 +528,36 @@
             
             <li><strong>Connect the other leg of the buttons (<span class="faux-code">+</span>) to a pin on the Rasbperry Pi using jumper wires.</strong> You can connect any button to any <a href="#raspberry-pi-pinout">available pin</a> but it's important to take note of which buttons you connect to which pins.</strong> <img loading="lazy" src="/blog/diy-handheld-game-console/breadboard-connected-to-raspberry-pi.jpg" alt=""/> <p>These are the pins I used:</p> <img loading="lazy" src="/blog/diy-handheld-game-console/controller-pins.jpg" alt=""/></li>
             
-            <li><strong><a href="https://retropie.org.uk/docs/Wifi/" target="_blank" rel="noopener">Connect to wi-fi</a> and <a href="https://retropie.org.uk/docs/SSH/" target="_blank" rel="noopener">enable SSH</a></strong> to be able to connect remotely to the Raspberry Pi. Consider <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a> to make your workflow easier.</li>
+            <li><strong>Connect to Wi-Fi</strong> following the <a href="https://retropie.org.uk/docs/Wifi/" target="_blank" rel="noopener">official docs</a>:<br><span class="faux-code">RetroPie</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">WIFI</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">Connect to WiFi network</span></li>
             
-            
-            <!-- <li>Download the file <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/main/retrogame.sh" rel="noopener">retrogame.sh</a> from <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts" rel="noopener">Raspberry-Pi-Installer-Scripts</a>.</li> -->
-            
-            <!-- <li>Download all the files from the <a href="https://github.com/adafruit/Adafruit-Retrogame" rel="noopener">Adafruit-Retrogame</a> utility. This will allow you to map the GPIO pins to a virtual keyboard.</li> -->
+            <li><strong>Access the Raspberry Pi command line</strong> either locally by pressing <span class="faux-code">F4</span> or remotely by first <a href="https://retropie.org.uk/docs/SSH/" target="_blank" rel="noopener">enabling SSH</a>, <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a>, and then running on your computer: <pre><code>$ ssh pi@192.168.X.X</code></pre></li>
 
-            <!-- <li>Send all the downloaded files to the Raspberry Pi's via SSH. Consider compressing the files to make the transfer easier: <pre><code>$ scp FILE1 FILE2 FILE3 pi@192.168.X.X:</code></pre></li> -->
-
-            <li>Connect remotely to the Raspberry Pi: <pre><code>$ ssh pi@192.168.X.X</code></pre></li>
-
-            <li>Once connected, <strong>download <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/main/retrogame.sh" target="_blank" rel="noopener">retrogame.sh</a> from <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts" target="_blank" rel="noopener">Raspberry-Pi-Installer-Scripts</a> and execute it.</strong> It will install the <a href="https://github.com/adafruit/Adafruit-Retrogame" target="_blank" rel="noopener">Adafruit-Retrogame</a> utility. This will allow you to map the GPIO pins to a virtual keyboard. <pre><code>$ curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/retrogame.sh > retrogame.sh
+            <li><strong>Download <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/main/retrogame.sh" target="_blank" rel="noopener">retrogame.sh</a> from <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts" target="_blank" rel="noopener">Raspberry-Pi-Installer-Scripts</a> and execute it.</strong> It will install the <a href="https://github.com/adafruit/Adafruit-Retrogame" target="_blank" rel="noopener">Adafruit-Retrogame</a> utility. This will allow you to map the GPIO pins to a virtual keyboard. <pre><code>$ curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/retrogame.sh > retrogame.sh
 $ sudo bash retrogame.sh</code></pre> You will be prompted to select a configuration. Choose any option and follow the steps to reboot.</li>
 
-            <li><strong>Edit the <span class="faux-code">retrogame.cfg</span> file to link the GPIO pins to the keys you setted on <a href="#step-2">step 2</a>:</strong> <pre><code>$ sudo nano /boot/retrogame.cfg</code></pre> For a list of all the possible key IDs take a look at <a href="https://github.com/adafruit/Adafruit-Retrogame/blob/master/keyTable.h" target="_blank" rel="noopener">Retrogame's keyTable.h file</a>. Here's an example of my <span class="faux-code">retrogame.cfg</span> file where I map my keyboard keys to the pins I've chosen: <pre><code># Key      Pin           Button
+            <li>After rebooting, access the command line again and <strong>edit the <span class="faux-code">retrogame.cfg</span> file to link the GPIO pins to the keys you set in <a href="#step-2">step 2</a>:</strong> <pre><code>$ sudo nano /boot/retrogame.cfg</code></pre> Here's an example of my <span class="faux-code">retrogame.cfg</span> file where I map my keyboard keys to my GPIO pins: <pre><code># Key        GPIO Pin        Console Button
 
-W           19           # Up
-S            5           # Down
-A           13           # Left
-D            6           # Right
+W               19           # D-PAD UP
+S                5           # D-PAD DOWN
+A               13           # D-PAD LEFT
+D                6           # D-PAD RIGHT
 
-H           20           # A
-G           21           # B
-F           12           # X
-T           16           # Y
+ENTER           26           # START
+RIGHTSHIFT      10           # SELECT
 
-Q            9           # L1
-E           11           # L2
-Z            8           # R1
-C            7           # R2
+H               20           # BUTTON A / EAST
+G               21           # BUTTON B / SOUTH
+T               12           # BUTTON X / NORTH
+F               16           # BUTTON Y / WEST
 
-RIGHTSHIFT  10           # Select
-ENTER       26           # Start</code></pre></li>
+Q                9           # LEFT SHOULDER
+E                8           # RIGHT SHOULDER
+Z               11           # LEFT TRIGGER
+C                7           # RIGHT TRIGGER</code></pre>
+              For a list of all the possible key IDs take a look at <a href="https://github.com/adafruit/Adafruit-Retrogame/blob/master/keyTable.h" target="_blank" rel="noopener">Retrogame's keyTable.h file</a>.
+            </li>
 
-            <li><strong>Save the changes and exit Nano.</strong> You can do both by pressing <span class="faux-code">ctrl + X</span>.</li>
+            <li><strong>Save the changes and exit Nano.</strong> You can do both at the same time by pressing <span class="faux-code">ctrl + X</span>.</li>
 
             <li><strong>Reboot the console</strong> and check that everything works as expected. <pre><code>$ sudo reboot</code></pre> You should be able to navigate the interface, start games, and play them using your custom gamepad. <img loading="lazy" src="/blog/diy-handheld-game-console/playing-game-with-breadboard.png" alt=""/></li>
           </ol>

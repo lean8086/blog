@@ -43,7 +43,7 @@
   <header class="entry-head">
     <img class="entry-head__image pixelated" src="/blog/setting-up-retropie/retropie-icon.gif" itemprop="image" alt="Arcade icon" width="48" height="64">
     <h1 class="entry-head__headline" itemprop="headline">A complete guide to setting up RetroPie</h1>
-    <p class="entry-head__details">Updated <time itemprop="dateModified" datetime="2024-05-10">May 10, 2024</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <p class="entry-head__details">Updated <time itemprop="dateModified" datetime="2024-08-15">August 15, 2024</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
     <meta itemprop="description" content="Step-by-step tutorial on how to setup your Raspberry Pi to make the most of it as retro games console.">
   </header>
 
@@ -56,10 +56,10 @@
 
     <ol>
       <li><a href="#installing-retropie">Installing RetroPie</a></li>
-      <li><a href="#installing-games">Installing Games</a>
+      <li><a href="#transferring-games">Transferring Games</a>
         <ol type="i">
-          <li><a href="#sd-card">SD card</a></li>
-          <li><a href="#external-storage">External USB Storage</a></li>
+          <li><a href="#transfer-roms-via-scp">Remotely via SCP</a></li>
+          <li><a href="#transfer-roms-via-usb">Using a USB drive</a></li>
         </ol>
       </li>
       <li><a href="#fine-tuning-emulators">Fine-tuning emulators</a>
@@ -90,39 +90,44 @@
       <li>Click <span class="faux-code">Next</span> and install RetroPie on the SD card.</li>
     </ol>
 
-    <h2 id="installing-games">02. Installing Games</h2>
+    <h2 id="transferring-games">02. Transferring Games</h2>
 
-    <p>There are 2 main options when it comes to installing games into RetroPie:</p>
+    <p>There are two main options I use when it comes to transferring ROMs into RetroPie:</p>
     
     <ul>
-      <li><strong>Using an SD card:</strong> it's efficient because the games are in the same place as the OS. You have to make sure the SD card you use is big enough to accomodate everything. It requires you to connect the Raspberry Pi to the internet to copy games via <abbr>SCP</abbr>.</li>
-      <li><strong>Using an external drive:</strong> this is mostly ideal when you use a small SD card or if you want to avoid connecting the Raspberry Pi to the internet. It requires you to copy the games into a drive, then to copy them into the Raspberry Pi.</li>
+      <li><strong>Remotely via SCP:</strong> You have to make sure the SD card you use is big enough to accomodate the Operating System plus all the games.</li>
+      <li><strong>Using a USB drive:</strong> this is mostly ideal when you use a small SD card or if you want to avoid enabling SSH on the Raspberry Pi. It requires you to copy the games into a drive, then to copy them into the SD card using RetroPie.</li>
     </ul>
 
-    <h3 id="sd-card">SD card</h3>
+    <p>Let's dive deeper into both:</p>
+
+    <h3 id="transfer-roms-via-scp">Remotely via SCP</h3>
+
+    <p>Sending files through SCP gives you visibility of the progress and an estimated time until copied.</p>
 
     <ol>
-      <li><strong><a href="https://retropie.org.uk/docs/Wifi/" target="_blank" rel="noopener">Connect to wi-fi</a> and <a href="https://retropie.org.uk/docs/SSH/" target="_blank" rel="noopener">enable SSH</a></strong> to be able to connect remotely to the Raspberry Pi. Consider <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a> to make your workflow easier.</li>
-      <li>Transfer ROMs using SCP or <a href="https://retropie.org.uk/docs/Transferring-Roms/" target="_blank" rel="noopener">any of these methods</a>.</li>
+      <li><strong>Connect to Wi-Fi</strong> following the <a href="https://retropie.org.uk/docs/Wifi/" target="_blank" rel="noopener">official docs</a>:<br>Go to <span class="faux-code">RetroPie</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">WIFI</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">Connect to WiFi network</span></li>
+      <li>
+        <p><strong><a href="https://retropie.org.uk/docs/SSH/" target="_blank" rel="noopener">Enable SSH</a> to connect remotely</strong> to the Raspberry Pi. Consider <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a> to simplify your workflow.</li>
+      <li><strong>Transfer ROMs using SCP.</strong> All the game ROMs must go inside their respective console folder. For example, the game file <span class="faux-code">example.gba</span> for Gameboy Advance must go on <span class="faux-code">~/RetroPie/roms/gba</span>: <pre><code>$ scp example.gba pi@192.168.x.x:/home/pi/RetroPie/roms/gba</code></pre> You can send multiple ROMs just by listing them: <pre><code>$ scp example1.gba example2.gba example3.gba pi@192.168.x.x:/home/pi/RetroPie/roms/gba</code></pre> Or use wildcards to match a pattern like their file extension: <pre><code>$ scp *.gba pi@192.168.x.x:/home/pi/RetroPie/roms/gba</code></pre></li>
+      <li><strong>Restart EmulationStation:</strong><br>Press <span class="faux-code">START</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">QUIT</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">RESTART EMULATIONSTATION</span></li>
+      <li><strong>The ROMs are now on EmulationStation.</strong> You're going to see them in the main screen of RetroPie under the corresponding console name.</li>
     </ol>
 
-    <h3 id="external-storage">External USB Storage</h3>
+    <h3 id="transfer-roms-via-usb">Using a USB drive</h3>
 
-    <p>Keeping the games and the game's saved progress in an external source makes it <strong>easier to experiment with RetroPie in the SD card</strong>. It keeps the critical data safe in a plug-n-play source.</p>
+    <p>Keeping a copy of the games in an external source makes it <strong>easier to experiment with RetroPie in the SD card</strong>. It keeps the critical data safe in a plug-n-play source to be copied again and again.</p>
 
     <ol>
-      <li>Format a USB drive as <span class="faux-code">FAT</span>. Use any disk utility available on your OS for it.</li>
-      <li>Create a folder named <span class="faux-code">retropie-mount</span> on the root of the USB drive. <strong>It will be used by RetroPie every time you boot the system.</strong></li>
-      <li>Plug the USB drive on the Rasbperry Pi, boot RetroPie and let 1 minute pass. RetroPie will copy some files and folders into the drive.</li>
-      <li>Turn the system off and unplug the USB drive.</li>
-      <li>Insert the drive into your computer. Now the folder <span class="faux-code">/retropie-mount</span> will have some folders inside: <img src="/blog/setting-up-retropie/retropie-mount.png" alt="Folders structure after the first run"/></li>
-      <li>Place the ROMs into its corresponding folder. Avoid zip files because they are not supported. All the game ROMs must go inside the console folder. For example: <span class="faux-code">xxxxx.gba</span> for Gameboy Advance must go on <span class="faux-code">/retropie-mount/roms/gba/xxxxx.gba</span>.</li>
-      <li>Plug the USB drive into the Raspberry Pi and wait until the drive's LED stops blinking.</li>
-      <li>Reset EmulationStation: Press <span class="faux-code">Start</span> to open the menu, then select <span class="faux-code">Quit</span> and <span class="faux-code">Restart EmulationStation</span></li>
-      <li><strong>The ROMs are now on EmulationStation.</strong> You're going to see them in the main menu of RetroPie under the corresponding console name.</li>
+      <li><strong>Format a USB drive</strong> as <span class="faux-code">FAT32</span> or <span class="faux-code">exFAT</span>. Use any disk utility available on your OS for it.</li>
+      <li><strong>Create a folder named <span class="faux-code">retropie-mount</span> on the root of the USB drive.</strong> It will be used by RetroPie every time you boot the system.</li>
+      <li><strong>Plug the USB drive into the Rasbperry Pi, boot RetroPie and let 1 minute pass.</strong> RetroPie will copy some files and folders into the drive.</li>
+      <li><strong>Unplug the USB drive and insert it into your computer.</strong> Now the folder <span class="faux-code">/retropie-mount</span> will have some subfolders inside: <img src="/blog/setting-up-retropie/retropie-mount.png" alt="Folders structure after the first run"/></li>
+      <li><strong>Place the ROMs into their respective folder.</strong> For example, the game file <span class="faux-code">example.gba</span> for Gameboy Advance must go on <span class="faux-code">~/RetroPie/roms/gba</span>. Avoid zip files because they are not supported.</li>
+      <li><strong>Plug the USB drive into the Raspberry Pi and wait until the drive's LED stops blinking.</strong> For reference, transferring many GBs of games may take several hours.</li>
+      <li><strong>Restart EmulationStation:</strong><br>Press <span class="faux-code">START</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">QUIT</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">RESTART EMULATIONSTATION</span></li>
+      <li><strong>The ROMs are now on EmulationStation.</strong> You're going to see them in the main screen of RetroPie under the corresponding console name.</li>
     </ol>
-
-    <p>Find more info about this in the <a href="https://retropie.org.uk/docs/Transferring-Roms/" target="_blank" rel="noopener">official RetroPie documentation</a>.</p>
 
     <h2 id="fine-tuning-emulators">03. Fine-tuning emulators</h2>
     <p>Following the steps above, you'll have access to the most common consoles and games. But there are some consideration you need to have for specific emulators.</p>
