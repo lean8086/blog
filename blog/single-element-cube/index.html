@@ -248,6 +248,11 @@ b::after {
 
     <p>Then I positioned the first face in the Z-axis to start giving form to the cube container. As I wanted to have an isometric view, I needed to show the top face of the cube. I positioned the top face as if the cube was resting in the top of the scene element:</p>
 
+    <pre><code>b {
+  background: red;
+  transform: translateZ(var(--cube-size));
+}</code></pre>
+
     <section class="experiment-workspace top-face-example">
       <style>
         .top-face-example.experiment-workspace .context b::before,
@@ -262,18 +267,7 @@ b::after {
       </div>
     </section>
 
-    <pre><code>b {
-  background: red;
-  transform: translateZ(var(--cube-size));
-}</code></pre>
-
     <p>By having the scene container and the first face defined, I positioned the other faces relative to it:</p>
-
-    <section class="experiment-workspace">
-      <div class="context" data-face-x="right" data-face-y="front">
-        <b></b>
-      </div>
-    </section>
 
     <p><strong>Face in the X-axis:</strong></p>
     <pre><code>b::before {
@@ -288,6 +282,12 @@ b::after {
   transform: rotateY(-90deg);
   transform-origin: right;
 }</code></pre>
+
+    <section class="experiment-workspace">
+      <div class="context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+    </section>
 
     <p>Here are the 3 faces properly positioned, from an isometric point of view, rotating on the Z axis:</p>
 
