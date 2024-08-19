@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Single HTML Element Cube with 6 faces - Leandro Linares</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fff">
+  <meta name="description" content="No CSS was harmed in the making of this blog post.">
+
+  <link rel="icon" href="/favicon.gif">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Leandro Linares">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/assets/lite-yt-embed.css">
+  <link rel="canonical" href="https://leandrolinares.com/blog/single-element-cube/">
+
+  <meta itemprop="mainEntityOfPage" content="https://leandrolinares.com/blog/single-element-cube/">
+  <meta itemprop="inLanguage" content="en">
+  <meta name="twitter:site" content="@lean8086">
+  <meta name="twitter:url" content="https://leandrolinares.com/blog/single-element-cube/">
+  <meta name="twitter:title" content="Single HTML Element Cube with 6 faces">
+  <meta name="twitter:description" content="No CSS was harmed in the making of this blog post.">
+  <meta name="twitter:creator" content="@lean8086">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:title" content="Single HTML Element Cube with 6 faces">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://leandrolinares.com/blog/single-element-cube/">
+  <meta property="og:description" content="No CSS was harmed in the making of this blog post.">
+  <meta property="og:site_name" content="Leandro Linares">
+
+  <style>
+    :root {
+      --cube-size: 200px;
+    }
+
+    .experiment-workspace .context {
+      margin: var(--cube-size) auto 0;
+      transform-style: preserve-3d;
+      transform: rotateX(70deg) rotateZ(45deg);
+      width: var(--cube-size);
+      height: var(--cube-size);
+    }
+
+    .experiment-workspace b,
+    .experiment-workspace b::before,
+    .experiment-workspace b::after {
+      position: absolute;
+      width: var(--cube-size);
+      height: var(--cube-size);
+      content: '';
+      transform-style: preserve-3d;
+    }
+
+    .experiment-workspace b {
+      background: #e05038;
+      transform: translateZ(var(--cube-size));
+    }
+
+    .experiment-workspace b::before {
+      background: #f2cbbc;
+    }
+
+    [data-face-y="front"] b::before {
+      transform: rotateX(90deg);
+      transform-origin: bottom;
+    }
+
+    [data-face-y="back"] b::before {
+      transform: rotateX(-90deg);
+      transform-origin: top;
+    }
+
+    [data-face-y="none"] b::before {
+      content: none;
+    }
+
+    .experiment-workspace b::after {
+      background: #334431;
+    }
+
+    [data-face-x="right"] b::after {
+      transform: rotateY(-90deg);
+      transform-origin: right;
+    }
+
+    [data-face-x="left"] b::after {
+      transform: rotateY(90deg);
+      transform-origin: left;
+    }
+
+    [data-face-x="none"] b::after {
+      content: none;
+    }
+
+    .experiment-workspace {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e6af4b;
+      height: 400px;
+    }
+
+    .experiment-workspace .rangeZ {
+      position: absolute;
+      top: 30px;
+    }
+
+    @keyframes full-rotation {
+      from { transform: rotateX(70deg) rotateZ(0deg); }
+      to { transform: rotateX(70deg) rotateZ(359deg); }
+    }
+  </style>
+
+  <script>
+    function calcFaces(z) {
+      // Default faces to none in case Z = 0, 180, etc.
+      let fX = 'none';
+      let fY = 'none';
+      if (z > 0) {
+        if (z < 180) {
+          fX = 'right';
+          if (z < 90) {
+            fY = 'front';
+          } else if (z > 90) {
+            fY = 'back';
+          }
+        } else if (z > 180) {
+          fX = 'left';
+          if (z < 270) {
+            fY = 'back';
+          } else if (z > 270) {
+            fY = 'front';
+          }
+        } else {
+          fY = 'back';
+        }
+      } else if (z < 0) {
+        if (z > -180) {
+          fX = 'left';
+          if (z > -90) {
+            fY = 'front';
+          } else if (z < -90) {
+            fY = 'back';
+          }
+        } else if (z < -180) {
+          fX = 'right';
+          if (z > -270) {
+            fY = 'back';
+          } else if (z < -270) {
+            fY = 'front';
+          }
+        }
+      } else {
+        fY = 'front';
+      }
+      return [fX, fY];
+    }
+  </script>
+</head>
+
+<body>
+  <header class="header" role="banner">
+    <a class="header__logo pixelated" href="/">Leandro's Web Site</a>
+  </header>
+
+  <header class="entry-head">
+    <!-- <img class="entry-head__image pixelated" src="/blog/single-element-cube/cube-icon.png" itemprop="image" alt="Cube icon"> -->
+    <h1 class="entry-head__headline" itemprop="headline">Single HTML Element Cube with 6 faces</h1>
+    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2019-02-20">February 20, 2019</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="description" content="No CSS was harmed in the making of this blog post.">
+  </header>
+
+  <section class="entry-body" itemprop="articleBody">
+    <p>To learn more how CSS works in depth, <strong>I've always explored different ways to use it beyond its original purpose</strong>. For example, I created a <a href="https://lean8086.github.io/casio-calculator" target="_blank" rel="noopener">pure-CSS calculator</a> that actually works. People make amazing things by pushing CSS beyond its limits, like single-element drawings in <a href="https://a.singlediv.com/" target="_blank" rel="noopener">A Single Div</a> or oil paintings like <a href="https://diana-adrianne.com/purecss-francine/" target="_blank" rel="noopener">Pure CSS Francine</a>:</p>
+
+    <img src="/blog/single-element-cube/pure-css-francine.jpg" alt="An old paint of a lady made entirely in CSS"/>
+
+    <p>I've made experiments where I have multiple objects generated from one single HTML element, but this time, I wanted to see if I could render a 3D cube from one DOM element.</p>
+
+    <h2>Definition of a cube</h2>
+
+    <p>If you look at any box, <strong>you can never ever see more than 3 faces at the same time</strong>.</p>
+
+    <img src="/blog/single-element-cube/open-ai-robot-hand.gif" alt="Robot hand swapping a cube">
+
+    <p>Not only that. <strong>There are some situations depending on the perspective of the observer in which only 2 faces can be seen.</strong> There are even cases in which the observer can only see one face if they're positioned directly at the front of the box.</p>
+
+    <img src="/blog/single-element-cube/3-points-of-view.png" alt="3 cubes. The first one showing 3 faces, second one with 2, and a last one with 1" class="pixelated" width="345" height="105"/>
+
+    <p>This means that <strong>opposite sides of a cube will virtually never exist at the same time for the observer.</strong></p>
+
+    <h2>Building a cube</h2>
+    
+    <p>With up to 3 objects to render, I could use CSS pseudo-elements along with the original element to create one face per axis (x,y,z). Then it was a matter of mirror them as the observer's perspective changes.</p>
+
+    <p>For this example, I used a <code>&lt;b&gt;</code> element (for "box") that serves as the container for all the cube faces.</p>
+
+    <pre><code>&lt;b&gt;&lt;/b&gt;</code></pre>
+
+    <p>I used an element with a short name and kept it clean without class names or attributes because <strong>I wanted it to have the smallest footprint as possible</strong>. That way if I made a composition with thousands of elements I could concatenate and render them as a whole string as fast and small as possible.</p>
+
+    <h2>Building a scene</h2>
+
+    <p>To manipulate the composition, such as changes in <strong>rotation and scaling</strong>, I defined a base element for injecting the cube. This element was useful for swaping all the cube's faces as the perspective changed in the composition.</p>
+
+    <pre><code>&lt;section class="scene"&gt;
+  &lt;b&gt;&lt;/b&gt;
+&lt;/section&gt;</code></pre>
+
+    <p>To make it easier to work with, I setup the entire scene from the beginning. I chose an isometric projection to work with the 3 sides at the same time.</p>
+
+    <p>In an <a href="https://en.wikipedia.org/wiki/Isometric_projection" target="_blank" rel="noopener">isometric projection</a> the 3 coordinate axes appear equally foreshortened:</p>
+
+    <img src="/blog/single-element-cube/cube-icon.png" alt="Example of an isometric cube" class="pixelated" width="162" height="180">
+
+    <pre><code>.scene {
+  transform-style: preserve-3d;
+  transform: rotateX(70deg) rotateZ(45deg);
+}</code></pre>
+
+    <p>I set a variable with the size of the cube and, only for this example, the scene had the same size as one cube:</p>
+
+    <pre><code>:root {
+  --cube-size: 200px;
+}
+
+.scene {
+  width: var(--cube-size);
+  height: var(--cube-size);
+}</code></pre>
+
+    <h2>Creating the faces</h2>
+
+    <p>All the elements and pseudo-elements had the same base properties such as <strong>size, position and 3D preservation</strong>. I defined all of those together:</p>
+
+    <pre><code>b,
+b::before,
+b::after {
+  content: '';
+  transform-style: preserve-3d;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  position: absolute;
+}</code></pre>
+
+    <p>Then I positioned the first face in the Z-axis to start giving form to the cube container. As I wanted to have an isometric view, I needed to show the top face of the cube. I positioned the top face as if the cube was resting in the top of the scene element:</p>
+
+    <section class="experiment-workspace top-face-example">
+      <style>
+        .top-face-example.experiment-workspace .context b::before,
+        .top-face-example.experiment-workspace .context b::after {
+          background-color: transparent;
+          border: 1px dashed brown;
+        }
+      </style>
+      
+      <div class="context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+    </section>
+
+    <pre><code>b {
+  background: red;
+  transform: translateZ(var(--cube-size));
+}</code></pre>
+
+    <p>By having the scene container and the first face defined, I positioned the other faces relative to it:</p>
+
+    <section class="experiment-workspace">
+      <div class="context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+    </section>
+
+    <p><strong>Face in the X-axis:</strong></p>
+    <pre><code>b::before {
+  background: grey;
+  transform: rotateX(90deg);
+  transform-origin: bottom;
+}</code></pre>
+
+    <p><strong>Face in the Z-axis:</strong></p>
+    <pre><code>b::after {
+  background: white;
+  transform: rotateY(-90deg);
+  transform-origin: right;
+}</code></pre>
+
+    <p>Here are the 3 faces properly positioned, from an isometric point of view, rotating on the Z axis:</p>
+
+    <section class="experiment-workspace three-faces-example">
+      <style>
+        .three-faces-example.experiment-workspace .context {
+          animation: full-rotation 3s linear infinite;
+        }
+      </style>
+      
+      <div class="context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+    </section>
+
+    <h2>Swapping sides</h2>
+
+    <p>The isometric example looked great so far, but when the point of view changes in the example above, you can see that the back part of the cube is still missing.</p>
+
+    <p>As I mentioned at the beginning, by definition, <strong>two opposite faces can never coexist.</strong> So, I needed to place the faces in the opposite side whenever the face is out of the observer's view:</p>
+
+    <img src="/blog/single-element-cube/face-swapping.png" alt="Examples of a cube that swaps its faces on every axis" class="pixelated"/>
+
+    <p>By adding a range-type input to the example I could <strong>determine where the observer is placed respect to the scene and therefore which faces I needed to show.</strong></p>
+    
+    <p>To make it simple, I divided the check for the observer's position to 90 degree chunks:</p>
+
+    <!-- <p>For now I limit this example to rotate horizontally (Z axis) having front/back for Y-axis and left/right for X-axis as options.</p> -->
+
+    <pre><code>function calcFaces(z) {
+  let fX;
+  let fY;
+
+  if (z > 0) {
+    if (z < 180) {
+      fX = 'right';
+      if (z < 90) {
+        fY = 'front';
+      } else if (z > 90) {
+        fY = 'back';
+      }
+    } else if (z > 180) {
+      fX = 'left';
+      if (z < 270) {
+        fY = 'back';
+      } else if (z > 270) {
+        fY = 'front';
+      }
+    } else {
+      fY = 'back';
+    }
+  } else if (z < 0) {
+    if (z > -180) {
+      fX = 'left';
+      if (z > -90) {
+        fY = 'front';
+      } else if (z < -90) {
+        fY = 'back';
+      }
+    } else if (z < -180) {
+      fX = 'right';
+      if (z > -270) {
+        fY = 'back';
+      } else if (z < -270) {
+        fY = 'front';
+      }
+    }
+  } else {
+    fY = 'front';
+  }
+  return [fX, fY];
+}</code></pre>
+
+    <p>I'm sure this could be improved with some algorithm, but the whole point of making this is only to prove if I could build a cube with only 1 HTML element.</p>
+
+    <p>In order to swap the faces of <code>n</code> amount of cubes inside the scene, I used and updated the attributes <code>data-face-x</code>, <code>data-face-y</code>, and <code>data-face-z</code>. That way I could update an attribute directly into the HTML element and let CSS pick it up.</p>
+
+    <pre><code>const scene = document.querySelector('.scene');
+const rangeZ = document.querySelector('.rangeZ');
+
+rangeZ.addEventListener('input', function () {
+  scene.style.transform = `rotateZ(${this.value}deg) rotateX(70deg)`;
+
+  const [ faceX, faceY ] = calcFaces(this.value);
+
+  scene.setAttribute('data-face-x', faceX);
+  scene.setAttribute('data-face-y', faceY);
+});</code></pre>
+      
+    <p>Then I wrote all the possible combinations regarding the point of view, splitting responsibilities from the code I had before. Here is an example for the Y axis:</p>
+
+    <pre><code>b::before {
+  background: grey;
+}
+
+[data-face-y="front"] b::before {
+  transform: rotateX(90deg);
+  transform-origin: bottom;
+}
+
+[data-face-y="back"] b::before {
+  transform: rotateX(-90deg);
+  transform-origin: top;
+}</code></pre>
+
+    <p>The face on the Y axis is only shown when it's on the observer's view:</p>
+    
+    <section class="experiment-workspace y-face-example">
+      <style>
+        .y-face-example.experiment-workspace .y-face-context b,
+        .y-face-example.experiment-workspace .y-face-context b::before {
+          background-color: transparent;
+        }
+      </style>
+
+      <input type="range" class="rangeZ" min="0" max="360" value="45"/>
+
+      <div class="context y-face-context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+
+      <div class="context full-context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+
+      <script>
+        const yContext = document.querySelector('.y-face-example .y-face-context');
+        const fullContext = document.querySelector('.y-face-example .full-context');
+    
+        document.querySelector('.y-face-example .rangeZ').addEventListener('input', function () {
+          yContext.style.transform = fullContext.style.transform = `rotateX(70deg) rotateZ(${this.value}deg)`;
+          const [faceX, faceY] = calcFaces(this.value);
+          yContext.setAttribute('data-face-x', faceX);
+          yContext.setAttribute('data-face-y', faceY);
+          fullContext.setAttribute('data-face-x', faceX);
+          fullContext.setAttribute('data-face-y', faceY);
+        });
+      </script>
+    </section>
+  
+
+    <h2>Optimizations</h2>
+
+    <p>Now <strong>imagine having dozens or maybe thousands of these CSS cubes at the same time to make a composition</strong>. It sets the GPU on fire 🔥. Check it out by yourself in this other experiment:</p>
+
+    <a href="/dev/css-voxels-chicken/"><img src="/blog/single-element-cube/voxels-chicken.png" alt=""/></a>
+      
+    <p>I can make some improvements to make it easier for the browser.</p>
+
+    <h3>Hidden elements</h3>
+
+    <p>As I mentioned before, there are cases in which some faces can be hidden to the observer. In order to improve performance, I can temporarily destroy the pseudo-elements using <code>content: none</code> to reduce the amount of elements the browser needs to render.</p>
+    
+    <pre><code>function calcFaces(z) {
+  // Define default faces as "none" in case Z = 0, 180, etc.
+  let fX = 'none';
+  let fY = 'none';
+
+  // ...
+
+  return [fX, fY];
+}</code></pre>
+
+    <pre><code>[data-face-y="none"] b::before {
+  content: none;
+}
+
+[data-face-x="none"] b::after {
+  content: none;
+}</code></pre>
+
+    <h3>Backface visibility</h3>
+
+    <p>Going one step further, the observer will only be able to <strong>see only one side of the faces</strong>. There is no need to display both sides of a face at all times. <strong>I can get rid of the back faces of the elements and pseudo-elements</strong>. In order to tell the browser not to render the backfaces I use <code>backface-visibility: hidden</code>.</p>
+
+    <p>Here you can see the element rendering both faces at all times (LEFT) and the element hidding the back face (RIGHT):</p>
+    
+    <section class="experiment-workspace backface-visibility-example">
+      <style>
+        .backface-visibility-example.experiment-workspace .visible-context,
+        .backface-visibility-example.experiment-workspace .hidden-context {
+          animation: full-rotation 3s linear infinite;
+        }
+
+        .backface-visibility-example.experiment-workspace b,
+        .backface-visibility-example.experiment-workspace b::before {
+          background-color: transparent;
+        }
+
+        .backface-visibility-example.experiment-workspace .hidden-context b::after {
+          backface-visibility: hidden;
+        }
+      </style>
+
+      <div class="context visible-context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+
+      <div class="context hidden-context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+    </section>
+
+
+    <h2>Composition</h2>
+
+    <p>The next step to keep stressing this experiment is to put many of these voxels together. The easiest way to do it is by <strong>adding more elements on the X and Y axes</strong>.</p>
+
+    <img src="/thumbnails/css-voxel-composition.png" alt="/thumbnails/css-voxel-composition.png">
+
+    <p>By defining the scene as a flexbox container and giving it a size, I can arrange all the elements inside.</p>
+
+    <pre><code>.scene {
+  display: flex;
+  flex-wrap: wrap;
+}</code></pre>
+
+    <p>To create a map of every positioned cube I use the same approach as the <code>imageData</code> property of the HTML canvas. It's <strong>an array containing the data of the canvas element in the RGB order, with integer values between <code>0</code> and <code>255</code></strong>.</p>
+
+    <p>In this case I can't implement the alpha channel because the transparency can't live together with swapping faces.</p>
+
+    <h3>Empty elements</h3>
+
+    <p>To make a composition and to fill every empty space between cubes, I introduced an "empty" element. <strong>In case of not needing a cube I can avoid to have the whole definition of a 6-faces elements and pseudo-elements and define the basics to only fill the void.</strong></p>
+
+    <pre><code>&lt;b>&lt;/b&gt;
+&lt;em&gt;&lt;/em&gt;
+&lt;em&gt;&lt;/em&gt;
+&lt;b&gt;&lt;/b&gt;</code></pre>
+
+    <img src="/blog/single-element-cube/empty-elements.png" alt="Example of two empty elements between two boxes" class="pixelated">
+
+    <h2>Climbing the Z-axis</h2>
+
+    <p>By repeating all the previous steps but moving the elements in another matrix in the Z-axis, I can make entire figures.</p>
+
+    <a href="/dev/css-voxels-chicken/"><img src="/blog/single-element-cube/voxels-chicken.png" alt=""/></a>
+
+    <!-- <h2>Voxel editor in CSS</h2>
+
+    <p>I've put all this together using <a href="https://github.com/developit/htm" target="_blank" rel="noopener">HTM</a> and browser modules to make a brief and lightweight app to edit CSS voxel compositions.</p>
+
+    (Screenshot con link)
+    <p><a href="https://voxeland.now.sh/" target="_blank" rel="noopener">Visit Voxeland</a></p>
+
+    <p>The code of this tool is <a href="" target="_blank" rel="noopener">open</a> and every feedback is always welcome.</p>
+
+    <p>Cheers!</p> -->
+
+    <h2>Conclusion</h2>
+
+    <p>I don’t see many use cases where I’d apply everything I’ve detailed here simultaneously, but I’ve learned how to use each technique individually and can now apply them whenever needed.</p>
+  </section>
+
+  <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
+
+  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+</body>
+</html>

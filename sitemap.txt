@@ -21,6 +21,7 @@ https://leandrolinares.com/blog/optimistic-ui/
 https://leandrolinares.com/blog/post-processing-3d-prints/
 https://leandrolinares.com/blog/protocolo-http2/
 https://leandrolinares.com/blog/setting-up-retropie/
+https://leandrolinares.com/blog/single-element-cube/
 https://leandrolinares.com/blog/single-page-apps-mejorar-ux/
 https://leandrolinares.com/blog/single-page-apps-mejorar-ux-2/
 https://leandrolinares.com/blog/using-emoji-as-favicon/
