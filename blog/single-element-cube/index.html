@@ -39,6 +39,10 @@
       --cube-size: 200px;
     }
 
+    .experiment-workspace {
+      overflow: hidden;
+    }
+
     .experiment-workspace .context {
       margin: var(--cube-size) auto 0;
       transform-style: preserve-3d;
@@ -115,6 +119,26 @@
       from { transform: rotateX(70deg) rotateZ(0deg); }
       to { transform: rotateX(70deg) rotateZ(359deg); }
     }
+
+    .vertical-in-mobile-horizontal-in-desktop-container {
+      height: 800px;
+    }
+
+    .vertical-in-mobile-horizontal-in-desktop-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (min-width: 48rem) {
+      .vertical-in-mobile-horizontal-in-desktop-container {
+        height: 400px;
+      }
+
+      .vertical-in-mobile-horizontal-in-desktop-content {
+        flex-direction: row;
+        width: 100%;
+      }
+    }
   </style>
 
   <script>
@@ -177,11 +201,33 @@
   </header>
 
   <section class="entry-body" itemprop="articleBody">
-    <p>To learn more how CSS works in depth, <strong>I've always explored different ways to use it beyond its original purpose</strong>. For example, I created a <a href="https://lean8086.github.io/casio-calculator" target="_blank" rel="noopener">pure-CSS calculator</a> that actually works. People make amazing things by pushing CSS beyond its limits, like single-element drawings in <a href="https://a.singlediv.com/" target="_blank" rel="noopener">A Single Div</a> or oil paintings like <a href="https://diana-adrianne.com/purecss-francine/" target="_blank" rel="noopener">Pure CSS Francine</a>:</p>
+    <p>To learn more how CSS works in depth, <strong>I've always explored different ways to use it beyond its original purpose</strong>. For example, I created a <a href="https://lean8086.github.io/casio-calculator" target="_blank" rel="noopener">pure-CSS calculator</a> that actually works.</p>
+    
+      <p>People make amazing things by pushing CSS beyond its limits, like single-element drawings in <a href="https://a.singlediv.com/" target="_blank" rel="noopener">A Single Div</a> or oil paintings like <a href="https://diana-adrianne.com/purecss-francine/" target="_blank" rel="noopener">Pure CSS Francine</a>:</p>
 
     <img src="/blog/single-element-cube/pure-css-francine.jpg" alt="An old paint of a lady made entirely in CSS"/>
 
     <p>I've made experiments where I have multiple objects generated from one single HTML element, but this time, I wanted to see if I could render a 3D cube from one DOM element.</p>
+
+    <p>Here's the finished experiment:</p>
+
+    <section class="experiment-workspace full-example-workspace">
+      <input type="range" class="rangeZ" min="0" max="360" value="45"/>
+
+      <div class="context" data-face-x="right" data-face-y="front">
+        <b></b>
+      </div>
+
+      <script>
+        document.querySelector('.full-example-workspace .rangeZ').addEventListener('input', function () {
+          const context = document.querySelector('.full-example-workspace .context');
+          context.style.transform = `rotateX(70deg) rotateZ(${this.value}deg)`;
+          const [faceX, faceY] = calcFaces(this.value);
+          context.setAttribute('data-face-x', faceX);
+          context.setAttribute('data-face-y', faceY);
+        });
+      </script>
+    </section>
 
     <h2>Definition of a cube</h2>
 
@@ -207,13 +253,13 @@
 
     <h2>Building a scene</h2>
 
-    <p>To manipulate the composition, such as changes in <strong>rotation and scaling</strong>, I defined a base element for injecting the cube. This element was useful for swaping all the cube's faces as the perspective changed in the composition.</p>
+    <p>To manipulate the entire composition and not individual cubes, such as changes in <strong>rotation and scaling</strong>, I defined a wrapper element. This element was useful for triggering the swap on all the cubes faces as the perspective changed in the composition.</p>
 
     <pre><code>&lt;section class="scene"&gt;
   &lt;b&gt;&lt;/b&gt;
 &lt;/section&gt;</code></pre>
 
-    <p>To make it easier to work with, I setup the entire scene from the beginning. I chose an isometric projection to work with the 3 sides at the same time.</p>
+    <p>To make it easier to work with, I setup the entire scene element from the beginning. I chose an isometric projection to work with the 3 sides at the same time.</p>
 
     <p>In an <a href="https://en.wikipedia.org/wiki/Isometric_projection" target="_blank" rel="noopener">isometric projection</a> the 3 coordinate axes appear equally foreshortened:</p>
 
@@ -256,12 +302,12 @@ b::after {
   transform: translateZ(var(--cube-size));
 }</code></pre>
 
-    <section class="experiment-workspace top-face-example">
+    <section class="experiment-workspace top-face-workspace">
       <style>
-        .top-face-example.experiment-workspace .context b::before,
-        .top-face-example.experiment-workspace .context b::after {
+        .top-face-workspace b::before,
+        .top-face-workspace b::after {
           background-color: transparent;
-          border: 1px dashed brown;
+          border: 1px dashed chocolate;
         }
       </style>
       
@@ -286,7 +332,33 @@ b::after {
   transform-origin: right;
 }</code></pre>
 
-    <section class="experiment-workspace">
+    <section class="experiment-workspace x-z-faces-workspace">
+      <style>
+        @keyframes create-x-face {
+          from { transform: rotateX(.1deg); }
+          25% { transform: rotateX(90deg); }
+          50% { transform: rotateX(90deg); }
+          75% { transform: rotateX(.1deg); }
+        }
+
+        .x-z-faces-workspace b::before {
+          transform: rotateX(.1deg);
+          animation: create-x-face 4s ease-in-out infinite;
+        }
+
+        @keyframes create-z-face {
+          from { transform: rotateY(-.1deg); }
+          25% { transform: rotateY(-90deg); }
+          50% { transform: rotateY(-90deg); }
+          75% { transform: rotateY(-.1deg); }
+        }
+
+        .x-z-faces-workspace b::after {
+          transform: rotateY(-.1deg);
+          animation: create-z-face 4s ease-in-out .9s infinite;
+        }
+      </style>
+
       <div class="context" data-face-x="right" data-face-y="front">
         <b></b>
       </div>
@@ -294,9 +366,9 @@ b::after {
 
     <p>Here are the 3 faces properly positioned, from an isometric point of view, rotating on the Z axis:</p>
 
-    <section class="experiment-workspace three-faces-example">
+    <section class="experiment-workspace three-faces-workspace">
       <style>
-        .three-faces-example.experiment-workspace .context {
+        .three-faces-workspace .context {
           animation: full-rotation 3s linear infinite;
         }
       </style>
@@ -398,29 +470,30 @@ rangeZ.addEventListener('input', function () {
 
     <p>The face on the Y axis is only shown when it's on the observer's view:</p>
     
-    <section class="experiment-workspace y-face-example">
+    <section class="experiment-workspace y-face-workspace vertical-in-mobile-horizontal-in-desktop-container">
       <style>
-        .y-face-example.experiment-workspace .y-face-context b,
-        .y-face-example.experiment-workspace .y-face-context b::before {
+        .y-face-workspace .y-face-context b,
+        .y-face-workspace .y-face-context b::before {
           background-color: transparent;
         }
       </style>
 
       <input type="range" class="rangeZ" min="0" max="360" value="45"/>
 
-      <div class="context y-face-context" data-face-x="right" data-face-y="front">
-        <b></b>
-      </div>
+      <div class="vertical-in-mobile-horizontal-in-desktop-content">
+        <div class="context y-face-context" data-face-x="right" data-face-y="front">
+          <b></b>
+        </div>
 
-      <div class="context full-context" data-face-x="right" data-face-y="front">
-        <b></b>
+        <div class="context full-context" data-face-x="right" data-face-y="front">
+          <b></b>
+        </div>
       </div>
 
       <script>
-        const yContext = document.querySelector('.y-face-example .y-face-context');
-        const fullContext = document.querySelector('.y-face-example .full-context');
-    
-        document.querySelector('.y-face-example .rangeZ').addEventListener('input', function () {
+        document.querySelector('.y-face-workspace .rangeZ').addEventListener('input', function () {
+          const yContext = document.querySelector('.y-face-workspace .y-face-context');
+          const fullContext = document.querySelector('.y-face-workspace .full-context');
           yContext.style.transform = fullContext.style.transform = `rotateX(70deg) rotateZ(${this.value}deg)`;
           const [faceX, faceY] = calcFaces(this.value);
           yContext.setAttribute('data-face-x', faceX);
@@ -436,9 +509,12 @@ rangeZ.addEventListener('input', function () {
 
     <p>Now <strong>imagine having dozens or maybe thousands of these CSS cubes at the same time to make a composition</strong>. It sets the GPU on fire 🔥. Check it out by yourself in this other experiment:</p>
 
-    <a href="/dev/css-voxels-chicken/"><img src="/blog/single-element-cube/voxels-chicken.png" alt=""/></a>
+    <p>
+      <a href="/dev/css-voxels-chicken/">Crossy Road Chicken in CSS Voxels</a>
+      <a href="/dev/css-voxels-chicken/"><img src="/blog/single-element-cube/voxels-chicken.png" alt=""/></a>
+    </p>
       
-    <p>I can make some improvements to make it easier for the browser.</p>
+    <p>There are some things I can do to make it easier for the browser, though.</p>
 
     <h3>Hidden elements</h3>
 
@@ -466,31 +542,33 @@ rangeZ.addEventListener('input', function () {
 
     <p>Going one step further, the observer will only be able to <strong>see only one side of the faces</strong>. There is no need to display both sides of a face at all times. <strong>I can get rid of the back faces of the elements and pseudo-elements</strong>. In order to tell the browser not to render the backfaces I use <code>backface-visibility: hidden</code>.</p>
 
-    <p>Here you can see the element rendering both faces at all times (LEFT) and the element hidding the back face (RIGHT):</p>
+    <p>Here you can see the element rendering both faces at all times (first fig.) and the element hidding the back face (second fig.):</p>
     
-    <section class="experiment-workspace backface-visibility-example">
+    <section class="experiment-workspace backface-visibility-workspace vertical-in-mobile-horizontal-in-desktop-container">
       <style>
-        .backface-visibility-example.experiment-workspace .visible-context,
-        .backface-visibility-example.experiment-workspace .hidden-context {
+        .backface-visibility-workspace .visible-context,
+        .backface-visibility-workspace .hidden-context {
           animation: full-rotation 3s linear infinite;
         }
 
-        .backface-visibility-example.experiment-workspace b,
-        .backface-visibility-example.experiment-workspace b::before {
+        .backface-visibility-workspace b,
+        .backface-visibility-workspace b::before {
           background-color: transparent;
         }
 
-        .backface-visibility-example.experiment-workspace .hidden-context b::after {
+        .backface-visibility-workspace .hidden-context b::after {
           backface-visibility: hidden;
         }
       </style>
 
-      <div class="context visible-context" data-face-x="right" data-face-y="front">
-        <b></b>
-      </div>
+      <div class="vertical-in-mobile-horizontal-in-desktop-content">
+        <div class="context visible-context" data-face-x="right" data-face-y="front">
+          <b></b>
+        </div>
 
-      <div class="context hidden-context" data-face-x="right" data-face-y="front">
-        <b></b>
+        <div class="context hidden-context" data-face-x="right" data-face-y="front">
+          <b></b>
+        </div>
       </div>
     </section>
 
@@ -525,9 +603,12 @@ rangeZ.addEventListener('input', function () {
 
     <h2>Climbing the Z-axis</h2>
 
-    <p>By repeating all the previous steps but moving the elements in another matrix in the Z-axis, I can make entire figures.</p>
+    <p>By repeating all the previous steps but moving the elements in another matrix in the Z-axis, I can make entire figures:</p>
 
-    <a href="/dev/css-voxels-chicken/"><img src="/blog/single-element-cube/voxels-chicken.png" alt=""/></a>
+    <p>
+      <a href="/dev/css-voxels-chicken/">Crossy Road Chicken in CSS Voxels</a>
+      <a href="/dev/css-voxels-chicken/"><img src="/blog/single-element-cube/voxels-chicken.png" alt=""/></a>
+    </p>
 
     <!-- <h2>Voxel editor in CSS</h2>
 
@@ -542,7 +623,7 @@ rangeZ.addEventListener('input', function () {
 
     <h2>Conclusion</h2>
 
-    <p>I don’t see many use cases where I’d apply everything I’ve detailed here simultaneously, but I’ve learned how to use each technique individually and can now apply them whenever needed.</p>
+    <p>I don't see many use cases where I'd apply everything I've detailed here simultaneously, but I've learned how to use each technique individually and can now apply them whenever needed. So it was worth it in the end.</p>
   </section>
 
   <footer class="footer" role="contentinfo"><a href="/">Leandro Linares</a></footer>
