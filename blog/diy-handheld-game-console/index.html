@@ -85,6 +85,15 @@
       margin: var(--gutter-m) 0;
     }
 
+    em.warning {
+      color: crimson;
+      font-style: normal;
+      font-size: .9em;
+      display: block;
+      border: 1px solid crimson;
+      padding: var(--gutter-s);
+    }
+
     /* Using 75 instead of the usual 48 bc the 2 cols looks funny on tablets */
     @media (min-width: 75rem) {
       .entry-body--side-by-side {
@@ -209,7 +218,7 @@
             <li><a href="#step-1">Step 1. Install RetroPie on a Raspberry Pi.</a></li>
             <li><a href="#step-2">Step 2. Connect it to a TV and keyboard.</a></li>
             <li><a href="#step-3">Step 3. Add your own custom buttons.</a></li>
-            <li><a href="#step-4">Step 4. Install the PiSugar hardware.</a></li>
+            <li><a href="#step-4">Step 4. Install the UPS and battery.</a></li>
             <li><a href="#step-5">Step 5. Wire and assemble.</a></li>
             <li><a href="#step-6">Step 6. Build an enclosure.</a></li>
           </ol>
@@ -267,12 +276,14 @@
 
       <p>I hope you've read the philosophy behind this project first and <strong>understand that you don't need to spend money in buying all the components at once</strong>. You can enjoy the console since day one with components that you potentially may have at home already.</p>
 
+      <p><strong>Before purchasing any components, read the entire guide and watch the video.</strong> This will give you an idea of what the process looks like and what your alternatives are.</p>
+
       <p>These are the materials for the exact same final version I built. All of the listed items <strong>contain affiliate links</strong>. This means that <strong>without any cost to you, I might receive a small commision for sales</strong>:</p>
 
       <ul>
         <li><a href="https://amzn.to/3rEKhcD" target="_blank" rel="noopener"><strong>Raspberry Pi 4 Model B, 4GB RAM</strong></a>. Any Raspberry Pi 1, 2, 3, or 4 is ok. Note that at the time of writing this guide, RetroPie doesn't officially support the model 5.</li>
         <li><a href="https://amzn.to/3ryVvPP" target="_blank" rel="noopener"><strong>5-inches 800x480 IPS Screen with integrated speaker</strong></a>. Any screen of any size and resolution will do the job. Though, in my case, <strong>the case that I designed can only accomodate the display that I linked here</strong>.</li>
-        <li><a href="https://amzn.to/49Uliaz" target="_blank" rel="noopener"><strong>PiSugar 2 Pro / 2 Plus / S Plus / 3 Plus</strong></a>. Any UPS hat with battery suitable for the model of Raspberry Pi you got will do the job. Though, in my case, <strong>the case that I designed can only accomodate the UPS that I linked here</strong>.</li>
+        <li><a href="https://amzn.to/49Uliaz" target="_blank" rel="noopener"><strong>PiSugar 2 Pro / 2 Plus / S Plus / 3 Plus</strong></a>. Any UPS hat with battery suitable for the model of Raspberry Pi you got will do the job. Though, for this console, <strong>the case that I designed can only accomodate the UPS that I linked here</strong>. Keep in mind that you will need to modify the PiSugar, which will definitely void the warranty. Proceed at your own risk.</li>
         <li><a href="https://amzn.to/3FN7VbN" target="_blank" rel="noopener"><strong>Soft Silicone 6mm Push-Buttons</strong></a>, or any tactile button is more than ok.</li>
         <li><a href="https://amzn.to/3AlhsWl" target="_blank" rel="noopener"><strong>Soft Tactile 8mm Buttons</strong></a>. These ones are more squishy, but no required.</li>
         
@@ -376,7 +387,7 @@
 
           <p><a href="#step-2">Step 2. Connect it to a TV or monitor and plug in a keyboard or gamepad.</a></p>
           <p><a href="#step-3">Step 3. Add your own custom buttons.</a></p>
-          <p><a href="#step-4">Step 4. Install the PiSugar hardware.</a></p>
+          <p><a href="#step-4">Step 4. Install the UPS and battery.</a></p>
           <p><a href="#step-5">Step 5. Bring it all together.</a></p> -->
         </div>
       </div>
@@ -471,7 +482,7 @@
           <!-- <h4>Next steps:</h4>
 
           <p><a href="#step-3">Step 3. Add your own custom buttons.</a></p>
-          <p><a href="#step-4">Step 4. Install the PiSugar hardware.</a></p>
+          <p><a href="#step-4">Step 4. Install the UPS and battery.</a></p>
           <p><a href="#step-5">Step 5. Bring it all together.</a></p> -->
         </div>
       </div>
@@ -567,7 +578,7 @@ C                7           # RIGHT TRIGGER</code></pre>
 
           <!-- <h4>Next steps:</h4>
 
-          <p><a href="#step-4">Step 4. Install the PiSugar hardware.</a></p>
+          <p><a href="#step-4">Step 4. Install the UPS and battery.</a></p>
           <p><a href="#step-5">Step 5. Bring it all together.</a></p> -->
         </div>
       </div>
@@ -595,7 +606,7 @@ C                7           # RIGHT TRIGGER</code></pre>
           <p><strong>Batteries:</strong> Any lithium-ion battery with at least 2500mAh should be enough to power a Raspberry Pi handheld console. <strong>The PiSugar came with 5000mAh, and they claim the battery life is 8-10 hours.</strong> For me it's been around half that time in total when making the Rasbperry Pi work at its maximum, emulating console games, and with the fan turned on 100% of the time.</p>
         </div>
         <div class="side-b" id="step-4">
-          <h3>Step 4. Install the PiSugar hardware.</h3>
+          <h3>Step 4. Install the UPS and battery.</h3>
 
           <!-- <h4>Materials (with affiliate links):</h4>
 
@@ -607,8 +618,12 @@ C                7           # RIGHT TRIGGER</code></pre>
 
           <!-- <h4>Steps:</h4> -->
 
+          <!-- <p>You can use any UPS and battery that works with your Raspberry Pi. Ideally the UPS should be a HAT (Hardware Attached on Top), and the battery should be no bigger than 55 x 66 x 12mm.</p> -->
+          
+          <p><em class="warning">Warning: While it is possible to reverse this process if done correctly, please be aware that it will definitely void the warranty of the PiSugar. I am not responsible for any damage you may cause to your components. Proceed only if you are willing to take full responsibility for modifying your board. Otherwise, consider researching other UPS and batteries that fit in the case.</em></p>
+
           <ol class="steps-list">
-            <li><strong>Remove the pogo pins</strong> (the golden cylindrical connectors) <strong>with great care from the PiSugar.</strong> They should come out easily by gently pulling them straight out, with little or no resistance. If you find yourself applying force, stop and watch a video tutorial. <strong>If done correctly, this mod is completely reversible.</strong></li>
+            <li><strong>Remove the pogo pins</strong> (the golden cylindrical connectors) <strong>with great care from the PiSugar.</strong> They should come out easily by gently pulling them straight out, with little or no resistance. If you find yourself applying force, stop and search for a tutorial.</li>
             <li><strong>Solder a 2x20 pins female GPIO header to the PiSugar.</strong> Note: there are solderless headers that require no soldering. <figure><img loading="lazy" src="/blog/diy-handheld-game-console/2x20-pins-female-gpio-header.jpg"/><figcaption>Source: <a href="https://www.adafruit.com/product/2222" target="_blank" rel="noopener">Adafruit</a></figcaption></figure></li>
             <li><strong>Solder wires to the GPIO pins you will use for the buttons</strong> (the ones you set up in <a href="#step-3">step 3</a>). <img loading="lazy" src="/blog/diy-handheld-game-console/soldering-buttons-to-pi-sugar.png" alt=""/></li>
             <li><strong>Connect the battery to the PiSugar.</strong></li>
