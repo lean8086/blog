@@ -262,6 +262,11 @@ a:hover {
   font-weight: 600;
 }
 
+abbr[title] {
+  border-bottom: 1px dotted var(--color-text);
+  cursor: help;
+}
+
 /* CODE EXPERIMENTS */
 
 .experiment-workspace {
