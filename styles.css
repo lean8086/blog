@@ -171,7 +171,8 @@ a:hover {
   line-height: 1.6em;
 }
 
-.entry-body img {
+.entry-body img,
+.entry-body video {
   max-width: 100%;
   max-height: 75vh;
   margin: var(--gutter-m) auto;
@@ -179,7 +180,8 @@ a:hover {
 }
 
 .entry-body img,
-.entry-body lite-youtube {
+.entry-body lite-youtube,
+.entry-body video {
   border-radius: var(--radius);
 }
 
@@ -321,16 +323,19 @@ abbr[title] {
 /* GALLERY MODULE */
 
 [name="galeri"],
-[name="galeri"] + img {
+[name="galeri"] + img,
+[name="galeri"] + video {
   display: none;
 }
 
-[name="galeri"]:checked + img {
+[name="galeri"]:checked + img,
+[name="galeri"]:checked + video {
   display: block;
   background-size: cover;
 }
 
-[name="galeri"] + img {
+[name="galeri"] + img,
+[name="galeri"] + video {
   margin-bottom: var(--gutter-s);
 }
 
