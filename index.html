@@ -5,7 +5,7 @@
   <title>Leandro Linares</title>
   <meta name="viewport" content="width=device-width">
   <meta name="theme-color" content="#fff">
-  <meta name="description" content="I use code to create human-friendly interfaces and tools to build nerdy things. I document my coding journey in tweets and blog posts, and my building process in cinematic videos.">
+  <meta name="description" content="I use code to create human-friendly interfaces, and tools to build nerdy things. I document my coding journey in tweets and blog posts, and my building process in stories and videos.">
   <link rel="icon" href="/favicon.gif">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
@@ -107,6 +107,7 @@
     }
 
     .home-section__title-verb {
+      display: block;
       font-size: var(--font-size-xs);
       line-height: var(--font-size-m);
       text-indent: var(--visual-correction);
@@ -335,7 +336,7 @@
   </section>
 
   <section class="home-section" id="code">
-    <h2 class="home-section__title"><div class="home-section__title-verb">I write</div> code</h2>
+    <h2 class="home-section__title"><span class="home-section__title-verb">I write</span> code</h2>
     <p class="home-section__description">Whether it's a new Web standard about to be introduced in a specific browser version, or I've had a spontaneous idea while on the tram, I always create a quick demo for myself. This helps me understand better the available possibilities.</p>
     <ol class="home-section__cards">
       <li class="card" itemscope itemtype="https://schema.org/Article">
@@ -343,7 +344,7 @@
           <img class="card__image" src="/thumbnails/css-sphere.png" itemprop="image" alt="Screenshot of a sphere in CSS">
         </a>
         <h3 class="card__title"><span itemprop="name">CSS 3D Sphere</span><!--, <time class="card__date" datetime="2020-11-19" itemprop="dateCreated">2020</time>--></h3>
-        <p class="card__description" itemprop="description">I tested if a perspective trick with stacked rings of different circ. could create the impression of a sphere with volume.</p>
+        <p class="card__description" itemprop="description">I stacked rings of different circumpherences, using only their element border, to create the impression of a sphere with volume.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://lean8086.github.io/grammatik" itemprop="url" target="_blank" rel="noopener">
@@ -357,7 +358,7 @@
           <img class="card__image" src="/thumbnails/wunderpaint.png" itemprop="image" alt="The letter W representing the name Wunderpaint">
         </a>
         <h3 class="card__title"><span itemprop="name">Wunderpaint</span><!--, <time class="card__date" datetime="2020-10-11" itemprop="dateCreated">2020</time>--></h3>
-        <p class="card__description" itemprop="description">I implemented browser modules and Web Components, and applied some concepts of func. prog. in vanilla JS.</p>
+        <p class="card__description" itemprop="description">I implemented browser modules and Web Components, and applied some concepts of FP in vanilla JS.</p>
       </li>
       <li class="card" itemscope itemtype="https://schema.org/Article">
         <a class="card__link" href="https://lean8086.github.io/punchy" itemprop="url" target="_blank" rel="noopener">
@@ -468,7 +469,7 @@
   </section>
 
   <section class="home-section" id="things">
-    <h2 class="home-section__title"><div class="home-section__title-verb">I make</div> things</h2>
+    <h2 class="home-section__title"><span class="home-section__title-verb">I make</span> things</h2>
     <p class="home-section__description">These contraptions are a fusion of open-source hardware and software. I film my construction process to inspire others. When it comes to publishing videos, I don't follow a schedule. I believe the schedule pressure compromises quality, and I prefer to create things I genuinely enjoy.</p>
     <ul class="home-section__cards">
       <li class="card" itemscope itemtype="https://schema.org/Article">
@@ -531,7 +532,7 @@
   </section>
 
   <section class="home-section" id="pixelart">
-    <h2 class="home-section__title"><div class="home-section__title-verb">I draw</div> Pixel Art</h2>
+    <h2 class="home-section__title"><span class="home-section__title-verb">I draw</span> Pixel Art</h2>
     <p class="home-section__description">This medium challenges me to work within a set of strict constraints, such as using a significantly reduced amount of space and colors. So, I use Pixel Art not only to evoke nostalgia but also to practice the art of abstraction.</p>
     <ol class="home-section__cards">
       <li class="card" itemscope itemtype="https://schema.org/Article">
@@ -615,8 +616,8 @@
   </section>
 
   <section class="home-section" id="blog">
-    <h2 class="home-section__title"><div class="home-section__title-verb">I keep a</div> blog</h2>
-    <p class="home-section__description">My list of notes and drafts is scattered. I write whatever crosses my mind, and sometimes I dedicate time to refine these ideas and thoughts into something substantial.</p>
+    <h2 class="home-section__title"><span class="home-section__title-verb">I keep a</span> blog</h2>
+    <p class="home-section__description">My notes and drafts are scattered. I often write to myself when exploring concepts I want to understand better. Sometimes I spend time refining these ideas and thoughts into something I believe could help others.</p>
     <div class="blog-entries">
       <article class="blog-entry" itemscope itemtype="https://schema.org/Article">
         <h3 class="blog-entry__title" itemprop="headline">
@@ -641,7 +642,7 @@
       </article>
       <article class="blog-entry" itemscope itemtype="https://schema.org/Article">
         <h3 class="blog-entry__title" itemprop="headline">
-          <a href="/blog/post-processing-3d-prints" itemprop="url">Post-proc 3D prints <img class="blog-entry__image pixelated" src="/blog/post-processing-3d-prints/post-processing-icon.gif" alt="An icon representing a smoothed 3D printed surface"></a>
+          <a href="/blog/post-processing-3d-prints" itemprop="url">Post-processing 3D printed parts <img class="blog-entry__image pixelated" src="/blog/post-processing-3d-prints/post-processing-icon.gif" alt="An icon representing a smoothed 3D printed surface"></a>
         </h3>
         <time class="blog-entry__created" datetime="2020-11-29" itemprop="dateCreated">November 29, 2020</time>
         <p class="blog-entry__description" itemprop="description">I glued, smoothed, and painted this 3D printed Tesla Roadster 1/8 scale model.</p>

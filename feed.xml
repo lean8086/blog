@@ -8,9 +8,9 @@
     <title>Leandro Linares</title>
     <atom:link href="https://leandrolinares.com/feed.xml" rel="self" type="application/rss+xml"/>
     <link>https://leandrolinares.com/</link>
-    <description>I use code to create human-friendly interfaces and tools to build nerdy things. I document my coding journey in tweets and blog posts, and my building process in cinematic videos.</description>
+    <description>I use code to create human-friendly interfaces, and tools to build nerdy things. I document my coding journey in tweets and blog posts, and my building process in stories and videos.</description>
     <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-    <lastBuildDate>Thu, 15 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Oct 2024 00:00:00 +0000</lastBuildDate>
     <language>en</language>
 
     <item>
@@ -41,7 +41,7 @@
     </item>
 
     <item>
-      <title>Post-processing 3D prints</title>
+      <title>Post-processing 3D printed parts</title>
       <link>https://leandrolinares.com/blog/post-processing-3d-prints/</link>
       <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://leandrolinares.com/blog/post-processing-3d-prints/</guid>
