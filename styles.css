@@ -10,8 +10,8 @@
   --gutter-m: 2rem;
   --gutter-s: 1rem;
 
-  --font-type-sans: 'Roboto', sans-serif;
-  --font-type-serif: 'Playfair Display', serif;
+  --font-type-sans: 'Roboto', Helvetica, sans-serif;
+  --font-type-serif: 'Playfair Display', Georgia, serif;
   --font-type-mono: 'Menlo', monospace;
 
   --font-size-xxl: 4rem;
@@ -326,6 +326,8 @@ abbr[title] {
 [name="galeri"] + img,
 [name="galeri"] + video {
   display: none;
+  width: auto;
+  height: auto;
 }
 
 [name="galeri"]:checked + img,
@@ -352,6 +354,7 @@ abbr[title] {
 
 .galeri img {
   width: 72px;
+  height: auto;
   margin: 0;
   border-radius: var(--radius-half);
   cursor: pointer;
@@ -365,13 +368,13 @@ abbr[title] {
 [name="galeri"]:nth-of-type(6):checked ~ .galeri label:nth-of-type(6)::after,
 [name="galeri"]:nth-of-type(7):checked ~ .galeri label:nth-of-type(7)::after,
 [name="galeri"]:nth-of-type(8):checked ~ .galeri label:nth-of-type(8)::after {
-  content: "•";
+  content: " ";
   position: absolute;
-  top: 85%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: var(--font-size-m);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: var(--color-text);
 }
 
 /* BIG SCREENS */

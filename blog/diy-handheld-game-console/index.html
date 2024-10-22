@@ -85,21 +85,32 @@
       margin: var(--gutter-m) 0;
     }
 
-    .warning {
-      color: crimson;
+    .message-box {
+      color: var(--color-text);
       font-size: .9em;
-      border: 1px solid crimson;
+      border: 1px solid var(--color-text);
       padding: var(--gutter-s);
       border-radius: var(--radius);
       border-left-width: .4rem;
     }
 
-    .warning em {
+    .message-box em {
       font-style: normal;
     }
 
-    .warning strong::before {
+    .message-box--warning {
+      color: crimson;
+      border-color: crimson;
+    }
+
+    .message-box--warning strong::before {
       content: '⚠';
+    }
+
+    @media (min-width: 48rem) {
+      .galeri label:nth-last-of-type(-n+3) {
+        display: block;
+      }
     }
 
     /* Using 75 instead of the usual 48 bc the 2 cols looks funny on tablets */
@@ -147,10 +158,6 @@
         line-height: 1.4em;
       }
 
-      .galeri label:nth-last-of-type(-n+3) {
-        display: block;
-      }
-
       .content-lists {
         display: flex;
         gap: var(--gutter-l);
@@ -168,41 +175,41 @@
   <header class="entry-head">
     <img class="entry-head__image pixelated" src="/blog/diy-handheld-game-console/handheld-icon.gif" itemprop="image" alt="An icon representing a D-pad of a gamepad"  width="56" height="64">
     <h1 class="entry-head__headline" itemprop="headline">How to build a handheld game console</h1>
-    <p class="entry-head__details"><time itemprop="dateCreated" datetime="2023-11-25">November 25, 2023</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
-    <meta itemprop="dateModified" datetime="2024-08-15">
+    <p class="entry-head__details">Updated <time itemprop="dateModified" datetime="2024-10-22">October 22, 2024</time> by <a href="/" itemprop="author">Leandro Linares</a></p>
+    <meta itemprop="dateCreated" datetime="2023-11-25">
     <meta itemprop="description" content="All the information that I gathered building this handheld game console compiled in one place so anyone can build it.">
   </header>
 
   <section itemprop="articleBody">
     <div class="entry-body">
       <input type="radio" name="galeri" id="galeri-0" checked/>
-      <img src="/blog/diy-handheld-game-console/finished.jpg" alt=""/>
+      <img src="/blog/diy-handheld-game-console/finished.jpg" alt="" width="1280" height="720"/>
       <input type="radio" name="galeri" id="galeri-1"/>
-      <video autoplay loop muted playsinline>
+      <video autoplay loop muted playsinline width="1280" height="720">
         <source src="/blog/diy-handheld-game-console/gal/doom.mp4" type="video/mp4"/>
-        <img src="/blog/diy-handheld-game-console/gal/doom.jpg" alt=""/>
+        <img src="/blog/diy-handheld-game-console/gal/doom.jpg" alt="" width="1280" height="720"/>
       </video>
       <input type="radio" name="galeri" id="galeri-2"/>
-      <img src="/blog/diy-handheld-game-console/gal/d-pad.jpg" alt=""/>
+      <img src="/blog/diy-handheld-game-console/gal/d-pad.jpg" alt="" width="1280" height="720"/>
       <input type="radio" name="galeri" id="galeri-3"/>
-      <img src="/blog/diy-handheld-game-console/gal/ba.jpg" alt=""/>
+      <img src="/blog/diy-handheld-game-console/gal/ba.jpg" alt="" width="1280" height="720"/>
       <input type="radio" name="galeri" id="galeri-4"/>
-      <img src="/blog/diy-handheld-game-console/gal/abxy.jpg" alt=""/>
+      <img src="/blog/diy-handheld-game-console/gal/abxy.jpg" alt="" width="1280" height="720"/>
       <input type="radio" name="galeri" id="galeri-5"/>
-      <img src="/blog/diy-handheld-game-console/gal/psp-game.jpg" alt=""/>
+      <img src="/blog/diy-handheld-game-console/gal/psp-game.jpg" alt="" width="1280" height="720"/>
       <input type="radio" name="galeri" id="galeri-6"/>
-      <img src="/blog/diy-handheld-game-console/gal/back.jpg" alt=""/>
+      <img src="/blog/diy-handheld-game-console/gal/back.jpg" alt="" width="1280" height="720"/>
       <input type="radio" name="galeri" id="galeri-7"/>
-      <img src="/blog/diy-handheld-game-console/gal/ps1-game.jpg" alt=""/>
+      <img src="/blog/diy-handheld-game-console/gal/ps1-game.jpg" alt="" width="1280" height="720"/>
       <nav class="galeri">
-        <label for="galeri-0"><img src="/blog/diy-handheld-game-console/gal/finished_s.jpg" alt=""/></label>
-        <label for="galeri-1"><img src="/blog/diy-handheld-game-console/gal/doom_s.jpeg" alt=""/></label>
-        <label for="galeri-2"><img src="/blog/diy-handheld-game-console/gal/d-pad_s.jpg" alt=""/></label>
-        <label for="galeri-3"><img src="/blog/diy-handheld-game-console/gal/ba_s.jpg" alt=""/></label>
-        <label for="galeri-4"><img src="/blog/diy-handheld-game-console/gal/abxy_s.jpg" alt=""/></label>
-        <label for="galeri-5"><img src="/blog/diy-handheld-game-console/gal/psp-game_s.jpg" alt=""/></label>
-        <label for="galeri-6"><img src="/blog/diy-handheld-game-console/gal/back_s.jpg" alt=""/></label>
-        <label for="galeri-7"><img src="/blog/diy-handheld-game-console/gal/ps1-game_s.jpg" alt=""/></label>
+        <label for="galeri-0"><img src="/blog/diy-handheld-game-console/gal/finished_s.jpg" alt="" width="128" height="72"/></label>
+        <label for="galeri-1"><img src="/blog/diy-handheld-game-console/gal/doom_s.jpeg" alt="" width="128" height="72"/></label>
+        <label for="galeri-2"><img src="/blog/diy-handheld-game-console/gal/d-pad_s.jpg" alt="" width="128" height="72"/></label>
+        <label for="galeri-3"><img src="/blog/diy-handheld-game-console/gal/ba_s.jpg" alt="" width="128" height="72"/></label>
+        <label for="galeri-4"><img src="/blog/diy-handheld-game-console/gal/abxy_s.jpg" alt="" width="128" height="72"/></label>
+        <label for="galeri-5"><img src="/blog/diy-handheld-game-console/gal/psp-game_s.jpg" alt="" width="128" height="72"/></label>
+        <label for="galeri-6"><img src="/blog/diy-handheld-game-console/gal/back_s.jpg" alt="" width="128" height="72"/></label>
+        <label for="galeri-7"><img src="/blog/diy-handheld-game-console/gal/ps1-game_s.jpg" alt="" width="128" height="72"/></label>
       </nav>
 
       <p>I've compiled all the information I gathered while designing and building this handheld game console so anyone can build it. This step-by-step guide also <strong>explains the choices I made, and the options I decided not to include</strong>.</p>
@@ -574,12 +581,12 @@
             
             <li><strong>Connect to Wi-Fi</strong> following the <a href="https://retropie.org.uk/docs/Wifi/" target="_blank" rel="noopener">official docs</a>:<br><span class="faux-code">RetroPie</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">WIFI</span> <span aria-hidden="true" aria-label="then">→</span> <span class="faux-code">Connect to WiFi network</span></li>
             
-            <li><strong>Access the Raspberry Pi command line</strong> either locally by pressing <span class="faux-code">F4</span> or remotely by first <a href="https://retropie.org.uk/docs/SSH/" target="_blank" rel="noopener">enabling SSH</a>, <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a>, and then running on your computer: <pre><code>$ ssh pi@192.168.X.X</code></pre></li>
+            <li><strong>Access the Raspberry Pi command line</strong> either locally by pressing <span class="faux-code">F4</span> while in RetroPie, or remotely by <a href="https://retropie.org.uk/docs/SSH/" target="_blank" rel="noopener">enabling SSH</a>, <a href="https://howchoo.com/pi/configure-static-ip-address-raspberry-pi" target="_blank" rel="noopener">assigning a static IP</a>, and running on your computer: <pre><code>$ ssh pi@192.168.X.X</code></pre></li>
 
-            <li><strong>Download <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/main/retrogame.sh" target="_blank" rel="noopener">retrogame.sh</a> from <a href="https://github.com/adafruit/Raspberry-Pi-Installer-Scripts" target="_blank" rel="noopener">Raspberry-Pi-Installer-Scripts</a> and execute it.</strong> It will install the <a href="https://github.com/adafruit/Adafruit-Retrogame" target="_blank" rel="noopener">Adafruit-Retrogame</a> utility. This will allow you to map the GPIO pins to a virtual keyboard. <pre><code>$ curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/retrogame.sh > retrogame.sh
-$ sudo bash retrogame.sh</code></pre> You will be prompted to select a configuration. Choose any option and follow the steps to reboot.</li>
+            <li><strong>Install the Adafruit-Retrogame utility</strong>, which enables you to map the GPIO pins to work as a virtual keyboard. From the Raspberry Pi's command line, <strong>download Adafruit's script file <span class="faux-code">retrogame.sh</span> and execute it:</strong> <pre><code>$ curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/retrogame.sh > retrogame.sh
+$ sudo bash retrogame.sh</code></pre> You will be prompted to select a configuration. <strong>Choose any option and follow the steps to reboot.</strong></li>
 
-            <li>After rebooting, access the command line again and <strong>edit the <span class="faux-code">retrogame.cfg</span> file to link the GPIO pins to the keys you set in <a href="#step-2">step 2</a>:</strong> <pre><code>$ sudo nano /boot/retrogame.cfg</code></pre> Here's an example of my <span class="faux-code">retrogame.cfg</span> file where I map my keyboard keys to my GPIO pins: <pre><code># Key        GPIO Pin        Console Button
+            <li>After rebooting, access the command line again and <strong>edit the <span class="faux-code">retrogame.cfg</span> file to map the GPIO pins to the keys you configured in <a href="#step-2">step 2</a>:</strong> <pre><code>$ sudo nano /boot/retrogame.cfg</code></pre> Here's an example of my <span class="faux-code">retrogame.cfg</span> file where I map my keyboard keys to my GPIO pins: <pre><code># Key        GPIO Pin        Console Button
 
 W               19           # D-PAD UP
 S                5           # D-PAD DOWN
@@ -654,13 +661,13 @@ C                7           # RIGHT TRIGGER</code></pre>
 
           <p>The next steps involve converting the PiSugar from <abbr title="Hardware Under Board">HUB</abbr> to <abbr title="Hardware Attached on Top">HAT</abbr> so that it fits in the case. I recommend only attempting this if you are experienced with electronics.</p>
           
-          <p class="warning"><em><strong>Warning:</strong> Modifying the PiSugar will definitely void its warranty. I am not responsible for any damage you may cause to your components. Proceed only if you are willing to take full responsibility for modifying your board. Otherwise, consider researching other UPS and batteries.</em></p>
+          <p class="message-box message-box--warning"><em><strong>Warning:</strong> Modifying the PiSugar will definitely void its warranty. I am not responsible for any damage you may cause to your components. Proceed only if you are willing to take full responsibility for modifying your board. Otherwise, consider researching other UPS and batteries.</em></p>
 
           <ol class="steps-list">
             <li><strong>Carefully remove the pogo pins</strong> (the golden cylindrical connectors) from the PiSugar. Pull out the side that is not spring-loaded (the rigid side) straight out. You may need to twist the pin slightly to help it come out.</li>
             <li><strong>Solder a 2x20-pins female GPIO header to the PiSugar.</strong> Be sure to solder at least the pins where the pogo pins were so the PiSugar can function properly. Consider using flux to make the soldering process easier. <figure><img loading="lazy" src="/blog/diy-handheld-game-console/2x20-pins-female-gpio-header.jpg"/><figcaption>Source: <a href="https://www.adafruit.com/product/2222" target="_blank" rel="noopener">Adafruit</a></figcaption></figure><!-- Note: there are solderless headers available that require no soldering. --></li>
             <li><strong>Solder wires to the GPIO pins you will use for the buttons</strong> (the ones you set up in <a href="#step-3">step 3</a>). <img loading="lazy" src="/blog/diy-handheld-game-console/soldering-buttons-to-pi-sugar.png" alt=""/></li>
-            <li>Connect the battery to the PiSugar and <strong>attach the PiSugar to the Raspberry Pi</strong> for a test. <img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-connected-to-raspberry-pi.png" alt=""/></li>
+            <li>Connect the battery to the PiSugar and <strong>attach the PiSugar to the Raspberry Pi</strong> for a test. <p class="message-box"><em><strong>Note:</strong> Don't worry if the wires seem pressed against the Raspberry Pi; this won't cause any damage to them.</em></p> <img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-connected-to-raspberry-pi.png" alt=""/></li>
             <li><strong>Turn on the Rasbperry Pi and disconnect it from power</strong> to make sure it works wirelessly.</li>
           </ol>
 
@@ -725,8 +732,8 @@ C                7           # RIGHT TRIGGER</code></pre>
 
             <li><strong>Add heatsinks to the Raspberry Pi CPU, GPU, etc.</strong> For demanding tasks such as gaming, it's recommended to have some form of cooling. <img loading="lazy" src="/blog/diy-handheld-game-console/heatsink-install.jpg" alt=""/></li>
             <li><strong>Attach the Raspberry Pi to the PCB-prototype</strong> using (2x) screws on the pins side and (2x) 10mm spacers on the other side. <!--<img loading="lazy" src="/blog/diy-handheld-game-console/screwing-pi.jpg" alt=""/> <img loading="lazy" src="/blog/diy-handheld-game-console/brass-spacer-installing.jpg" alt=""/>--><figure><img loading="lazy" src="/blog/diy-handheld-game-console/raspberry-pi-screws-and-spacers.jpg" alt=""/><figcaption>(A) and (B) are the 10mm spacers. (C) and (D) are the screws.</figcaption></figure> <!--img loading="lazy" src="/blog/diy-handheld-game-console/pcb-prototype-screws.jpg" alt=""/--></li>
-            <li><strong>Connect the PiSugar to the Raspberry Pi <!--<img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-connected-to-raspberry-pi.png" alt=""/>--> and secure it to the spacers using 2 screws.</strong> Be sure to connect the battery to the PiSugar first, as there will very little space for the battery wires to fit. Don't worry if the wires seem pressed against the Raspberry Pi; this is ok and won't cause any damage to the components. <figure><img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-screws.jpg" alt=""/><figcaption>The screws fasten the PiSugar to the spacers.</figcaption></figure></li>
-            <li><strong>Connect the Raspberry Pi to the display.</strong> Any display will need to get power from USB, and data from HDMI. The one I'm using came with PCB-based connectors that fit different models of Raspberry Pi without wasting space: <figure><img loading="lazy" src="/blog/diy-handheld-game-console/pcb-connectors.jpg"/><figcaption>HDMI (display) to micro-HDMI (raspi) on the left.<br>Micro-USB (display) to USB-A (raspi) on the right.</figcaption></figure><br>In case you don't get those, the second best option are ribbon cables: <figure><img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/90-degree-ribbon-cable.jpg"/><figcaption>90-degrees ribbon cables. Also found as band or flat cables.</figcaption></figure></li>
+            <li><strong>Connect the PiSugar to the Raspberry Pi <!--<img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-connected-to-raspberry-pi.png" alt=""/>--> and secure it to the spacers using 2 screws.</strong> Be sure to connect the battery to the PiSugar first, as there will very little space for the battery wires to fit. <p class="message-box"><em><strong>Note:</strong> Don't worry if the wires seem pressed against the Raspberry Pi; this won't cause any damage to them.</em></p> <figure><img loading="lazy" src="/blog/diy-handheld-game-console/pi-sugar-screws.jpg" alt=""/><figcaption>The screws fasten the PiSugar to the spacers.</figcaption></figure></li>
+            <li><strong>Connect the Raspberry Pi to the display.</strong> Any display will need to get power from USB and video/audio through HDMI. I'm using these PCB-based connectors that came with the display: <img loading="lazy" src="/blog/diy-handheld-game-console/pcb-connectors.jpg"/><br>The second best option are ribbon cables, also found as band or flat cables: <img loading="lazy" class="image--border" src="/blog/diy-handheld-game-console/90-degree-ribbon-cable.jpg"/></li>
           </ol>
         </div>
       </div>
